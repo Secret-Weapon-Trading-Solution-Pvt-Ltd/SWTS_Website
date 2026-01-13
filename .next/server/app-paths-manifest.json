@@ -1,0 +1,6 @@
+{
+  "/strategy-assessment/page": "app/strategy-assessment/page.js",
+  "/page": "app/page.js",
+  "/strategy-assessment/results/page": "app/strategy-assessment/results/page.js",
+  "/strategy-assessment/questionnaire/page": "app/strategy-assessment/questionnaire/page.js"
+}

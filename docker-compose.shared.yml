@@ -1,0 +1,33 @@
+# SWTS_Website/docker-compose.shared.yml
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swts_app
+    restart: unless-stopped
+    networks:
+      - shared_proxy_network
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5002/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  certbot:
+    image: certbot/certbot
+    container_name: swts_certbot
+    volumes:
+      - /home/ubuntu/ubuntu-docker-logs-finder/certbot/www:/var/www/certbot
+      - /home/ubuntu/ubuntu-docker-logs-finder/certbot/conf:/etc/letsencrypt
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    networks:
+      - shared_proxy_network
+
+networks:
+  shared_proxy_network:
+    external: true

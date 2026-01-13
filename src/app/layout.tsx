@@ -1,0 +1,47 @@
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Secret Weapon Trading Solution Pvt. Ltd.',
+  description:
+    'Discover if your trading strategy is ready for automation. Take our free 5-question assessment and get personalized insights to improve your trading consistency.',
+  keywords: [
+    'algorithmic trading',
+    'automated trading',
+    'trading strategy',
+    'TradingView',
+    'AmiBroker',
+    'Pine Script',
+    'trading automation',
+    'algo trading India',
+  ],
+  authors: [{ name: 'Secret Weapon Trading Solution Pvt. Ltd.' }],
+  icons: {
+    icon: '/logos/logo1.jpg',
+    shortcut: '/logos/logo1.jpg',
+    apple: '/logos/logo1.jpg',
+  },
+  openGraph: {
+    title: 'Secret Weapon Trading Solution Pvt. Ltd.',
+    description:
+      'Is your trading strategy ready for automation? Find out in 2 minutes.',
+    type: 'website',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <main className="min-h-screen">{children}</main>
+      </body>
+    </html>
+  );
+}
