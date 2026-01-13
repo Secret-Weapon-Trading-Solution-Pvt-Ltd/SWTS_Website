@@ -51,10 +51,10 @@ export const FinalCTA: React.FC = () => {
           <p className="text-slate-500">
             Questions? Reach out at{' '}
             <a
-              href="mailto:contact@swts.in"
+              href="mailto:support@secretweapon.in"
               className="text-slate-700 hover:text-teal-600 transition-colors font-medium"
             >
-              contact@swts.in
+              support@secretweapon.in
             </a>
           </p>
         </div>

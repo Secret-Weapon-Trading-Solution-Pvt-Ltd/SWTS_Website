@@ -12,7 +12,7 @@ const footerLinks = {
   ],
   resources: [
     { href: '/strategy-assessment/questionnaire', label: 'Free Assessment' },
-    { href: 'mailto:contact@swts.in', label: 'Contact' },
+    { href: 'mailto:support@secretweapon.in', label: 'Contact' },
   ],
   legal: [
     { href: '/privacy', label: 'Privacy Policy' },
@@ -92,13 +92,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:contact@swts.in"
+                  href="mailto:support@secretweapon.in"
                   className="flex items-center gap-3 text-slate-400 hover:text-white transition-colors group"
                 >
                   <div className="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
                     <Mail className="w-4 h-4 text-teal-500" />
                   </div>
-                  <span className="text-sm">contact@swts.in</span>
+                  <span className="text-sm">support@secretweapon.in</span>
                 </a>
               </li>
               <li className="flex items-center gap-3 text-slate-400">
