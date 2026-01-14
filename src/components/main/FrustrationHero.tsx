@@ -30,15 +30,7 @@ export const FrustrationHero: React.FC = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(90deg, #F8FAFC 0%, #F8FAFC 40%, rgba(248,250,252,0.85) 55%, rgba(248,250,252,0.4) 70%, transparent 85%)'
-        }}
-      />
-
-      {/* Subtle dark overlay behind the dashboard area for better contrast */}
-      <div
-        className="absolute inset-0 hidden lg:block"
-        style={{
-          background: 'linear-gradient(90deg, transparent 50%, rgba(15,23,42,0.08) 70%, rgba(15,23,42,0.15) 100%)'
+          background: 'linear-gradient(90deg, #F8FAFC 0%, #F8FAFC 45%, rgba(248,250,252,0.8) 55%, transparent 70%)'
         }}
       />
 
