@@ -27,23 +27,18 @@ export const FinalCTA: React.FC = () => {
 
           {/* Supporting text */}
           <p className="text-xl text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto">
-            In 3 minutes, you'll know exactly where your execution is breaking down—and what to do about it.
+            Explore our projects and see how we build precision trading systems.
           </p>
 
           {/* CTA Button */}
           <Link
-            href="/strategy-assessment/questionnaire"
+            href="/projects"
             className="group inline-flex items-center px-10 py-5 bg-slate-900 text-white rounded-full font-semibold text-lg
                      hover:bg-slate-800 transition-all shadow-button hover:shadow-soft-xl"
           >
-            Take the Free Assessment
+            View Our Projects
             <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
           </Link>
-
-          {/* Trust line */}
-          <p className="mt-6 text-slate-400 text-sm">
-            No signup  ·  No spam  ·  Just clarity
-          </p>
         </div>
 
         {/* Contact line */}

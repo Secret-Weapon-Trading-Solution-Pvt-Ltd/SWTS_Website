@@ -9,7 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
   { href: '/#how-it-works', label: 'How It Works' },
-  { href: '/#assessment', label: 'Assessment' },
+  { href: '/strategy-assessment', label: 'Assessment' },
   { href: '/#services', label: 'Services' },
   { href: '/#about', label: 'About' },
   { href: '/#contact', label: 'Contact' },
@@ -50,13 +50,6 @@ export const Navbar: React.FC = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/#assessment"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-all shadow-soft ml-4"
-            >
-              Start Assessment
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -83,16 +76,6 @@ export const Navbar: React.FC = () => {
                   {link.label}
                 </Link>
               ))}
-              <div className="p-2 pt-4 mt-2 border-t border-slate-100">
-                <Link
-                  href="/#assessment"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full py-3 bg-slate-900 text-white font-medium rounded-xl hover:bg-slate-800 transition-all"
-                >
-                  Start Assessment
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
             </nav>
           </div>
         )}

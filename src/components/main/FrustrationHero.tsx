@@ -112,7 +112,7 @@ export const FrustrationHero: React.FC = () => {
           >
             {/* Primary CTA Button */}
             <Link
-              href="/#assessment"
+              href="/#how-it-works"
               className="group inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-xl
                        shadow-[0_4px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.35)]
                        hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_2px_10px_rgba(13,148,136,0.2)]
@@ -121,33 +121,9 @@ export const FrustrationHero: React.FC = () => {
                 background: 'linear-gradient(180deg, #0D9488 0%, #0F766E 100%)',
               }}
             >
-              Take Free Trading Assessment
+              See How It Works
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
-
-            {/* CTA Helper Text */}
-            <div className="flex items-center gap-3">
-              <span
-                className="text-sm font-medium tracking-wide"
-                style={{ color: '#64748B' }}
-              >
-                Free
-              </span>
-              <span className="w-1 h-1 rounded-full bg-slate-300" />
-              <span
-                className="text-sm font-medium tracking-wide"
-                style={{ color: '#64748B' }}
-              >
-                2 minutes
-              </span>
-              <span className="w-1 h-1 rounded-full bg-slate-300" />
-              <span
-                className="text-sm font-medium tracking-wide"
-                style={{ color: '#64748B' }}
-              >
-                Personalized insights
-              </span>
-            </div>
           </div>
         </div>
       </div>
