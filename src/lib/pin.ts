@@ -26,11 +26,11 @@ const memoryPins: Map<string, { visitorId: string; createdAt: number }> = new Ma
 // Clean expired PINs from memory
 function cleanExpiredPins() {
   const now = Date.now();
-  for (const [pin, data] of memoryPins.entries()) {
+  Array.from(memoryPins.entries()).forEach(([pin, data]) => {
     if (now - data.createdAt > PIN_EXPIRY_SECONDS * 1000) {
       memoryPins.delete(pin);
     }
-  }
+  });
 }
 
 // Store a PIN for a visitor

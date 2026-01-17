@@ -77,9 +77,10 @@ export async function getSubscribers(): Promise<number[]> {
     const subscribers = await redis.hgetall(SUBSCRIBERS_KEY);
     const redisIds = Object.keys(subscribers || {}).map(id => parseInt(id));
 
-    // Combine Redis subscribers with fallback
-    const allIds = [...new Set([...redisIds, ...fallbackIds])];
-    return allIds;
+    // Combine Redis subscribers with fallback (deduplicated)
+    const combined = redisIds.concat(fallbackIds);
+    const unique = combined.filter((id, index) => combined.indexOf(id) === index);
+    return unique;
   } catch (error) {
     console.error('Failed to get subscribers:', error);
     return fallbackIds;
