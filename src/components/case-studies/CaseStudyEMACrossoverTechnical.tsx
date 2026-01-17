@@ -2,18 +2,23 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-// ============================================================================
-// Section Label Component
-// ============================================================================
-const SectionLabel: React.FC<{ label: string }> = ({ label }) => (
-  <div className="flex items-center gap-3 mb-3">
-    <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest">
-      {label}
-    </span>
-    <span className="flex-1 h-px bg-slate-100" />
-  </div>
-);
+import {
+  Layers,
+  Zap,
+  Bell,
+  Database,
+  Shield,
+  Clock,
+  TrendingUp,
+  Users,
+  Server,
+  Code,
+  Cpu,
+  Wifi,
+  ArrowRight,
+  CheckCircle2,
+  ExternalLink,
+} from 'lucide-react';
 
 // ============================================================================
 // Table of Contents Component (Desktop Only)
@@ -23,9 +28,9 @@ const TableOfContents: React.FC = () => {
 
   const sections = [
     { id: 'architecture', label: 'Architecture' },
+    { id: 'data-flow', label: 'Data Flow' },
     { id: 'features', label: 'Features' },
     { id: 'performance', label: 'Performance' },
-    { id: 'visuals', label: 'Visuals' },
     { id: 'outcomes', label: 'Outcomes' },
     { id: 'users', label: 'Ideal Users' },
   ];
@@ -63,18 +68,18 @@ const TableOfContents: React.FC = () => {
 
   return (
     <nav className="hidden xl:block fixed left-8 top-1/2 -translate-y-1/2 z-40">
-      <div className="bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl p-4 shadow-sm">
-        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-3 px-2">
-          Technical Docs
+      <div className="bg-white/90 backdrop-blur-md border border-slate-200/60 rounded-2xl p-5 shadow-lg shadow-slate-200/50">
+        <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-4 px-2">
+          On This Page
         </p>
         <ul className="space-y-1">
           {sections.map((section) => (
             <li key={section.id}>
               <button
                 onClick={() => scrollToSection(section.id)}
-                className={`block w-full text-left px-3 py-1.5 text-xs rounded-lg transition-colors ${
+                className={`block w-full text-left px-3 py-2 text-xs rounded-xl transition-all duration-200 ${
                   activeSection === section.id
-                    ? 'bg-slate-900 text-white font-medium'
+                    ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold shadow-md'
                     : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
                 }`}
               >
@@ -89,82 +94,244 @@ const TableOfContents: React.FC = () => {
 };
 
 // ============================================================================
-// Architecture Section
+// Section Header Component
+// ============================================================================
+const SectionHeader: React.FC<{ label: string; title: string; subtitle?: string }> = ({ label, title, subtitle }) => (
+  <div className="mb-10">
+    <span className="inline-block text-[11px] font-bold uppercase tracking-[0.2em] text-teal-600 mb-3">
+      {label}
+    </span>
+    <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">{title}</h2>
+    {subtitle && <p className="text-slate-500 text-base max-w-2xl">{subtitle}</p>}
+  </div>
+);
+
+// ============================================================================
+// Architecture Section with Visual Diagram
 // ============================================================================
 const Architecture: React.FC = () => {
   const stacks = [
     {
+      icon: Code,
       title: 'Frontend',
-      items: [
-        'Vanilla JavaScript (no framework dependencies)',
-        'HTML5 / CSS3 with responsive design',
-        'WebSocket client for real-time updates',
-        'Dynamic color-coded signal visualization',
-      ],
+      color: 'from-blue-500 to-indigo-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
+      items: ['Vanilla JavaScript', 'WebSocket Client', 'Responsive UI', 'Real-time Updates'],
     },
     {
+      icon: Server,
       title: 'Backend',
-      items: [
-        'Python 3.11 with FastAPI framework',
-        'Uvicorn ASGI server',
-        'AsyncIO for concurrent operations',
-        'Pandas / NumPy for EMA calculations',
-      ],
+      color: 'from-violet-500 to-purple-600',
+      bgColor: 'bg-violet-50',
+      borderColor: 'border-violet-200',
+      items: ['Python 3.11 + FastAPI', 'Uvicorn ASGI', 'AsyncIO Concurrency', 'Pandas/NumPy'],
     },
     {
-      title: 'Data Sources',
-      items: [
-        'Delta Exchange India REST API',
-        'OHLCV candle data (600-bar rolling window)',
-        'Product listing endpoint for symbol discovery',
-      ],
+      icon: Database,
+      title: 'Data Layer',
+      color: 'from-amber-500 to-orange-600',
+      bgColor: 'bg-amber-50',
+      borderColor: 'border-amber-200',
+      items: ['Delta Exchange API', '600-bar Window', 'JSON File Storage', 'State Persistence'],
     },
     {
-      title: 'Notification Layer',
-      items: [
-        'Telegram Bot API for mobile alerts',
-        'PIN-based account linking',
-        'Activity-filtered delivery (active users only)',
-      ],
+      icon: Bell,
+      title: 'Notifications',
+      color: 'from-rose-500 to-pink-600',
+      bgColor: 'bg-rose-50',
+      borderColor: 'border-rose-200',
+      items: ['Telegram Bot API', 'PIN-based Linking', 'Activity Filtering', 'Instant Delivery'],
     },
     {
+      icon: Shield,
       title: 'Infrastructure',
-      items: [
-        'Docker containerization (Python 3.11-slim)',
-        'Docker Compose orchestration',
-        'Nginx reverse proxy with SSL/TLS',
-        'GitHub Actions CI/CD pipeline',
-        'Let\'s Encrypt certificate automation',
-      ],
+      color: 'from-teal-500 to-cyan-600',
+      bgColor: 'bg-teal-50',
+      borderColor: 'border-teal-200',
+      items: ['Docker Container', 'Nginx + SSL/TLS', 'GitHub Actions CI', 'Auto Certificates'],
     },
     {
-      title: 'Data Persistence',
-      items: [
-        'JSON file-based caching (no database required)',
-        'Per-user watchlist storage',
-        'Signal state persistence across restarts',
-      ],
+      icon: Cpu,
+      title: 'Processing',
+      color: 'from-slate-600 to-slate-800',
+      bgColor: 'bg-slate-50',
+      borderColor: 'border-slate-200',
+      items: ['9/20 EMA Engine', 'Outlier Detection', 'Multi-TF Analysis', 'Signal Validation'],
     },
   ];
 
   return (
-    <section id="architecture" className="mb-20 scroll-mt-28">
-      <SectionLabel label="Technical Architecture" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Architecture & Tech Stack</h2>
+    <section id="architecture" className="mb-24 scroll-mt-28">
+      <SectionHeader
+        label="Technical Architecture"
+        title="System Architecture"
+        subtitle="A modular, high-performance stack designed for real-time signal processing"
+      />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {stacks.map((stack, i) => (
-          <div key={i} className="bg-white border border-slate-200 rounded-xl p-5 hover:border-slate-300 transition-colors">
-            <h3 className="text-sm font-semibold text-slate-900 mb-4 pb-3 border-b border-slate-100">
-              {stack.title}
-            </h3>
-            <ul className="space-y-2.5">
-              {stack.items.map((item, j) => (
-                <li key={j} className="text-xs text-slate-600 leading-relaxed">{item}</li>
-              ))}
-            </ul>
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        {stacks.map((stack, i) => {
+          const Icon = stack.icon;
+          return (
+            <div
+              key={i}
+              className={`relative ${stack.bgColor} ${stack.borderColor} border rounded-2xl p-5 lg:p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group`}
+            >
+              {/* Icon */}
+              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stack.color} flex items-center justify-center mb-4 shadow-md group-hover:scale-110 transition-transform`}>
+                <Icon className="w-5 h-5 text-white" strokeWidth={2} />
+              </div>
+
+              <h3 className="text-base font-bold text-slate-900 mb-3">{stack.title}</h3>
+
+              <ul className="space-y-1.5">
+                {stack.items.map((item, j) => (
+                  <li key={j} className="flex items-center gap-2 text-xs text-slate-600">
+                    <span className={`w-1 h-1 rounded-full bg-gradient-to-r ${stack.color}`} />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// Data Flow Section with Flowchart
+// ============================================================================
+const DataFlow: React.FC = () => {
+  return (
+    <section id="data-flow" className="mb-24 scroll-mt-28">
+      <SectionHeader
+        label="System Flow"
+        title="How Data Flows"
+        subtitle="From market data ingestion to mobile alert delivery"
+      />
+
+      {/* Flowchart */}
+      <div className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50/30 border border-slate-200/60 rounded-3xl p-8 lg:p-10 overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-teal-100/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-100/30 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative">
+          {/* Desktop Flowchart */}
+          <div className="hidden lg:block">
+            <svg className="w-full h-auto" viewBox="0 0 900 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Gradient definitions */}
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0D9488" />
+                  <stop offset="100%" stopColor="#0891B2" />
+                </linearGradient>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M0 0L10 5L0 10L3 5Z" fill="#0D9488" />
+                </marker>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000" floodOpacity="0.1" />
+                </filter>
+              </defs>
+
+              {/* Connection lines */}
+              <path d="M155 100 L215 100" stroke="url(#lineGradient)" strokeWidth="3" markerEnd="url(#arrow)" />
+              <path d="M365 100 L425 100" stroke="url(#lineGradient)" strokeWidth="3" markerEnd="url(#arrow)" />
+              <path d="M575 100 L635 100" stroke="url(#lineGradient)" strokeWidth="3" markerEnd="url(#arrow)" />
+              <path d="M785 100 L845 100" stroke="url(#lineGradient)" strokeWidth="3" markerEnd="url(#arrow)" />
+
+              {/* Node 1 - Data Source */}
+              <g filter="url(#shadow)">
+                <rect x="15" y="45" width="135" height="110" rx="16" fill="white" stroke="#E2E8F0" strokeWidth="2" />
+                <rect x="15" y="45" width="135" height="8" rx="4" fill="#3B82F6" />
+              </g>
+              <text x="82" y="85" textAnchor="middle" fill="#1E293B" fontSize="14" fontWeight="700">Delta API</text>
+              <text x="82" y="108" textAnchor="middle" fill="#64748B" fontSize="11">OHLCV Data</text>
+              <text x="82" y="125" textAnchor="middle" fill="#64748B" fontSize="11">5 Timeframes</text>
+
+              {/* Node 2 - Processing */}
+              <g filter="url(#shadow)">
+                <rect x="225" y="45" width="135" height="110" rx="16" fill="white" stroke="#E2E8F0" strokeWidth="2" />
+                <rect x="225" y="45" width="135" height="8" rx="4" fill="#8B5CF6" />
+              </g>
+              <text x="292" y="85" textAnchor="middle" fill="#1E293B" fontSize="14" fontWeight="700">EMA Engine</text>
+              <text x="292" y="108" textAnchor="middle" fill="#64748B" fontSize="11">9/20 Calculation</text>
+              <text x="292" y="125" textAnchor="middle" fill="#64748B" fontSize="11">Outlier Filter</text>
+
+              {/* Node 3 - Detection (Diamond shape effect) */}
+              <g filter="url(#shadow)">
+                <rect x="435" y="45" width="135" height="110" rx="16" fill="white" stroke="#E2E8F0" strokeWidth="2" />
+                <rect x="435" y="45" width="135" height="8" rx="4" fill="#F59E0B" />
+              </g>
+              <text x="502" y="85" textAnchor="middle" fill="#1E293B" fontSize="14" fontWeight="700">Crossover?</text>
+              <text x="502" y="108" textAnchor="middle" fill="#64748B" fontSize="11">Compare EMAs</text>
+              <text x="502" y="125" textAnchor="middle" fill="#64748B" fontSize="11">Detect Signal</text>
+
+              {/* Node 4 - Broadcast */}
+              <g filter="url(#shadow)">
+                <rect x="645" y="45" width="135" height="110" rx="16" fill="white" stroke="#E2E8F0" strokeWidth="2" />
+                <rect x="645" y="45" width="135" height="8" rx="4" fill="#10B981" />
+              </g>
+              <text x="712" y="85" textAnchor="middle" fill="#1E293B" fontSize="14" fontWeight="700">Broadcast</text>
+              <text x="712" y="108" textAnchor="middle" fill="#64748B" fontSize="11">WebSocket Push</text>
+              <text x="712" y="125" textAnchor="middle" fill="#64748B" fontSize="11">Update UI</text>
+
+              {/* Node 5 - Alert */}
+              <g filter="url(#shadow)">
+                <rect x="855" y="55" width="30" height="90" rx="15" fill="white" stroke="#E2E8F0" strokeWidth="2" />
+                <rect x="855" y="55" width="30" height="8" rx="4" fill="#EC4899" />
+              </g>
+              <text x="870" y="105" textAnchor="middle" fill="#1E293B" fontSize="20">📱</text>
+            </svg>
           </div>
-        ))}
+
+          {/* Mobile Flowchart - Vertical */}
+          <div className="lg:hidden space-y-4">
+            {[
+              { title: 'Delta API', desc: 'OHLCV Data · 5 Timeframes', color: 'bg-blue-500', icon: Database },
+              { title: 'EMA Engine', desc: '9/20 Calculation · Outlier Filter', color: 'bg-violet-500', icon: Cpu },
+              { title: 'Crossover Detection', desc: 'Compare EMAs · Signal Logic', color: 'bg-amber-500', icon: Zap },
+              { title: 'Broadcast', desc: 'WebSocket Push · UI Update', color: 'bg-emerald-500', icon: Wifi },
+              { title: 'Alert', desc: 'Telegram Notification', color: 'bg-pink-500', icon: Bell },
+            ].map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <div key={i} className="relative">
+                  <div className="flex items-center gap-4">
+                    <div className={`w-12 h-12 ${step.color} rounded-xl flex items-center justify-center shadow-md flex-shrink-0`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-slate-900">{step.title}</h4>
+                      <p className="text-sm text-slate-500">{step.desc}</p>
+                    </div>
+                  </div>
+                  {i < 4 && (
+                    <div className="w-0.5 h-4 bg-gradient-to-b from-teal-400 to-cyan-400 ml-6 my-2" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Legend */}
+        <div className="mt-8 pt-6 border-t border-slate-200/60 flex flex-wrap items-center justify-center gap-6 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-emerald-500 rounded-full" />
+            <span className="text-slate-600">Bullish Signal (9 &gt; 20)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-red-500 rounded-full" />
+            <span className="text-slate-600">Bearish Signal (9 &lt; 20)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-slate-400 rounded-full" />
+            <span className="text-slate-600">Bars Since Crossover</span>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -176,47 +343,71 @@ const Architecture: React.FC = () => {
 const KeyFeatures: React.FC = () => {
   const features = [
     {
+      icon: Layers,
       title: 'Multi-Timeframe Screening',
-      desc: 'Simultaneous monitoring across 1m, 15m, 1h, 4h, and 1d timeframes for each symbol in the watchlist.',
+      desc: '1m, 15m, 1h, 4h, and 1d timeframes monitored simultaneously for each symbol',
+      color: 'from-blue-500 to-indigo-600',
     },
     {
-      title: 'Real-Time WebSocket Updates',
-      desc: 'Signal changes broadcast instantly to all connected clients without page refresh.',
+      icon: Wifi,
+      title: 'Real-Time WebSocket',
+      desc: 'Signal changes broadcast instantly to all connected clients without refresh',
+      color: 'from-violet-500 to-purple-600',
     },
     {
-      title: 'Telegram Alert Integration',
-      desc: 'Crossover notifications delivered to mobile devices with symbol, timeframe, signal direction, and IST timestamp.',
+      icon: Bell,
+      title: 'Telegram Integration',
+      desc: 'Mobile alerts with symbol, timeframe, direction, and IST timestamp',
+      color: 'from-rose-500 to-pink-600',
     },
     {
-      title: 'Personal Watchlist Management',
-      desc: 'Add or remove symbols dynamically; each user session maintains an independent watchlist.',
+      icon: Users,
+      title: 'Personal Watchlists',
+      desc: 'Each user session maintains an independent, customizable watchlist',
+      color: 'from-amber-500 to-orange-600',
     },
     {
-      title: 'Signal Freshness Indicator',
-      desc: '"Bars Since" counter shows how many candles have closed since the last crossover confirmation.',
+      icon: Clock,
+      title: 'Signal Freshness',
+      desc: '"Bars Since" counter shows candles elapsed since last crossover',
+      color: 'from-teal-500 to-cyan-600',
     },
     {
-      title: 'Data Quality Filtering',
-      desc: 'Outlier detection using Median Absolute Deviation removes suspicious candles before EMA calculation.',
-    },
-    {
-      title: 'Zero Database Dependency',
-      desc: 'File-based persistence enables simple deployment without external database infrastructure.',
+      icon: Shield,
+      title: 'Data Quality Filter',
+      desc: 'MAD-based outlier detection removes suspicious candles',
+      color: 'from-emerald-500 to-green-600',
     },
   ];
 
   return (
-    <section id="features" className="mb-20 scroll-mt-28">
-      <SectionLabel label="Key Features" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Features</h2>
+    <section id="features" className="mb-24 scroll-mt-28">
+      <SectionHeader
+        label="Capabilities"
+        title="Key Features"
+        subtitle="Purpose-built functionality for systematic crossover detection"
+      />
 
-      <div className="space-y-4">
-        {features.map((feature, i) => (
-          <div key={i} className="bg-slate-50 border border-slate-100 rounded-xl p-5">
-            <h4 className="font-semibold text-slate-900 mb-2">{feature.title}</h4>
-            <p className="text-sm text-slate-600 leading-relaxed">{feature.desc}</p>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {features.map((feature, i) => {
+          const Icon = feature.icon;
+          return (
+            <div
+              key={i}
+              className="relative bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+            >
+              {/* Subtle gradient overlay on hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-300`} />
+
+              <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 shadow-md`}>
+                <Icon className="w-5 h-5 text-white" strokeWidth={2} />
+              </div>
+
+              <h4 className="font-bold text-slate-900 mb-2">{feature.title}</h4>
+              <p className="text-sm text-slate-600 leading-relaxed">{feature.desc}</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -226,173 +417,95 @@ const KeyFeatures: React.FC = () => {
 // Performance Section
 // ============================================================================
 const Performance: React.FC = () => {
-  return (
-    <section id="performance" className="mb-20 scroll-mt-28">
-      <SectionLabel label="Performance & Validation" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Performance</h2>
-
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-10">
-        <p className="text-sm text-amber-800 leading-relaxed">
-          This system is a <span className="font-semibold">signal detection and alert platform</span>. It does not execute trades or
-          generate return metrics. The following describes operational performance characteristics.
-        </p>
-      </div>
-
-      <div className="space-y-10">
-        <div>
-          <h3 className="text-lg font-semibold text-slate-800 mb-5">Data Quality Measures</h3>
-          <ul className="space-y-4">
-            {[
-              { label: 'Volume validation', desc: 'candles with zero volume excluded' },
-              { label: 'Price validation', desc: 'OHLC values must be greater than zero' },
-              { label: 'Outlier removal', desc: '10× MAD (Median Absolute Deviation) filter applied' },
-              { label: 'Rolling window', desc: '600 candles maintained per symbol/timeframe' },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4 text-sm text-slate-600">
-                <span className="w-2 h-2 bg-teal-500 rounded-full mt-1.5 flex-shrink-0" />
-                <span><span className="font-semibold text-slate-800">{item.label}</span> — {item.desc}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold text-slate-800 mb-5">System Reliability</h3>
-          <ul className="space-y-4">
-            {[
-              { label: 'Polling alignment', desc: 'candle close time + 5-second grace period' },
-              { label: 'API concurrency', desc: 'limited to 5 simultaneous requests' },
-              { label: 'Incremental updates', desc: 'minimize API load after initial seeding' },
-              { label: 'State persistence', desc: 'signal state persisted to disk for recovery after restarts' },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4 text-sm text-slate-600">
-                <span className="w-2 h-2 bg-teal-500 rounded-full mt-1.5 flex-shrink-0" />
-                <span><span className="font-semibold text-slate-800">{item.label}</span> — {item.desc}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold text-slate-800 mb-5">Session Management</h3>
-          <ul className="space-y-4">
-            {[
-              { label: '30-minute expiration', desc: 'with automatic refresh' },
-              { label: 'Maximum 10 sessions', desc: 'per deployment' },
-              { label: 'Activity-based filtering', desc: 'reduces Telegram notification noise' },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4 text-sm text-slate-600">
-                <span className="w-2 h-2 bg-teal-500 rounded-full mt-1.5 flex-shrink-0" />
-                <span><span className="font-semibold text-slate-800">{item.label}</span> — {item.desc}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-teal-50 border border-teal-100 rounded-xl p-5 mt-10">
-        <p className="text-sm text-teal-800 leading-relaxed">
-          Historical crossover data is available via the <span className="font-semibold">/historical-crossovers</span> endpoint
-          for users who wish to conduct their own backtesting analysis.
-        </p>
-      </div>
-    </section>
-  );
-};
-
-// ============================================================================
-// Visuals Section
-// ============================================================================
-const Visuals: React.FC = () => {
-  const screenshots = [
+  const metrics = [
     {
-      id: 'dashboard',
-      title: 'Dashboard Overview',
-      caption: 'The main screener interface displays a matrix view of all watchlist symbols across five timeframes. Each cell shows the current signal state (Bullish/Bearish) with color coding — green for bullish conditions, red for bearish. The "Bars Since" value appears below each signal, indicating candles elapsed since confirmation.',
+      category: 'Data Quality',
+      icon: Database,
+      color: 'from-blue-500 to-indigo-600',
+      items: [
+        { label: 'Volume Validation', value: 'Zero-volume excluded' },
+        { label: 'Price Validation', value: 'OHLC > 0 required' },
+        { label: 'Outlier Removal', value: '10× MAD filter' },
+        { label: 'Rolling Window', value: '600 candles/pair' },
+      ],
     },
     {
-      id: 'watchlist',
-      title: 'Watchlist Management Panel',
-      caption: 'The symbol management tab shows the current watchlist with add/remove controls. Available symbols are fetched from Delta Exchange and presented in a searchable dropdown. Changes take effect immediately without page reload.',
+      category: 'Reliability',
+      icon: Shield,
+      color: 'from-emerald-500 to-teal-600',
+      items: [
+        { label: 'Poll Alignment', value: 'Candle close + 5s' },
+        { label: 'API Concurrency', value: '5 simultaneous' },
+        { label: 'Update Mode', value: 'Incremental' },
+        { label: 'State Recovery', value: 'Disk persistence' },
+      ],
     },
     {
-      id: 'telegram-alert',
-      title: 'Telegram Alert Example',
-      caption: 'Screenshot of a mobile Telegram notification showing a crossover alert. The message includes symbol name, timeframe, signal direction (Bullish/Bearish), and timestamp in IST format. Alerts are delivered within seconds of signal confirmation.',
-    },
-    {
-      id: 'linking-flow',
-      title: 'Telegram Account Linking Flow',
-      caption: 'Step-by-step screenshots showing the PIN-based linking process: generating a 6-digit PIN from the web interface, sending it to the Telegram bot, and confirmation of successful account linkage.',
+      category: 'Sessions',
+      icon: Users,
+      color: 'from-violet-500 to-purple-600',
+      items: [
+        { label: 'Expiration', value: '30 min auto-refresh' },
+        { label: 'Max Sessions', value: '10 per deploy' },
+        { label: 'Alert Filter', value: 'Active users only' },
+        { label: 'Linking', value: '6-digit PIN' },
+      ],
     },
   ];
 
   return (
-    <section id="visuals" className="mb-20 scroll-mt-28">
-      <SectionLabel label="Visual Documentation" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-8">Visuals</h2>
+    <section id="performance" className="mb-24 scroll-mt-28">
+      <SectionHeader
+        label="Performance"
+        title="System Specifications"
+        subtitle="Operational characteristics and quality measures"
+      />
 
-      {/* Video Section */}
-      <div className="mb-12">
-        <h3 className="text-lg font-semibold text-slate-800 mb-4">Real-Time Update Demonstration</h3>
-        <div className="relative bg-slate-100 border border-slate-200 rounded-2xl overflow-hidden">
-          <div className="aspect-video flex items-center justify-center">
-            <video
-              className="w-full h-full object-cover"
-              poster=""
-              controls
-              preload="metadata"
-            >
-              <source src="" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            {/* Placeholder overlay - remove when video is added */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/5">
-              <div className="w-16 h-16 rounded-full bg-white/90 border border-slate-200 flex items-center justify-center mb-3 shadow-sm">
-                <svg className="w-6 h-6 text-slate-400 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <span className="text-sm font-medium text-slate-500">Video Placeholder</span>
-            </div>
-          </div>
+      {/* Info Banner */}
+      <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5 mb-8 flex items-start gap-4">
+        <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+          <Zap className="w-5 h-5 text-amber-600" />
         </div>
-        <p className="mt-4 text-sm text-slate-500 leading-relaxed">
-          A walkthrough video demonstrates the system detecting a live crossover event. The sequence shows: initial dashboard state, candle close triggering recalculation, WebSocket update pushing new signal to browser, and corresponding Telegram notification arriving on a mobile device — all within a 10-second window.
+        <p className="text-sm text-amber-800 leading-relaxed">
+          This system is a <span className="font-semibold">signal detection and alert platform</span>. It does not execute trades. The following describes operational performance characteristics.
         </p>
       </div>
 
-      {/* Screenshots Grid */}
-      <div>
-        <h3 className="text-lg font-semibold text-slate-800 mb-5">Screenshots</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {screenshots.map((item) => (
-            <figure key={item.id} className="group">
-              {/* Image Container */}
-              <div className="relative bg-slate-100 border border-slate-200 rounded-xl overflow-hidden mb-4">
-                <div className="aspect-[4/3]">
-                  <img
-                    src=""
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Placeholder overlay - remove when images are added */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-50">
-                    <svg className="w-10 h-10 text-slate-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="text-xs font-medium text-slate-400">Screenshot</span>
-                  </div>
-                </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {metrics.map((metric, i) => {
+          const Icon = metric.icon;
+          return (
+            <div key={i} className="bg-white border border-slate-200 rounded-2xl overflow-hidden">
+              {/* Header */}
+              <div className={`bg-gradient-to-r ${metric.color} px-5 py-4 flex items-center gap-3`}>
+                <Icon className="w-5 h-5 text-white" />
+                <h3 className="font-bold text-white">{metric.category}</h3>
               </div>
-              {/* Caption */}
-              <figcaption>
-                <h4 className="text-sm font-semibold text-slate-900 mb-1.5">{item.title}</h4>
-                <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">{item.caption}</p>
-              </figcaption>
-            </figure>
-          ))}
+
+              {/* Items */}
+              <div className="p-5 space-y-3">
+                {metric.items.map((item, j) => (
+                  <div key={j} className="flex items-center justify-between text-sm">
+                    <span className="text-slate-600">{item.label}</span>
+                    <span className="font-semibold text-slate-900 bg-slate-50 px-2.5 py-1 rounded-lg text-xs">
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* API Note */}
+      <div className="mt-6 bg-teal-50 border border-teal-200 rounded-2xl p-5 flex items-start gap-4">
+        <div className="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
+          <Code className="w-5 h-5 text-teal-600" />
         </div>
+        <p className="text-sm text-teal-800 leading-relaxed">
+          Historical crossover data is available via the <code className="font-mono bg-teal-100 px-1.5 py-0.5 rounded">/historical-crossovers</code> endpoint for custom backtesting analysis.
+        </p>
       </div>
     </section>
   );
@@ -404,35 +517,59 @@ const Visuals: React.FC = () => {
 const Outcomes: React.FC = () => {
   const outcomes = [
     {
-      title: 'Signal Detection Speed',
-      desc: 'Crossover events are detected and broadcast within seconds of candle close. Traders receive alerts on mobile devices without monitoring screens, enabling timely response to setups across any timeframe.',
+      icon: Zap,
+      title: 'Instant Detection',
+      desc: 'Crossovers detected within seconds of candle close',
+      color: 'text-amber-600',
+      bg: 'bg-amber-50',
     },
     {
-      title: 'Reduced Cognitive Load',
-      desc: 'Automated multi-timeframe scanning eliminates manual chart switching. A single dashboard provides complete visibility into signal states across the entire watchlist, replacing fragmented monitoring workflows.',
+      icon: TrendingUp,
+      title: 'Reduced Load',
+      desc: 'Automated scanning eliminates chart switching',
+      color: 'text-blue-600',
+      bg: 'bg-blue-50',
     },
     {
-      title: 'Consistent Signal Application',
-      desc: 'Systematic EMA calculation with fixed parameters (9/20) ensures identical signal logic is applied to every symbol and timeframe. Human bias and attention variability are removed from the detection process.',
+      icon: Shield,
+      title: 'Consistent Logic',
+      desc: 'Same 9/20 calculation applied systematically',
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50',
     },
     {
-      title: 'Operational Independence',
-      desc: 'Self-hosted deployment with file-based storage eliminates ongoing subscription costs and third-party dependencies. The system runs on standard cloud infrastructure with minimal resource requirements.',
+      icon: Server,
+      title: 'Self-Hosted',
+      desc: 'No subscriptions or third-party dependencies',
+      color: 'text-violet-600',
+      bg: 'bg-violet-50',
     },
   ];
 
   return (
-    <section id="outcomes" className="mb-20 scroll-mt-28">
-      <SectionLabel label="Outcome & Impact" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Outcomes</h2>
+    <section id="outcomes" className="mb-24 scroll-mt-28">
+      <SectionHeader
+        label="Results"
+        title="Outcomes & Impact"
+        subtitle="Measurable improvements in signal detection workflow"
+      />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {outcomes.map((outcome, i) => (
-          <div key={i} className="bg-white border border-slate-200 rounded-xl p-6 hover:border-teal-300 transition-colors">
-            <h4 className="font-semibold text-slate-900 mb-2">{outcome.title}</h4>
-            <p className="text-sm text-slate-600 leading-relaxed">{outcome.desc}</p>
-          </div>
-        ))}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {outcomes.map((outcome, i) => {
+          const Icon = outcome.icon;
+          return (
+            <div
+              key={i}
+              className={`${outcome.bg} rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300`}
+            >
+              <div className={`w-12 h-12 ${outcome.bg} rounded-xl flex items-center justify-center mx-auto mb-4`}>
+                <Icon className={`w-6 h-6 ${outcome.color}`} />
+              </div>
+              <h4 className="font-bold text-slate-900 mb-1">{outcome.title}</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">{outcome.desc}</p>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -443,38 +580,33 @@ const Outcomes: React.FC = () => {
 // ============================================================================
 const IdealUsers: React.FC = () => {
   const profiles = [
-    {
-      title: 'Swing Traders',
-      desc: 'Using 1h, 4h, and daily EMA crossovers as entry/exit signals for multi-day positions in cryptocurrency markets.',
-    },
-    {
-      title: 'Active Day Traders',
-      desc: 'Monitoring 1m and 15m timeframes for intraday setups while managing other responsibilities.',
-    },
-    {
-      title: 'Multi-Asset Managers',
-      desc: 'Tracking crossover conditions across a diversified cryptocurrency portfolio from a single interface.',
-    },
-    {
-      title: 'Technical Analysis Practitioners',
-      desc: 'Traders who incorporate EMA crossovers as one component of a broader technical strategy.',
-    },
-    {
-      title: 'Algo-Curious Traders',
-      desc: 'Individuals seeking to systematize their signal detection without building custom infrastructure.',
-    },
+    { title: 'Swing Traders', desc: '1h/4h/Daily EMA crossovers for multi-day positions' },
+    { title: 'Day Traders', desc: '1m/15m timeframes for intraday setups' },
+    { title: 'Portfolio Managers', desc: 'Multi-asset monitoring from single dashboard' },
+    { title: 'Technical Analysts', desc: 'EMA crossovers as part of broader strategy' },
+    { title: 'Algo-Curious', desc: 'Systematic detection without custom infrastructure' },
   ];
 
   return (
-    <section id="users" className="mb-20 scroll-mt-28">
-      <SectionLabel label="Ideal User Profiles" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Ideal Users</h2>
+    <section id="users" className="mb-24 scroll-mt-28">
+      <SectionHeader
+        label="Target Audience"
+        title="Ideal Users"
+        subtitle="Designed for traders who value systematic signal detection"
+      />
 
-      <div className="space-y-4">
+      <div className="flex flex-wrap gap-3">
         {profiles.map((profile, i) => (
-          <div key={i} className="bg-slate-50 border border-slate-100 rounded-xl p-5">
-            <h4 className="font-semibold text-slate-900 mb-2">{profile.title}</h4>
-            <p className="text-sm text-slate-600 leading-relaxed">{profile.desc}</p>
+          <div
+            key={i}
+            className="group flex items-center gap-3 bg-white border border-slate-200 rounded-full px-5 py-3 hover:border-teal-300 hover:shadow-md transition-all duration-300"
+          >
+            <CheckCircle2 className="w-4 h-4 text-teal-500 flex-shrink-0" />
+            <div>
+              <span className="font-semibold text-slate-900">{profile.title}</span>
+              <span className="text-slate-400 mx-2">—</span>
+              <span className="text-sm text-slate-600">{profile.desc}</span>
+            </div>
           </div>
         ))}
       </div>
@@ -487,28 +619,43 @@ const IdealUsers: React.FC = () => {
 // ============================================================================
 const CallToAction: React.FC = () => {
   return (
-    <section className="bg-slate-50 border border-slate-100 rounded-2xl p-8 sm:p-10 text-center">
-      <h2 className="text-2xl font-bold text-slate-900 mb-4">Interested in a Similar System?</h2>
+    <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-10 lg:p-14 text-center overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
 
-      <p className="text-slate-600 leading-relaxed max-w-2xl mx-auto mb-8">
-        This screener was designed to address specific workflow challenges in cryptocurrency
-        technical analysis. Similar systems can be built for different indicators, asset classes,
-        or alert mechanisms based on your trading requirements.
-      </p>
+      {/* Glow effects */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-        <Link
-          href="/#contact"
-          className="inline-flex items-center justify-center px-6 py-3 bg-slate-900 text-white text-sm font-medium rounded-xl hover:bg-slate-800 transition-colors"
-        >
-          Discuss Your Requirements
-        </Link>
-        <Link
-          href="/projects"
-          className="inline-flex items-center justify-center px-6 py-3 bg-white text-slate-700 text-sm font-medium border border-slate-200 rounded-xl hover:border-slate-300 transition-colors"
-        >
-          View Other Projects
-        </Link>
+      <div className="relative">
+        <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+          Interested in a Similar System?
+        </h2>
+
+        <p className="text-slate-400 leading-relaxed max-w-xl mx-auto mb-8">
+          Custom signal detection systems can be built for different indicators, asset classes, or alert mechanisms based on your specific requirements.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/#contact"
+            className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all shadow-xl shadow-teal-500/25"
+          >
+            Discuss Your Requirements
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-semibold border border-white/20 rounded-xl hover:bg-white/20 transition-all"
+          >
+            View Other Projects
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -525,47 +672,55 @@ export default function CaseStudyEMACrossoverTechnical() {
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 lg:pt-36 lg:pb-24">
         {/* Header */}
-        <header className="text-center mb-16 pb-12 border-b border-slate-100">
+        <header className="relative text-center mb-20 pb-14 border-b border-slate-100">
           {/* Back Link */}
           <Link
             href="/projects/ema-crossover-screener"
-            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-teal-600 mb-8 transition-colors group"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Back to Overview
           </Link>
 
-          <div className="flex items-center justify-center gap-2 mb-5">
-            <span className="inline-flex px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-xs font-semibold text-slate-600 uppercase tracking-wide">
+          {/* Badge */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-50 to-cyan-50 border border-teal-200/60 rounded-full text-xs font-bold text-teal-700 uppercase tracking-wider">
+              <Code className="w-3.5 h-3.5" />
               Technical Documentation
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight mb-4">
-            Delta Exchange Crypto Screener
+
+          {/* Title */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
+            <span className="text-slate-900">Delta Exchange</span>
+            <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent"> Crypto Screener</span>
           </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-            In-depth technical architecture, features, and implementation details
+
+          {/* Subtitle */}
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-10">
+            In-depth technical architecture, data flow, and implementation details
           </p>
+
+          {/* CTA Button */}
           <a
             href="https://delta.secretweapon.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white text-sm font-medium rounded-xl hover:bg-teal-700 transition-colors"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-xl hover:from-teal-600 hover:to-cyan-600 transition-all shadow-lg shadow-teal-500/25 group"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
+            <ExternalLink className="w-4 h-4" />
             View Live Demo
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </header>
 
         {/* Sections */}
         <Architecture />
+        <DataFlow />
         <KeyFeatures />
         <Performance />
-        <Visuals />
         <Outcomes />
         <IdealUsers />
         <CallToAction />
