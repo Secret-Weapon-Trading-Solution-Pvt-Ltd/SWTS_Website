@@ -202,14 +202,14 @@ export const HowItWorks: React.FC = () => {
             Process
           </span>
 
-          {/* Larger heading with gradient accent */}
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+          {/* Heading with gradient accent */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             <span className="text-slate-900">How It Works.</span>
             <span className="bg-gradient-to-r from-teal-500 to-cyan-500 bg-clip-text text-transparent"> Simple and clear.</span>
           </h2>
 
-          {/* Subheading - darker, larger */}
-          <p className="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          {/* Subheading */}
+          <p className="text-base lg:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             A structured, execution-focused approach designed to fit how you actually work.
           </p>
         </div>
