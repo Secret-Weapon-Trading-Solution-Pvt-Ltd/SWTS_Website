@@ -222,33 +222,6 @@ export const HowItWorks: React.FC = () => {
           </div>
         </div>
 
-        {/* ================================================================ */}
-        {/* Final CTA Section */}
-        {/* ================================================================ */}
-        <div className="relative text-center py-4">
-          {/* Soft glow */}
-          <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-24 bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.08)_0%,transparent_70%)] pointer-events-none" />
-
-          <div className="relative">
-            <h3 className="text-xl lg:text-2xl font-bold text-slate-900 mb-2">
-              Ready to get started?
-            </h3>
-            <p className="text-slate-500 text-base mb-8 max-w-md mx-auto">
-              Explore the platform at your own pace.
-            </p>
-
-            <div className="flex items-center justify-center">
-              <Link
-                href="/#products"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-xl font-semibold hover:from-slate-900 hover:to-slate-800 transition-all duration-300 shadow-xl shadow-slate-500/25 hover:shadow-2xl hover:-translate-y-1"
-              >
-                Browse Products
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
   );

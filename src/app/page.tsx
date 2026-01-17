@@ -5,7 +5,6 @@ import {
   FrustrationHero,
   CredibilityStrip,
   HowItWorks,
-  CredibilitySection,
   FinalCTA
 } from '@/components/main';
 
@@ -21,10 +20,7 @@ export default function Home() {
       {/* Section 3: How It Works - Process explanation */}
       <HowItWorks />
 
-      {/* Section 4: Differentiation - Why automate with SWTS */}
-      <CredibilitySection />
-
-      {/* Section 5: Final CTA - Strong close with assessment push */}
+      {/* Section 4: Final CTA - Strong close with assessment push */}
       <FinalCTA />
     </MainLayout>
   );

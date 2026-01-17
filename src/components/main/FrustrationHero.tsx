@@ -107,22 +107,32 @@ export const FrustrationHero: React.FC = () => {
 
           {/* CTA Group */}
           <div
-            className="flex flex-col gap-5 opacity-0 animate-fade-in-up"
+            className="flex flex-wrap items-center gap-4 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
           >
-            {/* Primary CTA Button */}
+            {/* Primary CTA Button - Assessment */}
             <Link
-              href="/#how-it-works"
+              href="/strategy-assessment/questionnaire"
               className="group inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-xl
                        shadow-[0_4px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.35)]
                        hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_2px_10px_rgba(13,148,136,0.2)]
-                       transition-all duration-200 ease-out w-fit"
+                       transition-all duration-200 ease-out"
               style={{
                 background: 'linear-gradient(180deg, #0D9488 0%, #0F766E 100%)',
               }}
             >
-              See How It Works
+              Take Free Assessment
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
+
+            {/* Secondary CTA Button */}
+            <Link
+              href="/#how-it-works"
+              className="group inline-flex items-center justify-center px-8 py-4 text-base font-medium text-slate-700 rounded-xl
+                       bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50
+                       hover:-translate-y-0.5 transition-all duration-200 ease-out"
+            >
+              See How It Works
             </Link>
           </div>
         </div>
