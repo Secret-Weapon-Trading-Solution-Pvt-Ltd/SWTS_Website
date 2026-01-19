@@ -6,10 +6,35 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  // Safelist for dynamic gradient classes used in services
+  safelist: [
+    // Service gradients - ensure these are always generated
+    'from-violet-500', 'to-purple-600',
+    'from-blue-500', 'to-cyan-500',
+    'from-green-500', 'to-emerald-500',
+    'from-blue-600', 'to-cyan-400',
+    'from-rose-500', 'to-pink-500',
+    'from-amber-500', 'to-orange-500',
+    'from-indigo-500', 'to-violet-500',
+  ],
   theme: {
     extend: {
       colors: {
-        // Primary palette - Soft teal for accents
+        // Deep Navy - Primary anchor color for institutional look
+        navy: {
+          50: '#EEF2F7',
+          100: '#D5DEEB',
+          200: '#B0C2D8',
+          300: '#8AA5C4',
+          400: '#6588B0',
+          500: '#3D5A80',
+          600: '#2B4162',
+          700: '#1B2A41',
+          800: '#0F1829',
+          900: '#070B12',
+          950: '#030508',
+        },
+        // Primary palette - Teal/Cyan for accents
         teal: {
           50: '#F0FDFA',
           100: '#CCFBF1',
@@ -21,6 +46,19 @@ const config: Config = {
           700: '#0F766E',
           800: '#115E59',
           900: '#134E4A',
+        },
+        // Cyan for accent variety
+        cyan: {
+          50: '#ECFEFF',
+          100: '#CFFAFE',
+          200: '#A5F3FC',
+          300: '#67E8F9',
+          400: '#22D3EE',
+          500: '#06B6D4',
+          600: '#0891B2',
+          700: '#0E7490',
+          800: '#155E75',
+          900: '#164E63',
         },
         // Slate for text hierarchy
         slate: {
@@ -44,6 +82,9 @@ const config: Config = {
           400: '#60A5FA',
           500: '#3B82F6',
           600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
         },
       },
       fontFamily: {
