@@ -58,6 +58,42 @@ jobs:
               DOCKER_CMD="sudo docker"
             fi
 
+            # Deployment lock to prevent conflicts with other projects
+            LOCK_FILE="/tmp/shared_nginx_deploy.lock"
+            LOCK_TIMEOUT=300
+
+            acquire_lock() {
+              echo "Acquiring deployment lock..."
+              WAIT_TIME=0
+              while [ -f "\$LOCK_FILE" ]; do
+                if [ -f "\$LOCK_FILE" ]; then
+                  LOCK_AGE=\$(($(date +%s) - $(stat -c %Y "\$LOCK_FILE" 2>/dev/null || echo 0)))
+                  if [ \$LOCK_AGE -gt 600 ]; then
+                    echo "Removing stale lock (age: \${LOCK_AGE}s)"
+                    rm -f "\$LOCK_FILE"
+                    break
+                  fi
+                fi
+                if [ \$WAIT_TIME -ge \$LOCK_TIMEOUT ]; then
+                  echo "ERROR: Timeout waiting for deployment lock"
+                  exit 1
+                fi
+                echo "Another deployment in progress. Waiting... (\${WAIT_TIME}s)"
+                sleep 10
+                WAIT_TIME=\$((WAIT_TIME + 10))
+              done
+              echo "SWTS_Website:\$(date +%s)" > "\$LOCK_FILE"
+              echo "Lock acquired."
+            }
+
+            release_lock() {
+              rm -f "\$LOCK_FILE"
+              echo "Lock released."
+            }
+
+            trap release_lock EXIT
+            acquire_lock
+
             echo "=========================================="
             echo "Deploying SWTS_Website"
             echo "Domain: $DEPLOY_DOMAIN"
@@ -84,22 +120,29 @@ jobs:
             echo "Waiting for app to be healthy..."
             sleep 15
 
-            # Update nginx config (no restart, just reload)
+            # Update nginx config (only if changed, to avoid affecting other projects)
             echo "Updating nginx configuration..."
             NGINX_CONTAINER="$NGINX_CONTAINER"
 
             if \$DOCKER_CMD container inspect \$NGINX_CONTAINER >/dev/null 2>&1; then
-              # Copy config to nginx
-              \$DOCKER_CMD cp nginx/conf.d/$PROJECT_CONFIG \$NGINX_CONTAINER:/etc/nginx/conf.d/$PROJECT_CONFIG
+              # Check if config has changed before copying and reloading
+              LOCAL_HASH=\$(md5sum nginx/conf.d/$PROJECT_CONFIG | cut -d' ' -f1)
+              REMOTE_HASH=\$(\$DOCKER_CMD exec \$NGINX_CONTAINER cat /etc/nginx/conf.d/$PROJECT_CONFIG 2>/dev/null | md5sum | cut -d' ' -f1 || echo "none")
 
-              # Test and reload
-              echo "Testing nginx config..."
-              \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -t
+              if [ "\$LOCAL_HASH" = "\$REMOTE_HASH" ]; then
+                echo "Nginx config unchanged. Skipping reload."
+              else
+                echo "Config changed. Updating..."
+                \$DOCKER_CMD cp nginx/conf.d/$PROJECT_CONFIG \$NGINX_CONTAINER:/etc/nginx/conf.d/$PROJECT_CONFIG
 
-              echo "Reloading nginx..."
-              \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -s reload
+                echo "Testing nginx config..."
+                \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -t
 
-              echo "Nginx reloaded successfully!"
+                echo "Reloading nginx..."
+                \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -s reload
+
+                echo "Nginx reloaded successfully!"
+              fi
             else
               echo "ERROR: Shared nginx container not found!"
               echo "Make sure the first project (ubuntu-docker-logs-finder) is deployed."
