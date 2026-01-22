@@ -17,7 +17,7 @@ export default function Home() {
       {/* Section 2: Credibility Strip - Quiet trust indicators */}
       <CredibilityStrip />
 
-      {/* Section 3: How It Works - Process explanation */}
+      {/* Section 3: How It Works - Process explanation (includes Services & Ready to Begin) */}
       <HowItWorks />
 
       {/* Section 4: Final CTA - Strong close with assessment push */}
