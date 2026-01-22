@@ -16,6 +16,8 @@ const config: Config = {
     'from-rose-500', 'to-pink-500',
     'from-amber-500', 'to-orange-500',
     'from-indigo-500', 'to-violet-500',
+    // Custom animation class
+    'spin-slow-animation',
   ],
   theme: {
     extend: {

@@ -258,6 +258,36 @@
   animation: pulse-soft 2s ease-in-out infinite;
 }
 
+/* Process flow panel fade transition */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeInSlide 0.35s ease-out forwards;
+}
+
+/* Rotating dotted circle animation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow-animation {
+  animation: spinSlow 8s linear infinite !important;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
