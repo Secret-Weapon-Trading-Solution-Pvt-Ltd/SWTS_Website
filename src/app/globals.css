@@ -306,3 +306,21 @@
     display: none !important;
   }
 }
+
+/* Services marquee scroll */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-scroll {
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.animate-marquee-scroll:hover {
+  animation-play-state: paused;
+}

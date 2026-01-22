@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { ProcessFlowHorizontal } from './ProcessFlowHorizontal';
 import { WhyItWorks } from './WhyItWorks';
+import { ServicesScroller } from '@/components/home/ServicesScroller';
 
 // ============================================================================
 // Main Component
@@ -59,6 +60,11 @@ export const HowItWorks: React.FC = () => {
       {/* WHY IT WORKS - Enterprise Style Section */}
       {/* ================================================================ */}
       <WhyItWorks />
+
+      {/* ================================================================ */}
+      {/* OUR SERVICES - Auto-scrolling Services */}
+      {/* ================================================================ */}
+      <ServicesScroller />
 
       <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
         {/* ================================================================ */}
