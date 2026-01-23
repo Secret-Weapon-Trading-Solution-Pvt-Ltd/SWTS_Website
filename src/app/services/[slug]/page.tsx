@@ -8,11 +8,12 @@ import ServiceFlowchart from '@/components/services/ServiceFlowchart';
 import HowItWorksSteps from '@/components/services/HowItWorksSteps';
 import UseCases from '@/components/services/UseCases';
 import ServiceCTA from '@/components/services/ServiceCTA';
-// Enterprise components for premium service pages
+// Enterprise components for premium service pages (modern redesign)
 import {
-  ProblemTimeline,
-  UseCaseSplitPanels,
-  HowItWorksFlow
+  StrategyOverview,
+  CapabilitiesModern,
+  ProcessFlowModern,
+  CTAModern
 } from '@/components/services/enterprise';
 import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
 
@@ -77,17 +78,17 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
       {isEnterpriseLayout ? (
         <>
-          {/* Enterprise layout: Timeline-based problems section */}
-          <ProblemTimeline service={service} />
+          {/* Modern Strategy Overview - What/Why/Who/Benefits */}
+          <StrategyOverview service={service} />
 
-          {/* Capabilities / What we build (keep cards for this section) */}
-          <Capabilities service={service} />
+          {/* Modern Capabilities section */}
+          <CapabilitiesModern service={service} />
 
-          {/* Enterprise layout: Horizontal flow diagram */}
-          <HowItWorksFlow service={service} />
+          {/* Modern Process Flow with illustrations */}
+          <ProcessFlowModern service={service} />
 
-          {/* Enterprise layout: Split panel use cases */}
-          <UseCaseSplitPanels service={service} />
+          {/* Modern CTA section */}
+          <CTAModern service={service} />
         </>
       ) : (
         <>
@@ -108,8 +109,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         </>
       )}
 
-      {/* Strong CTA section */}
-      <ServiceCTA service={service} />
+      {/* CTA section - only for non-enterprise layout (enterprise has CTAModern) */}
+      {!isEnterpriseLayout && <ServiceCTA service={service} />}
     </MainLayout>
   );
 }
