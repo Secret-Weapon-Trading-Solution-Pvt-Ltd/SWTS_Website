@@ -24,7 +24,7 @@ export const HowItWorks: React.FC = () => {
       {/* Radial glow behind header */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="relative max-w-[1400px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
 
         {/* ================================================================ */}
         {/* Page Header - Modern Enterprise Style */}

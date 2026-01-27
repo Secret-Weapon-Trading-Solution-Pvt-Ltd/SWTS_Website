@@ -177,7 +177,7 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
     <div className="relative">
       {/* Vertical connector line - centered on circle */}
       {!isLast && (
-        <div className="absolute left-[47px] lg:left-[51px] top-[80px] lg:top-[88px] w-[3px] h-[calc(100%-32px)] z-0">
+        <div className="absolute left-[41px] lg:left-[46px] top-[68px] lg:top-[74px] w-[2px] h-[calc(100%-28px)] z-0">
           <div className="absolute inset-0 bg-slate-200 rounded-full" />
           <div
             className={`
@@ -192,10 +192,10 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
       <button
         onClick={onClick}
         className={`
-          relative z-10 w-full flex items-center gap-5 lg:gap-6 p-3 lg:p-4 rounded-2xl
+          relative z-10 w-full flex items-center gap-4 p-2 lg:p-2.5 rounded-xl
           transition-all duration-300 ease-out group outline-none
           ${isActive
-            ? 'bg-gradient-to-r from-blue-50 to-blue-100/50 shadow-lg shadow-blue-500/10'
+            ? 'bg-gradient-to-r from-blue-50 to-blue-100/50 shadow-md shadow-blue-500/10'
             : 'hover:bg-slate-50/80'
           }
         `}
@@ -205,7 +205,7 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
         <div className="relative flex-shrink-0">
           {/* Animated ring for active state */}
           {isActive && (
-            <div className="absolute -inset-3 rounded-full spin-slow-animation">
+            <div className="absolute -inset-2 rounded-full spin-slow-animation">
               <svg className="w-full h-full" viewBox="0 0 100 100">
                 <circle
                   cx="50"
@@ -224,16 +224,16 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
           {/* Glow effect */}
           <div
             className={`
-              absolute -inset-3 rounded-full transition-all duration-500
+              absolute -inset-2 rounded-full transition-all duration-500
               ${isActive ? 'bg-blue-400/20 blur-lg opacity-100' : 'opacity-0'}
             `}
           />
 
-          {/* Main circle - larger size */}
+          {/* Main circle - medium size */}
           <div
             className={`
-              relative w-[68px] h-[68px] lg:w-[76px] lg:h-[76px] rounded-full
-              flex items-center justify-center border-[3px]
+              relative w-[62px] h-[62px] lg:w-[68px] lg:h-[68px] rounded-full
+              flex items-center justify-center border-[2px]
               transition-all duration-300 ease-out
               ${isActive
                 ? 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-300 scale-105 shadow-xl shadow-blue-500/30'
@@ -245,7 +245,7 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
           >
             <Icon
               className={`
-                w-7 h-7 lg:w-8 lg:h-8 transition-all duration-300
+                w-6 h-6 lg:w-7 lg:h-7 transition-all duration-300
                 ${isActive || isCompleted ? 'text-white' : 'text-slate-400 group-hover:text-blue-500'}
               `}
               strokeWidth={1.5}
@@ -254,8 +254,8 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
             {/* Step number badge */}
             <div
               className={`
-                absolute -top-1 -right-1 w-7 h-7 lg:w-8 lg:h-8 rounded-full
-                flex items-center justify-center text-xs lg:text-sm font-bold
+                absolute -top-0.5 -right-0.5 w-5 h-5 lg:w-6 lg:h-6 rounded-full
+                flex items-center justify-center text-[10px] lg:text-xs font-bold
                 border-[2px] border-white shadow-md transition-all duration-300
                 ${isActive
                   ? 'bg-gradient-to-br from-blue-400 to-blue-600 text-white'
@@ -272,22 +272,22 @@ const VerticalStepItem: React.FC<VerticalStepProps> = ({
 
         {/* Step label and mini description */}
         <div className="flex-1 text-left min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <span
               className={`
-                text-base lg:text-lg font-bold transition-all duration-300
+                text-sm lg:text-base font-bold transition-all duration-300
                 ${isActive ? 'text-blue-600' : isCompleted ? 'text-blue-500' : 'text-slate-600 group-hover:text-slate-800'}
               `}
             >
               {step.label}
             </span>
             {isActive && (
-              <ChevronRight className="w-4 h-4 text-blue-500 animate-pulse" />
+              <ChevronRight className="w-3.5 h-3.5 text-blue-500 animate-pulse" />
             )}
           </div>
           <p
             className={`
-              text-xs lg:text-sm mt-0.5 line-clamp-1 transition-all duration-300
+              text-[11px] lg:text-xs line-clamp-1 transition-all duration-300
               ${isActive ? 'text-blue-600/70' : 'text-slate-400 group-hover:text-slate-500'}
             `}
           >
@@ -396,30 +396,30 @@ interface RightPanelContentProps {
 
 const RightPanelContent: React.FC<RightPanelContentProps> = ({ step }) => {
   return (
-    <div key={step.id} className="animate-fadeIn h-full flex flex-col">
+    <div key={step.id} className="animate-fadeIn">
       {/* Step badge */}
-      <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 border border-blue-200/60 shadow-sm w-fit mb-4">
-        <span className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-blue-100/50 border border-blue-200/60 shadow-sm w-fit mb-3">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600">
           Step {String(step.id).padStart(2, '0')}
         </span>
         <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
           {step.label}
         </span>
       </div>
 
       {/* Title */}
-      <h3 className="text-2xl sm:text-[1.75rem] lg:text-[2rem] font-bold text-slate-800 leading-tight tracking-tight mb-3">
+      <h3 className="text-xl sm:text-2xl lg:text-[1.65rem] font-bold text-slate-800 leading-tight tracking-tight mb-2">
         {step.title}
       </h3>
 
       {/* Description */}
-      <p className="text-sm lg:text-base text-slate-600 leading-relaxed mb-5">
+      <p className="text-sm text-slate-600 leading-relaxed mb-4">
         {step.description}
       </p>
 
-      {/* Media Container - Medium size */}
-      <div className="mb-5 flex-shrink-0">
+      {/* Media Container - Compact */}
+      <div className="mb-4">
         <div className="relative group max-w-[520px]">
           {/* Gradient border container */}
           <div className="absolute -inset-[2px] bg-gradient-to-br from-blue-500/50 via-blue-400/40 to-blue-600/50 rounded-xl opacity-70 group-hover:opacity-90 transition-opacity duration-300 ease-out" />
@@ -449,10 +449,10 @@ const RightPanelContent: React.FC<RightPanelContentProps> = ({ step }) => {
 
             {/* Status indicator */}
             <div className="absolute bottom-2 right-2 z-20">
-              <div className="flex items-center gap-1.5 px-2.5 py-1 bg-black/50 backdrop-blur-sm rounded-full border border-white/10">
+              <div className="flex items-center gap-1 px-2 py-0.5 bg-black/50 backdrop-blur-sm rounded-full border border-white/10">
                 <div className={`w-1.5 h-1.5 rounded-full ${step.mediaType === 'video' ? 'bg-blue-400 animate-pulse' : 'bg-blue-300'}`} />
-                <span className="text-[10px] font-medium text-white/90 uppercase tracking-wider">
-                  {step.mediaType === 'video' ? 'Live Preview' : 'Preview'}
+                <span className="text-[9px] font-medium text-white/90 uppercase tracking-wider">
+                  {step.mediaType === 'video' ? 'Live' : 'Preview'}
                 </span>
               </div>
             </div>
@@ -460,28 +460,28 @@ const RightPanelContent: React.FC<RightPanelContentProps> = ({ step }) => {
         </div>
       </div>
 
-      {/* Toolkit section - 2x2 grid */}
-      <div className="mt-auto">
-        <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-400 mb-3">
+      {/* Toolkit section - 2x2 grid compact */}
+      <div>
+        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 mb-2">
           Capabilities
         </p>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2">
           {step.toolkit.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
                 className="
-                  flex items-center gap-3 px-4 py-3 rounded-xl
+                  flex items-center gap-2 px-3 py-2 rounded-lg
                   bg-white/70 backdrop-blur-sm border border-slate-100
                   hover:bg-white hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] hover:border-blue-100
                   transition-all duration-300 ease-out group/item cursor-default
                 "
               >
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100/60 flex items-center justify-center flex-shrink-0 group-hover/item:border-blue-200 transition-colors duration-300">
-                  <Icon className="w-4 h-4 text-blue-600" strokeWidth={1.75} />
+                <div className="w-7 h-7 rounded-md bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-100/60 flex items-center justify-center flex-shrink-0 group-hover/item:border-blue-200 transition-colors duration-300">
+                  <Icon className="w-3.5 h-3.5 text-blue-600" strokeWidth={1.75} />
                 </div>
-                <span className="text-sm font-medium text-slate-700 group-hover/item:text-slate-900 transition-colors duration-300">
+                <span className="text-xs font-medium text-slate-700 group-hover/item:text-slate-900 transition-colors duration-300">
                   {item.label}
                 </span>
               </div>
@@ -567,7 +567,7 @@ export const ProcessFlowHorizontal: React.FC = () => {
       {/* ================================================================ */}
       {/* MAIN LAYOUT - Left Steps | Right Content */}
       {/* ================================================================ */}
-      <div className="relative grid lg:grid-cols-[300px_1fr] xl:grid-cols-[340px_1fr] 3xl:grid-cols-[380px_1fr] gap-6 lg:gap-8 xl:gap-10">
+      <div className="relative grid lg:grid-cols-[340px_1fr] xl:grid-cols-[380px_1fr] 3xl:grid-cols-[420px_1fr] gap-6 lg:gap-10 xl:gap-12 items-start">
 
         {/* ============================================================ */}
         {/* LEFT SIDE - Vertical Timeline Steps */}
@@ -602,7 +602,7 @@ export const ProcessFlowHorizontal: React.FC = () => {
         {/* ============================================================ */}
         <div className="relative">
           {/* Container with gradient background */}
-          <div className="relative rounded-3xl bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30 border border-slate-200/60 shadow-[0_0_40px_rgba(59,130,246,0.06)] overflow-hidden h-full">
+          <div className="relative rounded-3xl bg-gradient-to-br from-white via-slate-50/80 to-blue-50/30 border border-slate-200/60 shadow-[0_0_40px_rgba(59,130,246,0.06)] overflow-hidden">
             {/* Decorative corner accents */}
             <div className="absolute top-0 right-0 w-48 h-48 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.06)_0%,transparent_60%)] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-[radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.04)_0%,transparent_60%)] pointer-events-none" />
@@ -610,7 +610,7 @@ export const ProcessFlowHorizontal: React.FC = () => {
             {/* Panel content with transition */}
             <div
               className={`
-                relative px-6 sm:px-8 lg:px-10 py-6 sm:py-8 lg:py-8 h-full
+                relative px-5 sm:px-6 lg:px-8 py-5 sm:py-6 lg:py-6
                 transition-opacity duration-150 ease-out
                 ${isTransitioning ? 'opacity-0' : 'opacity-100'}
               `}
