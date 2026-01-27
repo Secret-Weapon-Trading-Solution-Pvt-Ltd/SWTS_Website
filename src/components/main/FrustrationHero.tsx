@@ -8,6 +8,30 @@ import { ArrowRight } from 'lucide-react';
 export const FrustrationHero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Company Logo and Name - Top Left Corner */}
+      <div
+        className="fixed top-4 left-4 sm:left-6 lg:left-10 xl:left-12 2xl:left-16 3xl:left-24 z-50 opacity-0 animate-fade-in-up"
+        style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
+      >
+        <Link href="/" className="flex items-center gap-3 2xl:gap-4 3xl:gap-5">
+          <Image
+            src="/logos/logo1.png"
+            alt="SWTS Logo"
+            width={60}
+            height={60}
+            className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 2xl:w-16 2xl:h-16 3xl:w-20 3xl:h-20"
+          />
+          <div>
+            <span className="block text-base sm:text-lg lg:text-xl 2xl:text-2xl 3xl:text-3xl font-bold text-slate-800 leading-tight">
+              Secret Weapon
+            </span>
+            <span className="block text-xs sm:text-sm lg:text-base 2xl:text-lg 3xl:text-xl font-semibold text-slate-600 leading-tight">
+              Trading Solution <span className="font-medium text-slate-400">Pvt Ltd</span>
+            </span>
+          </div>
+        </Link>
+      </div>
+
       {/* Light background gradient */}
       <div
         className="absolute inset-0"
@@ -36,51 +60,20 @@ export const FrustrationHero: React.FC = () => {
       />
 
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-32">
-        <div className="max-w-lg lg:max-w-xl">
-
-          {/* Company Name - BIGGEST */}
-          <div
-            className="flex items-center gap-4 mb-8 opacity-0 animate-fade-in-up"
-            style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
-          >
-            <Image
-              src="/logos/logo1.png"
-              alt="SWTS Logo"
-              width={80}
-              height={80}
-              className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
-            />
-            <div>
-              <h1
-                className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[50px] font-bold leading-[1.1] tracking-tight"
-                style={{ color: '#0F172A' }}
-              >
-                Secret Weapon
-              </h1>
-              <p
-                className="text-lg sm:text-xl lg:text-[32px] xl:text-[40px] font-bold leading-[1.1] tracking-tight mt-1 lg:mt-2"
-                style={{ color: '#0F172A' }}
-              >
-                Trading Solution <span
-                  className="text-sm sm:text-base lg:text-lg xl:text-xl font-medium"
-                  style={{ color: '#64748B' }}
-                >Pvt Ltd</span>
-              </p>
-            </div>
-          </div>
+      <div className="relative z-10 w-full max-w-[1440px] 2xl:max-w-[1600px] 3xl:max-w-[1920px] 4xl:max-w-[2400px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16 3xl:px-24 4xl:px-32 py-32 2xl:py-40 3xl:py-48">
+        <div className="max-w-lg lg:max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl 4xl:max-w-4xl">
 
           {/* Micro label with accent line */}
           <div
-            className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-up"
+            className="flex items-center gap-4 2xl:gap-5 mb-6 2xl:mb-8 3xl:mb-10 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
             <span
-              className="w-16 h-[3px] rounded-full"
+              className="w-16 2xl:w-20 3xl:w-24 h-[3px] 2xl:h-[4px] rounded-full"
               style={{ background: 'linear-gradient(90deg, #0D9488, #14B8A6)' }}
             />
             <span
-              className="text-base lg:text-lg font-medium tracking-wide uppercase"
+              className="text-base lg:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl font-medium tracking-wide uppercase"
               style={{ color: '#0D9488' }}
             >
               For serious traders
@@ -88,9 +81,9 @@ export const FrustrationHero: React.FC = () => {
           </div>
 
           {/* Hook/Headline - MEDIUM (smaller than company name) */}
-          <h2 className="mb-8">
+          <h2 className="mb-8 2xl:mb-10 3xl:mb-12">
             <span
-              className="block text-xl sm:text-2xl lg:text-[36px] xl:text-[45px] leading-[1.2] tracking-[-0.01em] opacity-0 animate-fade-in-up"
+              className="block text-xl sm:text-2xl lg:text-[36px] xl:text-[45px] 2xl:text-[54px] 3xl:text-[64px] 4xl:text-[80px] leading-[1.35] tracking-[-0.01em] opacity-0 animate-fade-in-up"
               style={{
                 color: '#0F172A',
                 fontWeight: 600,
@@ -101,7 +94,7 @@ export const FrustrationHero: React.FC = () => {
               Your strategy works.
             </span>
             <span
-              className="block whitespace-nowrap mt-2 text-xl sm:text-2xl lg:text-[36px] xl:text-[45px] leading-[1.2] tracking-[-0.01em] opacity-0 animate-fade-in-up"
+              className="block whitespace-nowrap mt-3 lg:mt-4 xl:mt-5 2xl:mt-6 3xl:mt-8 text-xl sm:text-2xl lg:text-[36px] xl:text-[45px] 2xl:text-[54px] 3xl:text-[64px] 4xl:text-[80px] leading-[1.35] tracking-[-0.01em] opacity-0 animate-fade-in-up"
               style={{
                 color: '#64748B',
                 fontWeight: 500,
@@ -115,7 +108,7 @@ export const FrustrationHero: React.FC = () => {
 
           {/* Subtitle - SMALLEST (smaller than hook) */}
           <p
-            className="text-base sm:text-lg lg:text-[20px] xl:text-[26px] leading-[1.5] mb-12 max-w-2xl opacity-0 animate-fade-in-up"
+            className="text-sm sm:text-base lg:text-[18px] xl:text-[22px] 2xl:text-[26px] 3xl:text-[32px] 4xl:text-[38px] leading-[1.7] 2xl:leading-[1.6] 3xl:leading-[1.5] mb-12 2xl:mb-14 3xl:mb-16 max-w-2xl 2xl:max-w-3xl 3xl:max-w-4xl opacity-0 animate-fade-in-up"
             style={{
               color: '#475569',
               fontWeight: 400,
@@ -128,13 +121,13 @@ export const FrustrationHero: React.FC = () => {
 
           {/* CTA Group */}
           <div
-            className="flex flex-wrap items-center gap-5 opacity-0 animate-fade-in-up"
+            className="flex flex-wrap items-center gap-5 2xl:gap-6 3xl:gap-8 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
           >
             {/* Primary CTA Button - Assessment */}
             <Link
               href="/strategy-assessment"
-              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-medium text-white rounded-xl
+              className="group inline-flex items-center justify-center px-10 py-5 2xl:px-12 2xl:py-6 3xl:px-14 3xl:py-7 4xl:px-16 4xl:py-8 text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl font-medium text-white rounded-xl 2xl:rounded-2xl
                        shadow-[0_4px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.35)]
                        hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_2px_10px_rgba(13,148,136,0.2)]
                        transition-all duration-200 ease-out"
@@ -143,13 +136,13 @@ export const FrustrationHero: React.FC = () => {
               }}
             >
               Take Free Assessment
-              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight className="ml-3 w-6 h-6 2xl:w-7 2xl:h-7 3xl:w-8 3xl:h-8 4xl:w-10 4xl:h-10 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
 
             {/* Secondary CTA Button */}
             <Link
               href="/#how-it-works"
-              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-medium text-slate-700 rounded-xl
+              className="group inline-flex items-center justify-center px-10 py-5 2xl:px-12 2xl:py-6 3xl:px-14 3xl:py-7 4xl:px-16 4xl:py-8 text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl font-medium text-slate-700 rounded-xl 2xl:rounded-2xl
                        bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50
                        hover:-translate-y-0.5 transition-all duration-200 ease-out"
             >

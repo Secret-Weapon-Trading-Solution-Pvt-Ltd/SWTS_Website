@@ -46,25 +46,25 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={cn(
-        'fixed top-3 right-6 sm:right-10 lg:right-16 xl:right-20 z-50 transition-all duration-500',
+        'fixed top-3 right-6 sm:right-10 lg:right-16 xl:right-20 2xl:right-24 3xl:right-32 4xl:right-40 z-50 transition-all duration-500',
         isScrolled
-          ? 'top-2'
-          : 'top-4'
+          ? 'top-2 2xl:top-3 3xl:top-4'
+          : 'top-4 2xl:top-5 3xl:top-6'
       )}
     >
       <div className={cn(
-        "flex items-center h-12 lg:h-14 transition-all duration-300 rounded-2xl px-4",
+        "flex items-center h-12 lg:h-14 2xl:h-16 3xl:h-20 4xl:h-24 transition-all duration-300 rounded-2xl 3xl:rounded-3xl px-4 2xl:px-6 3xl:px-8",
         isScrolled
           ? 'bg-white/95 backdrop-blur-xl shadow-lg border border-slate-200/50'
           : 'bg-white/90 backdrop-blur-md shadow-md border border-slate-200/30'
       )}>
         {/* Navigation */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1 2xl:gap-2 3xl:gap-3">
           {navLinks.slice(0, 4).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-700 hover:bg-slate-100 hover:text-blue-700"
+              className="px-3 py-1.5 2xl:px-4 2xl:py-2 3xl:px-5 3xl:py-3 4xl:px-6 4xl:py-4 rounded-lg 3xl:rounded-xl text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl font-semibold transition-all duration-200 text-slate-700 hover:bg-slate-100 hover:text-blue-700"
             >
               {link.label}
             </Link>
@@ -74,22 +74,22 @@ export const Navbar: React.FC = () => {
           <div className="relative" ref={servicesDropdownRef}>
             <button
               onClick={() => setIsServicesOpen(!isServicesOpen)}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-700 hover:bg-slate-100 hover:text-blue-700"
+              className="flex items-center gap-1 2xl:gap-2 px-3 py-1.5 2xl:px-4 2xl:py-2 3xl:px-5 3xl:py-3 4xl:px-6 4xl:py-4 rounded-lg 3xl:rounded-xl text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl font-semibold transition-all duration-200 text-slate-700 hover:bg-slate-100 hover:text-blue-700"
             >
               Services
               <ChevronDown className={cn(
-                "w-4 h-4 transition-transform duration-200",
+                "w-4 h-4 2xl:w-5 2xl:h-5 3xl:w-6 3xl:h-6 transition-transform duration-200",
                 isServicesOpen && "rotate-180"
               )} />
             </button>
 
             {isServicesOpen && (
-              <div className="absolute top-full right-0 mt-3 w-72 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200/50 shadow-2xl py-2 animate-fade-in z-50">
-                <div className="px-4 py-2 border-b border-slate-100">
+              <div className="absolute top-full right-0 mt-3 w-72 2xl:w-80 3xl:w-96 bg-white/95 backdrop-blur-xl rounded-2xl 3xl:rounded-3xl border border-slate-200/50 shadow-2xl py-2 3xl:py-3 animate-fade-in z-50">
+                <div className="px-4 py-2 3xl:px-6 3xl:py-3 border-b border-slate-100">
                   <Link
                     href="/services"
                     onClick={() => setIsServicesOpen(false)}
-                    className="text-xs font-bold text-blue-600 hover:text-blue-700 uppercase tracking-wider"
+                    className="text-xs 2xl:text-sm 3xl:text-base font-bold text-blue-600 hover:text-blue-700 uppercase tracking-wider"
                   >
                     View All Services →
                   </Link>
@@ -99,10 +99,10 @@ export const Navbar: React.FC = () => {
                     key={service.slug}
                     href={`/services/${service.slug}`}
                     onClick={() => setIsServicesOpen(false)}
-                    className="block px-4 py-3 hover:bg-slate-50 transition-colors mx-2 rounded-xl"
+                    className="block px-4 py-3 3xl:px-6 3xl:py-4 hover:bg-slate-50 transition-colors mx-2 rounded-xl"
                   >
-                    <span className="block text-sm font-semibold text-slate-800">{service.shortTitle}</span>
-                    <span className="block text-xs text-slate-500 mt-0.5">{service.oneLiner}</span>
+                    <span className="block text-sm 2xl:text-base 3xl:text-lg font-semibold text-slate-800">{service.shortTitle}</span>
+                    <span className="block text-xs 2xl:text-sm 3xl:text-base text-slate-500 mt-0.5">{service.oneLiner}</span>
                   </Link>
                 ))}
               </div>
@@ -113,7 +113,7 @@ export const Navbar: React.FC = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-700 hover:bg-slate-100 hover:text-blue-700"
+              className="px-3 py-1.5 2xl:px-4 2xl:py-2 3xl:px-5 3xl:py-3 4xl:px-6 4xl:py-4 rounded-lg 3xl:rounded-xl text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl font-semibold transition-all duration-200 text-slate-700 hover:bg-slate-100 hover:text-blue-700"
             >
               {link.label}
             </Link>
