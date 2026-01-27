@@ -27,21 +27,21 @@ export const FrustrationHero: React.FC = () => {
         }}
       />
 
-      {/* Gradient overlay - fades image into background on left */}
+      {/* Gradient overlay - sharp transition, image fully visible from center */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(90deg, #F8FAFC 0%, #F8FAFC 45%, rgba(248,250,252,0.8) 55%, transparent 70%)'
+          background: 'linear-gradient(90deg, #F8FAFC 0%, #F8FAFC 35%, rgba(248,250,252,0.5) 40%, transparent 45%)'
         }}
       />
 
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 py-32">
-        <div className="max-w-xl">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-32">
+        <div className="max-w-lg lg:max-w-xl">
 
-          {/* Company Logo and Name */}
+          {/* Company Name - BIGGEST */}
           <div
-            className="flex items-center gap-4 mb-10 opacity-0 animate-fade-in-up"
+            className="flex items-center gap-4 mb-8 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}
           >
             <Image
@@ -49,45 +49,48 @@ export const FrustrationHero: React.FC = () => {
               alt="SWTS Logo"
               width={80}
               height={80}
-              className=""
+              className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"
             />
             <div>
-              <h2
-                className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight"
+              <h1
+                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight"
                 style={{ color: '#0F172A' }}
               >
-                Secret Weapon Trading Solution
-                <span
-                  className="text-sm sm:text-base lg:text-lg font-medium ml-2"
+                Secret Weapon
+              </h1>
+              <p
+                className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tight"
+                style={{ color: '#0F172A' }}
+              >
+                Trading Solution <span
+                  className="text-base sm:text-lg lg:text-xl xl:text-2xl font-medium"
                   style={{ color: '#64748B' }}
-                >
-                  Private Limited
-                </span>
-              </h2>
+                >Pvt Ltd</span>
+              </p>
             </div>
           </div>
 
           {/* Micro label with accent line */}
           <div
-            className="flex items-center gap-4 mb-8 opacity-0 animate-fade-in-up"
+            className="flex items-center gap-4 mb-6 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
             <span
-              className="w-12 h-[2px] rounded-full"
+              className="w-16 h-[3px] rounded-full"
               style={{ background: 'linear-gradient(90deg, #0D9488, #14B8A6)' }}
             />
             <span
-              className="text-sm font-medium tracking-wide uppercase"
+              className="text-base lg:text-lg font-medium tracking-wide uppercase"
               style={{ color: '#0D9488' }}
             >
               For serious traders
             </span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="mb-8">
+          {/* Hook/Headline - MEDIUM (smaller than company name) */}
+          <h2 className="mb-8">
             <span
-              className="block whitespace-nowrap text-[1.75rem] sm:text-[2rem] lg:text-[2.15rem] leading-[1.15] tracking-[-0.01em] opacity-0 animate-fade-in-up"
+              className="block text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-[1.2] tracking-[-0.01em] opacity-0 animate-fade-in-up"
               style={{
                 color: '#0F172A',
                 fontWeight: 600,
@@ -98,7 +101,7 @@ export const FrustrationHero: React.FC = () => {
               Your strategy works.
             </span>
             <span
-              className="block mt-1 text-[1.75rem] sm:text-[2rem] lg:text-[2.15rem] leading-[1.15] tracking-[-0.01em] opacity-0 animate-fade-in-up"
+              className="block mt-2 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl leading-[1.2] tracking-[-0.01em] opacity-0 animate-fade-in-up"
               style={{
                 color: '#64748B',
                 fontWeight: 500,
@@ -108,11 +111,11 @@ export const FrustrationHero: React.FC = () => {
             >
               Until you have to execute it.
             </span>
-          </h1>
+          </h2>
 
-          {/* Subtitle */}
+          {/* Subtitle - SMALLEST (smaller than hook) */}
           <p
-            className="text-lg sm:text-xl leading-[1.7] mb-12 max-w-lg opacity-0 animate-fade-in-up"
+            className="text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-[1.5] mb-12 max-w-2xl opacity-0 animate-fade-in-up"
             style={{
               color: '#475569',
               fontWeight: 400,
@@ -125,13 +128,13 @@ export const FrustrationHero: React.FC = () => {
 
           {/* CTA Group */}
           <div
-            className="flex flex-wrap items-center gap-4 opacity-0 animate-fade-in-up"
+            className="flex flex-wrap items-center gap-5 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
           >
             {/* Primary CTA Button - Assessment */}
             <Link
               href="/strategy-assessment"
-              className="group inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white rounded-xl
+              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-medium text-white rounded-xl
                        shadow-[0_4px_20px_rgba(13,148,136,0.25)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.35)]
                        hover:-translate-y-0.5 active:translate-y-0 active:shadow-[0_2px_10px_rgba(13,148,136,0.2)]
                        transition-all duration-200 ease-out"
@@ -140,13 +143,13 @@ export const FrustrationHero: React.FC = () => {
               }}
             >
               Take Free Assessment
-              <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
 
             {/* Secondary CTA Button */}
             <Link
               href="/#how-it-works"
-              className="group inline-flex items-center justify-center px-8 py-4 text-base font-medium text-slate-700 rounded-xl
+              className="group inline-flex items-center justify-center px-10 py-5 text-lg font-medium text-slate-700 rounded-xl
                        bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50
                        hover:-translate-y-0.5 transition-all duration-200 ease-out"
             >
