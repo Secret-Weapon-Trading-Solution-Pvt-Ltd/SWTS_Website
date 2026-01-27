@@ -102,7 +102,11 @@ jobs:
             # Update domain in nginx config
             sed -i "s/server_name .*/server_name $DEPLOY_DOMAIN;/" nginx/conf.d/$PROJECT_CONFIG
 
-            # Stop old containers and force remove any conflicting ones
+            # Build new image FIRST (while old container is still running)
+            echo "Building new image..."
+            \$DOCKER_CMD compose -f docker-compose.shared.yml build --no-cache
+
+            # Now stop old containers and start new ones (minimizes downtime)
             echo "Stopping existing containers..."
             \$DOCKER_CMD compose -f docker-compose.shared.yml down --remove-orphans || true
 
@@ -110,11 +114,7 @@ jobs:
             echo "Cleaning up any leftover containers..."
             \$DOCKER_CMD rm -f swts_app swts_certbot 2>/dev/null || true
 
-            # Build and start
-            echo "Building..."
-            \$DOCKER_CMD compose -f docker-compose.shared.yml build --no-cache
-
-            echo "Starting..."
+            echo "Starting new containers..."
             \$DOCKER_CMD compose -f docker-compose.shared.yml up -d
 
             echo "Waiting for app to be healthy..."
@@ -125,24 +125,25 @@ jobs:
             NGINX_CONTAINER="$NGINX_CONTAINER"
 
             if \$DOCKER_CMD container inspect \$NGINX_CONTAINER >/dev/null 2>&1; then
-              # Check if config has changed before copying and reloading
+              # Check if config has changed before copying
               LOCAL_HASH=\$(md5sum nginx/conf.d/$PROJECT_CONFIG | cut -d' ' -f1)
               REMOTE_HASH=\$(\$DOCKER_CMD exec \$NGINX_CONTAINER cat /etc/nginx/conf.d/$PROJECT_CONFIG 2>/dev/null | md5sum | cut -d' ' -f1 || echo "none")
 
-              if [ "\$LOCAL_HASH" = "\$REMOTE_HASH" ]; then
-                echo "Nginx config unchanged. Skipping reload."
-              else
+              if [ "\$LOCAL_HASH" != "\$REMOTE_HASH" ]; then
                 echo "Config changed. Updating..."
                 \$DOCKER_CMD cp nginx/conf.d/$PROJECT_CONFIG \$NGINX_CONTAINER:/etc/nginx/conf.d/$PROJECT_CONFIG
-
-                echo "Testing nginx config..."
-                \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -t
-
-                echo "Reloading nginx..."
-                \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -s reload
-
-                echo "Nginx reloaded successfully!"
+              else
+                echo "Nginx config unchanged."
               fi
+
+              # ALWAYS reload nginx to refresh upstream DNS for new container IP
+              echo "Testing nginx config..."
+              \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -t
+
+              echo "Reloading nginx to refresh upstream DNS..."
+              \$DOCKER_CMD exec \$NGINX_CONTAINER nginx -s reload
+
+              echo "Nginx reloaded successfully!"
             else
               echo "ERROR: Shared nginx container not found!"
               echo "Make sure the first project (ubuntu-docker-logs-finder) is deployed."
