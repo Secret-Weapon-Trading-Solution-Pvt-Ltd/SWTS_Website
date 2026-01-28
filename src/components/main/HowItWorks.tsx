@@ -54,7 +54,7 @@ export const HowItWorks: React.FC = () => {
       {/* ================================================================ */}
       {/* PRIMARY: Horizontal Process Flow - Full Width */}
       {/* ================================================================ */}
-      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24">
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24 mb-16 lg:mb-20 xl:mb-24">
         <ProcessFlowHorizontal />
       </div>
 
