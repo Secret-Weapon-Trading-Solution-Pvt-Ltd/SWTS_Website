@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getAssetPath } from '@/lib/utils';
@@ -23,6 +24,10 @@ export const Navbar: React.FC = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  // Check if on a page with dark header (service pages)
+  const isDarkHeader = pathname?.startsWith('/services/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,12 +80,21 @@ export const Navbar: React.FC = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-bold text-slate-800 leading-tight tracking-tight drop-shadow-sm">
+            <span className={cn(
+              "text-lg sm:text-xl lg:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-bold leading-tight tracking-tight drop-shadow-sm",
+              isDarkHeader ? "text-white" : "text-slate-800"
+            )}>
               Secret Weapon
             </span>
-            <span className="text-sm sm:text-base lg:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl font-semibold text-slate-600 leading-tight tracking-tight">
+            <span className={cn(
+              "text-sm sm:text-base lg:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl font-semibold leading-tight tracking-tight",
+              isDarkHeader ? "text-white/90" : "text-slate-600"
+            )}>
               Trading Solution
-              <span className="text-xs sm:text-sm lg:text-base 2xl:text-lg 3xl:text-xl font-normal text-slate-400 ml-1.5">
+              <span className={cn(
+                "text-xs sm:text-sm lg:text-base 2xl:text-lg 3xl:text-xl font-normal ml-1.5",
+                isDarkHeader ? "text-white/70" : "text-slate-400"
+              )}>
                 Pvt Ltd
               </span>
             </span>

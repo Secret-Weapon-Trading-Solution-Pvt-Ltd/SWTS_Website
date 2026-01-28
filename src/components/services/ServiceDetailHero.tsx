@@ -15,7 +15,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
   const isDarkTheme = service.slug === 'algo-strategy-development';
 
   return (
-    <section className={`relative pt-28 pb-10 overflow-hidden ${
+    <section className={`relative pt-36 lg:pt-40 pb-10 overflow-hidden ${
       isDarkTheme
         ? 'bg-white'
         : 'bg-gradient-to-b from-navy-50 via-white to-white'
@@ -175,11 +175,11 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-row flex-wrap gap-4"
             >
               <motion.a
                 href="/strategy-assessment"
-                className={`inline-flex items-center px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl group ${
+                className={`inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl group ${
                   isDarkTheme
                     ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700'
                     : 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white hover:from-teal-600 hover:to-cyan-600'
@@ -194,7 +194,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               </motion.a>
               <motion.a
                 href="#how-it-works"
-                className={`inline-flex items-center px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${
+                className={`inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${
                   isDarkTheme
                     ? 'bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-400'
                     : 'bg-white border-2 border-navy-200 text-navy-700 hover:bg-navy-50 hover:border-navy-300 shadow-sm'
