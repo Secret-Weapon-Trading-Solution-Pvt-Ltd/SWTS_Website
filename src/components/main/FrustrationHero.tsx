@@ -59,7 +59,7 @@ export const FrustrationHero: React.FC = () => {
           {/* Hook/Headline - MEDIUM (smaller than company name) */}
           <h2 className="mb-6 lg:mb-8 2xl:mb-10 3xl:mb-12">
             <span
-              className="block text-lg sm:text-xl lg:text-[30px] xl:text-[38px] 2xl:text-[46px] 3xl:text-[56px] 4xl:text-[70px] leading-[1.3] tracking-[-0.01em] opacity-0 animate-fade-in-up"
+              className="block text-lg sm:text-xl lg:text-[30px] xl:text-[38px] 2xl:text-[46px] 3xl:text-[56px] 4xl:text-[70px] leading-[22px] sm:leading-[24px] lg:leading-[36px] xl:leading-[46px] 2xl:leading-[55px] 3xl:leading-[67px] 4xl:leading-[84px] tracking-[-0.01em] opacity-0 animate-fade-in-up"
               style={{
                 color: '#0F172A',
                 fontWeight: 600,
@@ -70,7 +70,7 @@ export const FrustrationHero: React.FC = () => {
               Your strategy works.
             </span>
             <span
-              className="block whitespace-nowrap mt-2 lg:mt-3 xl:mt-4 2xl:mt-5 3xl:mt-6 text-lg sm:text-xl lg:text-[30px] xl:text-[38px] 2xl:text-[46px] 3xl:text-[56px] 4xl:text-[70px] leading-[1.3] tracking-[-0.01em] opacity-0 animate-fade-in-up"
+              className="block whitespace-nowrap mt-0.5 lg:mt-0.5 xl:mt-1 2xl:mt-1 3xl:mt-1.5 text-lg sm:text-xl lg:text-[30px] xl:text-[38px] 2xl:text-[46px] 3xl:text-[56px] 4xl:text-[70px] leading-[22px] sm:leading-[24px] lg:leading-[36px] xl:leading-[46px] 2xl:leading-[55px] 3xl:leading-[67px] 4xl:leading-[84px] tracking-[-0.01em] opacity-0 animate-fade-in-up"
               style={{
                 color: '#64748B',
                 fontWeight: 500,
@@ -84,7 +84,7 @@ export const FrustrationHero: React.FC = () => {
 
           {/* Subtitle - SMALLEST (smaller than hook) */}
           <p
-            className="text-sm sm:text-base lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[28px] 4xl:text-[34px] leading-[1.6] mb-10 lg:mb-12 2xl:mb-14 3xl:mb-16 max-w-xl lg:max-w-2xl 2xl:max-w-3xl 3xl:max-w-4xl opacity-0 animate-fade-in-up"
+            className="text-sm sm:text-base lg:text-[16px] xl:text-[20px] 2xl:text-[24px] 3xl:text-[28px] 4xl:text-[34px] leading-[18px] sm:leading-[21px] lg:leading-[21px] xl:leading-[26px] 2xl:leading-[31px] 3xl:leading-[36px] 4xl:leading-[44px] mb-10 lg:mb-12 2xl:mb-14 3xl:mb-16 max-w-xl lg:max-w-2xl 2xl:max-w-3xl 3xl:max-w-4xl opacity-0 animate-fade-in-up"
             style={{
               color: '#475569',
               fontWeight: 400,
