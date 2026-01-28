@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { getAssetPath } from '@/lib/utils';
 import { services } from '@/data/services';
 
 const navLinks = [
@@ -51,14 +53,50 @@ export const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <header
-      className={cn(
-        'fixed top-4 2xl:top-5 3xl:top-6 right-6 sm:right-10 lg:right-16 xl:right-20 2xl:right-24 3xl:right-32 4xl:right-40 z-50 transition-all duration-500',
-        isVisible
-          ? 'opacity-100 translate-y-0 pointer-events-auto'
-          : 'opacity-0 -translate-y-4 pointer-events-none'
-      )}
-    >
+    <>
+      {/* Logo - Top Left */}
+      <Link
+        href="/"
+        className={cn(
+          'fixed top-5 sm:top-6 lg:top-7 2xl:top-8 3xl:top-10 left-4 sm:left-6 lg:left-10 xl:left-12 2xl:left-16 3xl:left-24 4xl:left-32 z-50 transition-all duration-500 group',
+          isVisible
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 -translate-y-4 pointer-events-none'
+        )}
+      >
+        <div className="flex items-center gap-3 sm:gap-4 lg:gap-5">
+          <div className="relative">
+            <Image
+              src={getAssetPath('/logos/logo1.png')}
+              alt="SWTS Logo"
+              width={64}
+              height={64}
+              className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 3xl:w-24 3xl:h-24 4xl:w-28 4xl:h-28 drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-bold text-slate-800 leading-tight tracking-tight drop-shadow-sm">
+              Secret Weapon
+            </span>
+            <span className="text-sm sm:text-base lg:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl font-semibold text-slate-600 leading-tight tracking-tight">
+              Trading Solution
+              <span className="text-xs sm:text-sm lg:text-base 2xl:text-lg 3xl:text-xl font-normal text-slate-400 ml-1.5">
+                Pvt Ltd
+              </span>
+            </span>
+          </div>
+        </div>
+      </Link>
+
+      {/* Navbar - Top Right */}
+      <header
+        className={cn(
+          'fixed top-4 2xl:top-5 3xl:top-6 right-6 sm:right-10 lg:right-16 xl:right-20 2xl:right-24 3xl:right-32 4xl:right-40 z-50 transition-all duration-500',
+          isVisible
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : 'opacity-0 -translate-y-4 pointer-events-none'
+        )}
+      >
       <div className="flex items-center h-12 lg:h-14 2xl:h-16 3xl:h-20 4xl:h-24 transition-all duration-300 rounded-2xl 3xl:rounded-3xl px-4 2xl:px-6 3xl:px-8 bg-white/90 backdrop-blur-md shadow-md border border-slate-200/30">
         {/* Navigation */}
         <nav className="hidden lg:flex items-center gap-1 2xl:gap-2 3xl:gap-3">
@@ -132,71 +170,72 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200/50 shadow-2xl overflow-hidden animate-fade-in">
-          <nav className="flex flex-col p-3 gap-1">
-            {navLinks.slice(0, 4).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="py-3 px-4 text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-xl font-semibold transition-all duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="lg:hidden mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl border border-slate-200/50 shadow-2xl overflow-hidden animate-fade-in">
+            <nav className="flex flex-col p-3 gap-1">
+              {navLinks.slice(0, 4).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="py-3 px-4 text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-xl font-semibold transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
 
-            {/* Mobile Services Expandable */}
-            <div>
-              <button
-                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                className="w-full flex items-center justify-between py-3 px-4 text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-xl font-semibold transition-all duration-200"
-              >
-                Services
-                <ChevronDown className={cn(
-                  "w-4 h-4 transition-transform duration-200",
-                  isMobileServicesOpen && "rotate-180"
-                )} />
-              </button>
+              {/* Mobile Services Expandable */}
+              <div>
+                <button
+                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                  className="w-full flex items-center justify-between py-3 px-4 text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-xl font-semibold transition-all duration-200"
+                >
+                  Services
+                  <ChevronDown className={cn(
+                    "w-4 h-4 transition-transform duration-200",
+                    isMobileServicesOpen && "rotate-180"
+                  )} />
+                </button>
 
-              {isMobileServicesOpen && (
-                <div className="mt-1 ml-2 border-l-2 border-blue-200 pl-2 space-y-1">
-                  <Link
-                    href="/services"
-                    onClick={() => { setIsOpen(false); setIsMobileServicesOpen(false); }}
-                    className="block py-2 px-3 text-xs font-bold text-blue-600 hover:text-blue-700 uppercase tracking-wider"
-                  >
-                    View All Services →
-                  </Link>
-                  {services.map((service) => (
+                {isMobileServicesOpen && (
+                  <div className="mt-1 ml-2 border-l-2 border-blue-200 pl-2 space-y-1">
                     <Link
-                      key={service.slug}
-                      href={`/services/${service.slug}`}
+                      href="/services"
                       onClick={() => { setIsOpen(false); setIsMobileServicesOpen(false); }}
-                      className="block py-2.5 px-3 text-sm text-slate-700 bg-slate-50/50 hover:bg-slate-100 rounded-lg font-medium transition-all duration-200"
+                      className="block py-2 px-3 text-xs font-bold text-blue-600 hover:text-blue-700 uppercase tracking-wider"
                     >
-                      {service.shortTitle}
+                      View All Services →
                     </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+                    {services.map((service) => (
+                      <Link
+                        key={service.slug}
+                        href={`/services/${service.slug}`}
+                        onClick={() => { setIsOpen(false); setIsMobileServicesOpen(false); }}
+                        className="block py-2.5 px-3 text-sm text-slate-700 bg-slate-50/50 hover:bg-slate-100 rounded-lg font-medium transition-all duration-200"
+                      >
+                        {service.shortTitle}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-            {navLinks.slice(4).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="py-3 px-4 text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-xl font-semibold transition-all duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
-    </header>
+              {navLinks.slice(4).map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="py-3 px-4 text-slate-700 bg-slate-50 hover:bg-slate-100 rounded-xl font-semibold transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
+      </header>
+    </>
   );
 };
 
