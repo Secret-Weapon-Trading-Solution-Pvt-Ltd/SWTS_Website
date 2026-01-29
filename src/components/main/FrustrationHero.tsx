@@ -7,18 +7,18 @@ import { ArrowRight } from 'lucide-react';
 
 export const FrustrationHero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#E8EDF2] md:bg-transparent">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#E8EDF2] lg:bg-transparent">
       {/* Light background gradient - matching image background (desktop only) */}
       <div
-        className="absolute inset-0 hidden md:block"
+        className="absolute inset-0 hidden lg:block"
         style={{
           background: '#F0F4F7'
         }}
       />
 
-      {/* Background Image - Mobile: full width centered, Desktop: right side cover */}
+      {/* Background Image - Desktop: right side cover */}
       <div
-        className="absolute inset-0 bg-no-repeat animate-fade-in hidden md:block"
+        className="absolute inset-0 bg-no-repeat animate-fade-in hidden lg:block"
         style={{
           backgroundImage: `url(${getAssetPath('/bg_new.png')})`,
           backgroundSize: 'cover',
@@ -28,12 +28,12 @@ export const FrustrationHero: React.FC = () => {
           animationFillMode: 'both'
         }}
       />
-      {/* Mobile background - wave patterns visible, devices not cropped */}
+      {/* Mobile & Tablet background - wave patterns visible, devices not cropped */}
       <div
-        className="absolute inset-0 bg-no-repeat animate-fade-in md:hidden"
+        className="absolute inset-0 bg-no-repeat animate-fade-in lg:hidden"
         style={{
           backgroundImage: `url(${getAssetPath('/bg_new.png')})`,
-          backgroundSize: '180% 110%',
+          backgroundSize: '150% 110%',
           backgroundPosition: 'right 35%',
           animationDuration: '1s',
           animationDelay: '0.3s',
@@ -41,22 +41,22 @@ export const FrustrationHero: React.FC = () => {
         }}
       />
 
-      {/* Gradient overlay - top area on mobile for text readability */}
+      {/* Gradient overlay - top area on mobile/tablet for text readability */}
       <div
-        className="absolute inset-0 md:hidden"
+        className="absolute inset-0 lg:hidden"
         style={{
           background: 'linear-gradient(180deg, rgba(232,237,242,0.98) 0%, rgba(232,237,242,0.92) 25%, rgba(232,237,242,0.4) 40%, transparent 55%, transparent 100%)'
         }}
       />
       <div
-        className="absolute inset-0 hidden md:block"
+        className="absolute inset-0 hidden lg:block"
         style={{
           background: 'linear-gradient(90deg, #F8FAFC 0%, #F8FAFC 35%, rgba(248,250,252,0.5) 40%, transparent 45%)'
         }}
       />
 
       {/* Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] 2xl:max-w-[1600px] 3xl:max-w-[1920px] 4xl:max-w-[2400px] mx-auto px-5 sm:px-6 lg:px-10 xl:px-12 2xl:px-16 3xl:px-24 4xl:px-32 pt-24 pb-6 md:py-32 2xl:py-40 3xl:py-48 min-h-screen md:min-h-0 flex flex-col md:block justify-start">
+      <div className="relative z-10 w-full max-w-[1440px] 2xl:max-w-[1600px] 3xl:max-w-[1920px] 4xl:max-w-[2400px] mx-auto px-5 sm:px-6 lg:px-10 xl:px-12 2xl:px-16 3xl:px-24 4xl:px-32 pt-24 pb-6 lg:py-32 2xl:py-40 3xl:py-48 min-h-screen lg:min-h-0 flex flex-col lg:block justify-start">
         <div className="max-w-lg lg:max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl 4xl:max-w-4xl">
 
           {/* Micro label with accent line */}
@@ -117,7 +117,7 @@ export const FrustrationHero: React.FC = () => {
 
           {/* CTA Group - Desktop only (inline) */}
           <div
-            className="hidden md:flex flex-row flex-wrap items-center gap-5 2xl:gap-6 3xl:gap-8 opacity-0 animate-fade-in-up"
+            className="hidden lg:flex flex-row flex-wrap items-center gap-5 2xl:gap-6 3xl:gap-8 opacity-0 animate-fade-in-up"
             style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
           >
             {/* Primary CTA Button - Assessment */}
@@ -147,9 +147,9 @@ export const FrustrationHero: React.FC = () => {
           </div>
         </div>
 
-        {/* CTA Group - Mobile only (at bottom) */}
+        {/* CTA Group - Mobile & Tablet (at bottom) */}
         <div
-          className="flex md:hidden flex-col items-stretch gap-3 mt-auto pb-6 opacity-0 animate-fade-in-up"
+          className="flex lg:hidden flex-col items-stretch gap-3 mt-auto pb-6 opacity-0 animate-fade-in-up"
           style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}
         >
           {/* Primary CTA Button - Assessment */}
