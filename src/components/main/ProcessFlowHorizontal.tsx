@@ -60,32 +60,32 @@ const processSteps: ProcessStep[] = [
     id: 1,
     icon: ClipboardList,
     label: 'Assess',
-    title: 'Profile Assessment',
+    title: 'Strategy Understanding',
     description:
-      'We take a deep look at who you are as a trader. Your fears, your habits, your wins and losses — everything. Because before we build anything, we need to truly understand you. This is where your journey to stress-free trading begins.',
+      'We connect with the client through an online meeting, understand every detail of the strategy or project requirement, discuss rules, logic, and expectations clearly. Based on this, we create a detailed document together.',
     mediaSrc: '/Asses.mp4',
     mediaType: 'video',
     toolkit: [
-      { icon: Brain, label: 'Psychology Eval' },
-      { icon: LineChart, label: 'Risk Mapping' },
-      { icon: BarChart3, label: 'Performance Review' },
-      { icon: Eye, label: 'Pattern Detection' },
+      { icon: ClipboardList, label: 'Project Details' },
+      { icon: Settings, label: 'Defining Rules' },
+      { icon: Layers, label: 'Platform Selection' },
+      { icon: Target, label: 'Scope Finalization' },
     ],
   },
   {
     id: 2,
     icon: Search,
     label: 'Analyze',
-    title: 'Gap Analysis & Insights',
+    title: 'Quotation to Client',
     description:
-      'Here we find what\'s holding you back. Those hidden mistakes, missed opportunities, and patterns you never noticed. It\'s eye-opening — and the first step to trading without regret.',
+      'Once the document is ready, we review all requirements internally. We analyze the effort, complexity, and technical needs of the project. Then we prepare a clear quotation for the client. The quotation includes pricing and project timeline.',
     mediaSrc: '/analyze.jpg',
     mediaType: 'image',
     toolkit: [
-      { icon: Activity, label: 'Gap Detection' },
-      { icon: TrendingUp, label: 'Opportunity Scan' },
-      { icon: Cpu, label: 'AI Analysis' },
-      { icon: Database, label: 'Data Insights' },
+      { icon: ClipboardList, label: 'Requirement Analysis' },
+      { icon: Activity, label: 'Effort Estimation' },
+      { icon: BarChart3, label: 'Timeline Planning' },
+      { icon: CheckCircle2, label: 'Quote Approval' },
     ],
   },
   {
@@ -94,14 +94,14 @@ const processSteps: ProcessStep[] = [
     label: 'Design',
     title: 'Strategy Architecture',
     description:
-      'Now we craft a strategy that fits YOU — your life, your goals, your comfort zone. No cookie-cutter solutions. Just a plan that feels right and works for your unique situation.',
+      'After the client approves the quotation, we move to the design phase. We plan the full architecture of the strategy or system. This includes data flow, logic structure, and execution process. The goal is to keep the system stable and scalable.',
     mediaSrc: '/Design.jpg',
     mediaType: 'image',
     toolkit: [
-      { icon: Settings, label: 'Custom Rules' },
-      { icon: Layers, label: 'Risk Tuning' },
-      { icon: GitBranch, label: 'Entry Logic' },
-      { icon: Gauge, label: 'Position Sizing' },
+      { icon: GitBranch, label: 'Logic Structure' },
+      { icon: Activity, label: 'Data Flow' },
+      { icon: Zap, label: 'Execution Flow' },
+      { icon: Layers, label: 'Architecture Planning' },
     ],
   },
   {
@@ -110,14 +110,14 @@ const processSteps: ProcessStep[] = [
     label: 'Build',
     title: 'System Development',
     description:
-      'We turn your strategy into a smart system that works for you 24/7. No more sleepless nights watching charts. Your system handles it all — with safety nets built in.',
+      'Once the design is finalized, our team starts development. We build the system step by step as per the approved plan. During development, we stay in regular touch with the client. We clear doubts and share progress updates continuously.',
     mediaSrc: '/build.jpg',
     mediaType: 'image',
     toolkit: [
-      { icon: Code, label: 'Algorithm Dev' },
-      { icon: Zap, label: 'API Integration' },
-      { icon: Shield, label: 'Failsafe Logic' },
-      { icon: Activity, label: 'Live Monitoring' },
+      { icon: Code, label: 'Code Development' },
+      { icon: Layers, label: 'Module Integration' },
+      { icon: Eye, label: 'Client Reviews' },
+      { icon: RefreshCw, label: 'Progress Updates' },
     ],
   },
   {
@@ -126,14 +126,14 @@ const processSteps: ProcessStep[] = [
     label: 'Test',
     title: 'Rigorous Validation',
     description:
-      'Before risking a single rupee, we test everything. Again and again. You\'ll see exactly how your system performs — so you can trade with confidence, not hope.',
+      'After development is completed, we begin testing the system. First, testing is done on our side using paper trading or small capital. We check all scenarios to ensure the system works correctly. Once verified, we hand over the system to the client for real-account testing.',
     mediaSrc: '/Testing.mp4',
     mediaType: 'video',
     toolkit: [
-      { icon: BarChart3, label: 'Backtesting' },
-      { icon: RefreshCw, label: 'Monte Carlo' },
+      { icon: TestTube, label: 'Internal Testing' },
       { icon: Play, label: 'Paper Trading' },
-      { icon: CheckCircle2, label: 'Validation' },
+      { icon: Settings, label: 'Issue Fixing' },
+      { icon: CheckCircle2, label: 'Client Testing' },
     ],
   },
   {
@@ -142,14 +142,14 @@ const processSteps: ProcessStep[] = [
     label: 'Deploy',
     title: 'Deploy & Monitor',
     description:
-      'This is it — your system goes live. But you\'re never alone. We watch over it, fine-tune it, and make sure it keeps performing. Your success is our mission.',
+      'After successful testing and client approval, we deploy the system. Deployment is done on the client\'s local PC or server as required. We ensure everything is set up properly and runs smoothly. Post-deployment support is provided if needed.',
     mediaSrc: '/Deploy.mp4',
     mediaType: 'video',
     toolkit: [
-      { icon: Rocket, label: 'Live Deploy' },
-      { icon: LineChart, label: 'Real-time Stats' },
-      { icon: TrendingUp, label: 'Optimization' },
-      { icon: Lock, label: '24/7 Support' },
+      { icon: Rocket, label: 'Deployment Setup' },
+      { icon: Database, label: 'Server Setup' },
+      { icon: Zap, label: 'Go-Live Support' },
+      { icon: Eye, label: 'Ongoing Monitoring' },
     ],
   },
 ];
@@ -402,14 +402,12 @@ const ContentPanel: React.FC<ContentPanelProps> = ({ step, isTransitioning }) =>
                         className="
                           flex items-center gap-3 px-4 py-3 rounded-xl
                           bg-white/80 backdrop-blur-sm border border-slate-100
-                          hover:bg-white hover:shadow-lg hover:shadow-blue-500/10 hover:border-blue-200
-                          transition-all duration-300 ease-out group/item
                         "
                       >
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-100/80 flex items-center justify-center flex-shrink-0 group-hover/item:border-blue-200 transition-colors duration-300">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-100/80 flex items-center justify-center flex-shrink-0">
                           <Icon className="w-5 h-5 text-blue-600" strokeWidth={1.75} />
                         </div>
-                        <span className="text-sm font-semibold text-slate-700 group-hover/item:text-slate-900 transition-colors duration-300">
+                        <span className="text-sm font-semibold text-slate-700">
                           {item.label}
                         </span>
                       </div>
