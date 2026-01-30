@@ -27,7 +27,7 @@ export const FinalCTA: React.FC = () => {
 
           {/* Supporting text */}
           <p className="text-xl text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto">
-            Explore our projects and see how we build precision trading systems.
+            Explore our projects and see how we build algo trading systems.
           </p>
 
           {/* CTA Button */}

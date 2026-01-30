@@ -173,7 +173,7 @@ export const HowItWorks: React.FC = () => {
 
               <div className="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
                 {/* Icon */}
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center shadow-xl shadow-slate-500/10 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 mb-6 mt-4 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center shadow-xl shadow-slate-500/10 group-hover:scale-110 transition-transform duration-300">
                   <Compass className="w-8 h-8 text-white" strokeWidth={1.5} />
                 </div>
 
@@ -191,6 +191,7 @@ export const HowItWorks: React.FC = () => {
                     'Browse all products',
                     'View live demos',
                     'Read documentation',
+                    'Compare services',
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
@@ -220,10 +221,10 @@ export const HowItWorks: React.FC = () => {
 
                 {/* CTA Button */}
                 <Link
-                  href="/#products"
+                  href="/projects/"
                   className="group/btn w-full flex items-center justify-center gap-2 px-6 py-4 bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-900 hover:shadow-xl hover:shadow-slate-500/15 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  Explore Products
+                  Explore Projects
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
