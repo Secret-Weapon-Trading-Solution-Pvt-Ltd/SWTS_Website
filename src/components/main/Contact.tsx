@@ -39,7 +39,7 @@ export const Contact: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Let&apos;s Discuss Your Project
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-200 max-w-2xl mx-auto">
             Have a trading strategy you want to automate? We&apos;d love to hear from you.
           </p>
         </div>
@@ -57,7 +57,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <div className="font-semibold text-white group-hover:text-cyan-400 transition-colors">Email Us</div>
-                <div className="text-gray-500 text-sm">contact@swts.in</div>
+                <div className="text-gray-200 text-sm">contact@swts.in</div>
               </div>
             </a>
 
@@ -70,7 +70,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <div className="font-semibold text-white group-hover:text-emerald-400 transition-colors">Call Us</div>
-                <div className="text-gray-500 text-sm">+91 98765 43210</div>
+                <div className="text-gray-200 text-sm">+91 98765 43210</div>
               </div>
             </a>
 
@@ -80,7 +80,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <div className="font-semibold text-white">Location</div>
-                <div className="text-gray-500 text-sm">India</div>
+                <div className="text-gray-200 text-sm">India</div>
               </div>
             </div>
 
@@ -94,7 +94,7 @@ export const Contact: React.FC = () => {
               </div>
               <div className="relative z-10">
                 <h3 className="font-bold text-lg mb-2">Not sure where to start?</h3>
-                <p className="text-gray-400 text-sm mb-4">
+                <p className="text-gray-200 text-sm mb-4">
                   Take our free strategy assessment to discover your automation potential.
                 </p>
                 <Link
@@ -119,7 +119,7 @@ export const Contact: React.FC = () => {
                   <h3 className="text-xl font-bold text-white mb-2">
                     Message Sent!
                   </h3>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-gray-200 mb-6">
                     Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                   </p>
                   <button
@@ -213,7 +213,7 @@ export const Contact: React.FC = () => {
                     Send Message
                   </button>
 
-                  <p className="text-xs text-gray-500 text-center">
+                  <p className="text-xs text-gray-200 text-center">
                     We typically respond within 24 hours.
                   </p>
                 </form>

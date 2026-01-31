@@ -53,7 +53,7 @@ export const About: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
             Who We Are
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-200 max-w-2xl mx-auto">
             Secret Weapon Trading Solution is a specialized algorithmic trading development
             firm bridging the gap between profitable ideas and systematic execution.
           </p>
@@ -64,7 +64,7 @@ export const About: React.FC = () => {
           {/* Story */}
           <div>
             <h3 className="text-2xl font-bold text-white mb-6">Our Story</h3>
-            <div className="space-y-4 text-gray-400 leading-relaxed">
+            <div className="space-y-4 text-gray-200 leading-relaxed">
               <p>
                 Founded by traders who understood the challenges of manual execution,
                 SWTS was born from a simple realization: great strategies often fail
@@ -85,15 +85,15 @@ export const About: React.FC = () => {
             <div className="grid grid-cols-3 gap-4 mt-10">
               <div className="text-center p-5 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-2xl border border-amber-500/20">
                 <div className="text-3xl font-bold text-amber-400">50+</div>
-                <div className="text-sm text-gray-400 mt-1">Projects</div>
+                <div className="text-sm text-gray-200 mt-1">Projects</div>
               </div>
               <div className="text-center p-5 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-2xl border border-emerald-500/20">
                 <div className="text-3xl font-bold text-emerald-400">4+</div>
-                <div className="text-sm text-gray-400 mt-1">Years</div>
+                <div className="text-sm text-gray-200 mt-1">Years</div>
               </div>
               <div className="text-center p-5 bg-gradient-to-br from-sky-500/10 to-blue-500/10 rounded-2xl border border-sky-500/20">
                 <div className="text-3xl font-bold text-sky-400">100%</div>
-                <div className="text-sm text-gray-400 mt-1">Custom</div>
+                <div className="text-sm text-gray-200 mt-1">Custom</div>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export const About: React.FC = () => {
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                     <h4 className="font-bold text-white mb-1">{value.title}</h4>
-                    <p className="text-sm text-gray-400">{value.description}</p>
+                    <p className="text-sm text-gray-200">{value.description}</p>
                   </div>
                 );
               })}
@@ -134,7 +134,7 @@ export const About: React.FC = () => {
           <div className="relative z-10">
             <div className="text-center mb-10">
               <h3 className="text-2xl font-bold text-white mb-2">Platform Expertise</h3>
-              <p className="text-gray-400">
+              <p className="text-gray-200">
                 We work across all major trading platforms and languages
               </p>
             </div>
@@ -151,7 +151,7 @@ export const About: React.FC = () => {
                       <Icon className="w-6 h-6 text-amber-400" />
                     </div>
                     <h4 className="font-bold text-white mb-1">{platform.name}</h4>
-                    <p className="text-sm text-gray-500">{platform.desc}</p>
+                    <p className="text-sm text-gray-200">{platform.desc}</p>
                   </div>
                 );
               })}

@@ -31,56 +31,11 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
       <div className="absolute inset-0">
         {hasWaveBackground ? (
           <>
-            {/* Wave at top - shorter, just behind navbar */}
-            <div className={`absolute top-0 left-0 right-0 h-[180px] ${
-              isBacktesting
-                ? 'bg-gradient-to-r from-indigo-400 via-purple-400 to-violet-400'
-                : isOptimization
-                ? 'bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600'
-                : isScreener
-                ? 'bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-600'
-                : 'bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600'
-            }`}>
-              {/* Wave shape at bottom */}
-              <svg
-                className="absolute -bottom-1 left-0 w-full"
-                viewBox="0 0 1440 80"
-                preserveAspectRatio="none"
-                style={{ height: '80px' }}
-              >
-                <path
-                  d="M0,40 C320,80 640,0 960,40 C1120,60 1280,60 1440,40 L1440,80 L0,80 Z"
-                  fill="white"
-                />
-              </svg>
-
-              {/* Subtle pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <pattern id="wave-pattern" width="80" height="80" patternUnits="userSpaceOnUse">
-                      <circle cx="40" cy="40" r="1" fill="white"/>
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#wave-pattern)" />
-                </svg>
-              </div>
-
-              {/* Animated subtle glow */}
-              <motion.div
-                className={`absolute top-0 right-0 w-[300px] h-[200px] rounded-full blur-3xl ${
-                  isBacktesting
-                    ? 'bg-gradient-to-br from-violet-400/30 to-purple-400/20'
-                    : isOptimization
-                    ? 'bg-gradient-to-br from-indigo-400/30 to-blue-400/20'
-                    : isScreener
-                    ? 'bg-gradient-to-br from-cyan-400/30 to-blue-400/20'
-                    : 'bg-gradient-to-br from-cyan-400/30 to-blue-400/20'
-                }`}
-                animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              />
-            </div>
+            {/* Header gradient bar - clean straight edge - consistent brand colors */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[120px]"
+              style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
+            />
 
             {/* Light colorful accents on white section */}
             <motion.div
@@ -146,24 +101,29 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
       </div>
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24">
-        {/* Back link */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <Link
-            href="/services"
-            className="inline-flex items-center transition-colors mb-8 group text-slate-600 hover:text-slate-900"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2 transform group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm font-medium">All Services</span>
-          </Link>
-        </motion.div>
-
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left column - Content */}
           <div>
+            {/* Back link - above badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4 }}
+              className="mb-4"
+            >
+              <Link
+                href="/services"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 group ${
+                  hasWaveBackground
+                    ? 'bg-white/90 text-slate-700 hover:bg-white hover:shadow-md border border-slate-200'
+                    : 'bg-slate-100 text-slate-900 hover:bg-slate-200'
+                }`}
+              >
+                <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+                All Services
+              </Link>
+            </motion.div>
+
             {/* Service badge */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -171,17 +131,10 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="mb-6"
             >
-              <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-lg ${
-                isDarkTheme
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
-                  : isBacktesting
-                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white'
-                  : isOptimization
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white'
-                  : isScreener
-                  ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white'
-                  : `bg-gradient-to-r ${service.gradientFrom} ${service.gradientTo} text-white`
-              }`}>
+              <span
+                className="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-lg text-white"
+                style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
+              >
                 {service.shortTitle}
               </span>
             </motion.div>
@@ -398,7 +351,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                 ) : (
                   <div className="p-8 lg:p-10">
                     <div className="text-center mb-8">
-                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
+                      <span className="text-xs font-semibold text-slate-800 uppercase tracking-widest">
                         Powered By
                       </span>
                     </div>
@@ -448,7 +401,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                                   <text x="100" y="115" textAnchor="middle" fill="#0f172a" fontSize="50" fontWeight="bold" fontFamily="Arial, sans-serif">Z</text>
                                 </svg>
                               ) : (
-                                <div className="text-4xl font-bold text-slate-600">
+                                <div className="text-4xl font-bold text-slate-900">
                                   {service.brandLogos[0].name.charAt(0)}
                                 </div>
                               )}
@@ -511,7 +464,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                                       </g>
                                     </svg>
                                   ) : (
-                                    <span className="text-xl font-bold text-slate-600">
+                                    <span className="text-xl font-bold text-slate-900">
                                       {logo.name.charAt(0)}
                                     </span>
                                   )}
@@ -527,11 +480,11 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                     ) : (
                       <div className="text-center py-8">
                         <div className={`w-24 h-24 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${service.gradientFrom} ${service.gradientTo} opacity-20 flex items-center justify-center`}>
-                          <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-12 h-12 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                           </svg>
                         </div>
-                        <p className="text-slate-500">Expert consulting & training</p>
+                        <p className="text-slate-900">Expert consulting & training</p>
                       </div>
                     )}
 

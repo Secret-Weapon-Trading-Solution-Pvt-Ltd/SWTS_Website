@@ -45,7 +45,7 @@ export const HowItWorks: React.FC = () => {
           </h2>
 
           {/* Subheading */}
-          <p className="text-base lg:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-lg text-slate-900 max-w-xl mx-auto leading-relaxed">
             Six steps to transform your trading strategy into a live automated system
           </p>
         </div>
@@ -84,7 +84,7 @@ export const HowItWorks: React.FC = () => {
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
               Ready to Begin?
             </h3>
-            <p className="text-slate-500 text-base lg:text-lg max-w-md mx-auto">
+            <p className="text-slate-900 text-base lg:text-lg max-w-md mx-auto">
               Pick the option that works best for you
             </p>
           </div>
@@ -118,7 +118,7 @@ export const HowItWorks: React.FC = () => {
                 <h4 className="text-xl lg:text-2xl font-bold text-slate-800 mb-3">
                   Start with Assessment
                 </h4>
-                <p className="text-slate-500 mb-6 leading-relaxed">
+                <p className="text-slate-900 mb-6 leading-relaxed">
                   Get personalized recommendations based on your trading profile and goals.
                 </p>
 
@@ -134,13 +134,13 @@ export const HowItWorks: React.FC = () => {
                       <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center flex-shrink-0">
                         <Check className="w-3 h-3 text-white" strokeWidth={3} />
                       </div>
-                      <span className="text-slate-600 text-sm font-medium">{item}</span>
+                      <span className="text-slate-900 text-sm font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Meta info */}
-                <div className="flex items-center gap-4 mb-6 text-xs text-slate-400">
+                <div className="flex items-center gap-4 mb-6 text-xs text-slate-800">
                   <span className="flex items-center gap-1.5">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -181,7 +181,7 @@ export const HowItWorks: React.FC = () => {
                 <h4 className="text-xl lg:text-2xl font-bold text-slate-800 mb-3">
                   Explore Platform
                 </h4>
-                <p className="text-slate-500 mb-6 leading-relaxed">
+                <p className="text-slate-900 mb-6 leading-relaxed">
                   Browse our tools and services at your own pace. No commitment required.
                 </p>
 
@@ -195,15 +195,15 @@ export const HowItWorks: React.FC = () => {
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-slate-500" strokeWidth={3} />
+                        <Check className="w-3 h-3 text-slate-900" strokeWidth={3} />
                       </div>
-                      <span className="text-slate-600 text-sm font-medium">{item}</span>
+                      <span className="text-slate-900 text-sm font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Meta info */}
-                <div className="flex items-center gap-4 mb-6 text-xs text-slate-400">
+                <div className="flex items-center gap-4 mb-6 text-xs text-slate-800">
                   <span className="flex items-center gap-1.5">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

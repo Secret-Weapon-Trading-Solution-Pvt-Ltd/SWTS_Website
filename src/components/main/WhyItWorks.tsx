@@ -81,7 +81,7 @@ const PillarCard: React.FC<{
       </h4>
 
       {/* Description */}
-      <p className="text-slate-600 leading-relaxed max-w-[320px] text-base">
+      <p className="text-slate-900 leading-relaxed max-w-[320px] text-base">
         {pillar.description}
       </p>
     </div>
@@ -185,7 +185,7 @@ export const WhyItWorks: React.FC = () => {
           </h2>
 
           {/* Subtext */}
-          <p className="text-base lg:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-lg text-slate-900 max-w-xl mx-auto leading-relaxed">
             Test, refine, and deploy—the complete journey from strategy concept to live automation.
           </p>
         </div>

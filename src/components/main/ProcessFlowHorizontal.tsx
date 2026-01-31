@@ -227,7 +227,7 @@ const HorizontalStepButton: React.FC<HorizontalStepProps> = ({
           <Icon
             className={`
               w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 transition-all duration-300
-              ${isActive || isCompleted ? 'text-white' : 'text-slate-400 group-hover:text-blue-500'}
+              ${isActive || isCompleted ? 'text-white' : 'text-slate-800 group-hover:text-blue-500'}
             `}
             strokeWidth={1.5}
           />
@@ -242,7 +242,7 @@ const HorizontalStepButton: React.FC<HorizontalStepProps> = ({
                 ? 'bg-gradient-to-br from-blue-400 to-blue-600 text-white'
                 : isCompleted
                   ? 'bg-blue-400 text-white'
-                  : 'bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600'
+                  : 'bg-slate-100 text-slate-900 group-hover:bg-blue-100 group-hover:text-blue-600'
               }
             `}
           >
@@ -255,7 +255,7 @@ const HorizontalStepButton: React.FC<HorizontalStepProps> = ({
       <span
         className={`
           text-sm sm:text-base lg:text-lg font-bold transition-all duration-300 text-center
-          ${isActive ? 'text-blue-600' : isCompleted ? 'text-blue-500' : 'text-slate-500 group-hover:text-slate-700'}
+          ${isActive ? 'text-blue-600' : isCompleted ? 'text-blue-500' : 'text-slate-900 group-hover:text-slate-700'}
         `}
       >
         {step.label}
@@ -265,7 +265,7 @@ const HorizontalStepButton: React.FC<HorizontalStepProps> = ({
       <span
         className={`
           hidden sm:block text-xs lg:text-sm mt-1 transition-all duration-300 text-center max-w-[120px] lg:max-w-[150px]
-          ${isActive ? 'text-blue-500/80' : 'text-slate-400'}
+          ${isActive ? 'text-blue-500/80' : 'text-slate-800'}
         `}
       >
         {step.title}
@@ -373,7 +373,7 @@ const ContentPanel: React.FC<ContentPanelProps> = ({ step, isTransitioning }) =>
                   Step {String(step.id).padStart(2, '0')}
                 </span>
                 <span className="w-2 h-2 rounded-full bg-gradient-to-br from-blue-500 to-blue-400" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-900">
                   {step.label}
                 </span>
               </div>
@@ -384,13 +384,13 @@ const ContentPanel: React.FC<ContentPanelProps> = ({ step, isTransitioning }) =>
               </h3>
 
               {/* Description */}
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-900 leading-relaxed mb-8">
                 {step.description}
               </p>
 
               {/* Capabilities Grid */}
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-800 mb-4">
                   Capabilities
                 </p>
                 <div className="grid grid-cols-2 gap-3">
@@ -500,7 +500,7 @@ export const ProcessFlowHorizontal: React.FC = () => {
           `}
           aria-label="Scroll left"
         >
-          <ChevronLeft className="w-5 h-5 text-slate-600" />
+          <ChevronLeft className="w-5 h-5 text-slate-900" />
         </button>
 
         {/* Right scroll arrow - mobile only */}
@@ -515,7 +515,7 @@ export const ProcessFlowHorizontal: React.FC = () => {
           `}
           aria-label="Scroll right"
         >
-          <ChevronRight className="w-5 h-5 text-slate-600" />
+          <ChevronRight className="w-5 h-5 text-slate-900" />
         </button>
 
         {/* Gradient fade on edges - mobile only */}

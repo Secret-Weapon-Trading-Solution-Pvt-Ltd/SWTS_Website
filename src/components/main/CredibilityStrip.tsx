@@ -16,7 +16,7 @@ export const CredibilityStrip: React.FC = () => {
           {stats.map((stat, i) => (
             <div key={i} className="flex flex-col sm:flex-row items-center sm:gap-3 text-center">
               <span className="text-xl sm:text-3xl lg:text-4xl font-bold text-slate-900">{stat.value}</span>
-              <span className="text-sm sm:text-base lg:text-lg text-slate-800 font-medium leading-tight">{stat.label}</span>
+              <span className="text-sm sm:text-base lg:text-lg text-slate-900 font-medium leading-tight">{stat.label}</span>
             </div>
           ))}
         </div>

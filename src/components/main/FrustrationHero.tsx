@@ -92,7 +92,7 @@ export const FrustrationHero: React.FC = () => {
             <span
               className="block mt-1 sm:mt-1.5 lg:mt-0.5 xl:mt-1 2xl:mt-1 3xl:mt-1.5 text-[24px] sm:text-[26px] lg:text-[26px] xl:text-[32px] 2xl:text-[38px] 3xl:text-[46px] 4xl:text-[56px] leading-[28px] sm:leading-[30px] lg:leading-[30px] xl:leading-[36px] 2xl:leading-[42px] 3xl:leading-[50px] 4xl:leading-[62px] tracking-[-0.02em] opacity-0 animate-fade-in-up"
               style={{
-                color: '#64748B',
+                color: '#1e293b',
                 fontWeight: 500,
                 animationDelay: '0.5s',
                 animationFillMode: 'forwards'
@@ -106,7 +106,7 @@ export const FrustrationHero: React.FC = () => {
           <p
             className="text-[14px] sm:text-[15px] lg:text-[15px] xl:text-[17px] 2xl:text-[20px] 3xl:text-[24px] 4xl:text-[28px] leading-[20px] sm:leading-[22px] lg:leading-[20px] xl:leading-[24px] 2xl:leading-[28px] 3xl:leading-[32px] 4xl:leading-[38px] mb-0 md:mb-8 sm:mb-10 lg:mb-10 2xl:mb-12 3xl:mb-14 max-w-[300px] sm:max-w-xl lg:max-w-xl 2xl:max-w-2xl 3xl:max-w-3xl opacity-0 animate-fade-in-up"
             style={{
-              color: '#475569',
+              color: '#1e293b',
               fontWeight: 400,
               animationDelay: '0.6s',
               animationFillMode: 'forwards'

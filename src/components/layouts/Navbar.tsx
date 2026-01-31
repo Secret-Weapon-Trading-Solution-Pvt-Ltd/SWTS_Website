@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
                       "block text-sm 2xl:text-base 3xl:text-lg font-semibold",
                       isServicePageActive(service.slug) ? "text-blue-700" : "text-slate-800"
                     )}>{service.shortTitle}</span>
-                    <span className="block text-xs 2xl:text-sm 3xl:text-base text-slate-500 mt-0.5">{service.oneLiner}</span>
+                    <span className="block text-xs 2xl:text-sm 3xl:text-base text-slate-900 mt-0.5">{service.oneLiner}</span>
                   </Link>
                 ))}
               </div>
