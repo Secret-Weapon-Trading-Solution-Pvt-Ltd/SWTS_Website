@@ -8,6 +8,8 @@ interface StrategyOverviewProps {
   service: Service;
 }
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 // Animated background pattern
 const BackgroundPattern = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -35,9 +37,9 @@ const BackgroundPattern = () => (
   </div>
 );
 
-// Decorative SVG illustration for the section
+// Decorative SVG illustration for the section - Automation Flow Diagram
 const StrategyIllustration = () => (
-  <svg viewBox="0 0 400 300" className="w-full h-full">
+  <svg viewBox="0 0 400 320" className="w-full h-full">
     <defs>
       <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#3B82F6" />
@@ -47,162 +49,246 @@ const StrategyIllustration = () => (
         <stop offset="0%" stopColor="#06B6D4" />
         <stop offset="100%" stopColor="#3B82F6" />
       </linearGradient>
-      <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#8B5CF6" />
-        <stop offset="100%" stopColor="#6366F1" />
+      <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#10B981" />
+        <stop offset="100%" stopColor="#059669" />
       </linearGradient>
+      <filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" floodOpacity="0.1"/>
+      </filter>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
     </defs>
 
-    {/* Central brain/strategy icon */}
+    {/* Background decorative elements */}
+    <circle cx="200" cy="160" r="140" fill="none" stroke="#E0E7FF" strokeWidth="1" strokeDasharray="4,6" opacity="0.5"/>
+    <circle cx="200" cy="160" r="100" fill="none" stroke="#E0E7FF" strokeWidth="1" opacity="0.3"/>
+
+    {/* Step 1: Your Rules - Left Card */}
+    <motion.g
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <rect x="20" y="70" width="100" height="120" rx="12" fill="white" filter="url(#cardShadow)" stroke="#E0E7FF" strokeWidth="1"/>
+      <rect x="20" y="70" width="100" height="40" rx="12" fill="url(#cyanGrad)"/>
+      <rect x="20" y="98" width="100" height="12" fill="url(#cyanGrad)"/>
+
+      {/* Icon - Document */}
+      <rect x="58" y="80" width="24" height="20" rx="2" fill="white" opacity="0.9"/>
+      <path d="M62 86 L78 86 M62 90 L74 90 M62 94 L78 94" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round"/>
+
+      {/* Text lines representing rules */}
+      <rect x="32" y="125" width="50" height="6" rx="3" fill="#E0E7FF"/>
+      <rect x="32" y="137" width="70" height="6" rx="3" fill="#E0E7FF"/>
+      <rect x="32" y="149" width="40" height="6" rx="3" fill="#E0E7FF"/>
+      <rect x="32" y="161" width="60" height="6" rx="3" fill="#E0E7FF"/>
+
+      {/* Label */}
+      <text x="70" y="205" textAnchor="middle" fill="#64748B" fontSize="11" fontWeight="600">Your Rules</text>
+    </motion.g>
+
+    {/* Animated Arrow 1 */}
+    <motion.g
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+    >
+      <motion.path
+        d="M125 130 L155 130"
+        stroke="url(#blueGrad)"
+        strokeWidth="2"
+        fill="none"
+        strokeDasharray="6,4"
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      />
+      <motion.polygon
+        points="155,125 165,130 155,135"
+        fill="#3B82F6"
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.3, delay: 1 }}
+      />
+    </motion.g>
+
+    {/* Step 2: SWTS Process - Center (Main Hub) */}
     <motion.g
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <circle cx="200" cy="150" r="60" fill="url(#blueGrad)" opacity="0.1"/>
-      <circle cx="200" cy="150" r="45" fill="url(#blueGrad)" opacity="0.2"/>
-      <circle cx="200" cy="150" r="30" fill="url(#blueGrad)"/>
+      {/* Outer glow ring */}
+      <circle cx="200" cy="130" r="52" fill="none" stroke="url(#blueGrad)" strokeWidth="2" opacity="0.3"/>
+      <circle cx="200" cy="130" r="45" fill="url(#blueGrad)" filter="url(#glow)"/>
 
-      {/* Brain pattern inside */}
-      <path
-        d="M185 145 Q190 135, 200 138 Q210 135, 215 145 M185 155 Q190 165, 200 162 Q210 165, 215 155"
-        stroke="white"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
+      {/* Gear/Cog icon */}
+      <g fill="white">
+        <circle cx="200" cy="130" r="12" fill="none" stroke="white" strokeWidth="3"/>
+        <circle cx="200" cy="130" r="5" fill="white"/>
+        {/* Gear teeth */}
+        <rect x="197" y="108" width="6" height="10" rx="2"/>
+        <rect x="197" y="142" width="6" height="10" rx="2"/>
+        <rect x="175" y="127" width="10" height="6" rx="2"/>
+        <rect x="215" y="127" width="10" height="6" rx="2"/>
+        <rect x="180" y="112" width="8" height="6" rx="2" transform="rotate(-45 184 115)"/>
+        <rect x="212" y="112" width="8" height="6" rx="2" transform="rotate(45 216 115)"/>
+        <rect x="180" y="142" width="8" height="6" rx="2" transform="rotate(45 184 145)"/>
+        <rect x="212" y="142" width="8" height="6" rx="2" transform="rotate(-45 216 145)"/>
+      </g>
+
+      {/* Orbiting dot animation */}
+      <motion.circle
+        r="4"
+        fill="#06B6D4"
+        animate={{
+          cx: [200, 252, 200, 148, 200],
+          cy: [78, 130, 182, 130, 78]
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
       />
-      <circle cx="200" cy="150" r="3" fill="white"/>
+
+      {/* Label */}
+      <text x="200" y="200" textAnchor="middle" fill="#3B82F6" fontSize="12" fontWeight="700">SWTS</text>
+      <text x="200" y="214" textAnchor="middle" fill="#64748B" fontSize="10">Automation</text>
     </motion.g>
 
-    {/* Connecting nodes - Input */}
+    {/* Animated Arrow 2 */}
     <motion.g
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.5 }}
     >
-      <circle cx="80" cy="100" r="25" fill="url(#cyanGrad)" opacity="0.2"/>
-      <circle cx="80" cy="100" r="18" fill="url(#cyanGrad)"/>
-      <text x="80" y="105" textAnchor="middle" fill="white" fontSize="14" fontWeight="bold">$</text>
-
-      {/* Connection line */}
       <motion.path
-        d="M105 100 Q140 100, 155 130"
-        stroke="url(#cyanGrad)"
+        d="M235 130 L265 130"
+        stroke="url(#greenGrad)"
         strokeWidth="2"
         fill="none"
-        strokeDasharray="5,5"
+        strokeDasharray="6,4"
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.3 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
       />
-    </motion.g>
-
-    {/* Connecting nodes - Rules */}
-    <motion.g
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-    >
-      <circle cx="120" cy="220" r="25" fill="url(#purpleGrad)" opacity="0.2"/>
-      <circle cx="120" cy="220" r="18" fill="url(#purpleGrad)"/>
-      <path d="M112 215 L128 215 M112 220 L125 220 M112 225 L128 225" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-
-      <motion.path
-        d="M145 210 Q165 190, 175 170"
-        stroke="url(#purpleGrad)"
-        strokeWidth="2"
-        fill="none"
-        strokeDasharray="5,5"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
+      <motion.polygon
+        points="265,125 275,130 265,135"
+        fill="#10B981"
+        initial={{ opacity: 0, x: -10 }}
+        whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.4 }}
+        transition={{ duration: 0.3, delay: 1.2 }}
       />
     </motion.g>
 
-    {/* Output - Automation */}
+    {/* Step 3: Automated System - Right Card */}
     <motion.g
-      initial={{ opacity: 0, x: 20 }}
+      initial={{ opacity: 0, x: 30 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.4 }}
     >
-      <circle cx="320" cy="120" r="25" fill="url(#blueGrad)" opacity="0.2"/>
-      <circle cx="320" cy="120" r="18" fill="url(#blueGrad)"/>
-      <path d="M312 120 L320 115 L328 120 L320 125 Z" fill="white"/>
+      <rect x="280" y="70" width="100" height="120" rx="12" fill="white" filter="url(#cardShadow)" stroke="#D1FAE5" strokeWidth="1"/>
+      <rect x="280" y="70" width="100" height="40" rx="12" fill="url(#greenGrad)"/>
+      <rect x="280" y="98" width="100" height="12" fill="url(#greenGrad)"/>
 
-      <motion.path
-        d="M245 135 Q280 120, 295 120"
-        stroke="url(#blueGrad)"
-        strokeWidth="2"
-        fill="none"
-        strokeDasharray="5,5"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.5 }}
-      />
+      {/* Icon - Play/Running */}
+      <circle cx="330" cy="90" r="12" fill="white" opacity="0.9"/>
+      <polygon points="326,84 326,96 338,90" fill="#10B981"/>
+
+      {/* Status indicators */}
+      <g>
+        <circle cx="300" cy="128" r="4" fill="#10B981"/>
+        <text x="310" y="131" fill="#374151" fontSize="9">Running</text>
+      </g>
+      <g>
+        <rect x="292" y="142" width="76" height="8" rx="4" fill="#E5E7EB"/>
+        <motion.rect
+          x="292" y="142" width="60" height="8" rx="4" fill="url(#greenGrad)"
+          initial={{ width: 0 }}
+          whileInView={{ width: 60 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, delay: 1 }}
+        />
+      </g>
+      <g>
+        <rect x="292" y="156" width="76" height="8" rx="4" fill="#E5E7EB"/>
+        <motion.rect
+          x="292" y="156" width="50" height="8" rx="4" fill="#06B6D4"
+          initial={{ width: 0 }}
+          whileInView={{ width: 50 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 1.2 }}
+        />
+      </g>
+      <g>
+        <rect x="292" y="170" width="76" height="8" rx="4" fill="#E5E7EB"/>
+        <motion.rect
+          x="292" y="170" width="68" height="8" rx="4" fill="#8B5CF6"
+          initial={{ width: 0 }}
+          whileInView={{ width: 68 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4, delay: 1.4 }}
+        />
+      </g>
+
+      {/* Label */}
+      <text x="330" y="205" textAnchor="middle" fill="#64748B" fontSize="11" fontWeight="600">24/7 System</text>
     </motion.g>
 
-    {/* Output - Results */}
+    {/* Bottom Stats Row */}
     <motion.g
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
     >
-      <circle cx="300" cy="200" r="25" fill="#10B981" opacity="0.2"/>
-      <circle cx="300" cy="200" r="18" fill="#10B981"/>
-      <path d="M292 200 L298 206 L310 194" stroke="white" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      {/* Stat 1 */}
+      <g>
+        <circle cx="80" cy="270" r="20" fill="#EFF6FF"/>
+        <text x="80" y="267" textAnchor="middle" fill="#3B82F6" fontSize="12" fontWeight="bold">100%</text>
+        <text x="80" y="279" textAnchor="middle" fill="#3B82F6" fontSize="7">Accurate</text>
+        <text x="80" y="300" textAnchor="middle" fill="#64748B" fontSize="9">Rule Execution</text>
+      </g>
 
-      <motion.path
-        d="M230 165 Q260 180, 275 190"
-        stroke="#10B981"
-        strokeWidth="2"
-        fill="none"
-        strokeDasharray="5,5"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.6 }}
-      />
+      {/* Stat 2 */}
+      <g>
+        <circle cx="200" cy="270" r="20" fill="#ECFDF5"/>
+        <text x="200" y="267" textAnchor="middle" fill="#10B981" fontSize="12" fontWeight="bold">24/7</text>
+        <text x="200" y="279" textAnchor="middle" fill="#10B981" fontSize="7">Active</text>
+        <text x="200" y="300" textAnchor="middle" fill="#64748B" fontSize="9">Market Coverage</text>
+      </g>
+
+      {/* Stat 3 */}
+      <g>
+        <circle cx="320" cy="270" r="20" fill="#F5F3FF"/>
+        <text x="320" y="267" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontWeight="bold">&lt;500ms</text>
+        <text x="320" y="279" textAnchor="middle" fill="#8B5CF6" fontSize="7">Speed</text>
+        <text x="320" y="300" textAnchor="middle" fill="#64748B" fontSize="9">Execution Speed</text>
+      </g>
     </motion.g>
-
-    {/* Floating particles */}
-    {[...Array(8)].map((_, i) => (
-      <motion.circle
-        key={i}
-        cx={50 + Math.random() * 300}
-        cy={50 + Math.random() * 200}
-        r={2 + Math.random() * 3}
-        fill="#3B82F6"
-        opacity={0.3}
-        animate={{
-          y: [0, -10, 0],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{
-          duration: 3 + Math.random() * 2,
-          repeat: Infinity,
-          delay: Math.random() * 2
-        }}
-      />
-    ))}
   </svg>
 );
 
 const overviewData = {
   whatItIs: {
     title: "What is Strategy Automation?",
-    description: "Strategy Automation transforms your proven trading rules into fully automated execution systems. We take your manual trading logic—the entries, exits, position sizing, and risk rules you've developed—and convert them into code that executes 24/7 without human intervention.",
+    description: "Strategy Automation transforms your proven trading rules into fully automated execution systems. We take your manual trading logic—the entries, exits, position sizing, and risk rules you've defined—and convert them into code that executes 24/7 without human intervention.",
     highlights: [
       "Your rules, precisely coded",
       "No programming knowledge required",
-      "Full backtesting included",
+      "24/7 automated execution",
       "Production-ready systems"
     ]
   },
@@ -210,23 +296,23 @@ const overviewData = {
     title: "Why It Matters",
     description: "Manual trading has inherent limitations—emotional interference, execution delays, and the impossibility of monitoring markets around the clock. Automation eliminates these barriers, letting your strategy perform exactly as designed, every time.",
     stats: [
-      { value: "0", label: "Emotional Errors" },
-      { value: "24/7", label: "Market Coverage" },
-      { value: "<1s", label: "Execution Speed" }
+      { value: "0", label: "Emotional Errors", description: "No fear, greed, or hesitation" },
+      { value: "24/7", label: "Market Coverage", description: "Never miss a trading opportunity" },
+      { value: "<500ms", label: "Execution Speed", description: "Faster than any manual trade" }
     ]
   },
   whoShouldUse: {
     title: "Who Should Use This?",
     profiles: [
       {
+        icon: TrendingUp,
+        title: "Novice Traders",
+        description: "You're profitable but manual execution is limiting your scale and consistency"
+      },
+      {
         icon: Target,
         title: "Systematic Traders",
         description: "You have clear, rule-based strategies but lack the technical skills to automate them"
-      },
-      {
-        icon: TrendingUp,
-        title: "Active Traders",
-        description: "You're profitable but manual execution is limiting your scale and consistency"
       },
       {
         icon: Users,
@@ -237,85 +323,83 @@ const overviewData = {
   },
   benefits: [
     {
-      icon: Zap,
-      title: "Lightning-Fast Execution",
-      description: "Execute trades in milliseconds, not minutes. Never miss an entry due to slow manual input."
-    },
-    {
       icon: Target,
-      title: "Perfect Consistency",
-      description: "Your rules execute exactly as designed, every single time. No deviation, no exceptions."
-    },
-    {
-      icon: CheckCircle,
-      title: "Validated Performance",
-      description: "Every strategy is backtested against historical data before going live. Know your edge."
+      title: "Consistency",
+      description: "Rules execute exactly as designed"
     },
     {
       icon: TrendingUp,
       title: "Scalable Growth",
-      description: "Monitor 50+ symbols as easily as 5. Scale your strategy without scaling your screen time."
+      description: "Scale without scaling screen time"
     }
   ]
 };
 
 export default function StrategyOverview({ service }: StrategyOverviewProps) {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-slate-50/50 to-white overflow-hidden">
+    <section className="relative py-14 bg-gradient-to-b from-white via-slate-50/50 to-white overflow-hidden">
       <BackgroundPattern />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-14"
         >
-          <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
+          >
+            <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
             Understanding Strategy Automation
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-navy-900 mb-6">
-            Transform Your Trading
+          </motion.span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Transform Your</span>{' '}
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Trading</span>
           </h2>
-          <p className="text-xl text-navy-600 max-w-3xl mx-auto">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Everything you need to know about automating your trading strategy
           </p>
         </motion.div>
 
         {/* What It Is + Illustration */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-14">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-4">
-              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full text-blue-700 text-sm font-semibold mb-5 border border-blue-200/50 shadow-sm">
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></span>
               What It Is
             </div>
-            <h3 className="text-3xl font-bold text-navy-900 mb-6">
+            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-blue-900 to-navy-800 bg-clip-text text-transparent mb-6">
               {overviewData.whatItIs.title}
             </h3>
-            <p className="text-lg text-navy-600 leading-relaxed mb-8">
+            <p className="text-lg text-black leading-relaxed mb-8">
               {overviewData.whatItIs.description}
             </p>
             <div className="grid grid-cols-2 gap-4">
               {overviewData.whatItIs.highlights.map((highlight, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm border border-slate-100"
+                  className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-200"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-lg flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-white" />
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md bg-gradient-to-br ${
+                    index === 0 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
+                    index === 1 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
+                    index === 2 ? 'from-cyan-500 to-blue-600 shadow-cyan-500/25' :
+                    'from-emerald-500 to-teal-600 shadow-emerald-500/25'
+                  }`}>
+                    <CheckCircle className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-sm font-medium text-navy-800">{highlight}</span>
-                </motion.div>
+                  <span className="text-sm font-semibold text-navy-800">{highlight}</span>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -325,10 +409,20 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative flex justify-center"
           >
-            <div className="aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 border border-blue-100">
-              <StrategyIllustration />
+            {/* Decorative glow behind */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-blue-400/20 via-indigo-400/15 to-purple-400/20 rounded-[2rem] blur-2xl" />
+
+            <div className="relative aspect-[3/2] w-full max-w-2xl bg-gradient-to-br from-white via-blue-50/50 to-indigo-50 rounded-3xl pt-4 pb-6 px-6 lg:pt-5 lg:pb-8 lg:px-8 border border-white/80 shadow-xl shadow-blue-900/10 overflow-hidden">
+              {/* Subtle pattern */}
+              <div className="absolute inset-0 opacity-30">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-transparent rounded-full blur-2xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-indigo-400/20 to-transparent rounded-full blur-2xl" />
+              </div>
+              <div className="relative h-full">
+                <StrategyIllustration />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -338,38 +432,85 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative mb-24"
+          className="relative mb-14"
         >
-          <div className="bg-white rounded-3xl p-12 shadow-lg border border-slate-200 overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 rounded-full text-blue-700 text-sm font-medium mb-4">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                  Why It Matters
-                </div>
-                <h3 className="text-3xl font-bold text-navy-900 mb-6">
-                  {overviewData.whyItMatters.title}
-                </h3>
-                <p className="text-lg text-navy-600 leading-relaxed">
-                  {overviewData.whyItMatters.description}
-                </p>
+          <div className="relative bg-gradient-to-br from-white via-white to-blue-50/30 rounded-2xl p-6 lg:p-8 shadow-lg shadow-blue-900/5 border border-slate-100 overflow-hidden">
+            {/* Header */}
+            <div className="relative text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full text-indigo-700 text-sm font-semibold mb-4 border border-indigo-200/50">
+                <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+                The Automation Advantage
               </div>
+              <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-3">
+                {overviewData.whyItMatters.title}
+              </h3>
+              <p className="text-base lg:text-lg text-black max-w-2xl mx-auto">
+                Automation eliminates emotional interference, execution delays, and enables 24/7 market monitoring.
+              </p>
+            </div>
 
-              <div className="grid grid-cols-3 gap-6">
-                {overviewData.whyItMatters.stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15 }}
-                    className="text-center p-4 bg-slate-50 rounded-2xl"
-                  >
-                    <div className="text-3xl font-bold text-blue-600 mb-1">{stat.value}</div>
-                    <div className="text-sm text-navy-600 font-medium">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
+            {/* Stats + Benefits Combined Row */}
+            <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
+              {/* Stats */}
+              {overviewData.whyItMatters.stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center p-4 bg-white rounded-xl border border-slate-100 shadow-sm"
+                >
+                  <div className={`text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-br ${
+                    index === 0 ? 'from-blue-600 to-indigo-600' :
+                    index === 1 ? 'from-indigo-600 to-purple-600' :
+                    'from-cyan-600 to-blue-600'
+                  } bg-clip-text text-transparent`}>{stat.value}</div>
+                  <div className="text-sm lg:text-base font-semibold text-black mb-1">{stat.label}</div>
+                  <div className="text-xs lg:text-sm text-black">{stat.description}</div>
+                </motion.div>
+              ))}
+
+              {/* Benefits */}
+              {overviewData.benefits.map((benefit, index) => (
+                <motion.div
+                  key={`benefit-${index}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (index + 3) * 0.1 }}
+                  className="hidden lg:flex flex-col items-center text-center p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br ${
+                    index === 0 ? 'from-purple-500 to-indigo-600' : 'from-green-500 to-green-600'
+                  }`}>
+                    <benefit.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="text-sm lg:text-base font-semibold text-navy-800 leading-tight mt-3 mb-1">{benefit.title}</div>
+                  <div className="text-xs lg:text-sm text-black leading-relaxed">{benefit.description}</div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Mobile Benefits Grid */}
+            <div className="grid grid-cols-2 gap-3 mt-4 lg:hidden">
+              {overviewData.benefits.map((benefit, index) => (
+                <motion.div
+                  key={`benefit-mobile-${index}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col p-3 bg-white rounded-xl border border-slate-100 shadow-sm"
+                >
+                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mb-2 bg-gradient-to-br ${
+                    index === 0 ? 'from-purple-500 to-indigo-600' : 'from-green-500 to-green-600'
+                  }`}>
+                    <benefit.icon className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="text-sm font-semibold text-navy-800 mb-1">{benefit.title}</div>
+                  <div className="text-xs text-black leading-relaxed">{benefit.description}</div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -379,304 +520,79 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-16 items-center mb-24"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-6 mb-14"
         >
-          {/* Left Side - Content */}
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 rounded-full text-indigo-700 text-sm font-medium mb-4">
-              <span className="w-2 h-2 bg-indigo-500 rounded-full"></span>
-              Who Should Use This
-            </div>
-            <h3 className="text-3xl font-bold text-navy-900 mb-6">
-              {overviewData.whoShouldUse.title}
-            </h3>
-            <div className="space-y-6">
-              {overviewData.whoShouldUse.profiles.map((profile, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex gap-4 items-start group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <profile.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1">{profile.title}</h4>
-                    <p className="text-navy-600">{profile.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          {/* Left Side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative flex justify-center"
+          >
+            {/* Decorative background blur */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-[2rem] blur-2xl" />
 
-          {/* Right Side - Full Diagram */}
-          <div className="relative w-full h-[480px]">
-            <svg viewBox="0 0 520 480" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-              <defs>
-                <linearGradient id="diagramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#6366F1" />
-                  <stop offset="50%" stopColor="#3B82F6" />
-                  <stop offset="100%" stopColor="#8B5CF6" />
-                </linearGradient>
-                <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Background decorative circles */}
-              <circle cx="260" cy="240" r="200" fill="none" stroke="#E0E7FF" strokeWidth="1" opacity="0.5" />
-              <circle cx="260" cy="240" r="155" fill="none" stroke="#E0E7FF" strokeWidth="1" opacity="0.3" />
-              <circle cx="260" cy="240" r="110" fill="none" stroke="#E0E7FF" strokeWidth="1" opacity="0.2" />
-
-              {/* Extra decorative elements to fill space */}
-              <motion.circle cx="480" cy="80" r="25" fill="#EEF2FF" opacity="0.6"
-                animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 4, repeat: Infinity }} />
-              <motion.circle cx="40" cy="120" r="20" fill="#EFF6FF" opacity="0.5"
-                animate={{ scale: [1.1, 1, 1.1] }} transition={{ duration: 5, repeat: Infinity }} />
-              <motion.circle cx="500" cy="380" r="18" fill="#F5F3FF" opacity="0.5"
-                animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 4.5, repeat: Infinity }} />
-              <motion.circle cx="30" cy="400" r="22" fill="#ECFDF5" opacity="0.4"
-                animate={{ scale: [1.1, 1, 1.1] }} transition={{ duration: 5.5, repeat: Infinity }} />
-
-              {/* Dotted orbit paths */}
-              <circle cx="260" cy="240" r="200" fill="none" stroke="#C7D2FE" strokeWidth="1" strokeDasharray="6,8" opacity="0.4" />
-
-              {/* Main connection lines */}
-              <motion.path
-                d="M260 55 L260 185"
-                stroke="url(#diagramGrad)"
-                strokeWidth="2.5"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+            <div className="relative aspect-[3/2] max-w-2xl rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/20 ring-1 ring-white/50">
+              <img
+                src={`${basePath}/11652.jpg`}
+                alt="Trading team analyzing market data"
+                className="w-full h-full object-cover"
               />
-              <motion.path
-                d="M210 270 L80 380"
-                stroke="url(#diagramGrad)"
-                strokeWidth="2.5"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              />
-              <motion.path
-                d="M310 270 L440 380"
-                stroke="url(#diagramGrad)"
-                strokeWidth="2.5"
-                fill="none"
-                initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              />
+              {/* Elegant overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/30 via-transparent to-blue-900/10" />
 
-              {/* Center Hub - "Your Strategy" */}
-              <motion.g
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <circle cx="260" cy="240" r="60" fill="url(#diagramGrad)" filter="url(#softGlow)" />
-                <circle cx="260" cy="240" r="60" fill="none" stroke="white" strokeWidth="2" opacity="0.3" />
-                <text x="260" y="233" textAnchor="middle" fill="white" fontSize="15" fontWeight="600">Your</text>
-                <text x="260" y="253" textAnchor="middle" fill="white" fontSize="15" fontWeight="600">Strategy</text>
-              </motion.g>
-
-              {/* Node 1: Systematic Traders - Top */}
-              <motion.g
-                initial={{ y: -30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-              >
-                <circle cx="260" cy="55" r="50" fill="#EEF2FF" stroke="#6366F1" strokeWidth="2.5" />
-                {/* Target icon inside */}
-                <circle cx="260" cy="55" r="30" fill="none" stroke="#6366F1" strokeWidth="1.5" opacity="0.5" />
-                <circle cx="260" cy="55" r="18" fill="none" stroke="#6366F1" strokeWidth="2" />
-                <circle cx="260" cy="55" r="6" fill="#6366F1" />
-                <line x1="260" y1="25" x2="260" y2="37" stroke="#6366F1" strokeWidth="2" />
-                <line x1="260" y1="73" x2="260" y2="85" stroke="#6366F1" strokeWidth="2" />
-                <line x1="230" y1="55" x2="242" y2="55" stroke="#6366F1" strokeWidth="2" />
-                <line x1="278" y1="55" x2="290" y2="55" stroke="#6366F1" strokeWidth="2" />
-                {/* Label */}
-                <rect x="330" y="25" width="160" height="60" rx="10" fill="white" stroke="#E0E7FF" strokeWidth="1.5" />
-                <text x="410" y="50" textAnchor="middle" fill="#4F46E5" fontSize="14" fontWeight="700">Systematic</text>
-                <text x="410" y="70" textAnchor="middle" fill="#4F46E5" fontSize="14" fontWeight="700">Traders</text>
-                <line x1="310" y1="55" x2="330" y2="55" stroke="#6366F1" strokeWidth="1.5" strokeDasharray="4,3" />
-              </motion.g>
-
-              {/* Node 2: Active Traders - Bottom Left */}
-              <motion.g
-                initial={{ x: -30, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <circle cx="80" cy="380" r="50" fill="#EFF6FF" stroke="#3B82F6" strokeWidth="2.5" />
-                {/* Chart icon inside */}
-                <path d="M50 405 L65 385 L80 395 L100 365 L110 355" stroke="#3B82F6" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="65" cy="385" r="4" fill="#3B82F6" />
-                <circle cx="80" cy="395" r="4" fill="#3B82F6" />
-                <circle cx="100" cy="365" r="4" fill="#06B6D4" />
-                <circle cx="110" cy="355" r="5" fill="#06B6D4" />
-                {/* Label */}
-                <rect x="10" y="440" width="140" height="35" rx="8" fill="white" stroke="#DBEAFE" strokeWidth="1.5" />
-                <text x="80" y="463" textAnchor="middle" fill="#2563EB" fontSize="14" fontWeight="700">Active Traders</text>
-              </motion.g>
-
-              {/* Node 3: Trading Teams - Bottom Right */}
-              <motion.g
-                initial={{ x: 30, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <circle cx="440" cy="380" r="50" fill="#F5F3FF" stroke="#8B5CF6" strokeWidth="2.5" />
-                {/* Team nodes icon inside */}
-                <line x1="415" y1="368" x2="465" y2="368" stroke="#8B5CF6" strokeWidth="2" />
-                <line x1="415" y1="368" x2="440" y2="400" stroke="#8B5CF6" strokeWidth="2" />
-                <line x1="465" y1="368" x2="440" y2="400" stroke="#8B5CF6" strokeWidth="2" />
-                <circle cx="415" cy="368" r="12" fill="white" stroke="#8B5CF6" strokeWidth="2" />
-                <circle cx="415" cy="368" r="5" fill="#8B5CF6" />
-                <circle cx="465" cy="368" r="12" fill="white" stroke="#8B5CF6" strokeWidth="2" />
-                <circle cx="465" cy="368" r="5" fill="#8B5CF6" />
-                <circle cx="440" cy="400" r="14" fill="white" stroke="#6366F1" strokeWidth="2" />
-                <circle cx="440" cy="400" r="6" fill="#6366F1" />
-                {/* Label */}
-                <rect x="370" y="440" width="140" height="35" rx="8" fill="white" stroke="#EDE9FE" strokeWidth="1.5" />
-                <text x="440" y="463" textAnchor="middle" fill="#7C3AED" fontSize="14" fontWeight="700">Trading Teams</text>
-              </motion.g>
-
-              {/* Small floating dots for visual interest */}
-              <motion.circle cx="150" cy="150" r="4" fill="#6366F1" opacity="0.4"
-                animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity }} />
-              <motion.circle cx="400" cy="180" r="3" fill="#3B82F6" opacity="0.4"
-                animate={{ y: [0, 8, 0] }} transition={{ duration: 3.5, repeat: Infinity }} />
-              <motion.circle cx="180" cy="350" r="3.5" fill="#8B5CF6" opacity="0.4"
-                animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity }} />
-              <motion.circle cx="350" cy="320" r="3" fill="#06B6D4" opacity="0.4"
-                animate={{ y: [0, 10, 0] }} transition={{ duration: 3.2, repeat: Infinity }} />
-
-              {/* Animated dots on paths */}
-              <motion.circle
-                r="5"
-                fill="#6366F1"
-                animate={{
-                  cx: [260, 260, 80],
-                  cy: [55, 240, 380],
-                  opacity: [1, 1, 0]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
-              <motion.circle
-                r="5"
-                fill="#8B5CF6"
-                animate={{
-                  cx: [260, 260, 440],
-                  cy: [55, 240, 380],
-                  opacity: [1, 1, 0]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 1.5 }}
-              />
-            </svg>
-          </div>
-        </motion.div>
-
-        {/* Why Traders Choose - Right-Left Split Layout */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-16 items-center"
-        >
-          {/* Left Side - Visual with benefit bars */}
-          <div className="order-2 lg:order-1">
-            <div className="relative bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-8 border border-emerald-100">
-              <div className="space-y-6">
-                {overviewData.benefits.map((benefit, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, width: 0 }}
-                    whileInView={{ opacity: 1, width: '100%' }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15, duration: 0.5 }}
-                    className="relative"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br ${
-                        index === 0 ? 'from-emerald-400 to-teal-500' :
-                        index === 1 ? 'from-teal-400 to-cyan-500' :
-                        index === 2 ? 'from-cyan-400 to-blue-500' :
-                        'from-blue-400 to-indigo-500'
-                      }`}>
-                        <benefit.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <span className="text-sm font-semibold text-navy-800">{benefit.title}</span>
-                    </div>
-                    <motion.div
-                      className={`h-3 rounded-full bg-gradient-to-r ${
-                        index === 0 ? 'from-emerald-400 to-teal-400' :
-                        index === 1 ? 'from-teal-400 to-cyan-400' :
-                        index === 2 ? 'from-cyan-400 to-blue-400' :
-                        'from-blue-400 to-indigo-400'
-                      }`}
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${85 + index * 5}%` }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.15 + 0.3, duration: 0.6 }}
-                    />
-                  </motion.div>
-                ))}
+              {/* Floating badge */}
+              <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
+                <span className="text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Professional Trading</span>
               </div>
             </div>
-          </div>
+
+            {/* Decorative elements */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl -z-10 opacity-20 blur-sm" />
+            <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl -z-10 opacity-20 blur-sm" />
+          </motion.div>
 
           {/* Right Side - Content */}
-          <div className="order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 rounded-full text-emerald-700 text-sm font-medium mb-4">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-              Key Benefits
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full text-indigo-700 text-sm font-semibold mb-5 border border-indigo-200/50 shadow-sm">
+              <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+              Ideal For
             </div>
-            <h3 className="text-3xl font-bold text-navy-900 mb-6">
-              Why Traders Choose Automation
+            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-indigo-900 bg-clip-text text-transparent mb-8">
+              {overviewData.whoShouldUse.title}
             </h3>
             <div className="space-y-5">
-              {overviewData.benefits.map((benefit, index) => (
+              {overviewData.whoShouldUse.profiles.map((profile, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex gap-4 items-start group"
+                  whileHover={{ x: 5 }}
+                  className="flex gap-5 items-start p-4 rounded-2xl bg-gradient-to-r from-white to-slate-50/80 border border-slate-100 shadow-sm hover:shadow-md hover:border-indigo-100 transition-all duration-300 group cursor-default"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform bg-gradient-to-br ${
-                    index === 0 ? 'from-emerald-400 to-teal-500' :
-                    index === 1 ? 'from-teal-400 to-cyan-500' :
-                    index === 2 ? 'from-cyan-400 to-blue-500' :
-                    'from-blue-400 to-indigo-500'
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br ${
+                    index === 0 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
+                    index === 1 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
+                    'from-purple-500 to-pink-600 shadow-purple-500/25'
                   }`}>
-                    <benefit.icon className="w-5 h-5 text-white" />
+                    <profile.icon className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1">{benefit.title}</h4>
-                    <p className="text-navy-600 text-sm">{benefit.description}</p>
+                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-indigo-900 transition-colors">{profile.title}</h4>
+                    <p className="text-black leading-relaxed">{profile.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Bottom CTA */}
@@ -684,15 +600,17 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-14 text-center"
         >
-          <a
+          <motion.a
             href="#how-it-works"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-semibold rounded-2xl shadow-xl shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-300 group"
           >
             See How It Works
-            <ArrowRight className="w-5 h-5" />
-          </a>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </motion.a>
         </motion.div>
       </div>
     </section>

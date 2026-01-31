@@ -1,9 +1,20 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/SWTS_Website-GithubPage' : '';
+
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
+  output: 'export',
+  basePath: basePath,
+  assetPrefix: basePath,
   images: {
-    domains: [],
+    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './src/lib/image-loader.js',
+  },
+  trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
   },
 }
 

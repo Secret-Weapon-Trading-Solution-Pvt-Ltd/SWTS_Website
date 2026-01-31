@@ -74,14 +74,14 @@ export default function HowItWorksFlow({ service }: HowItWorksFlowProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-navy-100 text-navy-700 text-sm font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-navy-100 text-black text-sm font-semibold mb-6">
             <Clock className="w-4 h-4" />
             Our Process
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-navy-900 mb-6">
             Your Journey with Us
           </h2>
-          <p className="text-xl text-navy-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A transparent, structured process designed for successful outcomes.
             Every project follows this proven methodology.
           </p>
@@ -164,11 +164,11 @@ export default function HowItWorksFlow({ service }: HowItWorksFlowProps) {
                     <h3 className={`font-bold text-navy-900 mb-1.5 ${isKey ? 'text-base' : 'text-sm'}`}>
                       {step.title}
                     </h3>
-                    <p className={`text-navy-600 leading-snug mb-2 ${isKey ? 'text-sm' : 'text-xs'}`}>
+                    <p className={`text-black leading-snug mb-2 ${isKey ? 'text-sm' : 'text-xs'}`}>
                       {step.description}
                     </p>
                     {step.duration && (
-                      <span className={`inline-flex items-center gap-1 text-navy-400 ${isKey ? 'text-xs' : 'text-[10px]'}`}>
+                      <span className={`inline-flex items-center gap-1 text-black ${isKey ? 'text-xs' : 'text-[10px]'}`}>
                         <Clock className={`${isKey ? 'w-3 h-3' : 'w-2.5 h-2.5'}`} />
                         {step.duration}
                       </span>
@@ -228,11 +228,11 @@ export default function HowItWorksFlow({ service }: HowItWorksFlowProps) {
                     <h3 className="text-lg font-bold text-navy-900 mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-navy-600 leading-relaxed mb-2">
+                    <p className="text-black leading-relaxed mb-2">
                       {step.description}
                     </p>
                     {step.duration && (
-                      <span className="inline-flex items-center gap-1 text-sm text-navy-400">
+                      <span className="inline-flex items-center gap-1 text-sm text-black">
                         <Clock className="w-4 h-4" />
                         {step.duration}
                       </span>
@@ -259,7 +259,7 @@ export default function HowItWorksFlow({ service }: HowItWorksFlowProps) {
               </svg>
             </div>
             <div className="text-left">
-              <p className="text-sm text-navy-500">End result</p>
+              <p className="text-sm text-black">End result</p>
               <p className="text-lg font-bold text-navy-900">Your strategy, automated and live</p>
             </div>
           </div>

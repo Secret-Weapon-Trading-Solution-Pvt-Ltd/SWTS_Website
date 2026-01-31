@@ -22,12 +22,12 @@ export const FinalCTA: React.FC = () => {
           {/* Main headline */}
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mt-4 mb-6">
             Stop wondering.
-            <span className="block text-slate-400">Start knowing.</span>
+            <span className="block text-slate-800">Start knowing.</span>
           </h2>
 
           {/* Supporting text */}
-          <p className="text-xl text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto">
-            Explore our projects and see how we build precision trading systems.
+          <p className="text-xl text-slate-900 leading-relaxed mb-10 max-w-xl mx-auto">
+            Explore our projects and see how we build algo trading systems.
           </p>
 
           {/* CTA Button */}
@@ -43,7 +43,7 @@ export const FinalCTA: React.FC = () => {
 
         {/* Contact line */}
         <div className="mt-20 pt-10 border-t border-slate-200 text-center">
-          <p className="text-slate-500">
+          <p className="text-slate-900">
             Questions? Reach out at{' '}
             <a
               href="mailto:support@secretweapon.in"

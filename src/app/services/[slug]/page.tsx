@@ -7,14 +7,30 @@ import Capabilities from '@/components/services/Capabilities';
 import ServiceFlowchart from '@/components/services/ServiceFlowchart';
 import HowItWorksSteps from '@/components/services/HowItWorksSteps';
 import UseCases from '@/components/services/UseCases';
-import ServiceCTA from '@/components/services/ServiceCTA';
 // Enterprise components for premium service pages (modern redesign)
 import {
   StrategyOverview,
   CapabilitiesModern,
-  ProcessFlowModern,
-  CTAModern
+  ProcessFlowModern
 } from '@/components/services/enterprise';
+// Backtesting-specific enterprise components
+import {
+  BacktestingOverview,
+  BacktestingCapabilities,
+  BacktestingProcess
+} from '@/components/services/backtesting';
+// Optimization-specific enterprise components
+import {
+  OptimizationOverview,
+  OptimizationCapabilities,
+  OptimizationProcess
+} from '@/components/services/optimization';
+// Screener-specific enterprise components
+import {
+  ScreenerOverview,
+  ScreenerCapabilities,
+  ScreenerProcess
+} from '@/components/services/screener';
 import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
 
 interface ServicePageProps {
@@ -69,14 +85,18 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   }
 
   // Check if this is a premium enterprise service page
-  const isEnterpriseLayout = service.slug === 'algo-strategy-development';
+  const isStrategyAutomation = service.slug === 'algo-strategy-development';
+  const isBacktesting = service.slug === 'strategy-backtesting';
+  const isOptimization = service.slug === 'strategy-optimization';
+  const isScreener = service.slug === 'custom-screener';
+  const isEnterpriseLayout = isStrategyAutomation || isBacktesting || isOptimization || isScreener;
 
   return (
     <MainLayout>
       {/* Hero with brand logos */}
       <ServiceDetailHero service={service} />
 
-      {isEnterpriseLayout ? (
+      {isStrategyAutomation ? (
         <>
           {/* Modern Strategy Overview - What/Why/Who/Benefits */}
           <StrategyOverview service={service} />
@@ -86,9 +106,39 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Modern Process Flow with illustrations */}
           <ProcessFlowModern service={service} />
+        </>
+      ) : isBacktesting ? (
+        <>
+          {/* Backtesting Overview - Varied layouts */}
+          <BacktestingOverview service={service} />
 
-          {/* Modern CTA section */}
-          <CTAModern service={service} />
+          {/* Backtesting Capabilities - Bento grid style */}
+          <BacktestingCapabilities service={service} />
+
+          {/* Backtesting Process - Alternating timeline */}
+          <BacktestingProcess service={service} />
+        </>
+      ) : isOptimization ? (
+        <>
+          {/* Optimization Overview - Balanced left/right layouts */}
+          <OptimizationOverview service={service} />
+
+          {/* Optimization Capabilities - Alternating layout */}
+          <OptimizationCapabilities service={service} />
+
+          {/* Optimization Process - Vertical timeline */}
+          <OptimizationProcess service={service} />
+        </>
+      ) : isScreener ? (
+        <>
+          {/* Screener Overview - With alert delivery channels */}
+          <ScreenerOverview service={service} />
+
+          {/* Screener Capabilities - Full width cards */}
+          <ScreenerCapabilities service={service} />
+
+          {/* Screener Process - Horizontal timeline with background */}
+          <ScreenerProcess service={service} />
         </>
       ) : (
         <>
@@ -108,9 +158,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           <UseCases service={service} />
         </>
       )}
-
-      {/* CTA section - only for non-enterprise layout (enterprise has CTAModern) */}
-      {!isEnterpriseLayout && <ServiceCTA service={service} />}
     </MainLayout>
   );
 }

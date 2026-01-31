@@ -153,12 +153,11 @@ export const services: Service[] = [
       { id: "deploy", title: "Go Live", description: "Deploy with monitoring & alerts", icon: "Rocket" }
     ],
     howItWorks: [
-      { step: 1, title: "Strategy Documentation", description: "We conduct detailed sessions to understand YOUR trading rules—entry conditions, exit conditions, position sizing, filters. We document everything precisely.", duration: "2-3 sessions" },
-      { step: 2, title: "Technical Specification", description: "Your rules are translated into a detailed technical document. You review and approve before we write any code—no surprises.", duration: "1 week" },
-      { step: 3, title: "System Development", description: "We build your automated system with clean, documented code. Regular demos keep you informed of progress.", duration: "2-4 weeks" },
-      { step: 4, title: "Backtesting", description: "Your strategy is tested against historical data with realistic assumptions. Detailed performance reports show exactly how it would have performed.", duration: "1-2 weeks" },
-      { step: 5, title: "Paper Trading", description: "Live market testing without capital risk. Validate that the system executes exactly as intended in real-time conditions.", duration: "2-4 weeks" },
-      { step: 6, title: "Production Deployment", description: "Go live with full monitoring, alerts, and support. Your strategy, running automatically, exactly as you designed it.", duration: "Ongoing" }
+      { step: 1, title: "Strategy Documentation", description: "Document your trading rules—entries, exits, position sizing.", duration: "2-3 sessions" },
+      { step: 2, title: "Technical Specification", description: "Rules translated to technical specs. You review before coding.", duration: "2-4 days" },
+      { step: 3, title: "System Development", description: "Build automated system with clean, documented code.", duration: "1-4 weeks" },
+      { step: 4, title: "Paper Trading", description: "Live market testing without capital risk.", duration: "1-5 days" },
+      { step: 5, title: "Production Deployment", description: "Go live with monitoring, alerts, and support.", duration: "Ongoing" }
     ],
     useCases: [
       {
@@ -181,8 +180,8 @@ export const services: Service[] = [
       }
     ],
     stats: [
-      { label: "Client strategies automated", value: "150+" },
-      { label: "Client retention", value: "94%" }
+      { label: "Strategies Automated", value: "500+" },
+      { label: "Client Retention", value: "95%" }
     ]
   },
   {
@@ -204,11 +203,14 @@ export const services: Service[] = [
     problems: [
       { title: "You've never properly validated your strategy", description: "You believe your rules work based on memory and experience. But you've never seen the actual numbers across years of data." },
       { title: "Your backtest doesn't match real trading", description: "You ran a backtest somewhere and it looked great. But live trading is different. Was slippage modeled? Transaction costs?" },
-      { title: "You don't know your real risk", description: "What's the maximum drawdown your strategy has historically experienced? What's the longest losing streak?" }
+      { title: "You don't know your real risk", description: "What's the maximum drawdown your strategy has historically experienced? What's the longest losing streak?" },
+      { title: "You're trading on hope, not data", description: "Without proper validation, every trade is a gamble. You need historical evidence that your approach works." }
     ],
     capabilities: [
-      { title: "Historical Testing", description: "Test YOUR rules with realistic assumptions", features: ["Multi-year historical testing", "Realistic slippage modeling", "Transaction cost inclusion"] },
-      { title: "Performance Metrics", description: "Clear metrics on YOUR strategy's performance", features: ["Win rate & profit factor", "Risk-adjusted returns", "Equity curve analysis"] }
+      { title: "Historical Data Analysis", description: "Test YOUR rules against years of historical market data", features: ["5-10+ years of historical data", "Multiple market conditions tested", "Bull, bear, and sideways markets"] },
+      { title: "Realistic Cost Modeling", description: "Include all the costs that eat into profits", features: ["Slippage simulation", "Brokerage & transaction costs", "Spread modeling"] },
+      { title: "Performance Metrics", description: "Complete analysis of YOUR strategy's potential", features: ["Win rate & profit factor", "Sharpe & Sortino ratios", "Maximum drawdown analysis"] },
+      { title: "Risk Assessment", description: "Understand your exposure before you trade", features: ["Drawdown duration analysis", "Worst-case scenario testing", "Risk-adjusted returns"] }
     ],
     flowchart: [
       { id: "document", title: "Document Rules", description: "Formalize YOUR trading logic", icon: "FileText" },
@@ -223,11 +225,13 @@ export const services: Service[] = [
       { step: 4, title: "Final Report", description: "Comprehensive report with all metrics and analysis.", duration: "2-3 days" }
     ],
     useCases: [
-      { title: "Momentum Strategy Validation", description: "Trader had momentum rules they'd traded manually. We backtested their exact logic across 10 years.", outcome: "Strategy confirmed profitable with clear understanding of drawdown risk", tags: ["Momentum", "Validation"] }
+      { title: "Momentum Strategy Validation", description: "Trader had momentum rules they'd traded manually for years. We backtested their exact logic across 10 years of data.", outcome: "Strategy confirmed profitable with clear understanding of drawdown risk", tags: ["Momentum", "Validation"] },
+      { title: "Mean Reversion Reality Check", description: "Client believed their mean reversion approach was profitable. Rigorous backtesting revealed hidden risks.", outcome: "Identified 35% max drawdown risk that wasn't apparent from recent trading", tags: ["Mean Reversion", "Risk Analysis"] },
+      { title: "Options Strategy Analysis", description: "Trader wanted to validate their iron condor strategy before scaling up capital allocation.", outcome: "Confirmed edge with specific market conditions where strategy underperforms", tags: ["Options", "Strategy Analysis"] }
     ],
     stats: [
       { label: "Strategies Validated", value: "300+" },
-      { label: "Client Satisfaction", value: "96%" }
+      { label: "Client Satisfaction", value: "100%" }
     ]
   },
   {
@@ -248,11 +252,14 @@ export const services: Service[] = [
     problems: [
       { title: "Your parameters were chosen arbitrarily", description: "Why 14-period RSI? Why 20-period MA? You've never tested what actually works best for YOUR strategy." },
       { title: "You're worried about overfitting", description: "You know that optimizing too much leads to curve-fitting. You need proper validation methods." },
-      { title: "Market conditions change", description: "Parameters that worked in 2020 may not work in 2024. You need adaptive optimization." }
+      { title: "Market conditions change", description: "Parameters that worked in 2020 may not work in 2024. You need adaptive optimization." },
+      { title: "You don't know your strategy's true potential", description: "Without proper optimization, you could be leaving significant performance on the table." }
     ],
     capabilities: [
       { title: "Parameter Optimization", description: "Find optimal settings for YOUR rules", features: ["Grid search optimization", "Walk-forward analysis", "Out-of-sample validation"] },
-      { title: "Robustness Testing", description: "Ensure YOUR parameters aren't overfitted", features: ["Monte Carlo simulation", "Parameter stability analysis", "Sensitivity testing"] }
+      { title: "Robustness Testing", description: "Ensure YOUR parameters aren't overfitted", features: ["Monte Carlo simulation", "Parameter stability analysis", "Sensitivity testing"] },
+      { title: "Performance Enhancement", description: "Maximize risk-adjusted returns", features: ["Sharpe ratio optimization", "Drawdown minimization", "Win rate improvement"] },
+      { title: "Adaptive Analysis", description: "Parameters that adapt to market regimes", features: ["Market regime detection", "Dynamic parameter sets", "Condition-based optimization"] }
     ],
     flowchart: [
       { id: "baseline", title: "Baseline Test", description: "Test current parameters", icon: "Play" },
@@ -267,7 +274,9 @@ export const services: Service[] = [
       { step: 4, title: "Recommendations", description: "Final report with optimal parameters.", duration: "1-2 days" }
     ],
     useCases: [
-      { title: "Moving Average Optimization", description: "Trader used 50/200 MA crossover. We found 34/144 performed 40% better out-of-sample.", outcome: "Improved risk-adjusted returns without overfitting", tags: ["Optimization", "MA Crossover"] }
+      { title: "Moving Average Optimization", description: "Trader used 50/200 MA crossover. We found 34/144 performed 40% better out-of-sample.", outcome: "Improved risk-adjusted returns without overfitting", tags: ["Optimization", "MA Crossover"] },
+      { title: "RSI Strategy Enhancement", description: "Client's RSI strategy used default 14-period. We optimized entry/exit thresholds and period.", outcome: "23% improvement in Sharpe ratio with robust out-of-sample results", tags: ["RSI", "Parameters"] },
+      { title: "Breakout System Tuning", description: "Volatility-based breakout strategy with arbitrary ATR multipliers. We found optimal settings.", outcome: "Reduced drawdown by 18% while maintaining returns", tags: ["Breakout", "Risk Management"] }
     ],
     stats: [
       { label: "Strategies Optimized", value: "200+" },
@@ -405,7 +414,7 @@ export const services: Service[] = [
     ],
     stats: [
       { label: "Alert Systems Built", value: "200+" },
-      { label: "Alerts Sent Daily", value: "5K+" }
+      { label: "Alerts Sent Daily", value: "1000+" }
     ]
   },
   {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { StaticImage } from '@/components/ui/StaticImage';
 import { Mail } from 'lucide-react';
 
 export const MinimalHeader: React.FC = () => {
@@ -12,7 +12,7 @@ export const MinimalHeader: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo - Links back to main website */}
           <Link href="/" className="flex items-center">
-            <Image
+            <StaticImage
               src="/logos/logo1.jpg"
               alt="Secret Weapon Trading Solution"
               width={150}
@@ -25,7 +25,7 @@ export const MinimalHeader: React.FC = () => {
           {/* Minimal Contact Link */}
           <a
             href="mailto:contact@swts.in"
-            className="flex items-center gap-2 text-sm text-gray-500 hover:text-amber-600 transition-colors"
+            className="flex items-center gap-2 text-sm text-black hover:text-amber-600 transition-colors"
           >
             <Mail className="w-4 h-4" />
             <span className="hidden sm:inline">Need help? Contact us</span>

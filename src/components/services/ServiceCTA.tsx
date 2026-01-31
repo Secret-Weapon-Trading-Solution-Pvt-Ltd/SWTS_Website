@@ -30,15 +30,15 @@ const serviceCTAContent: Record<string, {
     ]
   },
   'algo-strategy-development': {
-    badge: 'Quantify Your Edge',
-    headline: 'From idea to algorithm.',
-    subheadline: 'Systematic execution starts here.',
-    description: 'Transform your trading intuition into a rigorous, testable strategy. We build the logic that captures your edge and executes it consistently.',
-    primaryCTA: 'Start Strategy Development',
+    badge: 'Automate Your Edge',
+    headline: 'Your rules. Automated.',
+    subheadline: '24/7 execution without intervention.',
+    description: 'Transform your proven trading rules into fully automated systems. We take your manual strategy and build production-ready code that executes with precision around the clock.',
+    primaryCTA: 'Start Automation Journey',
     features: [
-      { icon: MessageSquare, title: 'Strategy Discovery', description: 'Deep-dive into your trading approach' },
-      { icon: Calendar, title: 'Development Roadmap', description: 'Clear milestones and deliverables' },
-      { icon: Zap, title: 'Rapid Iteration', description: 'Fast feedback loops on strategy performance' }
+      { icon: MessageSquare, title: 'Strategy Review', description: 'We understand your existing trading rules' },
+      { icon: Calendar, title: 'Automation Roadmap', description: 'Clear path from manual to automated' },
+      { icon: Zap, title: 'Fast Deployment', description: 'Go live with your automated system quickly' }
     ]
   },
   'pine-script-development': {
@@ -63,6 +63,18 @@ const serviceCTAContent: Record<string, {
       { icon: Zap, title: 'Sub-100ms Latency', description: 'Optimized for speed from signal to fill' },
       { icon: Shield, title: 'Fail-Safe Systems', description: 'Circuit breakers, kill switches, auto-recovery' },
       { icon: Rocket, title: 'Multi-Broker Ready', description: 'Zerodha, IBKR, Alpaca, Binance & more' }
+    ]
+  },
+  'strategy-backtesting': {
+    badge: 'Validate Your Edge',
+    headline: 'Know before you trade.',
+    subheadline: 'Data-driven confidence.',
+    description: 'Stop trading on gut feeling. Get comprehensive historical analysis of YOUR strategy with realistic assumptions and actionable insights.',
+    primaryCTA: 'Get Your Strategy Tested',
+    features: [
+      { icon: MessageSquare, title: 'Strategy Review', description: 'We document your exact rules' },
+      { icon: Calendar, title: 'Historical Testing', description: 'Multi-year backtest with real costs' },
+      { icon: Zap, title: 'Clear Report', description: 'Metrics and insights you can act on' }
     ]
   },
   'strategy-optimization': {
@@ -132,7 +144,7 @@ export default function ServiceCTA({ service }: ServiceCTAProps) {
           <rect width="100%" height="100%" fill="url(#cta-section-grid)" />
         </svg>
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +296,7 @@ export default function ServiceCTA({ service }: ServiceCTAProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-navy-600"
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-black"
         >
           <a href="mailto:info@swts.in" className="flex items-center gap-2 hover:text-navy-800 transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

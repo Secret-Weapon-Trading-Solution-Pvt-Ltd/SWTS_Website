@@ -19,13 +19,13 @@ export const HowItWorks: React.FC = () => {
   return (
     <section id="how-it-works" className="relative py-10 lg:py-12 overflow-hidden">
       {/* Background - subtle gradient bands */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50/30 to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white via-slate-50/30 to-white pointer-events-none" />
 
       {/* Radial glow behind header */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
 
+      {/* Header Container */}
       <div className="relative max-w-[1400px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
-
         {/* ================================================================ */}
         {/* Page Header - Modern Enterprise Style */}
         {/* ================================================================ */}
@@ -45,14 +45,16 @@ export const HowItWorks: React.FC = () => {
           </h2>
 
           {/* Subheading */}
-          <p className="text-base lg:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-lg text-slate-900 max-w-xl mx-auto leading-relaxed">
             Six steps to transform your trading strategy into a live automated system
           </p>
         </div>
+      </div>
 
-        {/* ================================================================ */}
-        {/* PRIMARY: Horizontal Process Flow */}
-        {/* ================================================================ */}
+      {/* ================================================================ */}
+      {/* PRIMARY: Horizontal Process Flow - Full Width */}
+      {/* ================================================================ */}
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24 mb-16 lg:mb-20 xl:mb-24">
         <ProcessFlowHorizontal />
       </div>
 
@@ -66,10 +68,10 @@ export const HowItWorks: React.FC = () => {
       {/* ================================================================ */}
       <ServicesScroller />
 
-      <div className="relative max-w-[1400px] 3xl:max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
-        {/* ================================================================ */}
-        {/* SECONDARY: Choose Your Starting Point - Modern Redesign */}
-        {/* ================================================================ */}
+      {/* ================================================================ */}
+      {/* SECONDARY: Choose Your Starting Point - Full Width */}
+      {/* ================================================================ */}
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 3xl:px-20 4xl:px-24">
         <div className="mb-6 pt-4">
           {/* Section Header */}
           <div className="text-center mb-8">
@@ -82,21 +84,21 @@ export const HowItWorks: React.FC = () => {
             <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
               Ready to Begin?
             </h3>
-            <p className="text-slate-500 text-base lg:text-lg max-w-md mx-auto">
+            <p className="text-slate-900 text-base lg:text-lg max-w-md mx-auto">
               Pick the option that works best for you
             </p>
           </div>
 
           {/* Cards Container */}
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-10 xl:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 lg:gap-10 xl:gap-12 max-w-lg md:max-w-none mx-auto">
 
             {/* Path A - Recommended */}
             <div className="group relative">
               {/* Animated gradient border */}
-              <div className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 rounded-3xl opacity-70" />
+              <div className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+              <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 rounded-2xl sm:rounded-3xl opacity-70" />
 
-              <div className="relative bg-white rounded-3xl p-8 lg:p-10 h-full">
+              <div className="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
                 {/* Recommended badge */}
                 <div className="absolute -top-4 left-8">
                   <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg shadow-blue-500/25">
@@ -116,7 +118,7 @@ export const HowItWorks: React.FC = () => {
                 <h4 className="text-xl lg:text-2xl font-bold text-slate-800 mb-3">
                   Start with Assessment
                 </h4>
-                <p className="text-slate-500 mb-6 leading-relaxed">
+                <p className="text-slate-900 mb-6 leading-relaxed">
                   Get personalized recommendations based on your trading profile and goals.
                 </p>
 
@@ -132,13 +134,13 @@ export const HowItWorks: React.FC = () => {
                       <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center flex-shrink-0">
                         <Check className="w-3 h-3 text-white" strokeWidth={3} />
                       </div>
-                      <span className="text-slate-600 text-sm font-medium">{item}</span>
+                      <span className="text-slate-900 text-sm font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Meta info */}
-                <div className="flex items-center gap-4 mb-6 text-xs text-slate-400">
+                <div className="flex items-center gap-4 mb-6 text-xs text-slate-800">
                   <span className="flex items-center gap-1.5">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -167,11 +169,11 @@ export const HowItWorks: React.FC = () => {
             {/* Path B - Explore */}
             <div className="group relative">
               {/* Border */}
-              <div className="absolute -inset-[1px] bg-gradient-to-br from-slate-200 to-slate-300 rounded-3xl group-hover:from-slate-300 group-hover:to-slate-400 transition-colors duration-300" />
+              <div className="absolute -inset-[1px] bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl sm:rounded-3xl group-hover:from-slate-300 group-hover:to-slate-400 transition-colors duration-300" />
 
-              <div className="relative bg-white rounded-3xl p-8 lg:p-10 h-full">
+              <div className="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
                 {/* Icon */}
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center shadow-xl shadow-slate-500/10 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 mb-6 mt-4 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center shadow-xl shadow-slate-500/10 group-hover:scale-110 transition-transform duration-300">
                   <Compass className="w-8 h-8 text-white" strokeWidth={1.5} />
                 </div>
 
@@ -179,7 +181,7 @@ export const HowItWorks: React.FC = () => {
                 <h4 className="text-xl lg:text-2xl font-bold text-slate-800 mb-3">
                   Explore Platform
                 </h4>
-                <p className="text-slate-500 mb-6 leading-relaxed">
+                <p className="text-slate-900 mb-6 leading-relaxed">
                   Browse our tools and services at your own pace. No commitment required.
                 </p>
 
@@ -189,18 +191,19 @@ export const HowItWorks: React.FC = () => {
                     'Browse all products',
                     'View live demos',
                     'Read documentation',
+                    'Compare services',
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 text-slate-500" strokeWidth={3} />
+                        <Check className="w-3 h-3 text-slate-900" strokeWidth={3} />
                       </div>
-                      <span className="text-slate-600 text-sm font-medium">{item}</span>
+                      <span className="text-slate-900 text-sm font-medium">{item}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Meta info */}
-                <div className="flex items-center gap-4 mb-6 text-xs text-slate-400">
+                <div className="flex items-center gap-4 mb-6 text-xs text-slate-800">
                   <span className="flex items-center gap-1.5">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -218,10 +221,10 @@ export const HowItWorks: React.FC = () => {
 
                 {/* CTA Button */}
                 <Link
-                  href="/#products"
+                  href="/projects/"
                   className="group/btn w-full flex items-center justify-center gap-2 px-6 py-4 bg-slate-800 text-white rounded-xl font-semibold hover:bg-slate-900 hover:shadow-xl hover:shadow-slate-500/15 hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  Explore Products
+                  Explore Projects
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
               </div>
