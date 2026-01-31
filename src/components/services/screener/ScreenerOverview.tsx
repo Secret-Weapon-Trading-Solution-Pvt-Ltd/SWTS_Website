@@ -137,10 +137,12 @@ const AlertChannelsIllustration = () => (
     >
       <rect x="40" y="80" width="100" height="70" rx="12" fill="#ECFDF5" stroke="#25D366" strokeWidth="2"/>
       <circle cx="90" cy="105" r="16" fill="#25D366"/>
-      <text x="84" y="110" fill="white" fontSize="12" fontWeight="bold">W</text>
+      <g transform="translate(81, 96)">
+        <path d="M9 0C4 0 0 4 0 9c0 1.6.4 3.1 1.2 4.4L0 18l4.7-1.2c1.3.7 2.7 1.1 4.3 1.1 5 0 9-4 9-9s-4-9-9-9zm5.2 12.7c-.2.6-1.2 1.1-1.7 1.2-.4 0-.9.2-3-.6-2.5-1-4.1-3.5-4.2-3.7-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.1.1-.1.3-.2.4-.1.1-.3.3-.4.4-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2.1 1.3 2.4 1.4.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.3.1 1.6.8 1.9.9.3.1.5.2.6.3.1.1.1.7-.1 1.3z" fill="white"/>
+      </g>
       <text x="90" y="138" fill="#059669" fontSize="10" fontWeight="600" textAnchor="middle">WhatsApp</text>
-      <line x1="140" y1="115" x2="195" y2="145" stroke="#25D366" strokeWidth="2" strokeDasharray="4,4">
-        <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+      <line x1="195" y1="145" x2="140" y2="115" stroke="#25D366" strokeWidth="2" strokeDasharray="4,4">
+        <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
       </line>
     </motion.g>
 
@@ -153,10 +155,10 @@ const AlertChannelsIllustration = () => (
     >
       <rect x="340" y="80" width="100" height="70" rx="12" fill="#EFF6FF" stroke="#0088CC" strokeWidth="2"/>
       <circle cx="390" cy="105" r="16" fill="#0088CC"/>
-      <text x="384" y="110" fill="white" fontSize="12" fontWeight="bold">T</text>
+      <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z" fill="white" transform="translate(380, 95) scale(0.85)"/>
       <text x="390" y="138" fill="#1D4ED8" fontSize="10" fontWeight="600" textAnchor="middle">Telegram</text>
-      <line x1="340" y1="115" x2="285" y2="145" stroke="#0088CC" strokeWidth="2" strokeDasharray="4,4">
-        <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+      <line x1="285" y1="145" x2="340" y2="115" stroke="#0088CC" strokeWidth="2" strokeDasharray="4,4">
+        <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
       </line>
     </motion.g>
 
@@ -169,10 +171,10 @@ const AlertChannelsIllustration = () => (
     >
       <rect x="40" y="180" width="100" height="70" rx="12" fill="#FEF3C7" stroke="#F59E0B" strokeWidth="2"/>
       <circle cx="90" cy="205" r="16" fill="#F59E0B"/>
-      <text x="84" y="210" fill="white" fontSize="12" fontWeight="bold">@</text>
+      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="white" transform="translate(79, 194) scale(0.9)"/>
       <text x="90" y="238" fill="#D97706" fontSize="10" fontWeight="600" textAnchor="middle">Email</text>
-      <line x1="140" y1="205" x2="195" y2="175" stroke="#F59E0B" strokeWidth="2" strokeDasharray="4,4">
-        <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+      <line x1="195" y1="175" x2="140" y2="205" stroke="#F59E0B" strokeWidth="2" strokeDasharray="4,4">
+        <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
       </line>
     </motion.g>
 
@@ -185,10 +187,10 @@ const AlertChannelsIllustration = () => (
     >
       <rect x="340" y="180" width="100" height="70" rx="12" fill="#F3E8FF" stroke="#A855F7" strokeWidth="2"/>
       <circle cx="390" cy="205" r="16" fill="#A855F7"/>
-      <text x="381" y="210" fill="white" fontSize="10" fontWeight="bold">SMS</text>
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" fill="white" transform="translate(379, 194) scale(0.9)"/>
       <text x="390" y="238" fill="#7C3AED" fontSize="10" fontWeight="600" textAnchor="middle">Text Message</text>
-      <line x1="340" y1="205" x2="285" y2="175" stroke="#A855F7" strokeWidth="2" strokeDasharray="4,4">
-        <animate attributeName="stroke-dashoffset" values="8;0" dur="1s" repeatCount="indefinite"/>
+      <line x1="285" y1="175" x2="340" y2="205" stroke="#A855F7" strokeWidth="2" strokeDasharray="4,4">
+        <animate attributeName="stroke-dashoffset" values="0;-8" dur="1s" repeatCount="indefinite"/>
       </line>
     </motion.g>
 
@@ -286,7 +288,7 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full text-cyan-700 text-sm font-semibold mb-5 border border-cyan-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></span>
-              What It Is
+              The Basics
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-cyan-900 to-navy-800 bg-clip-text text-transparent mb-6">
               {overviewData.whatItIs.title}
@@ -302,10 +304,9 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100 hover:shadow-lg hover:border-cyan-100 transition-all duration-300 cursor-default group"
+                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-110 bg-gradient-to-br ${
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md bg-gradient-to-br ${
                     index === 0 ? 'from-cyan-500 to-blue-600 shadow-cyan-500/25' :
                     index === 1 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
                     index === 2 ? 'from-emerald-500 to-teal-600 shadow-emerald-500/25' :
@@ -435,13 +436,32 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-4 bg-gradient-to-br from-white to-slate-50/50 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all group"
+                  className="p-4 bg-gradient-to-br from-white to-slate-50/50 rounded-xl border border-slate-100 shadow-sm"
                 >
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-gradient-to-br ${channel.color} shadow-md group-hover:scale-110 transition-transform`}>
-                    <channel.icon className="w-5 h-5 text-white" />
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-gradient-to-br ${channel.color} shadow-md`}>
+                    {channel.name === "WhatsApp" && (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
+                        <path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.4 5L2 22l5.2-1.4c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.2 14.2c-.2.6-1.2 1.1-1.7 1.2-.4 0-.9.2-3-.6-2.5-1-4.1-3.5-4.2-3.7-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.1.1-.1.3-.2.4-.1.1-.3.3-.4.4-.1.2-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2.1 1.3 2.4 1.4.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.3.1 1.6.8 1.9.9.3.1.5.2.6.3.1.1.1.7-.1 1.3z"/>
+                      </svg>
+                    )}
+                    {channel.name === "Telegram" && (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
+                        <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+                      </svg>
+                    )}
+                    {channel.name === "Email" && (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                      </svg>
+                    )}
+                    {channel.name === "SMS" && (
+                      <svg viewBox="0 0 24 24" className="w-5 h-5" fill="white">
+                        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+                      </svg>
+                    )}
                   </div>
-                  <div className="text-lg font-bold text-navy-900 mb-1">{channel.name}</div>
-                  <div className="text-sm text-black">{channel.description}</div>
+                  <div className="text-lg font-bold text-black mb-1">{channel.name}</div>
+                  <div className="text-sm text-black font-medium">{channel.description}</div>
                 </motion.div>
               ))}
             </div>

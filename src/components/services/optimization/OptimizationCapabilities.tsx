@@ -138,7 +138,7 @@ export default function OptimizationCapabilities({ service }: OptimizationCapabi
                         <div className={`w-16 h-16 rounded-xl flex items-center justify-center bg-gradient-to-br ${capability.gradient} shadow-lg`}>
                           <Icon className="w-8 h-8 text-white" />
                         </div>
-                        <span className="text-4xl font-bold text-slate-100 group-hover:text-blue-100 transition-colors">
+                        <span className="text-4xl font-bold text-black group-hover:text-blue-600 transition-colors">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
@@ -177,23 +177,6 @@ export default function OptimizationCapabilities({ service }: OptimizationCapabi
           })}
         </div>
 
-        {/* Bottom connector */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10 flex justify-center"
-        >
-          <div className="flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-full border border-blue-100">
-            <span className="text-black font-medium">All delivered with comprehensive documentation</span>
-            <motion.div
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <ArrowRight className="w-5 h-5 text-blue-500" />
-            </motion.div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

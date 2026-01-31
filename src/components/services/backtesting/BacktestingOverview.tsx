@@ -140,17 +140,17 @@ const BacktestingIllustration = () => (
       viewport={{ once: true }}
       transition={{ delay: 1.5, duration: 0.5 }}
     >
-      <rect x="255" y="115" width="105" height="95" rx="8" fill="white" stroke="#E0E7FF" strokeWidth="1"/>
-      <text x="265" y="133" fill="#6366F1" fontSize="10" fontWeight="600">Performance</text>
+      <rect x="270" y="120" width="95" height="75" rx="6" fill="white" stroke="#E0E7FF" strokeWidth="1"/>
+      <text x="280" y="134" fill="#6366F1" fontSize="9" fontWeight="600">Performance</text>
 
-      <text x="265" y="155" fill="#374151" fontSize="9">Win Rate:</text>
-      <text x="340" y="155" fill="#10B981" fontSize="9" fontWeight="600">68%</text>
+      <text x="280" y="150" fill="#000000" fontSize="8">Win Rate:</text>
+      <text x="345" y="150" fill="#10B981" fontSize="8" fontWeight="600">68%</text>
 
-      <text x="265" y="175" fill="#374151" fontSize="9">Profit Factor:</text>
-      <text x="340" y="175" fill="#10B981" fontSize="9" fontWeight="600">2.4</text>
+      <text x="280" y="165" fill="#000000" fontSize="8">Profit Factor:</text>
+      <text x="345" y="165" fill="#10B981" fontSize="8" fontWeight="600">2.4</text>
 
-      <text x="265" y="195" fill="#374151" fontSize="9">Max DD:</text>
-      <text x="340" y="195" fill="#EF4444" fontSize="9" fontWeight="600">-12%</text>
+      <text x="280" y="180" fill="#000000" fontSize="8">Max DD:</text>
+      <text x="338" y="180" fill="#EF4444" fontSize="8" fontWeight="600">-12%</text>
     </motion.g>
 
     {/* Time axis labels */}
@@ -210,41 +210,41 @@ const MetricsIllustration = () => (
     <motion.g initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
       {/* Card 1 - Win Rate */}
       <rect x="25" y="25" width="100" height="75" rx="10" fill="#EEF2FF"/>
-      <circle cx="50" cy="52" r="14" fill="url(#metric1Grad)"/>
-      <text x="46" y="57" fill="white" fontSize="11" fontWeight="bold">%</text>
-      <text x="72" y="48" fill="#4F46E5" fontSize="9" fontWeight="600">Win Rate</text>
-      <text x="72" y="65" fill="#1E1B4B" fontSize="18" fontWeight="bold">68%</text>
-      <text x="72" y="82" fill="#6B7280" fontSize="8">Above average</text>
+      <circle cx="45" cy="52" r="11" fill="url(#metric1Grad)"/>
+      <text x="45" y="52" fill="white" fontSize="9" fontWeight="bold" textAnchor="middle" dominantBaseline="central">%</text>
+      <text x="62" y="48" fill="#4F46E5" fontSize="9" fontWeight="600">Win Rate</text>
+      <text x="62" y="65" fill="#1E1B4B" fontSize="16" fontWeight="bold">68%</text>
+      <text x="62" y="80" fill="#000000" fontSize="7">Above avg</text>
     </motion.g>
 
     <motion.g initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
       {/* Card 2 - Profit Factor */}
       <rect x="135" y="25" width="100" height="75" rx="10" fill="#ECFDF5"/>
-      <circle cx="160" cy="52" r="14" fill="url(#metric2Grad)"/>
-      <text x="153" y="57" fill="white" fontSize="9" fontWeight="bold">PF</text>
-      <text x="182" y="48" fill="#059669" fontSize="9" fontWeight="600">Profit Factor</text>
-      <text x="182" y="65" fill="#064E3B" fontSize="18" fontWeight="bold">2.4x</text>
-      <text x="182" y="82" fill="#6B7280" fontSize="8">Excellent</text>
+      <circle cx="155" cy="52" r="11" fill="url(#metric2Grad)"/>
+      <text x="155" y="52" fill="white" fontSize="8" fontWeight="bold" textAnchor="middle" dominantBaseline="central">PF</text>
+      <text x="172" y="48" fill="#059669" fontSize="9" fontWeight="600">Profit Factor</text>
+      <text x="172" y="65" fill="#064E3B" fontSize="16" fontWeight="bold">2.4x</text>
+      <text x="172" y="80" fill="#000000" fontSize="7">Excellent</text>
     </motion.g>
 
     <motion.g initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
       {/* Card 3 - Sharpe Ratio */}
       <rect x="245" y="25" width="100" height="75" rx="10" fill="#FEF3C7"/>
-      <circle cx="270" cy="52" r="14" fill="url(#metric3Grad)"/>
-      <text x="264" y="57" fill="white" fontSize="9" fontWeight="bold">SR</text>
-      <text x="292" y="48" fill="#D97706" fontSize="9" fontWeight="600">Sharpe</text>
-      <text x="292" y="65" fill="#78350F" fontSize="18" fontWeight="bold">1.8</text>
-      <text x="292" y="82" fill="#6B7280" fontSize="8">Risk-adjusted</text>
+      <circle cx="265" cy="52" r="11" fill="url(#metric3Grad)"/>
+      <text x="265" y="52" fill="white" fontSize="8" fontWeight="bold" textAnchor="middle" dominantBaseline="central">SR</text>
+      <text x="282" y="48" fill="#D97706" fontSize="9" fontWeight="600">Sharpe</text>
+      <text x="282" y="65" fill="#78350F" fontSize="16" fontWeight="bold">1.8</text>
+      <text x="282" y="80" fill="#000000" fontSize="7">Risk-adjusted</text>
     </motion.g>
 
     <motion.g initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}>
       {/* Card 4 - Max Drawdown */}
       <rect x="355" y="25" width="100" height="75" rx="10" fill="#FEE2E2"/>
-      <circle cx="380" cy="52" r="14" fill="url(#metric4Grad)"/>
-      <text x="372" y="57" fill="white" fontSize="9" fontWeight="bold">DD</text>
-      <text x="402" y="48" fill="#DC2626" fontSize="9" fontWeight="600">Max DD</text>
-      <text x="402" y="65" fill="#7F1D1D" fontSize="18" fontWeight="bold">-12%</text>
-      <text x="402" y="82" fill="#6B7280" fontSize="8">Controlled</text>
+      <circle cx="375" cy="52" r="11" fill="url(#metric4Grad)"/>
+      <text x="375" y="52" fill="white" fontSize="8" fontWeight="bold" textAnchor="middle" dominantBaseline="central">DD</text>
+      <text x="392" y="48" fill="#DC2626" fontSize="9" fontWeight="600">Max DD</text>
+      <text x="392" y="65" fill="#7F1D1D" fontSize="16" fontWeight="bold">-12%</text>
+      <text x="392" y="80" fill="#000000" fontSize="7">Controlled</text>
     </motion.g>
 
     {/* Equity curve section */}
@@ -308,30 +308,36 @@ const MetricsIllustration = () => (
     <rect x="320" y="115" width="135" height="130" rx="10" fill="#F9FAFB" stroke="#E5E7EB" strokeWidth="0.5"/>
     <text x="333" y="135" fill="#374151" fontSize="10" fontWeight="600">Monthly Returns</text>
 
-    {/* Bar chart */}
+    {/* Baseline */}
+    <line x1="330" y1="220" x2="450" y2="220" stroke="#E5E7EB" strokeWidth="1"/>
+
+    {/* Bar chart with labels */}
     <motion.g>
       {[
-        { x: 332, h: 45, color: "#10B981" },
-        { x: 352, h: 35, color: "#10B981" },
-        { x: 372, h: 50, color: "#10B981" },
-        { x: 392, h: 20, color: "#EF4444" },
-        { x: 412, h: 40, color: "#10B981" },
-        { x: 432, h: 55, color: "#10B981" },
+        { x: 335, h: 50, color: "#10B981", label: "J", value: "+3%" },
+        { x: 355, h: 38, color: "#10B981", label: "F", value: "+2%" },
+        { x: 375, h: 55, color: "#10B981", label: "M", value: "+4%" },
+        { x: 395, h: 28, color: "#EF4444", label: "A", value: "-2%" },
+        { x: 415, h: 45, color: "#10B981", label: "M", value: "+3%" },
+        { x: 435, h: 60, color: "#10B981", label: "J", value: "+5%" },
       ].map((bar, i) => (
-        <motion.rect
-          key={i}
-          x={bar.x}
-          y={230 - bar.h}
-          width="14"
-          height={bar.h}
-          rx="3"
-          fill={bar.color}
-          opacity={0.85}
-          initial={{ height: 0, y: 230 }}
-          whileInView={{ height: bar.h, y: 230 - bar.h }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 + i * 0.08, duration: 0.3 }}
-        />
+        <g key={i}>
+          <motion.rect
+            x={bar.x}
+            y={215 - bar.h}
+            width="14"
+            height={bar.h}
+            rx="2"
+            fill={bar.color}
+            opacity={0.9}
+            initial={{ height: 0, y: 215 }}
+            whileInView={{ height: bar.h, y: 215 - bar.h }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 + i * 0.08, duration: 0.3 }}
+          />
+          <text x={bar.x + 7} y="228" fill="#000000" fontSize="8" textAnchor="middle" fontWeight="500">{bar.label}</text>
+          <text x={bar.x + 7} y={215 - bar.h - 5} fill={bar.color} fontSize="8" textAnchor="middle" fontWeight="bold">{bar.value}</text>
+        </g>
       ))}
     </motion.g>
 
@@ -475,7 +481,7 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full text-indigo-700 text-sm font-semibold mb-5 border border-indigo-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-              What It Is
+              The Basics
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-indigo-900 to-navy-800 bg-clip-text text-transparent mb-6">
               {overviewData.whatItIs.title}
@@ -491,10 +497,9 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100 hover:shadow-lg hover:border-indigo-100 transition-all duration-300 cursor-default group"
+                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-110 bg-gradient-to-br ${
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md bg-gradient-to-br ${
                     index === 0 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
                     index === 1 ? 'from-purple-500 to-violet-600 shadow-purple-500/25' :
                     index === 2 ? 'from-violet-500 to-indigo-600 shadow-violet-500/25' :
@@ -614,8 +619,8 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
                   transition={{ delay: index * 0.1 }}
                   className="p-4 bg-gradient-to-br from-white to-emerald-50/50 rounded-xl border border-emerald-100 shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="text-lg font-bold text-emerald-700 mb-1">{metric.value}</div>
-                  <div className="text-sm text-black">{metric.description}</div>
+                  <div className="text-lg font-bold text-black mb-1">{metric.value}</div>
+                  <div className="text-sm text-black font-medium">{metric.description}</div>
                 </motion.div>
               ))}
             </div>

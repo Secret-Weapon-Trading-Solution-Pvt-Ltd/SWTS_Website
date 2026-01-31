@@ -88,12 +88,12 @@ const OptimizationIllustration = () => (
     </g>
 
     {/* Results panel */}
-    <rect x="285" y="90" width="75" height="100" rx="8" fill="#EFF6FF" stroke="#BFDBFE" strokeWidth="1"/>
-    <text x="298" y="110" fill="#1E40AF" fontSize="10" fontWeight="600">Results</text>
-    <text x="298" y="135" fill="#6B7280" fontSize="8">Sharpe</text>
-    <text x="298" y="150" fill="#10B981" fontSize="14" fontWeight="bold">1.82</text>
-    <text x="298" y="170" fill="#6B7280" fontSize="8">Win Rate</text>
-    <text x="298" y="185" fill="#3B82F6" fontSize="14" fontWeight="bold">67%</text>
+    <rect x="295" y="95" width="70" height="85" rx="6" fill="#EFF6FF" stroke="#BFDBFE" strokeWidth="1"/>
+    <text x="305" y="110" fill="#1E40AF" fontSize="9" fontWeight="600">Results</text>
+    <text x="305" y="128" fill="#000000" fontSize="7">Sharpe</text>
+    <text x="305" y="142" fill="#10B981" fontSize="12" fontWeight="bold">1.82</text>
+    <text x="305" y="158" fill="#000000" fontSize="7">Win Rate</text>
+    <text x="305" y="172" fill="#3B82F6" fontSize="12" fontWeight="bold">67%</text>
 
     <text x="50" y="220" fill="#10B981" fontSize="9" fontWeight="600">+35% improved</text>
   </svg>
@@ -301,7 +301,7 @@ export default function OptimizationOverview({ service }: OptimizationOverviewPr
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full text-blue-700 text-sm font-semibold mb-5 border border-blue-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></span>
-              What It Is
+              The Basics
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-blue-900 to-navy-800 bg-clip-text text-transparent mb-6">
               {overviewData.whatItIs.title}
@@ -317,10 +317,9 @@ export default function OptimizationOverview({ service }: OptimizationOverviewPr
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100 hover:shadow-lg hover:border-blue-100 transition-all duration-300 cursor-default group"
+                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-110 bg-gradient-to-br ${
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md bg-gradient-to-br ${
                     index === 0 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
                     index === 1 ? 'from-indigo-500 to-violet-600 shadow-indigo-500/25' :
                     index === 2 ? 'from-emerald-500 to-teal-600 shadow-emerald-500/25' :
@@ -452,8 +451,8 @@ export default function OptimizationOverview({ service }: OptimizationOverviewPr
                   transition={{ delay: index * 0.1 }}
                   className="p-4 bg-gradient-to-br from-white to-emerald-50/50 rounded-xl border border-emerald-100 shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className="text-lg font-bold text-emerald-700 mb-1">{metric.value}</div>
-                  <div className="text-sm text-black">{metric.description}</div>
+                  <div className="text-lg font-bold text-black mb-1">{metric.value}</div>
+                  <div className="text-sm text-black font-medium">{metric.description}</div>
                 </motion.div>
               ))}
             </div>
