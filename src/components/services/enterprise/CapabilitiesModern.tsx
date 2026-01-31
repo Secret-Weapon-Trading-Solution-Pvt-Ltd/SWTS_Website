@@ -130,7 +130,7 @@ export default function CapabilitiesModern({ service }: CapabilitiesModernProps)
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Our Capabilities</span>
           </h2>
-          <p className="text-xl text-navy-600/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             End-to-end solutions that transform your trading rules into production-ready automated systems
           </p>
         </motion.div>
@@ -163,7 +163,7 @@ export default function CapabilitiesModern({ service }: CapabilitiesModernProps)
                         <div className="w-16 h-16 lg:w-18 lg:h-18">
                           <IconComponent />
                         </div>
-                        <span className="text-4xl font-bold text-slate-100 group-hover:text-blue-100 transition-colors">
+                        <span className="text-4xl font-bold text-slate-800 group-hover:text-blue-700 transition-colors">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
@@ -174,7 +174,7 @@ export default function CapabilitiesModern({ service }: CapabilitiesModernProps)
                       </h3>
 
                       {/* Description */}
-                      <p className="text-base lg:text-lg text-navy-600 mb-5 leading-relaxed">
+                      <p className="text-base lg:text-lg text-black mb-5 leading-relaxed">
                         {capability.description}
                       </p>
 
@@ -188,7 +188,7 @@ export default function CapabilitiesModern({ service }: CapabilitiesModernProps)
                             <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center">
                               <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                             </div>
-                            <span className="text-base text-navy-700">
+                            <span className="text-base text-black">
                               {feature}
                             </span>
                           </div>
@@ -202,25 +202,6 @@ export default function CapabilitiesModern({ service }: CapabilitiesModernProps)
           })}
         </div>
 
-        {/* Bottom visual connector */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10 flex justify-center"
-        >
-          <div className="flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-slate-100 to-blue-50 rounded-full">
-            <span className="text-navy-600 font-medium">All capabilities work together seamlessly</span>
-            <div className="flex items-center gap-1">
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight className="w-5 h-5 text-blue-500" />
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

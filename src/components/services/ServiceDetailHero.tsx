@@ -31,12 +31,6 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
       <div className="absolute inset-0">
         {hasWaveBackground ? (
           <>
-            {/* Header gradient bar - clean straight edge - consistent brand colors */}
-            <div
-              className="absolute top-0 left-0 right-0 h-[120px]"
-              style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
-            />
-
             {/* Light colorful accents on white section */}
             <motion.div
               className={`absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-3xl ${
@@ -184,7 +178,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-              className="text-xl leading-relaxed mb-10 text-navy-600"
+              className="text-xl leading-relaxed mb-10 text-black"
             >
               {service.description}
             </motion.p>
@@ -228,7 +222,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                     ? 'bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-400'
                     : isScreener
                     ? 'bg-white border-2 border-cyan-200 text-cyan-700 hover:bg-cyan-50 hover:border-cyan-400'
-                    : 'bg-white border-2 border-navy-200 text-navy-700 hover:bg-navy-50 hover:border-navy-300 shadow-sm'
+                    : 'bg-white border-2 border-navy-200 text-black hover:bg-navy-50 hover:border-navy-300 shadow-sm'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -407,7 +401,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                               )}
                             </div>
                             <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-white rounded-full border border-navy-200 shadow-sm">
-                              <span className="text-sm font-semibold text-navy-700">
+                              <span className="text-sm font-semibold text-black">
                                 {service.brandLogos[0].name}
                               </span>
                             </div>
@@ -469,7 +463,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                                     </span>
                                   )}
                                 </div>
-                                <span className="text-xs font-medium text-navy-600 mt-2 block">
+                                <span className="text-xs font-medium text-black mt-2 block">
                                   {logo.name}
                                 </span>
                               </div>
@@ -489,7 +483,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                     )}
 
                     <div className="mt-8 pt-6 border-t border-navy-100">
-                      <p className="text-sm text-navy-600 text-center">
+                      <p className="text-sm text-black text-center">
                         Built with industry-standard tools trusted by quantitative teams worldwide
                       </p>
                     </div>

@@ -154,11 +154,10 @@ export const services: Service[] = [
     ],
     howItWorks: [
       { step: 1, title: "Strategy Documentation", description: "Document your trading rules—entries, exits, position sizing.", duration: "2-3 sessions" },
-      { step: 2, title: "Technical Specification", description: "Rules translated to technical specs. You review before coding.", duration: "1 week" },
-      { step: 3, title: "System Development", description: "Build automated system with clean, documented code.", duration: "2-4 weeks" },
-      { step: 4, title: "Backtesting", description: "Test against historical data with detailed performance reports.", duration: "1-2 weeks" },
-      { step: 5, title: "Paper Trading", description: "Live market testing without capital risk.", duration: "2-4 weeks" },
-      { step: 6, title: "Production Deployment", description: "Go live with monitoring, alerts, and support.", duration: "Ongoing" }
+      { step: 2, title: "Technical Specification", description: "Rules translated to technical specs. You review before coding.", duration: "2-4 days" },
+      { step: 3, title: "System Development", description: "Build automated system with clean, documented code.", duration: "1-4 weeks" },
+      { step: 4, title: "Paper Trading", description: "Live market testing without capital risk.", duration: "1-5 days" },
+      { step: 5, title: "Production Deployment", description: "Go live with monitoring, alerts, and support.", duration: "Ongoing" }
     ],
     useCases: [
       {

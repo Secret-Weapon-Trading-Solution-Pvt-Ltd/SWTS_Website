@@ -107,9 +107,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Modern Process Flow with illustrations */}
           <ProcessFlowModern service={service} />
-
-          {/* CTA section - same style as other services */}
-          <ServiceCTA service={service} />
         </>
       ) : isBacktesting ? (
         <>

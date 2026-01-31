@@ -273,9 +273,9 @@ const StrategyIllustration = () => (
       {/* Stat 3 */}
       <g>
         <circle cx="320" cy="270" r="20" fill="#F5F3FF"/>
-        <text x="320" y="267" textAnchor="middle" fill="#8B5CF6" fontSize="12" fontWeight="bold">&lt;1s</text>
+        <text x="320" y="267" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontWeight="bold">&lt;500ms</text>
         <text x="320" y="279" textAnchor="middle" fill="#8B5CF6" fontSize="7">Speed</text>
-        <text x="320" y="300" textAnchor="middle" fill="#64748B" fontSize="9">Order Execution</text>
+        <text x="320" y="300" textAnchor="middle" fill="#64748B" fontSize="9">Execution Speed</text>
       </g>
     </motion.g>
   </svg>
@@ -284,11 +284,11 @@ const StrategyIllustration = () => (
 const overviewData = {
   whatItIs: {
     title: "What is Strategy Automation?",
-    description: "Strategy Automation transforms your proven trading rules into fully automated execution systems. We take your manual trading logic—the entries, exits, position sizing, and risk rules you've developed—and convert them into code that executes 24/7 without human intervention.",
+    description: "Strategy Automation transforms your proven trading rules into fully automated execution systems. We take your manual trading logic—the entries, exits, position sizing, and risk rules you've defined—and convert them into code that executes 24/7 without human intervention.",
     highlights: [
       "Your rules, precisely coded",
       "No programming knowledge required",
-      "Full backtesting included",
+      "24/7 automated execution",
       "Production-ready systems"
     ]
   },
@@ -298,21 +298,21 @@ const overviewData = {
     stats: [
       { value: "0", label: "Emotional Errors", description: "No fear, greed, or hesitation" },
       { value: "24/7", label: "Market Coverage", description: "Never miss a trading opportunity" },
-      { value: "<100ms", label: "Execution Speed", description: "Faster than any manual trade" }
+      { value: "<500ms", label: "Execution Speed", description: "Faster than any manual trade" }
     ]
   },
   whoShouldUse: {
     title: "Who Should Use This?",
     profiles: [
       {
+        icon: TrendingUp,
+        title: "Novice Traders",
+        description: "You're profitable but manual execution is limiting your scale and consistency"
+      },
+      {
         icon: Target,
         title: "Systematic Traders",
         description: "You have clear, rule-based strategies but lack the technical skills to automate them"
-      },
-      {
-        icon: TrendingUp,
-        title: "Active Traders",
-        description: "You're profitable but manual execution is limiting your scale and consistency"
       },
       {
         icon: Users,
@@ -323,19 +323,9 @@ const overviewData = {
   },
   benefits: [
     {
-      icon: Zap,
-      title: "Instant Execution",
-      description: "Trades in milliseconds, never miss entry"
-    },
-    {
       icon: Target,
-      title: "Perfect Consistency",
+      title: "Consistency",
       description: "Rules execute exactly as designed"
-    },
-    {
-      icon: CheckCircle,
-      title: "Validated Performance",
-      description: "Backtested before going live"
     },
     {
       icon: TrendingUp,
@@ -371,7 +361,7 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
             <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Transform Your</span>{' '}
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Trading</span>
           </h2>
-          <p className="text-xl text-navy-600/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Everything you need to know about automating your trading strategy
           </p>
         </motion.div>
@@ -391,21 +381,16 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
             <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-blue-900 to-navy-800 bg-clip-text text-transparent mb-6">
               {overviewData.whatItIs.title}
             </h3>
-            <p className="text-lg text-navy-600/90 leading-relaxed mb-8">
+            <p className="text-lg text-black leading-relaxed mb-8">
               {overviewData.whatItIs.description}
             </p>
             <div className="grid grid-cols-2 gap-4">
               {overviewData.whatItIs.highlights.map((highlight, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, y: -2 }}
-                  className="flex items-center gap-3 p-4 bg-gradient-to-br from-white to-slate-50/80 rounded-xl shadow-md shadow-slate-200/50 border border-slate-100 hover:shadow-lg hover:border-blue-100 transition-all duration-300 cursor-default group"
+                  className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-200"
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform group-hover:scale-110 bg-gradient-to-br ${
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-md bg-gradient-to-br ${
                     index === 0 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
                     index === 1 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
                     index === 2 ? 'from-cyan-500 to-blue-600 shadow-cyan-500/25' :
@@ -414,7 +399,7 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-sm font-semibold text-navy-800">{highlight}</span>
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -459,13 +444,13 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
               <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-3">
                 {overviewData.whyItMatters.title}
               </h3>
-              <p className="text-base lg:text-lg text-navy-600 max-w-2xl mx-auto">
+              <p className="text-base lg:text-lg text-black max-w-2xl mx-auto">
                 Automation eliminates emotional interference, execution delays, and enables 24/7 market monitoring.
               </p>
             </div>
 
             {/* Stats + Benefits Combined Row */}
-            <div className="grid grid-cols-3 lg:grid-cols-7 gap-3">
+            <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
               {/* Stats */}
               {overviewData.whyItMatters.stats.map((stat, index) => (
                 <motion.div
@@ -481,7 +466,7 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
                     index === 1 ? 'from-indigo-600 to-purple-600' :
                     'from-cyan-600 to-blue-600'
                   } bg-clip-text text-transparent`}>{stat.value}</div>
-                  <div className="text-sm lg:text-base font-semibold text-navy-700 mb-1">{stat.label}</div>
+                  <div className="text-sm lg:text-base font-semibold text-black mb-1">{stat.label}</div>
                   <div className="text-xs lg:text-sm text-navy-500">{stat.description}</div>
                 </motion.div>
               ))}
@@ -497,10 +482,7 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
                   className="hidden lg:flex flex-col items-center text-center p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br ${
-                    index === 0 ? 'from-blue-500 to-indigo-600' :
-                    index === 1 ? 'from-indigo-500 to-purple-600' :
-                    index === 2 ? 'from-cyan-500 to-blue-600' :
-                    'from-emerald-500 to-teal-600'
+                    index === 0 ? 'from-purple-500 to-indigo-600' : 'from-green-500 to-green-600'
                   }`}>
                     <benefit.icon className="w-5 h-5 text-white" />
                   </div>
@@ -521,10 +503,7 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
                   className="flex flex-col p-3 bg-white rounded-xl border border-slate-100 shadow-sm"
                 >
                   <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mb-2 bg-gradient-to-br ${
-                    index === 0 ? 'from-blue-500 to-indigo-600' :
-                    index === 1 ? 'from-indigo-500 to-purple-600' :
-                    index === 2 ? 'from-cyan-500 to-blue-600' :
-                    'from-emerald-500 to-teal-600'
+                    index === 0 ? 'from-purple-500 to-indigo-600' : 'from-green-500 to-green-600'
                   }`}>
                     <benefit.icon className="w-4 h-4 text-white" />
                   </div>
@@ -608,7 +587,7 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-indigo-900 transition-colors">{profile.title}</h4>
-                    <p className="text-navy-600 leading-relaxed">{profile.description}</p>
+                    <p className="text-black leading-relaxed">{profile.description}</p>
                   </div>
                 </motion.div>
               ))}

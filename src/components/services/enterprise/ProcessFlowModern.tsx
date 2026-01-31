@@ -7,7 +7,6 @@ import {
   MessageSquare,
   FileText,
   Code,
-  FlaskConical,
   PlayCircle,
   Rocket,
   ArrowRight,
@@ -24,7 +23,6 @@ const stepIcons = [
   MessageSquare,
   FileText,
   Code,
-  FlaskConical,
   PlayCircle,
   Rocket
 ];
@@ -34,7 +32,6 @@ const stepColors = [
   { from: 'from-blue-500', to: 'to-cyan-500', shadow: 'shadow-blue-500/30', bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-600' },
   { from: 'from-indigo-500', to: 'to-blue-500', shadow: 'shadow-indigo-500/30', bg: 'bg-indigo-50', border: 'border-indigo-200', text: 'text-indigo-600' },
   { from: 'from-violet-500', to: 'to-indigo-500', shadow: 'shadow-violet-500/30', bg: 'bg-violet-50', border: 'border-violet-200', text: 'text-violet-600' },
-  { from: 'from-purple-500', to: 'to-violet-500', shadow: 'shadow-purple-500/30', bg: 'bg-purple-50', border: 'border-purple-200', text: 'text-purple-600' },
   { from: 'from-fuchsia-500', to: 'to-purple-500', shadow: 'shadow-fuchsia-500/30', bg: 'bg-fuchsia-50', border: 'border-fuchsia-200', text: 'text-fuchsia-600' },
   { from: 'from-emerald-500', to: 'to-teal-500', shadow: 'shadow-emerald-500/30', bg: 'bg-emerald-50', border: 'border-emerald-200', text: 'text-emerald-600' },
 ];
@@ -96,75 +93,53 @@ const StepIllustrations = [
       <rect x="57" y="70" width="25" height="4" rx="2" fill="url(#step3grad)"/>
     </svg>
   ),
-  // Step 4 - Backtest/Flask
+  // Step 4 - Paper Trading
   () => (
     <svg viewBox="0 0 120 120" className="w-full h-full">
       <defs>
         <linearGradient id="step4grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#A855F7"/>
-          <stop offset="100%" stopColor="#8B5CF6"/>
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="60" r="50" fill="url(#step4grad)" opacity="0.1"/>
-      {/* Flask shape */}
-      <path d="M50 30 L50 50 L35 80 Q32 88 40 90 L80 90 Q88 88 85 80 L70 50 L70 30"
-            fill="white" stroke="url(#step4grad)" strokeWidth="2"/>
-      <rect x="48" y="25" width="24" height="8" rx="2" fill="url(#step4grad)"/>
-      {/* Bubbles */}
-      <circle cx="50" cy="70" r="4" fill="url(#step4grad)" opacity="0.6"/>
-      <circle cx="60" cy="75" r="5" fill="url(#step4grad)" opacity="0.4"/>
-      <circle cx="70" cy="68" r="3" fill="url(#step4grad)" opacity="0.5"/>
-      {/* Chart inside */}
-      <path d="M42 82 L50 75 L58 78 L66 72 L75 76" stroke="url(#step4grad)" strokeWidth="2" fill="none" strokeLinecap="round"/>
-    </svg>
-  ),
-  // Step 5 - Paper Trading
-  () => (
-    <svg viewBox="0 0 120 120" className="w-full h-full">
-      <defs>
-        <linearGradient id="step5grad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#D946EF"/>
           <stop offset="100%" stopColor="#A855F7"/>
         </linearGradient>
       </defs>
-      <circle cx="60" cy="60" r="50" fill="url(#step5grad)" opacity="0.1"/>
+      <circle cx="60" cy="60" r="50" fill="url(#step4grad)" opacity="0.1"/>
       {/* Play button circle */}
-      <circle cx="60" cy="60" r="35" fill="white" stroke="url(#step5grad)" strokeWidth="2"/>
-      <circle cx="60" cy="60" r="28" fill="url(#step5grad)" opacity="0.1"/>
+      <circle cx="60" cy="60" r="35" fill="white" stroke="url(#step4grad)" strokeWidth="2"/>
+      <circle cx="60" cy="60" r="28" fill="url(#step4grad)" opacity="0.1"/>
       {/* Play icon */}
-      <path d="M52 45 L52 75 L78 60 Z" fill="url(#step5grad)"/>
+      <path d="M52 45 L52 75 L78 60 Z" fill="url(#step4grad)"/>
       {/* Orbiting dots */}
-      <circle cx="60" cy="20" r="4" fill="url(#step5grad)" opacity="0.6"/>
-      <circle cx="95" cy="60" r="4" fill="url(#step5grad)" opacity="0.4"/>
-      <circle cx="60" cy="100" r="4" fill="url(#step5grad)" opacity="0.5"/>
+      <circle cx="60" cy="20" r="4" fill="url(#step4grad)" opacity="0.6"/>
+      <circle cx="95" cy="60" r="4" fill="url(#step4grad)" opacity="0.4"/>
+      <circle cx="60" cy="100" r="4" fill="url(#step4grad)" opacity="0.5"/>
     </svg>
   ),
-  // Step 6 - Go Live/Rocket
+  // Step 5 - Go Live/Rocket
   () => (
     <svg viewBox="0 0 120 120" className="w-full h-full">
       <defs>
-        <linearGradient id="step6grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="step5grad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#10B981"/>
           <stop offset="100%" stopColor="#14B8A6"/>
         </linearGradient>
       </defs>
-      <circle cx="60" cy="60" r="50" fill="url(#step6grad)" opacity="0.1"/>
+      <circle cx="60" cy="60" r="50" fill="url(#step5grad)" opacity="0.1"/>
       {/* Rocket body */}
-      <ellipse cx="60" cy="55" rx="15" ry="30" fill="white" stroke="url(#step6grad)" strokeWidth="2"/>
-      <ellipse cx="60" cy="40" rx="10" ry="15" fill="url(#step6grad)"/>
+      <ellipse cx="60" cy="55" rx="15" ry="30" fill="white" stroke="url(#step5grad)" strokeWidth="2"/>
+      <ellipse cx="60" cy="40" rx="10" ry="15" fill="url(#step5grad)"/>
       {/* Window */}
-      <circle cx="60" cy="50" r="6" fill="url(#step6grad)" opacity="0.3"/>
+      <circle cx="60" cy="50" r="6" fill="url(#step5grad)" opacity="0.3"/>
       <circle cx="60" cy="50" r="4" fill="white"/>
       {/* Fins */}
-      <path d="M45 70 L40 85 L50 75" fill="url(#step6grad)"/>
-      <path d="M75 70 L80 85 L70 75" fill="url(#step6grad)"/>
+      <path d="M45 70 L40 85 L50 75" fill="url(#step5grad)"/>
+      <path d="M75 70 L80 85 L70 75" fill="url(#step5grad)"/>
       {/* Flames */}
       <ellipse cx="60" cy="92" rx="8" ry="12" fill="#F59E0B" opacity="0.8"/>
       <ellipse cx="60" cy="95" rx="5" ry="8" fill="#EF4444" opacity="0.9"/>
       {/* Stars */}
-      <circle cx="25" cy="30" r="2" fill="url(#step6grad)"/>
-      <circle cx="90" cy="25" r="2" fill="url(#step6grad)"/>
-      <circle cx="95" cy="85" r="2" fill="url(#step6grad)"/>
+      <circle cx="25" cy="30" r="2" fill="url(#step5grad)"/>
+      <circle cx="90" cy="25" r="2" fill="url(#step5grad)"/>
+      <circle cx="95" cy="85" r="2" fill="url(#step5grad)"/>
     </svg>
   ),
 ];
@@ -220,7 +195,7 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
             {' '}
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Automation</span>
           </h2>
-          <p className="text-xl text-navy-600/90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A transparent, step-by-step methodology that ensures your strategy is properly translated, tested, and deployed
           </p>
         </motion.div>
@@ -243,7 +218,7 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
           />
 
           {/* Steps */}
-          <div className="grid grid-cols-6 gap-3">
+          <div className="grid grid-cols-5 gap-3">
             {service.howItWorks.map((step, index) => {
               const colors = stepColors[index % stepColors.length];
               const Illustration = StepIllustrations[index % StepIllustrations.length];
@@ -278,7 +253,7 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
                     <h3 className="text-base font-bold text-navy-900 mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-navy-600 leading-snug mb-2 line-clamp-2">
+                    <p className="text-sm text-black leading-snug mb-2 line-clamp-2">
                       {step.description}
                     </p>
                     {step.duration && (
@@ -332,7 +307,7 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-navy-600 line-clamp-2">
+                    <p className="text-sm text-black line-clamp-2">
                       {step.description}
                     </p>
                   </div>
@@ -356,7 +331,7 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
             <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
               Your Strategy, Fully Automated
             </h3>
-            <p className="text-base lg:text-lg text-navy-600 text-center">
+            <p className="text-base lg:text-lg text-black text-center">
               Running 24/7 with monitoring, alerts, and support
             </p>
           </div>
@@ -370,7 +345,9 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
           className="mt-12 text-center"
         >
           <a
-            href="/strategy-assessment"
+            href="https://wa.me/917083718306"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 group"
           >
             <span>Start Your Journey</span>

@@ -103,16 +103,10 @@ export const Navbar: React.FC = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className={cn(
-              "text-lg sm:text-xl lg:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-bold italic leading-tight tracking-tight drop-shadow-sm",
-              isDarkHeader ? "text-white" : "bg-gradient-to-r from-[#2196F3] to-[#1565C0] bg-clip-text text-transparent"
-            )}>
+            <span className="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl 3xl:text-4xl 4xl:text-5xl font-bold italic leading-tight tracking-tight drop-shadow-sm bg-gradient-to-r from-[#2196F3] to-[#1565C0] bg-clip-text text-transparent">
               Secret Weapon
             </span>
-            <span className={cn(
-              "text-[10px] sm:text-xs lg:text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl font-medium leading-tight tracking-[0.15em]",
-              isDarkHeader ? "text-white/90" : "text-[#00897B]"
-            )}>
+            <span className="text-[10px] sm:text-xs lg:text-sm 2xl:text-base 3xl:text-lg 4xl:text-xl font-medium leading-tight tracking-[0.15em] text-[#00897B]">
               TRADING SOLUTION PVT. LTD.
             </span>
           </div>
