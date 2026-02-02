@@ -12,61 +12,57 @@ const processSteps = [
   {
     step: 1,
     title: "Workflow Discovery",
-    description: "We deep-dive into your daily trading workflow—what data you need, when you need it, and how you currently piece it together. This shapes everything we build.",
+    description: "We analyze your trading workflow to understand your data needs.",
     duration: "2-3 sessions",
     icon: Search,
     color: "slate",
     gradient: "from-slate-500 to-gray-600",
     details: [
-      "Map your current tools and data sources",
-      "Identify pain points and bottlenecks",
-      "Define key metrics and views you need",
-      "Understand your decision-making workflow"
+      "Map tools & data sources",
+      "Identify pain points",
+      "Define key metrics"
     ]
   },
   {
     step: 2,
-    title: "UX Design & Prototyping",
-    description: "We create wireframes and interactive prototypes, iterating with your feedback until the layout matches exactly how you think and work.",
+    title: "UX Design",
+    description: "Create wireframes and prototypes based on your feedback.",
     duration: "1-2 weeks",
     icon: Palette,
     color: "blue",
     gradient: "from-blue-500 to-indigo-500",
     details: [
-      "Wireframe key dashboard views",
-      "Create interactive prototypes",
-      "Iterate based on your feedback",
-      "Finalize component layouts"
+      "Wireframe dashboard views",
+      "Interactive prototypes",
+      "Finalize layouts"
     ]
   },
   {
     step: 3,
     title: "Development",
-    description: "We build your dashboard in iterative sprints, delivering working features incrementally so you can provide feedback throughout the process.",
+    description: "Build your dashboard with iterative sprints and feedback.",
     duration: "4-8 weeks",
     icon: Code,
     color: "emerald",
     gradient: "from-emerald-500 to-teal-500",
     details: [
-      "Set up data integrations",
-      "Build core dashboard components",
-      "Implement real-time updates",
-      "Add analytics and reporting"
+      "Data integrations",
+      "Core components",
+      "Real-time updates"
     ]
   },
   {
     step: 4,
     title: "Launch & Iterate",
-    description: "We deploy your dashboard and continue refining based on real-world usage. As your needs evolve, so does your dashboard.",
+    description: "Deploy and refine based on real-world usage.",
     duration: "Ongoing",
     icon: Rocket,
     color: "amber",
     gradient: "from-amber-500 to-orange-500",
     details: [
-      "Deploy to your environment",
-      "Monitor performance and usage",
-      "Gather feedback and refine",
-      "Add new features as needed"
+      "Deploy to environment",
+      "Monitor performance",
+      "Add new features"
     ]
   }
 ];
@@ -122,7 +118,7 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
         {/* Process steps - Horizontal timeline on desktop, vertical on mobile */}
         <div className="relative">
           {/* Connection line - hidden on mobile */}
-          <div className="hidden lg:block absolute top-24 left-[12%] right-[12%] h-1 bg-gradient-to-r from-slate-200 via-gray-300 to-slate-200 rounded-full" />
+          <div className="hidden lg:block absolute top-[22px] left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-slate-200 via-gray-300 to-slate-200 rounded-full" />
 
           <div className="grid lg:grid-cols-4 gap-8 lg:gap-6">
             {processSteps.map((step, index) => {
@@ -138,13 +134,13 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
                   className="relative"
                 >
                   {/* Step number circle - positioned above the card on desktop */}
-                  <div className="lg:flex lg:justify-center lg:mb-8 hidden">
+                  <div className="lg:flex lg:justify-center lg:mb-6 hidden">
                     <motion.div
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.15 + 0.2, type: "spring", stiffness: 200 }}
-                      className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg z-10`}
+                      className={`w-10 h-10 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-white font-bold text-base shadow-md z-10`}
                     >
                       {step.step}
                     </motion.div>
@@ -152,42 +148,48 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
 
                   {/* Card */}
                   <motion.div
-                    whileHover={{ y: -5 }}
+                    whileHover={{ y: -3 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-white rounded-2xl p-6 shadow-md border border-slate-100 hover:shadow-lg hover:border-slate-200 transition-all duration-300 h-full"
+                    className="bg-white rounded-xl p-5 shadow-sm border border-slate-100 hover:shadow-md hover:border-slate-200 transition-all duration-300 h-full"
                   >
                     {/* Mobile step number */}
-                    <div className="lg:hidden flex items-center gap-4 mb-4">
-                      <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-white font-bold shadow-md`}>
+                    <div className="lg:hidden flex items-center gap-3 mb-3">
+                      <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${step.gradient} flex items-center justify-center text-white font-bold text-sm shadow-sm`}>
                         {step.step}
                       </div>
                       <div className={`flex-1 h-0.5 bg-gradient-to-r ${step.gradient} opacity-30 rounded-full`} />
                     </div>
 
                     {/* Icon */}
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-4 shadow-md`}>
-                      <Icon className="w-7 h-7 text-white" />
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-3 shadow-sm`}>
+                      <Icon className="w-5 h-5 text-white" />
                     </div>
 
                     {/* Title and duration */}
                     <div className="mb-3">
-                      <h3 className="text-xl font-bold text-navy-900 mb-1">{step.title}</h3>
-                      <span className={`text-sm font-medium px-3 py-1 rounded-full bg-gradient-to-r ${step.gradient} bg-opacity-10 text-${step.color}-700`}>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h3>
+                      <span
+                        className="text-xs font-semibold px-2.5 py-1 rounded-full"
+                        style={{
+                          backgroundColor: step.color === 'slate' ? '#f1f5f9' : step.color === 'blue' ? '#eff6ff' : step.color === 'emerald' ? '#ecfdf5' : '#fffbeb',
+                          color: step.color === 'slate' ? '#475569' : step.color === 'blue' ? '#1d4ed8' : step.color === 'emerald' ? '#047857' : '#b45309'
+                        }}
+                      >
                         {step.duration}
                       </span>
                     </div>
 
                     {/* Description */}
-                    <p className="text-black mb-4 leading-relaxed">
+                    <p className="text-base text-gray-900 font-medium mb-4 leading-relaxed">
                       {step.description}
                     </p>
 
                     {/* Details list */}
                     <div className="space-y-2">
                       {step.details.map((detail, detailIndex) => (
-                        <div key={detailIndex} className="flex items-start gap-2">
-                          <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 text-${step.color}-500`} style={{ color: step.color === 'slate' ? '#64748B' : step.color === 'blue' ? '#3B82F6' : step.color === 'emerald' ? '#10B981' : '#F59E0B' }} />
-                          <span className="text-sm text-black">{detail}</span>
+                        <div key={detailIndex} className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 flex-shrink-0" style={{ color: step.color === 'slate' ? '#64748B' : step.color === 'blue' ? '#3B82F6' : step.color === 'emerald' ? '#10B981' : '#F59E0B' }} />
+                          <span className="text-base text-gray-800 font-medium">{detail}</span>
                         </div>
                       ))}
                     </div>
@@ -195,14 +197,14 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
 
                   {/* Arrow to next step - hidden on last item and on mobile */}
                   {index < processSteps.length - 1 && (
-                    <div className="hidden lg:flex absolute top-24 -right-3 z-20">
+                    <div className="hidden lg:flex absolute top-[18px] -right-3 z-20">
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.15 + 0.3 }}
                       >
-                        <ArrowRight className="w-6 h-6 text-slate-400" />
+                        <ArrowRight className="w-5 h-5 text-slate-400" />
                       </motion.div>
                     </div>
                   )}
@@ -217,25 +219,23 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 text-center"
+          className="mt-24 text-center"
         >
-          <div className="bg-gradient-to-br from-slate-50 via-white to-gray-50 rounded-2xl p-8 lg:p-10 border border-slate-100 shadow-md max-w-3xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold text-navy-900 mb-4">
-              Ready to Unify Your Trading Data?
-            </h3>
-            <p className="text-black mb-6 leading-relaxed">
-              Let's discuss your workflow and design a dashboard that actually fits how you trade.
-            </p>
-            <motion.a
-              href="/#contact"
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-slate-600 via-gray-600 to-slate-700 text-white font-semibold rounded-xl shadow-lg shadow-slate-500/25 hover:shadow-xl hover:shadow-slate-500/30 transition-all duration-300 group"
-            >
-              Start Your Dashboard Project
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-          </div>
+          <h3 className="text-2xl lg:text-3xl font-bold text-black mb-3">
+            Ready to Unify Your Trading Data?
+          </h3>
+          <p className="text-black mb-6 max-w-xl mx-auto">
+            Let's discuss your workflow and design a dashboard that fits how you trade.
+          </p>
+          <motion.a
+            href="/#contact"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-slate-600 via-gray-600 to-slate-700 text-white font-semibold rounded-xl shadow-lg shadow-slate-500/25 hover:shadow-xl hover:shadow-slate-500/30 transition-all duration-300 group"
+          >
+            Start Your Dashboard Project
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </motion.a>
         </motion.div>
       </div>
     </section>

@@ -269,96 +269,98 @@ const DashboardIllustration = () => (
   </svg>
 );
 
-// Data Integration Visual
-const IntegrationIllustration = () => (
-  <svg viewBox="0 0 400 280" className="w-full h-auto">
+// Static Data Flow Diagram - Shows data sources flowing into central dashboard
+const DataFlowDiagram = () => (
+  <svg viewBox="0 0 400 300" className="w-full h-auto">
     <defs>
-      <linearGradient id="intGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#475569" />
-        <stop offset="100%" stopColor="#64748B" />
+      <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#1E293B" />
+        <stop offset="100%" stopColor="#334155" />
       </linearGradient>
-      <linearGradient id="intGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#3B82F6" />
-        <stop offset="100%" stopColor="#60A5FA" />
-      </linearGradient>
-      <filter id="intShadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="3" stdDeviation="6" floodOpacity="0.1"/>
+      <filter id="shadowFilter" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#0F172A" floodOpacity="0.15"/>
       </filter>
     </defs>
 
-    {/* Central dashboard hub */}
-    <motion.g
-      initial={{ scale: 0 }}
-      whileInView={{ scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
-      <circle cx="200" cy="140" r="50" fill="white" filter="url(#intShadow)" stroke="#E2E8F0" strokeWidth="2"/>
-      <circle cx="200" cy="140" r="38" fill="url(#intGrad1)"/>
-      <text x="200" y="135" fill="white" fontSize="10" fontWeight="600" textAnchor="middle">YOUR</text>
-      <text x="200" y="150" fill="white" fontSize="11" fontWeight="bold" textAnchor="middle">DASHBOARD</text>
-    </motion.g>
+    {/* Background */}
+    <rect x="0" y="0" width="400" height="300" fill="#F8FAFC" rx="16"/>
 
-    {/* Data source nodes */}
-    {[
-      { x: 70, y: 60, label: "Broker API", color: "#10B981", icon: "B" },
-      { x: 330, y: 60, label: "Market Data", color: "#3B82F6", icon: "M" },
-      { x: 70, y: 220, label: "Signals", color: "#F59E0B", icon: "S" },
-      { x: 330, y: 220, label: "Analytics", color: "#8B5CF6", icon: "A" },
-      { x: 50, y: 140, label: "P&L", color: "#EF4444", icon: "$" },
-      { x: 350, y: 140, label: "Positions", color: "#06B6D4", icon: "P" }
-    ].map((node, i) => (
-      <motion.g
-        key={i}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 + i * 0.1, duration: 0.3 }}
-      >
-        {/* Connection line */}
-        <motion.line
-          x1={node.x}
-          y1={node.y}
-          x2="200"
-          y2="140"
-          stroke={node.color}
-          strokeWidth="2"
-          strokeDasharray="6,4"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-        >
-          <animate attributeName="stroke-dashoffset" values="0;-10" dur="1s" repeatCount="indefinite"/>
-        </motion.line>
+    {/* Connection Lines - Static solid lines */}
+    <line x1="70" y1="55" x2="150" y2="120" stroke="#10B981" strokeWidth="3" strokeLinecap="round"/>
+    <line x1="330" y1="55" x2="250" y2="120" stroke="#3B82F6" strokeWidth="3" strokeLinecap="round"/>
+    <line x1="45" y1="150" x2="150" y2="150" stroke="#EF4444" strokeWidth="3" strokeLinecap="round"/>
+    <line x1="355" y1="150" x2="250" y2="150" stroke="#06B6D4" strokeWidth="3" strokeLinecap="round"/>
+    <line x1="70" y1="245" x2="150" y2="180" stroke="#F59E0B" strokeWidth="3" strokeLinecap="round"/>
+    <line x1="330" y1="245" x2="250" y2="180" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round"/>
 
-        {/* Node circle */}
-        <circle cx={node.x} cy={node.y} r="28" fill="white" filter="url(#intShadow)" stroke={node.color} strokeWidth="2"/>
-        <circle cx={node.x} cy={node.y} r="20" fill={node.color}/>
-        <text x={node.x} y={node.y + 4} fill="white" fontSize="12" fontWeight="bold" textAnchor="middle">{node.icon}</text>
-        <text x={node.x} y={node.y + 42} fill="#374151" fontSize="9" fontWeight="500" textAnchor="middle">{node.label}</text>
-      </motion.g>
-    ))}
+    {/* Central Dashboard */}
+    <g filter="url(#shadowFilter)">
+      <rect x="150" y="110" width="100" height="80" rx="12" fill="url(#centerGrad)"/>
+      <text x="200" y="145" fill="white" fontSize="11" fontWeight="600" textAnchor="middle">YOUR</text>
+      <text x="200" y="162" fill="white" fontSize="13" fontWeight="bold" textAnchor="middle">DASHBOARD</text>
+    </g>
 
-    {/* Animated data flow particles */}
-    {[0, 1, 2].map((i) => (
-      <motion.circle
-        key={i}
-        r="4"
-        fill="#475569"
-        initial={{ cx: 70, cy: 60 }}
-        animate={{
-          cx: [70, 200, 330, 200, 70],
-          cy: [60, 140, 220, 140, 60]
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          delay: i * 2,
-          ease: "linear"
-        }}
-      />
-    ))}
+    {/* Data Source: Broker API - Top Left */}
+    <g filter="url(#shadowFilter)">
+      <circle cx="70" cy="55" r="32" fill="white"/>
+      <circle cx="70" cy="55" r="25" fill="#10B981"/>
+      <text x="70" y="52" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">B</text>
+      <text x="70" y="64" fill="white" fontSize="7" textAnchor="middle">API</text>
+    </g>
+    <text x="70" y="100" fill="#374151" fontSize="9" fontWeight="600" textAnchor="middle">Broker</text>
+
+    {/* Data Source: Market Data - Top Right */}
+    <g filter="url(#shadowFilter)">
+      <circle cx="330" cy="55" r="32" fill="white"/>
+      <circle cx="330" cy="55" r="25" fill="#3B82F6"/>
+      <text x="330" y="52" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">M</text>
+      <text x="330" y="64" fill="white" fontSize="7" textAnchor="middle">DATA</text>
+    </g>
+    <text x="330" y="100" fill="#374151" fontSize="9" fontWeight="600" textAnchor="middle">Market Data</text>
+
+    {/* Data Source: P&L - Middle Left */}
+    <g filter="url(#shadowFilter)">
+      <circle cx="45" cy="150" r="32" fill="white"/>
+      <circle cx="45" cy="150" r="25" fill="#EF4444"/>
+      <text x="45" y="147" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">$</text>
+      <text x="45" y="159" fill="white" fontSize="7" textAnchor="middle">P&L</text>
+    </g>
+    <text x="45" y="195" fill="#374151" fontSize="9" fontWeight="600" textAnchor="middle">P&L Data</text>
+
+    {/* Data Source: Positions - Middle Right */}
+    <g filter="url(#shadowFilter)">
+      <circle cx="355" cy="150" r="32" fill="white"/>
+      <circle cx="355" cy="150" r="25" fill="#06B6D4"/>
+      <text x="355" y="147" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">P</text>
+      <text x="355" y="159" fill="white" fontSize="7" textAnchor="middle">POS</text>
+    </g>
+    <text x="355" y="195" fill="#374151" fontSize="9" fontWeight="600" textAnchor="middle">Positions</text>
+
+    {/* Data Source: Signals - Bottom Left */}
+    <g filter="url(#shadowFilter)">
+      <circle cx="70" cy="245" r="32" fill="white"/>
+      <circle cx="70" cy="245" r="25" fill="#F59E0B"/>
+      <text x="70" y="242" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">S</text>
+      <text x="70" y="254" fill="white" fontSize="7" textAnchor="middle">ALERTS</text>
+    </g>
+    <text x="70" y="290" fill="#374151" fontSize="9" fontWeight="600" textAnchor="middle">Signals</text>
+
+    {/* Data Source: Analytics - Bottom Right */}
+    <g filter="url(#shadowFilter)">
+      <circle cx="330" cy="245" r="32" fill="white"/>
+      <circle cx="330" cy="245" r="25" fill="#8B5CF6"/>
+      <text x="330" y="242" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">A</text>
+      <text x="330" y="254" fill="white" fontSize="7" textAnchor="middle">STATS</text>
+    </g>
+    <text x="330" y="290" fill="#374151" fontSize="9" fontWeight="600" textAnchor="middle">Analytics</text>
+
+    {/* Arrow indicators on lines */}
+    <polygon points="148,122 158,115 155,127" fill="#10B981"/>
+    <polygon points="252,122 242,115 245,127" fill="#3B82F6"/>
+    <polygon points="148,150 158,145 158,155" fill="#EF4444"/>
+    <polygon points="252,150 242,145 242,155" fill="#06B6D4"/>
+    <polygon points="148,178 158,185 155,173" fill="#F59E0B"/>
+    <polygon points="252,178 242,185 245,173" fill="#8B5CF6"/>
   </svg>
 );
 
@@ -419,17 +421,32 @@ const overviewData = {
       {
         icon: TrendingUp,
         title: "Active Traders",
-        description: "You trade multiple instruments and need a consolidated view of positions, P&L, and signals"
+        description: "Trade multiple instruments with consolidated view of positions, P&L, and signals"
       },
       {
         icon: BarChart3,
         title: "Prop Firms & Teams",
-        description: "You need unified dashboards for multiple traders with aggregated risk views"
+        description: "Unified dashboards for multiple traders with aggregated risk views"
       },
       {
         icon: Activity,
         title: "System Traders",
-        description: "You run automated strategies and need real-time monitoring across all systems"
+        description: "Real-time monitoring across all automated strategies and systems"
+      },
+      {
+        icon: LineChart,
+        title: "Portfolio Managers",
+        description: "Track performance across multiple accounts and asset classes"
+      },
+      {
+        icon: Gauge,
+        title: "Risk Managers",
+        description: "Monitor exposure, drawdowns, and risk limits across portfolios"
+      },
+      {
+        icon: PieChart,
+        title: "Fund Administrators",
+        description: "Comprehensive reporting and analytics for fund operations"
       }
     ]
   }
@@ -585,14 +602,26 @@ export default function DashboardOverview({ service }: DashboardOverviewProps) {
           </div>
         </motion.div>
 
-        {/* What You'll Get - Text LEFT, Visual RIGHT */}
+        {/* What You'll Get - Visual LEFT, Text RIGHT */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:order-first"
+            className="relative flex justify-center lg:order-first"
+          >
+            <div className="w-full max-w-xl">
+              <DataFlowDiagram />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:order-last"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full text-emerald-700 text-sm font-semibold mb-5 border border-emerald-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></span>
@@ -620,93 +649,51 @@ export default function DashboardOverview({ service }: DashboardOverviewProps) {
               ))}
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex justify-center lg:order-last"
-          >
-            <div className="absolute -inset-2 bg-gradient-to-br from-slate-400/15 via-gray-400/10 to-slate-400/15 rounded-2xl blur-xl" />
-
-            <div className="relative w-full bg-gradient-to-br from-slate-50/80 via-white to-gray-50/50 rounded-2xl p-3 border border-slate-100/50 shadow-lg overflow-hidden">
-              <div className="relative">
-                <IntegrationIllustration />
-              </div>
-            </div>
-          </motion.div>
         </div>
 
-        {/* Who Should Use - Image LEFT, Content RIGHT */}
+        {/* Who Should Use - Full Width Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-14"
+          className="mb-14"
         >
-          {/* Left Side - Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative flex justify-center"
-          >
-            <div className="relative aspect-[3/2] w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={`${basePath}/17106898_1019Z_beverages_online_2.jpg`}
-                alt="Trading dashboard interface"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
-
-              <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
-                <span className="text-sm font-semibold bg-gradient-to-r from-slate-600 to-gray-600 bg-clip-text text-transparent">Unified Workflow</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full text-violet-700 text-sm font-semibold mb-5 border border-violet-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full"></span>
               Ideal For
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-slate-900 bg-clip-text text-transparent mb-8">
+            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-slate-900 bg-clip-text text-transparent">
               {overviewData.whoShouldUse.title}
             </h3>
-            <div className="space-y-5">
-              {overviewData.whoShouldUse.profiles.map((profile, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className="flex gap-5 items-start p-4 rounded-2xl bg-gradient-to-r from-white to-slate-50/80 border border-slate-100 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300 group cursor-default"
-                >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br ${
-                    index === 0 ? 'from-slate-500 to-gray-600 shadow-slate-500/25' :
-                    index === 1 ? 'from-gray-500 to-slate-600 shadow-gray-500/25' :
-                    'from-slate-600 to-gray-700 shadow-slate-500/25'
-                  }`}>
-                    <profile.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-slate-700 transition-colors">{profile.title}</h4>
-                    <p className="text-black leading-relaxed">{profile.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {overviewData.whoShouldUse.profiles.map((profile, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="flex gap-4 items-start p-5 rounded-2xl bg-gradient-to-r from-white to-slate-50/80 border border-slate-100 shadow-sm hover:shadow-md hover:border-slate-200 transition-all duration-300"
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg bg-gradient-to-br ${
+                  index === 0 ? 'from-emerald-500 to-teal-600 shadow-emerald-500/25' :
+                  index === 1 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
+                  index === 2 ? 'from-amber-500 to-orange-600 shadow-amber-500/25' :
+                  index === 3 ? 'from-violet-500 to-purple-600 shadow-violet-500/25' :
+                  index === 4 ? 'from-red-500 to-rose-600 shadow-red-500/25' :
+                  'from-cyan-500 to-teal-600 shadow-cyan-500/25'
+                }`}>
+                  <profile.icon className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold text-navy-900 mb-1">{profile.title}</h4>
+                  <p className="text-sm text-black leading-relaxed">{profile.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Bottom CTA */}
