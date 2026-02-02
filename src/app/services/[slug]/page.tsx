@@ -37,6 +37,12 @@ import {
   DashboardCapabilities,
   DashboardProcess
 } from '@/components/services/dashboard';
+// Alerts-specific enterprise components
+import {
+  AlertsOverview,
+  AlertsCapabilities,
+  AlertsProcess
+} from '@/components/services/alerts';
 import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
 
 interface ServicePageProps {
@@ -96,7 +102,8 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const isOptimization = service.slug === 'strategy-optimization';
   const isScreener = service.slug === 'custom-screener';
   const isDashboard = service.slug === 'custom-dashboard';
-  const isEnterpriseLayout = isStrategyAutomation || isBacktesting || isOptimization || isScreener || isDashboard;
+  const isAlerts = service.slug === 'strategy-alerts';
+  const isEnterpriseLayout = isStrategyAutomation || isBacktesting || isOptimization || isScreener || isDashboard || isAlerts;
 
   return (
     <MainLayout>
@@ -157,6 +164,17 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Dashboard Process - Development workflow */}
           <DashboardProcess service={service} />
+        </>
+      ) : isAlerts ? (
+        <>
+          {/* Alerts Overview - What/Why/Channels */}
+          <AlertsOverview service={service} />
+
+          {/* Alerts Capabilities - Feature cards */}
+          <AlertsCapabilities service={service} />
+
+          {/* Alerts Process - Timeline */}
+          <AlertsProcess service={service} />
         </>
       ) : (
         <>
