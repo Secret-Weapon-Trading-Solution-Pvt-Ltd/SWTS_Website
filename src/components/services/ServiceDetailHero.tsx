@@ -10,7 +10,19 @@ interface ServiceDetailHeroProps {
   service: Service;
 }
 
+// Get hero image based on service slug
+const getHeroImage = (slug: string): string => {
+  const imageMap: Record<string, string> = {
+    'strategy-backtesting': '/strategy-backtesting.jpg',
+    'strategy-optimization': '/strategy-optimization.jpg',
+    'custom-screener': '/custom screeners.jpg',
+  };
+  return imageMap[slug] || '/cropped-hands-business-people-working-table.jpg';
+};
+
 export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
+  const heroImage = getHeroImage(service.slug);
+
   return (
     <section className="relative pt-28 lg:pt-32 pb-6 overflow-hidden bg-white">
       {/* Background decorations */}
@@ -120,7 +132,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               whileHover={{ scale: 1.02 }}
             >
               <StaticImage
-                src="/cropped-hands-business-people-working-table.jpg"
+                src={heroImage}
                 alt={`${service.title} - Professional trading analysis`}
                 fill
                 className="object-cover"
