@@ -16,6 +16,9 @@ const getHeroImage = (slug: string): string => {
     'strategy-backtesting': '/strategy-backtesting.jpg',
     'strategy-optimization': '/strategy-optimization.jpg',
     'custom-screener': '/custom screeners.jpg',
+    'custom-dashboard': '/custom-dashboard.jpg',
+    'strategy-alerts': '/strategy-alert.jpg',
+    'paper-trading': '/paper-trading.jpg',
   };
   return imageMap[slug] || '/cropped-hands-business-people-working-table.jpg';
 };
@@ -135,7 +138,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                 src={heroImage}
                 alt={`${service.title} - Professional trading analysis`}
                 fill
-                className="object-cover"
+                className={`object-cover ${service.slug === 'strategy-alerts' ? 'object-top' : ''}`}
                 priority
               />
               {/* Subtle gradient overlay for polish */}
