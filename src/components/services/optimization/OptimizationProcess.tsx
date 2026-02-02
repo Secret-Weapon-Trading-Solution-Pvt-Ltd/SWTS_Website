@@ -338,7 +338,7 @@ export default function OptimizationProcess({ service }: OptimizationProcessProp
         >
           <a
             href="/strategy-assessment"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-blue-700 hover:via-indigo-700 hover:to-blue-700 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 group"
           >
             <span>Start Your Optimization</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

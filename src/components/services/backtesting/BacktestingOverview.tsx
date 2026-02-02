@@ -314,18 +314,15 @@ const MetricsIllustration = () => (
     {/* Bar chart with labels */}
     <motion.g>
       {[
-        { x: 335, h: 50, color: "#10B981", label: "J", value: "+3%" },
-        { x: 355, h: 38, color: "#10B981", label: "F", value: "+2%" },
-        { x: 375, h: 55, color: "#10B981", label: "M", value: "+4%" },
-        { x: 395, h: 28, color: "#EF4444", label: "A", value: "-2%" },
-        { x: 415, h: 45, color: "#10B981", label: "M", value: "+3%" },
-        { x: 435, h: 60, color: "#10B981", label: "J", value: "+5%" },
+        { x: 345, h: 50, color: "#10B981", label: "Jan", value: "+3%" },
+        { x: 380, h: 38, color: "#10B981", label: "Feb", value: "+2%" },
+        { x: 415, h: 55, color: "#10B981", label: "Mar", value: "+4%" },
       ].map((bar, i) => (
         <g key={i}>
           <motion.rect
             x={bar.x}
             y={215 - bar.h}
-            width="14"
+            width="18"
             height={bar.h}
             rx="2"
             fill={bar.color}
@@ -335,8 +332,8 @@ const MetricsIllustration = () => (
             viewport={{ once: true }}
             transition={{ delay: 0.5 + i * 0.08, duration: 0.3 }}
           />
-          <text x={bar.x + 7} y="228" fill="#000000" fontSize="8" textAnchor="middle" fontWeight="500">{bar.label}</text>
-          <text x={bar.x + 7} y={215 - bar.h - 5} fill={bar.color} fontSize="8" textAnchor="middle" fontWeight="bold">{bar.value}</text>
+          <text x={bar.x + 9} y="228" fill="#000000" fontSize="8" textAnchor="middle" fontWeight="500">{bar.label}</text>
+          <text x={bar.x + 9} y={215 - bar.h - 5} fill={bar.color} fontSize="8" textAnchor="middle" fontWeight="bold">{bar.value}</text>
         </g>
       ))}
     </motion.g>
@@ -414,8 +411,7 @@ const overviewData = {
     metrics: [
       { value: "Win Rate", description: "Percentage of profitable trades" },
       { value: "Profit Factor", description: "Gross profit / gross loss ratio" },
-      { value: "Max Drawdown", description: "Largest peak-to-trough decline" },
-      { value: "Sharpe Ratio", description: "Risk-adjusted return measure" }
+      { value: "Max Drawdown", description: "Largest peak-to-trough decline" }
     ]
   },
   whoShouldUse: {
@@ -697,12 +693,8 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
                   whileHover={{ x: 5 }}
                   className="flex gap-5 items-start p-4 rounded-2xl bg-gradient-to-r from-white to-slate-50/80 border border-slate-100 shadow-sm hover:shadow-md hover:border-violet-100 transition-all duration-300 group cursor-default"
                 >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br ${
-                    index === 0 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
-                    index === 1 ? 'from-purple-500 to-violet-600 shadow-purple-500/25' :
-                    'from-violet-500 to-fuchsia-600 shadow-violet-500/25'
-                  }`}>
-                    <profile.icon className="w-7 h-7 text-white" />
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-md bg-white border border-slate-200">
+                    <profile.icon className="w-7 h-7 text-slate-700" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-purple-900 transition-colors">{profile.title}</h4>
@@ -725,7 +717,7 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
             href="#how-it-works"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white font-semibold rounded-2xl shadow-xl shadow-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-indigo-600 text-white font-semibold rounded-2xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 group"
           >
             See Our Process
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

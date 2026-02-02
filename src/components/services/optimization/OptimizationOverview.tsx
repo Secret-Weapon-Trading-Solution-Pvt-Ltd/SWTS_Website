@@ -542,7 +542,7 @@ export default function OptimizationOverview({ service }: OptimizationOverviewPr
             href="#how-it-works"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 text-white font-semibold rounded-2xl shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-indigo-600 text-white font-semibold rounded-2xl shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 group"
           >
             See Our Process
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

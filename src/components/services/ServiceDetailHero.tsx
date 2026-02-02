@@ -85,7 +85,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
             >
               <motion.a
                 href="/strategy-assessment"
-                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl group bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700"
+                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl group bg-indigo-600 text-white hover:bg-indigo-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -96,7 +96,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               </motion.a>
               <motion.a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-400"
+                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >

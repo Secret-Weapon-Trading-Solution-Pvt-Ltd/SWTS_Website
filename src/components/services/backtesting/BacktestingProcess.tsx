@@ -337,7 +337,7 @@ export default function BacktestingProcess({ service }: BacktestingProcessProps)
         >
           <a
             href="/strategy-assessment"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-indigo-700 hover:via-purple-700 hover:to-violet-700 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all duration-300 group"
           >
             <span>Get Your Strategy Tested</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

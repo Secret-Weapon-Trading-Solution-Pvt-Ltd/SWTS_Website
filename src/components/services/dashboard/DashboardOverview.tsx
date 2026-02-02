@@ -707,7 +707,7 @@ export default function DashboardOverview({ service }: DashboardOverviewProps) {
             href="#how-it-works"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-slate-600 via-gray-600 to-slate-700 text-white font-semibold rounded-2xl shadow-xl shadow-slate-500/30 hover:shadow-2xl hover:shadow-slate-500/40 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-slate-700 text-white font-semibold rounded-2xl shadow-lg hover:bg-slate-800 hover:shadow-xl transition-all duration-300 group"
           >
             See Our Process
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
