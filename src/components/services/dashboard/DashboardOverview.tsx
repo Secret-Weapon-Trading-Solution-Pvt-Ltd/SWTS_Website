@@ -374,7 +374,7 @@ const overviewData = {
       {
         icon: Puzzle,
         title: "Poor Fit",
-        description: "Off-the-shelf platforms don't match your specific trading workflow"
+        description: "Off-the-shelf platforms don't match your specific trading need"
       },
       {
         icon: Database,

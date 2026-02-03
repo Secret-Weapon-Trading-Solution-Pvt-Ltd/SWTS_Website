@@ -10,7 +10,7 @@ interface DashboardCapabilitiesProps {
 
 const capabilitiesData = [
   {
-    title: "Real-Time Trading View",
+    title: "Real-Time View of Trading",
     subtitle: "Live Operations Dashboard",
     description: "Monitor your trading activity as it happens—P&L updates in real-time, positions auto-refresh, and signals appear the moment they trigger",
     features: [

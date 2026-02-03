@@ -37,7 +37,7 @@ const processSteps = [
     step: 2,
     title: "Build Alert Logic",
     description: "We code your custom alert system with all your conditions and multi-timeframe logic.",
-    duration: "3-7 days",
+    duration: "1-4 weeks",
     icon: Code,
   },
   {

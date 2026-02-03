@@ -30,7 +30,7 @@ const capabilities = [
   {
     icon: Clock,
     title: "Multi-Timeframe Alerts",
-    description: "Check conditions across different timeframes simultaneously before triggering.",
+    description: "Check conditions across different timeframes and scripts simultaneously.",
     features: ["Daily + Hourly alignment", "Cross-timeframe confirmation", "Sequential triggers"],
     gradient: "from-blue-500 to-indigo-500",
     bgGradient: "from-blue-50 to-indigo-50"

@@ -339,7 +339,7 @@ const overviewData = {
   whoShouldUse: {
     title: "Who Needs Custom Alerts?",
     profiles: [
-      { icon: Clock, title: "Part-Time Traders", description: "You have a day job but want to catch setups during market hours" },
+      { icon: Clock, title: "Part-Time Traders", description: "You have a day job or business but want to catch setups during market hours" },
       { icon: Moon, title: "Global Market Traders", description: "You trade markets in different time zones while you sleep" },
       { icon: TrendingUp, title: "Swing Traders", description: "You hold positions for days and need entry/exit signals without constant monitoring" }
     ]
@@ -421,7 +421,9 @@ export default function AlertsOverview({ service }: AlertsOverviewProps) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex justify-center lg:order-last"
           >
-            <AlertNotificationIllustration />
+            <div className="relative w-full bg-white rounded-2xl p-3 border border-amber-200 shadow-sm overflow-hidden">
+              <AlertNotificationIllustration />
+            </div>
           </motion.div>
         </div>
 
