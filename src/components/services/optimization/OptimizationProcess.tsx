@@ -42,15 +42,15 @@ const processSteps = [
   },
   {
     step: 3,
-    title: "Robustness Validation",
-    description: "Walk-forward and out-of-sample testing ensures no overfitting.",
+    title: "Analysis",
+    description: "We analyse the search results to pick the one with best metrics.",
     duration: "2-3 days",
     icon: CheckCircle,
   },
   {
     step: 4,
     title: "Final Recommendations",
-    description: "Optimized parameters with implementation guidance delivered.",
+    description: "We share search report with performance metric across all parameter sets, backtest trade history of recommended set.",
     duration: "1-2 days",
     icon: FileBarChart,
   }
