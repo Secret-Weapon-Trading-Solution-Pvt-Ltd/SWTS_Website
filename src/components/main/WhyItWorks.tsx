@@ -179,7 +179,7 @@ export const WhyItWorks: React.FC = () => {
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
             Built on{' '}
-            <span className="bg-gradient-to-r from-violet-600 via-blue-600 to-teal-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
               Three Core Pillars
             </span>
           </h2>

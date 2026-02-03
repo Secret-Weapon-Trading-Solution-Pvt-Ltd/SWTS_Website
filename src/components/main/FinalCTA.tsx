@@ -33,8 +33,9 @@ export const FinalCTA: React.FC = () => {
           {/* CTA Button */}
           <Link
             href="/projects"
-            className="group inline-flex items-center px-10 py-5 bg-slate-900 text-white rounded-full font-semibold text-lg
-                     hover:bg-slate-800 transition-all shadow-button hover:shadow-soft-xl"
+            className="group inline-flex items-center px-10 py-5 text-white rounded-full font-semibold text-lg
+                     transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
           >
             View Our Projects
             <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />

@@ -41,7 +41,7 @@ export const HowItWorks: React.FC = () => {
           {/* Heading with gradient accent */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             <span className="text-slate-800">From Idea to </span>
-            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Execution</span>
+            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Execution</span>
           </h2>
 
           {/* Subheading */}
@@ -95,13 +95,13 @@ export const HowItWorks: React.FC = () => {
             {/* Path A - Recommended */}
             <div className="group relative">
               {/* Animated gradient border */}
-              <div className="absolute -inset-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              <div className="absolute -inset-[1px] bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-500 rounded-2xl sm:rounded-3xl opacity-70" />
+              <div className="absolute -inset-[2px] rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }} />
+              <div className="absolute -inset-[1px] rounded-2xl sm:rounded-3xl opacity-70" style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }} />
 
               <div className="relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 h-full">
                 {/* Recommended badge */}
                 <div className="absolute -top-4 left-8">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full shadow-lg shadow-blue-500/25">
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full shadow-lg shadow-teal-500/25" style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}>
                     <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
@@ -110,7 +110,7 @@ export const HowItWorks: React.FC = () => {
                 </div>
 
                 {/* Icon */}
-                <div className="w-16 h-16 mb-6 mt-4 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-xl shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 mb-6 mt-4 rounded-2xl flex items-center justify-center shadow-xl shadow-teal-500/20 group-hover:scale-110 transition-transform duration-300" style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}>
                   <ClipboardCheck className="w-8 h-8 text-white" strokeWidth={1.5} />
                 </div>
 
@@ -131,7 +131,7 @@ export const HowItWorks: React.FC = () => {
                     'Tailored next steps',
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center flex-shrink-0">
+                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}>
                         <Check className="w-3 h-3 text-white" strokeWidth={3} />
                       </div>
                       <span className="text-slate-900 text-sm font-medium">{item}</span>
@@ -158,7 +158,8 @@ export const HowItWorks: React.FC = () => {
                 {/* CTA Button */}
                 <Link
                   href="/strategy-assessment"
-                  className="group/btn w-full flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold hover:shadow-xl hover:shadow-blue-500/25 hover:-translate-y-0.5 transition-all duration-300"
+                  className="group/btn w-full flex items-center justify-center gap-2 px-6 py-4 text-white rounded-xl font-semibold hover:shadow-xl hover:shadow-teal-500/25 hover:-translate-y-0.5 transition-all duration-300"
+                  style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
                 >
                   Take Free Assessment
                   <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
