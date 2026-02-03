@@ -41,7 +41,7 @@ export const HowItWorks: React.FC = () => {
           {/* Heading with gradient accent */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
             <span className="text-slate-800">From Idea to </span>
-            <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Execution</span>
+            <span className="text-teal-600">Execution</span>
           </h2>
 
           {/* Subheading */}
