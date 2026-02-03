@@ -179,7 +179,7 @@ export const WhyItWorks: React.FC = () => {
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
             Built on{' '}
-            <span className="text-teal-600">
+            <span className="text-teal-700">
               Three Core Pillars
             </span>
           </h2>

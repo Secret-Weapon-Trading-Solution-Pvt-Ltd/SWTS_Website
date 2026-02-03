@@ -110,7 +110,7 @@ export const ServicesScroller: React.FC = () => {
         {/* Title */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
           Our{' '}
-          <span className="text-teal-600">
+          <span className="text-teal-700">
             Services
           </span>
         </h2>

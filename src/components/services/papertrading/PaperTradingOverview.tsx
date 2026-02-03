@@ -51,14 +51,14 @@ const SimulationLabIllustration = () => (
       <circle cx="90" cy="57" r="6" fill="#EF4444"/>
       <circle cx="110" cy="57" r="6" fill="#F59E0B"/>
       <circle cx="130" cy="57" r="6" fill="#22C55E"/>
-      <text x="240" y="62" fill="#94A3B8" fontSize="11" fontWeight="600" textAnchor="middle">PAPER TRADING SIMULATION</text>
+      <text x="210" y="62" fill="#94A3B8" fontSize="11" fontWeight="600" textAnchor="middle">PAPER TRADING</text>
 
       {/* Simulation badge */}
-      <rect x="305" y="47" width="90" height="20" rx="10" fill="#10B981" opacity="0.2"/>
-      <circle cx="318" cy="57" r="4" fill="#10B981">
+      <rect x="320" y="47" width="80" height="20" rx="10" fill="#10B981" opacity="0.2"/>
+      <circle cx="332" cy="57" r="4" fill="#10B981">
         <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="350" y="61" fill="#10B981" fontSize="9" fontWeight="600" textAnchor="middle">SIMULATED</text>
+      <text x="365" y="61" fill="#10B981" fontSize="9" fontWeight="600" textAnchor="middle">SIMULATED</text>
     </motion.g>
 
     {/* Chart area */}

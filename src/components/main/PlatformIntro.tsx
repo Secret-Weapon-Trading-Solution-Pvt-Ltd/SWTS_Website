@@ -56,7 +56,7 @@ export const PlatformIntro: React.FC = () => {
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-3">
             End-to-End{' '}
-            <span className="text-teal-600">Trading Automation</span>
+            <span className="text-teal-700">Trading Automation</span>
           </h2>
 
           {/* Subheadline */}
