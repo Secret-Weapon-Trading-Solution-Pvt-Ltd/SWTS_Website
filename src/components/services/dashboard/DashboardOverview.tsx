@@ -39,7 +39,7 @@ const BackgroundPattern = () => (
 
 // Dashboard Visual Illustration - Modern Multi-Widget Dashboard Interface
 const DashboardIllustration = () => (
-  <svg viewBox="0 0 420 310" className="w-full h-auto">
+  <svg viewBox="0 0 420 240" className="w-full h-auto">
     <defs>
       {/* Modern gradients */}
       <linearGradient id="darkGlassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -84,7 +84,7 @@ const DashboardIllustration = () => (
     </defs>
 
     {/* Background gradient shape */}
-    <rect x="5" y="5" width="410" height="300" rx="20" fill="#F1F5F9"/>
+    <rect x="5" y="5" width="410" height="230" rx="20" fill="#F1F5F9"/>
 
     {/* Main window frame with modern glass effect */}
     <motion.g
@@ -93,7 +93,7 @@ const DashboardIllustration = () => (
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <rect x="15" y="15" width="390" height="280" rx="16" fill="url(#cardGrad)" filter="url(#modernShadow)" stroke="#E2E8F0" strokeWidth="1"/>
+      <rect x="15" y="15" width="390" height="215" rx="16" fill="url(#cardGrad)" filter="url(#modernShadow)" stroke="#E2E8F0" strokeWidth="1"/>
 
       {/* Modern dark header */}
       <rect x="15" y="15" width="390" height="40" rx="16" fill="url(#darkGlassGrad)"/>
@@ -156,7 +156,7 @@ const DashboardIllustration = () => (
       <text x="298" y="120" fill="#7C3AED" fontSize="7" fontWeight="600">Best: AAPL</text>
     </motion.g>
 
-    {/* Middle Row - Modern Watchlist & Alerts */}
+    {/* Middle Row - Modern Watchlist & Alerts - Full Width */}
     <motion.g
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -165,58 +165,41 @@ const DashboardIllustration = () => (
     >
       {/* Watchlist Panel */}
       <g filter="url(#cardShadow)">
-        <rect x="25" y="137" width="180" height="95" rx="12" fill="white"/>
+        <rect x="25" y="135" width="180" height="45" rx="10" fill="white"/>
       </g>
-      <text x="38" y="155" fill="#0F172A" fontSize="10" fontWeight="600">Watchlist</text>
-      <circle cx="185" cy="151" r="8" fill="#EFF6FF"/>
-      <text x="185" y="155" fill="#3B82F6" fontSize="8" fontWeight="bold" textAnchor="middle">3</text>
+      <text x="35" y="150" fill="#0F172A" fontSize="9" fontWeight="600">Watchlist</text>
+      <circle cx="190" cy="146" r="7" fill="#EFF6FF"/>
+      <text x="190" y="150" fill="#3B82F6" fontSize="7" fontWeight="bold" textAnchor="middle">3</text>
 
-      {/* Modern watchlist items */}
+      {/* Watchlist item */}
       <g>
-        <rect x="32" y="165" width="166" height="22" rx="8" fill="#F8FAFC"/>
-        <circle cx="46" cy="176" r="8" fill="#000" opacity="0.9"/>
-        <text x="46" y="179" fill="white" fontSize="6" fontWeight="bold" textAnchor="middle">A</text>
-        <text x="62" y="179" fill="#0F172A" fontSize="9" fontWeight="600">AAPL</text>
-        <text x="105" y="179" fill="#64748B" fontSize="8">$178.52</text>
-        <rect x="145" y="170" width="45" height="14" rx="7" fill="#ECFDF5"/>
-        <text x="168" y="180" fill="#059669" fontSize="8" fontWeight="bold" textAnchor="middle">+2.34%</text>
-      </g>
-
-      <g>
-        <rect x="32" y="191" width="166" height="22" rx="8" fill="#F8FAFC"/>
-        <circle cx="46" cy="202" r="8" fill="#EF4444" opacity="0.9"/>
-        <text x="46" y="205" fill="white" fontSize="6" fontWeight="bold" textAnchor="middle">T</text>
-        <text x="62" y="205" fill="#0F172A" fontSize="9" fontWeight="600">TSLA</text>
-        <text x="105" y="205" fill="#64748B" fontSize="8">$245.80</text>
-        <rect x="145" y="196" width="45" height="14" rx="7" fill="#FEE2E2"/>
-        <text x="168" y="206" fill="#DC2626" fontSize="8" fontWeight="bold" textAnchor="middle">-1.12%</text>
+        <rect x="32" y="158" width="165" height="18" rx="6" fill="#F8FAFC"/>
+        <circle cx="44" cy="167" r="6" fill="#000" opacity="0.9"/>
+        <text x="44" y="170" fill="white" fontSize="5" fontWeight="bold" textAnchor="middle">A</text>
+        <text x="56" y="170" fill="#0F172A" fontSize="8" fontWeight="600">AAPL</text>
+        <text x="100" y="170" fill="#64748B" fontSize="7">$178.52</text>
+        <rect x="155" y="162" width="35" height="11" rx="5" fill="#ECFDF5"/>
+        <text x="172" y="170" fill="#059669" fontSize="6" fontWeight="bold" textAnchor="middle">+2.34%</text>
       </g>
 
       {/* Alerts Panel */}
       <g filter="url(#cardShadow)">
-        <rect x="215" y="137" width="180" height="95" rx="12" fill="white"/>
+        <rect x="215" y="135" width="180" height="45" rx="10" fill="white"/>
       </g>
-      <text x="228" y="155" fill="#0F172A" fontSize="10" fontWeight="600">Alerts</text>
-      <circle cx="375" cy="151" r="8" fill="#FEE2E2"/>
-      <text x="375" y="155" fill="#EF4444" fontSize="8" fontWeight="bold" textAnchor="middle">2</text>
+      <text x="225" y="150" fill="#0F172A" fontSize="9" fontWeight="600">Alerts</text>
+      <circle cx="380" cy="146" r="7" fill="#FEE2E2"/>
+      <text x="380" y="150" fill="#EF4444" fontSize="7" fontWeight="bold" textAnchor="middle">2</text>
 
-      {/* Modern alert items */}
+      {/* Alert item */}
       <g>
-        <rect x="222" y="165" width="166" height="22" rx="8" fill="#ECFDF5"/>
-        <circle cx="236" cy="176" r="8" fill="url(#greenGrad)"/>
-        <text x="236" y="179" fill="white" fontSize="7" fontWeight="bold" textAnchor="middle">✓</text>
-        <text x="252" y="179" fill="#065F46" fontSize="8" fontWeight="500">AAPL target reached</text>
-      </g>
-
-      <g>
-        <rect x="222" y="191" width="166" height="22" rx="8" fill="#EFF6FF"/>
-        <circle cx="236" cy="202" r="8" fill="url(#blueGrad)"/>
-        <text x="236" y="205" fill="white" fontSize="7" fontWeight="bold" textAnchor="middle">→</text>
-        <text x="252" y="205" fill="#1E40AF" fontSize="8" fontWeight="500">New signal: BUY MSFT</text>
+        <rect x="222" y="158" width="165" height="18" rx="6" fill="#ECFDF5"/>
+        <circle cx="234" cy="167" r="6" fill="url(#greenGrad)"/>
+        <text x="234" y="170" fill="white" fontSize="6" fontWeight="bold" textAnchor="middle">✓</text>
+        <text x="250" y="170" fill="#065F46" fontSize="7" fontWeight="500">AAPL target reached</text>
       </g>
     </motion.g>
 
-    {/* Bottom Row - Modern Stats */}
+    {/* Bottom Row - Modern Stats - Full Width */}
     <motion.g
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -225,40 +208,39 @@ const DashboardIllustration = () => (
     >
       {/* Risk Meter */}
       <g filter="url(#cardShadow)">
-        <rect x="25" y="242" width="115" height="48" rx="12" fill="white"/>
+        <rect x="25" y="185" width="85" height="40" rx="10" fill="white"/>
       </g>
-      <text x="38" y="258" fill="#64748B" fontSize="7" fontWeight="500">RISK LEVEL</text>
-      <rect x="38" y="266" width="90" height="6" rx="3" fill="#E2E8F0"/>
-      <rect x="38" y="266" width="40" height="6" rx="3" fill="url(#greenGrad)"/>
-      <text x="38" y="282" fill="#059669" fontSize="9" fontWeight="bold">Low Risk</text>
+      <text x="35" y="200" fill="#64748B" fontSize="7" fontWeight="500">RISK LEVEL</text>
+      <rect x="35" y="207" width="65" height="5" rx="2" fill="#E2E8F0"/>
+      <rect x="35" y="207" width="28" height="5" rx="2" fill="url(#greenGrad)"/>
+      <text x="35" y="220" fill="#059669" fontSize="8" fontWeight="bold">Low</text>
 
       {/* Win Rate */}
       <g filter="url(#cardShadow)">
-        <rect x="150" y="242" width="90" height="48" rx="12" fill="white"/>
+        <rect x="118" y="185" width="70" height="40" rx="10" fill="white"/>
       </g>
-      <text x="163" y="258" fill="#64748B" fontSize="7" fontWeight="500">WIN RATE</text>
-      <text x="163" y="280" fill="#0F172A" fontSize="18" fontWeight="bold">68%</text>
-      <text x="200" y="280" fill="#059669" fontSize="10">↑</text>
+      <text x="128" y="200" fill="#64748B" fontSize="7" fontWeight="500">WIN RATE</text>
+      <text x="128" y="218" fill="#0F172A" fontSize="14" fontWeight="bold">68%</text>
 
       {/* Avg P&L */}
       <g filter="url(#cardShadow)">
-        <rect x="250" y="242" width="90" height="48" rx="12" fill="white"/>
+        <rect x="196" y="185" width="75" height="40" rx="10" fill="white"/>
       </g>
-      <text x="263" y="258" fill="#64748B" fontSize="7" fontWeight="500">AVG TRADE</text>
-      <text x="263" y="280" fill="#059669" fontSize="16" fontWeight="bold">+$342</text>
+      <text x="206" y="200" fill="#64748B" fontSize="7" fontWeight="500">AVG TRADE</text>
+      <text x="206" y="218" fill="#059669" fontSize="12" fontWeight="bold">+$342</text>
 
       {/* Live Status */}
       <g filter="url(#cardShadow)">
-        <rect x="350" y="242" width="45" height="48" rx="12" fill="#0F172A"/>
+        <rect x="279" y="185" width="116" height="40" rx="10" fill="#0F172A"/>
       </g>
-      <circle cx="372" cy="260" r="6" fill="#10B981" filter="url(#glowGreen)"/>
-      <text x="372" y="280" fill="#CBD5E1" fontSize="7" fontWeight="600" textAnchor="middle">LIVE</text>
+      <circle cx="305" cy="205" r="8" fill="#10B981" filter="url(#glowGreen)"/>
+      <text x="345" y="210" fill="#CBD5E1" fontSize="11" fontWeight="600" textAnchor="middle">LIVE</text>
     </motion.g>
 
     {/* Animated pulse on live indicator */}
     <motion.circle
-      cx="372" cy="260"
-      r="10"
+      cx="305" cy="205"
+      r="12"
       fill="none"
       stroke="#10B981"
       strokeWidth="2"
@@ -530,7 +512,7 @@ export default function DashboardOverview({ service }: DashboardOverviewProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex justify-center lg:order-last"
+            className="relative flex justify-center items-center lg:order-last"
           >
             <div className="relative w-full bg-gradient-to-br from-white via-slate-50/10 to-gray-50/20 rounded-xl p-1 border border-slate-100/30 shadow-sm overflow-hidden">
               <DashboardIllustration />

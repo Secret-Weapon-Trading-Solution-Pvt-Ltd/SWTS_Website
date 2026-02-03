@@ -54,11 +54,11 @@ const SimulationLabIllustration = () => (
       <text x="240" y="62" fill="#94A3B8" fontSize="11" fontWeight="600" textAnchor="middle">PAPER TRADING SIMULATION</text>
 
       {/* Simulation badge */}
-      <rect x="320" y="47" width="80" height="20" rx="10" fill="#10B981" opacity="0.2"/>
-      <circle cx="335" cy="57" r="4" fill="#10B981">
+      <rect x="305" y="47" width="90" height="20" rx="10" fill="#10B981" opacity="0.2"/>
+      <circle cx="318" cy="57" r="4" fill="#10B981">
         <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
       </circle>
-      <text x="365" y="61" fill="#10B981" fontSize="9" fontWeight="600">SIMULATED</text>
+      <text x="350" y="61" fill="#10B981" fontSize="9" fontWeight="600" textAnchor="middle">SIMULATED</text>
     </motion.g>
 
     {/* Chart area */}
@@ -72,7 +72,7 @@ const SimulationLabIllustration = () => (
       <rect x="85" y="85" width="200" height="100" rx="6" fill="#0F172A"/>
       <text x="95" y="100" fill="#64748B" fontSize="8">NIFTY 50</text>
       <text x="95" y="115" fill="#22C55E" fontSize="12" fontWeight="700">22,547.50</text>
-      <text x="160" y="115" fill="#22C55E" fontSize="8">+1.2%</text>
+      <text x="175" y="115" fill="#22C55E" fontSize="8">+1.2%</text>
 
       {/* Price line */}
       <motion.path
@@ -111,7 +111,7 @@ const SimulationLabIllustration = () => (
       <rect x="302" y="112" width="91" height="35" rx="4" fill="#064E3B"/>
       <text x="310" y="127" fill="#6EE7B7" fontSize="8" fontWeight="500">NIFTY BUY</text>
       <text x="310" y="140" fill="#22C55E" fontSize="10" fontWeight="700">+₹2,450</text>
-      <text x="375" y="140" fill="#22C55E" fontSize="8">+1.2%</text>
+      <text x="365" y="140" fill="#22C55E" fontSize="8">+1.2%</text>
 
       {/* Trade 2 */}
       <rect x="302" y="152" width="91" height="35" rx="4" fill="#1E293B" stroke="#334155" strokeWidth="1"/>
@@ -122,7 +122,7 @@ const SimulationLabIllustration = () => (
       {/* Trade 3 */}
       <rect x="302" y="192" width="91" height="28" rx="4" fill="#7F1D1D"/>
       <text x="310" y="207" fill="#FCA5A5" fontSize="8" fontWeight="500">HDFC SELL</text>
-      <text x="375" y="207" fill="#EF4444" fontSize="8">-0.3%</text>
+      <text x="365" y="207" fill="#EF4444" fontSize="8">-0.3%</text>
     </motion.g>
 
     {/* Stats bar */}

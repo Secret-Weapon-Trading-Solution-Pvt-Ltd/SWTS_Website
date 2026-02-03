@@ -102,8 +102,8 @@ export default function PaperTradingProcess({ service }: PaperTradingProcessProp
                   </div>
 
                   {/* Step number badge */}
-                  <div className="absolute top-0 right-1/2 translate-x-10 -translate-y-1 w-6 h-6 bg-white rounded-full border-2 border-slate-200 flex items-center justify-center shadow-sm">
-                    <span className="text-xs font-bold text-slate-600">{step.step}</span>
+                  <div className="absolute -top-2 left-1/2 translate-x-4 w-7 h-7 bg-white rounded-full border-2 border-slate-200 flex items-center justify-center shadow-md z-20">
+                    <span className="text-sm font-bold text-slate-700">{step.step}</span>
                   </div>
 
                   {/* Content */}

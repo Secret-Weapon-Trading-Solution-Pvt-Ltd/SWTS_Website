@@ -197,14 +197,15 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
 
                   {/* Arrow to next step - hidden on last item and on mobile */}
                   {index < processSteps.length - 1 && (
-                    <div className="hidden lg:flex absolute top-[18px] -right-3 z-20">
+                    <div className="hidden lg:flex absolute top-[6px] right-0 translate-x-[calc(50%+12px)] z-20">
                       <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.15 + 0.3 }}
+                        className="w-7 h-7 bg-white rounded-full shadow-md border border-slate-200 flex items-center justify-center"
                       >
-                        <ArrowRight className="w-5 h-5 text-slate-400" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
                       </motion.div>
                     </div>
                   )}

@@ -423,14 +423,14 @@ const overviewData = {
         description: "You have rules you follow but have never tested them systematically against historical data"
       },
       {
-        icon: BarChart3,
-        title: "Strategy Developers",
-        description: "You've built a strategy and need rigorous validation before risking real capital"
-      },
-      {
         icon: Activity,
         title: "Underperforming Traders",
         description: "Your live results don't match expectations—find out if the strategy itself is the problem"
+      },
+      {
+        icon: BarChart3,
+        title: "Expert Traders",
+        description: "You want to validate and optimize your proven strategies with rigorous historical analysis"
       }
     ]
   }
