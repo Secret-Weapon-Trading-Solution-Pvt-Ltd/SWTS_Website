@@ -4,7 +4,6 @@ import {
   AboutHero,
   OurStory,
   VisionMission,
-  WhoWeHelp,
 } from '@/components/about';
 
 export const metadata: Metadata = {
@@ -38,9 +37,6 @@ export default function AboutPage() {
 
       {/* Vision & Mission - Side by side cards */}
       <VisionMission />
-
-      {/* Who We Help - Three personas */}
-      <WhoWeHelp />
     </MainLayout>
   );
 }
