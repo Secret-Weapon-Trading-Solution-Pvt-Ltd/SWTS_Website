@@ -96,7 +96,7 @@ const ServiceCard: React.FC<{ service: ServiceItem }> = ({ service }) => {
 
 export const ServicesScroller: React.FC = () => {
   return (
-    <div className="py-8 bg-white w-full">
+    <div className="relative z-10 py-8 bg-white w-full">
       {/* Header */}
       <div className="text-center mb-8 px-4">
         {/* Badge */}
@@ -108,11 +108,9 @@ export const ServicesScroller: React.FC = () => {
         </div>
 
         {/* Title */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 tracking-tight">
-          Our{' '}
-          <span className="text-teal-700">
-            Services
-          </span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
+          <span className="text-slate-800">Our </span>
+          <span className="text-teal-700">Services</span>
         </h2>
 
         {/* Subtitle */}
