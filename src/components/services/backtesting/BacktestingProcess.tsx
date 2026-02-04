@@ -53,14 +53,14 @@ const processSteps = [
     step: 3,
     title: "Backtest Execution",
     description: "Automated system simulates your strategy on historic data.",
-    duration: "2-3 days",
+    duration: "1-4 weeks",
     icon: FlaskConical,
   },
   {
     step: 4,
-    title: "Comprehensive Report",
+    title: "Reports / Utility",
     description: "Full metrics, equity curves, and actionable insights.",
-    duration: "2-3 days",
+    duration: "1-3 days",
     icon: FileBarChart,
   }
 ];

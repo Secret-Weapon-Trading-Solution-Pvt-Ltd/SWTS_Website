@@ -439,7 +439,7 @@ export default function OptimizationOverview({ service }: OptimizationOverviewPr
               {overviewData.whatYouGet.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
-              Every optimization report includes comprehensive metrics and validated parameters ready for implementation.
+              Every optimization report includes the best optimum and validated combination of parameters ready for implementation.
             </p>
             <div className="grid grid-cols-2 gap-4">
               {overviewData.whatYouGet.metrics.map((metric, index) => (

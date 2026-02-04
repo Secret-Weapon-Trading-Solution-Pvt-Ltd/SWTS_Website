@@ -36,8 +36,8 @@ const processSteps = [
   {
     step: 2,
     title: "Parameter Search",
-    description: "Grid search and intelligent algorithms find promising parameter sets.",
-    duration: "3-5 days",
+    description: "We code the logic and then our software checks the best optimum result.",
+    duration: "1-4 weeks",
     icon: Settings,
   },
   {
@@ -49,7 +49,7 @@ const processSteps = [
   },
   {
     step: 4,
-    title: "Final Recommendations",
+    title: "Report/Utility",
     description: "We share search report with performance metric across all parameter sets, backtest trade history of recommended set.",
     duration: "1-2 days",
     icon: FileBarChart,

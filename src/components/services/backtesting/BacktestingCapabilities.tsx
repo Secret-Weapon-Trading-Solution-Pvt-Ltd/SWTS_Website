@@ -15,7 +15,7 @@ const capabilitiesData = [
     subtitle: "Multi-Year Testing",
     description: "We test your strategy against years of historical market data to reveal long-term performance patterns",
     features: [
-      "5-10 years of historical backtesting",
+      "5-10 years of historical backtesting (Data will be provided by client)",
       "Multiple market conditions tested",
       "Bull, bear, and sideways markets"
     ],

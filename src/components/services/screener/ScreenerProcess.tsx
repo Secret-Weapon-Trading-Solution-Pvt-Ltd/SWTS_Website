@@ -44,7 +44,7 @@ const processSteps = [
     step: 3,
     title: "Testing & Validation",
     description: "We test the screener to ensure it correctly identifies the setups you want.",
-    duration: "3-5 days",
+    duration: "1-3 days",
     icon: PlayCircle,
   },
   {
