@@ -10,10 +10,8 @@ import {
   BarChart3,
   Rocket,
   ArrowRight,
-  Clock,
-  CheckCircle2
+  Clock
 } from 'lucide-react';
-import ContactCTA from '@/components/ui/ContactCTA';
 
 interface PaperTradingProcessProps {
   service: Service;
@@ -219,9 +217,9 @@ export default function PaperTradingProcess({ service }: PaperTradingProcessProp
             Our Proven Process
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-slate-800 to-navy-900 bg-clip-text text-transparent">From Setup to</span>
+            <span className="text-black">From Setup to</span>
             {' '}
-            <span className="text-teal-700">Go-Live</span>
+            <span className="text-black">Go-Live</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A structured approach to validating your strategy before real capital
@@ -344,35 +342,6 @@ export default function PaperTradingProcess({ service }: PaperTradingProcessProp
           })}
         </div>
 
-        {/* Result indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-4">
-              <CheckCircle2 className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
-              Strategy Validated & Ready
-            </h3>
-            <p className="text-base lg:text-lg text-black text-center">
-              Go live with confidence, knowing your strategy performs in real market conditions
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <ContactCTA buttonText="Start Paper Trading Setup" />
-        </motion.div>
       </div>
     </section>
   );

@@ -9,10 +9,8 @@ import {
   Code,
   Rocket,
   ArrowRight,
-  Clock,
-  CheckCircle2
+  Clock
 } from 'lucide-react';
-import ContactCTA from '@/components/ui/ContactCTA';
 
 interface DashboardProcessProps {
   service: Service;
@@ -189,9 +187,9 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
             Our Proven Process
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-slate-800 to-navy-900 bg-clip-text text-transparent">How We Build</span>
+            <span className="text-black">How We Build</span>
             {' '}
-            <span className="text-teal-700">Your Dashboard</span>
+            <span className="text-black">Your Dashboard</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A collaborative process that ensures your dashboard fits your workflow perfectly
@@ -314,35 +312,6 @@ export default function DashboardProcess({ service }: DashboardProcessProps) {
           })}
         </div>
 
-        {/* Result indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-slate-600 to-gray-700 flex items-center justify-center shadow-lg shadow-slate-500/30 mb-4">
-              <CheckCircle2 className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
-              Dashboard Live & Evolving
-            </h3>
-            <p className="text-base lg:text-lg text-black text-center">
-              Your unified trading command center, continuously improving based on your needs
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <ContactCTA buttonText="Start Your Dashboard Project" />
-        </motion.div>
       </div>
     </section>
   );

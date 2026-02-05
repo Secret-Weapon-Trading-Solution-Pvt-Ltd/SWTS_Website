@@ -18,37 +18,43 @@ import {
 import {
   BacktestingOverview,
   BacktestingCapabilities,
-  BacktestingProcess
+  BacktestingProcess,
+  BacktestingIdealFor
 } from '@/components/services/backtesting';
 // Optimization-specific enterprise components
 import {
   OptimizationOverview,
   OptimizationCapabilities,
-  OptimizationProcess
+  OptimizationProcess,
+  OptimizationIdealFor
 } from '@/components/services/optimization';
 // Screener-specific enterprise components
 import {
   ScreenerOverview,
   ScreenerCapabilities,
-  ScreenerProcess
+  ScreenerProcess,
+  ScreenerIdealFor
 } from '@/components/services/screener';
 // Dashboard-specific enterprise components
 import {
   DashboardOverview,
   DashboardCapabilities,
-  DashboardProcess
+  DashboardProcess,
+  DashboardIdealFor
 } from '@/components/services/dashboard';
 // Alerts-specific enterprise components
 import {
   AlertsOverview,
   AlertsCapabilities,
-  AlertsProcess
+  AlertsProcess,
+  AlertsIdealFor
 } from '@/components/services/alerts';
 // Paper Trading-specific enterprise components
 import {
   PaperTradingOverview,
   PaperTradingCapabilities,
-  PaperTradingProcess
+  PaperTradingProcess,
+  PaperTradingIdealFor
 } from '@/components/services/papertrading';
 import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
 
@@ -142,6 +148,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Backtesting Process - Alternating timeline */}
           <BacktestingProcess service={service} />
+
+          {/* Ideal For - Who Should Backtest */}
+          <BacktestingIdealFor />
         </>
       ) : isOptimization ? (
         <>
@@ -153,6 +162,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Optimization Process - Vertical timeline */}
           <OptimizationProcess service={service} />
+
+          {/* Ideal For - Who Should Optimize */}
+          <OptimizationIdealFor />
         </>
       ) : isScreener ? (
         <>
@@ -164,6 +176,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Screener Process - Horizontal timeline with background */}
           <ScreenerProcess service={service} />
+
+          {/* Ideal For - Who Should Use a Custom Screener */}
+          <ScreenerIdealFor />
         </>
       ) : isDashboard ? (
         <>
@@ -175,6 +190,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Dashboard Process - Development workflow */}
           <DashboardProcess service={service} />
+
+          {/* Ideal For - Who Needs a Custom Dashboard */}
+          <DashboardIdealFor />
         </>
       ) : isAlerts ? (
         <>
@@ -186,6 +204,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Alerts Process - Timeline */}
           <AlertsProcess service={service} />
+
+          {/* Ideal For - Who Needs Custom Alerts */}
+          <AlertsIdealFor />
         </>
       ) : isPaperTrading ? (
         <>
@@ -197,6 +218,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Paper Trading Process - Vertical timeline */}
           <PaperTradingProcess service={service} />
+
+          {/* Ideal For - Who Should Paper Trade */}
+          <PaperTradingIdealFor />
         </>
       ) : (
         <>

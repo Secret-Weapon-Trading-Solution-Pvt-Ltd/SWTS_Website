@@ -449,15 +449,6 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
-            Understanding Strategy Backtesting
-          </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-navy-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent">Validate Before</span>{' '}
             <span className="text-teal-700">You Trade</span>
@@ -475,7 +466,16 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-indigo-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
+            >
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
+              Understanding Strategy Backtesting
+            </motion.span>
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatItIs.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -544,7 +544,7 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
                   <span className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></span>
                   The Problems
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-indigo-900 to-purple-900 bg-clip-text text-transparent mb-4">
+                <h3 className="text-4xl sm:text-5xl font-bold text-black mb-4">
                   {overviewData.whyItMatters.title}
                 </h3>
                 <p className="text-lg text-black max-w-2xl mx-auto">
@@ -595,7 +595,7 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
               <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></span>
               The Solution
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-emerald-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatYouGet.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -635,91 +635,6 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
           </motion.div>
         </div>
 
-        {/* Who Should Use - Image LEFT, Content RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-14"
-        >
-          {/* Left Side - Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative flex justify-center"
-          >
-            <div className="relative aspect-[3/2] w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={`${basePath}/17106898_1019Z_beverages_online_2.jpg`}
-                alt="Trading chart analysis"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
-
-              <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
-                <span className="text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Data-Driven Decisions</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full text-violet-700 text-sm font-semibold mb-5 border border-violet-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full"></span>
-              Ideal For
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-8">
-              {overviewData.whoShouldUse.title}
-            </h3>
-            <div className="space-y-5">
-              {overviewData.whoShouldUse.profiles.map((profile, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className="flex gap-5 items-start p-4 rounded-2xl bg-white border border-violet-100 shadow-sm hover:shadow-md hover:border-violet-200 transition-all duration-300 group cursor-default"
-                >
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-md bg-violet-50 border border-violet-100">
-                    <profile.icon className="w-7 h-7 text-violet-700" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-violet-700 transition-colors">{profile.title}</h4>
-                    <p className="text-black leading-relaxed">{profile.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 text-center"
-        >
-          <motion.a
-            href="#how-it-works"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 text-white font-semibold rounded-2xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-300 group"
-            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
-          >
-            See Our Process
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

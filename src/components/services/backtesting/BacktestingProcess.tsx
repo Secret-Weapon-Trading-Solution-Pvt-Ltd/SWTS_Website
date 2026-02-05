@@ -9,10 +9,8 @@ import {
   FlaskConical,
   FileBarChart,
   ArrowRight,
-  Clock,
-  CheckCircle2
+  Clock
 } from 'lucide-react';
-import ContactCTA from '@/components/ui/ContactCTA';
 
 interface BacktestingProcessProps {
   service: Service;
@@ -184,9 +182,9 @@ export default function BacktestingProcess({ service }: BacktestingProcessProps)
             Our Proven Process
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent">From Rules to</span>
+            <span className="text-black">From Rules to</span>
             {' '}
-            <span className="text-teal-700">Results</span>
+            <span className="text-black">Results</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A straightforward process that transforms your trading rules into actionable performance data
@@ -309,35 +307,6 @@ export default function BacktestingProcess({ service }: BacktestingProcessProps)
           })}
         </div>
 
-        {/* Result indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-4">
-              <CheckCircle2 className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
-              Your Strategy, Validated
-            </h3>
-            <p className="text-base lg:text-lg text-black text-center">
-              Make informed decisions with confidence, backed by years of historical data
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <ContactCTA buttonText="Get Your Strategy Tested" />
-        </motion.div>
       </div>
     </section>
   );

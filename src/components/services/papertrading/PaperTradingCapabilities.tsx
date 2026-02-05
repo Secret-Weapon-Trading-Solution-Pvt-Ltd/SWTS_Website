@@ -104,9 +104,9 @@ export default function PaperTradingCapabilities({ service }: PaperTradingCapabi
             What We Deliver
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-navy-800 to-navy-900 bg-clip-text text-transparent">Production-Grade</span>
+            <span className="text-black">Production-Grade</span>
             {' '}
-            <span className="text-teal-700">Testing</span>
+            <span className="text-black">Testing</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Everything you need to validate your strategy before going live

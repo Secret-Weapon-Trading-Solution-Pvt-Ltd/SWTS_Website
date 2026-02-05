@@ -106,8 +106,8 @@ export default function ScreenerCapabilities({ service }: ScreenerCapabilitiesPr
             What We Deliver
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-cyan-800 to-navy-900 bg-clip-text text-transparent">Our Screener</span>{' '}
-            <span className="text-teal-700">Capabilities</span>
+            <span className="text-black">Our Screener</span>{' '}
+            <span className="text-black">Capabilities</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Comprehensive scanning solutions that find opportunities before the crowd

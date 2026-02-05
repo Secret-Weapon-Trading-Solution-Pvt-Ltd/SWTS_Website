@@ -4,3 +4,4 @@
 export { default as BacktestingOverview } from './BacktestingOverview';
 export { default as BacktestingCapabilities } from './BacktestingCapabilities';
 export { default as BacktestingProcess } from './BacktestingProcess';
+export { default as BacktestingIdealFor } from './BacktestingIdealFor';

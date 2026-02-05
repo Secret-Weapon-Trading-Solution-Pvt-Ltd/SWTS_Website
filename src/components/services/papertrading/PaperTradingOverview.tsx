@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { FlaskConical, Shield, CheckCircle, ArrowRight, TrendingUp, AlertCircle, Eye, Play, BarChart3, Clock, Ban, Bug, CircleHelp, Coins, Rocket, RefreshCw, Target } from 'lucide-react';
+import { FlaskConical, Shield, CheckCircle, TrendingUp, AlertCircle, Eye, Play, BarChart3, Clock, Ban, Bug, CircleHelp, Coins } from 'lucide-react';
 
 interface PaperTradingOverviewProps {
   service: Service;
@@ -329,26 +329,6 @@ const overviewData = {
       { label: "Drawdown", description: "Risk monitoring" },
       { label: "Equity Curve", description: "Growth tracking" }
     ]
-  },
-  idealFor: {
-    title: "Who Should Paper Trade?",
-    profiles: [
-      {
-        icon: Rocket,
-        title: "First-Time Automators",
-        description: "You've built or bought an automated strategy but have never deployed it on live markets before"
-      },
-      {
-        icon: RefreshCw,
-        title: "Strategy Updaters",
-        description: "You've modified your existing strategy and want to validate the changes before risking real capital"
-      },
-      {
-        icon: Target,
-        title: "Serious Traders",
-        description: "You believe in doing things right—testing thoroughly before committing money to any new system"
-      }
-    ]
   }
 };
 
@@ -363,17 +343,9 @@ export default function PaperTradingOverview({ service }: PaperTradingOverviewPr
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
-            Understanding Paper Trading
-          </motion.span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-navy-900">
-            Test Without Risk
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Test Without</span>{' '}
+            <span className="text-teal-700">Risk</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Run your strategy on live markets with simulated money. Prove it works before you trade it.
@@ -388,7 +360,11 @@ export default function PaperTradingOverview({ service }: PaperTradingOverviewPr
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full text-blue-700 text-sm font-semibold mb-5 border border-blue-200/50 shadow-sm">
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></span>
+              Understanding
+            </div>
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatItIs.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -440,7 +416,7 @@ export default function PaperTradingOverview({ service }: PaperTradingOverviewPr
                 <span className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></span>
                 The Problems
               </div>
-              <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-4">
+              <h3 className="text-4xl sm:text-5xl font-bold text-black mb-4">
                 {overviewData.whyPaperTrade.title}
               </h3>
               <p className="text-lg text-black max-w-2xl mx-auto">
@@ -498,7 +474,7 @@ export default function PaperTradingOverview({ service }: PaperTradingOverviewPr
               <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></span>
               The Solution
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-6">
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatYouGet.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -531,67 +507,6 @@ export default function PaperTradingOverview({ service }: PaperTradingOverviewPr
           </motion.div>
         </div>
 
-        {/* Ideal For Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14"
-        >
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full text-violet-700 text-sm font-semibold mb-5 border border-violet-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full"></span>
-              Ideal For
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-emerald-900 bg-clip-text text-transparent">
-              {overviewData.idealFor.title}
-            </h3>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {overviewData.idealFor.profiles.map((profile, index) => {
-              const iconColors = ['bg-emerald-500', 'bg-blue-500', 'bg-violet-500'];
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="flex gap-5 items-start p-5 rounded-2xl bg-gradient-to-br from-white to-slate-50/80 border border-slate-100 shadow-md hover:shadow-lg hover:border-emerald-200 transition-all duration-300 group cursor-default"
-                >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg ${iconColors[index]}`}>
-                    <profile.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-emerald-900 transition-colors">{profile.title}</h4>
-                    <p className="text-black leading-relaxed">{profile.description}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 text-center"
-        >
-          <motion.a
-            href="#how-it-works"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 text-white font-semibold rounded-2xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-300 group"
-            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
-          >
-            See Our Process
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

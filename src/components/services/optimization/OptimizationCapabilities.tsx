@@ -101,9 +101,8 @@ export default function OptimizationCapabilities({ service }: OptimizationCapabi
             <span className="w-2 h-2 bg-gradient-to-r from-slate-500 to-gray-600 rounded-full"></span>
             What We Deliver
           </motion.span>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-navy-900 bg-clip-text text-transparent">Our Optimization</span>{' '}
-            <span className="text-teal-700">Capabilities</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-black mb-6">
+            Our Optimization Capabilities
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Comprehensive optimization services that improve your strategy without overfitting
