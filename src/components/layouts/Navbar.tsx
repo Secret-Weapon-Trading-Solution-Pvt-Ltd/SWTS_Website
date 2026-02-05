@@ -12,7 +12,7 @@ import { services } from '@/data/services';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/projects', label: 'Projects' },
-  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/learn/algo-trading', label: 'Learn' },
   { href: '/strategy-assessment', label: 'Assessment' },
   { href: '/about/', label: 'About' },
   { href: '/#contact', label: 'Contact' },
