@@ -89,7 +89,7 @@ const AlgoIntroSection: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               Algo trading (Algorithmic Trading) means using a computer program to execute trades based on
-              predefined rules. Instead of manually watching charts and placing orders, your Python code
+              predefined rules. Instead of manually watching charts and placing orders, your computer
               does it for you - faster, more disciplined, and without emotional decisions.
             </motion.p>
 

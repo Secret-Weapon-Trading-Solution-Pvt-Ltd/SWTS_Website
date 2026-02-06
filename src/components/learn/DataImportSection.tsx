@@ -14,9 +14,6 @@ import {
   CheckCircle2,
   XCircle,
   ArrowRight,
-  ArrowDown,
-  CandlestickChart,
-  Activity,
   Zap,
   Radio,
   TrendingUp,
@@ -31,12 +28,7 @@ import {
 const DataImportSection: React.FC = () => {
 
   return (
-    <section id="data-import" className="relative pt-8 pb-16 lg:pt-12 lg:pb-24 bg-gradient-to-b from-teal-50/40 via-cyan-50/30 to-white overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-100/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-cyan-100/20 rounded-full blur-3xl" />
-      </div>
+    <section id="data-import" className="relative pt-8 pb-8 lg:pt-12 lg:pb-12 bg-white overflow-hidden">
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* Section Header */}
@@ -62,10 +54,10 @@ const DataImportSection: React.FC = () => {
         </motion.div>
 
         {/* PART 1: Introduction - Left Right Layout */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center mb-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-center mb-12">
           {/* Left - Image */}
           <motion.div
-            className="w-full lg:w-[45%] flex justify-center"
+            className="w-full lg:w-[50%] flex justify-center"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -74,16 +66,16 @@ const DataImportSection: React.FC = () => {
             <Image
               src={getAssetPath('/data-import.jpg')}
               alt="Data Import Illustration"
-              width={650}
-              height={650}
-              className="w-full max-w-xl lg:max-w-2xl h-auto"
+              width={750}
+              height={750}
+              className="w-full max-w-2xl lg:max-w-3xl h-auto"
               priority
             />
           </motion.div>
 
           {/* Right - Content */}
           <motion.div
-            className="w-full lg:w-[55%]"
+            className="w-full lg:w-[50%]"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -513,82 +505,6 @@ const DataImportSection: React.FC = () => {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* PART 4: Data Flow - Section with Background */}
-        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-12 2xl:-mx-16 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-16 lg:py-20 mb-8 bg-gradient-to-br from-slate-100 via-slate-50 to-gray-100 border-y border-slate-200">
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-slate-200/50 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gray-200/50 rounded-full blur-3xl" />
-          </div>
-
-          <div className="relative w-full">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-teal-200 rounded-full mb-4 shadow-sm">
-                <Activity className="w-4 h-4 text-teal-600" />
-                <span className="text-sm font-semibold text-teal-700">Data Pipeline</span>
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
-                Data <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Import</span> Flow
-              </h3>
-              <p className="text-slate-700 max-w-2xl mx-auto">How data travels from source to your strategy</p>
-            </div>
-
-            {/* Flow Cards Container */}
-            <div className="relative bg-white rounded-3xl border border-slate-200 shadow-xl p-6 lg:p-10 overflow-hidden">
-              {/* Connection line - Desktop */}
-              <div className="hidden lg:block absolute top-1/2 left-[8%] right-[8%] h-1 bg-gradient-to-r from-teal-400 via-sky-400 via-violet-400 to-emerald-400 rounded-full -translate-y-1/2" />
-
-              <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-3">
-                {[
-                  { icon: Server, title: 'Data Source', sub: 'Broker / Vendor', desc: 'API connection to fetch live & historical data', color: 'from-teal-500 to-teal-600', bgColor: 'bg-gradient-to-br from-teal-50 to-cyan-50', borderColor: 'border-teal-200', step: 1 },
-                  { icon: CandlestickChart, title: 'Candle Data', sub: '1min, 5min, 15min', desc: 'Raw price data converted to timeframe candles', color: 'from-sky-500 to-sky-600', bgColor: 'bg-gradient-to-br from-sky-50 to-blue-50', borderColor: 'border-sky-200', step: 2 },
-                  { icon: Activity, title: 'OHLCV Format', sub: 'Open, High, Low, Close, Vol', desc: 'Standardized format for strategy processing', color: 'from-violet-500 to-violet-600', bgColor: 'bg-gradient-to-br from-violet-50 to-purple-50', borderColor: 'border-violet-200', step: 3 },
-                  { icon: Database, title: 'Strategy Ready', sub: 'Clean & formatted', desc: 'Data validated and ready for signal generation', color: 'from-emerald-500 to-emerald-600', bgColor: 'bg-gradient-to-br from-emerald-50 to-teal-50', borderColor: 'border-emerald-200', step: 4 },
-                ].map((stepData, idx, arr) => (
-                  <React.Fragment key={idx}>
-                    <div className="relative flex flex-col items-center text-center group flex-1">
-                      {/* Card container */}
-                      <div className={`relative w-full ${stepData.bgColor} border-2 ${stepData.borderColor} rounded-2xl p-4 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1`}>
-                        {/* Step number badge */}
-                        <div className={`absolute -top-3 -right-3 w-7 h-7 rounded-full bg-gradient-to-br ${stepData.color} flex items-center justify-center text-white text-xs font-bold shadow-lg border-2 border-white`}>
-                          {stepData.step}
-                        </div>
-
-                        {/* Icon */}
-                        <div className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-br ${stepData.color} flex items-center justify-center shadow-lg mb-3`}>
-                          <stepData.icon className="w-6 h-6 text-white" />
-                        </div>
-
-                        {/* Title & subtitle */}
-                        <h4 className="font-bold text-black text-base mb-1">{stepData.title}</h4>
-                        <p className="text-xs text-slate-900 font-semibold mb-2">{stepData.sub}</p>
-                        <p className="text-sm text-slate-800 leading-snug">{stepData.desc}</p>
-                      </div>
-                    </div>
-
-                    {/* Arrows */}
-                    {idx < arr.length - 1 && (
-                      <>
-                        <div className="hidden lg:flex items-center justify-center w-8 flex-shrink-0">
-                          <div className="w-8 h-8 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center">
-                            <ArrowRight className="w-4 h-4 text-slate-500" />
-                          </div>
-                        </div>
-                        <div className="lg:hidden flex items-center justify-center h-6">
-                          <div className="w-6 h-6 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center">
-                            <ArrowDown className="w-3 h-3 text-slate-500" />
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </React.Fragment>
-                ))}
               </div>
             </div>
           </div>

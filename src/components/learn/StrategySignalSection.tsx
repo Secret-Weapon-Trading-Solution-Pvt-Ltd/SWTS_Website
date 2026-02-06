@@ -53,7 +53,7 @@ const StrategySignalSection: React.FC = () => {
   const [activeSignal, setActiveSignal] = useState(signalOptions[0]);
 
   return (
-    <section id="strategy-signal" className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section id="strategy-signal" className="relative pt-8 pb-16 lg:pt-12 lg:pb-24 bg-white overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -translate-x-1/2" />
@@ -96,8 +96,8 @@ const StrategySignalSection: React.FC = () => {
               <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
               Your Trading Rules in Code
             </div>
-            <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-5 leading-tight">
-              Clear <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Rules</span> = Clean Signals
+            <h3 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-black mb-5 leading-tight">
+              Clear Rules = Clean Signals
             </h3>
             <p className="text-lg text-slate-700 mb-6 leading-relaxed">
               A strategy defines exactly when to buy, when to sell, and when to stay out.
