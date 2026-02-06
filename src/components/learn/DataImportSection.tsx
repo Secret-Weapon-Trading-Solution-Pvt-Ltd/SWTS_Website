@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { getAssetPath } from '@/lib/utils';
 import {
   Database,
@@ -27,48 +28,25 @@ import {
   Search,
 } from 'lucide-react';
 
-const dataSources = [
-  {
-    id: 'broker',
-    icon: Server,
-    title: 'Broker API',
-    description: 'Zerodha, Upstox, Tradovate',
-    pros: ['Single source', 'Often free', 'Easy setup'],
-    cons: ['Limited history', 'Rate limits'],
-    cost: 'Free/Low',
-    color: 'sky',
-  },
-  {
-    id: 'vendor',
-    icon: Database,
-    title: 'Data Vendors',
-    description: 'TrueData, GDFL',
-    pros: ['High quality', 'Low latency', 'Complete data'],
-    cons: ['Paid service', 'Extra setup'],
-    cost: 'Medium',
-    color: 'amber',
-  },
-  {
-    id: 'exchange',
-    icon: Building2,
-    title: 'Direct Exchange',
-    description: 'NSE/BSE Direct',
-    pros: ['Official source', 'Zero latency'],
-    cons: ['Very expensive', 'Complex'],
-    cost: 'High',
-    color: 'rose',
-  },
-];
-
 const DataImportSection: React.FC = () => {
-  const [activeSource, setActiveSource] = useState(dataSources[0]);
 
   return (
-    <section id="data-import" className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section id="data-import" className="relative pt-8 pb-16 lg:pt-12 lg:pb-24 bg-gradient-to-b from-teal-50/40 via-cyan-50/30 to-white overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-teal-100/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-cyan-100/20 rounded-full blur-3xl" />
+      </div>
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-12">
+        <motion.div
+          className="flex items-center gap-4 mb-12"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
               1
@@ -81,26 +59,36 @@ const DataImportSection: React.FC = () => {
             </div>
           </div>
           <div className="flex-1 h-px bg-gradient-to-r from-teal-300 to-transparent ml-6" />
-        </div>
+        </motion.div>
 
         {/* PART 1: Introduction - Left Right Layout */}
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center mb-20">
           {/* Left - Image */}
-          <div className="w-full lg:w-[45%] flex justify-center">
-            <div className="bg-gradient-to-br from-teal-50 via-white to-cyan-50 border-2 border-teal-100 rounded-3xl p-6 lg:p-8 shadow-sm">
-              <Image
-                src={getAssetPath('/data-import.jpg')}
-                alt="Data Import Illustration"
-                width={550}
-                height={550}
-                className="w-full max-w-md lg:max-w-lg h-auto"
-                priority
-              />
-            </div>
-          </div>
+          <motion.div
+            className="w-full lg:w-[45%] flex justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Image
+              src={getAssetPath('/data-import.jpg')}
+              alt="Data Import Illustration"
+              width={650}
+              height={650}
+              className="w-full max-w-xl lg:max-w-2xl h-auto"
+              priority
+            />
+          </motion.div>
 
           {/* Right - Content */}
-          <div className="w-full lg:w-[55%]">
+          <motion.div
+            className="w-full lg:w-[55%]"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 border border-teal-200 rounded-full mb-6">
               <Database className="w-5 h-5 text-teal-600" />
               <span className="text-sm font-semibold text-teal-800">The Foundation of Algo Trading</span>
@@ -155,7 +143,7 @@ const DataImportSection: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* PART 2: Types of Data */}
@@ -314,150 +302,294 @@ const DataImportSection: React.FC = () => {
           </div>
         </div>
 
-        {/* PART 3: Data Sources - Interactive */}
+        {/* PART 3: Data Sources - Connected Cards */}
         <div className="mb-20">
-          {/* Transition text */}
-          <div className="text-center mb-8">
-            <p className="text-slate-600 italic">Now you know the data types — let's see where this data comes from</p>
-          </div>
-
-          <div className="text-center mb-10">
+          {/* Header with connecting line */}
+          <div className="relative text-center mb-16">
             <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
               Where Does <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Data</span> Come From?
             </h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">Different sources provide data with varying quality, speed, and cost</p>
-          </div>
+            <p className="text-slate-600 max-w-2xl mx-auto mb-8">Different sources provide data with varying quality, speed, and cost</p>
 
-          <div className="grid lg:grid-cols-5 gap-6 items-start">
-            {/* Source Selection - Left */}
-            <div className="lg:col-span-2 space-y-4">
-              {dataSources.map((source) => (
-                <button
-                  key={source.id}
-                  onClick={() => setActiveSource(source)}
-                  className={`w-full flex items-center gap-4 p-5 rounded-2xl border-2 text-left transition-all ${
-                    activeSource.id === source.id
-                      ? source.color === 'sky'
-                        ? 'border-sky-400 bg-sky-100 shadow-lg'
-                        : source.color === 'amber'
-                          ? 'border-amber-400 bg-amber-100 shadow-lg'
-                          : 'border-rose-400 bg-rose-100 shadow-lg'
-                      : 'border-slate-200 bg-slate-50 hover:border-slate-300 hover:shadow'
-                  }`}
-                >
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
-                    activeSource.id === source.id
-                      ? source.color === 'sky' ? 'bg-sky-500' : source.color === 'amber' ? 'bg-amber-500' : 'bg-rose-500'
-                      : 'bg-slate-100'
-                  }`}>
-                    <source.icon className={`w-7 h-7 ${activeSource.id === source.id ? 'text-white' : 'text-slate-400'}`} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-bold text-slate-800">{source.title}</h4>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
-                        source.cost === 'Free/Low' ? 'bg-emerald-100 text-emerald-700' :
-                        source.cost === 'Medium' ? 'bg-amber-100 text-amber-700' :
-                        'bg-rose-100 text-rose-700'
-                      }`}>
-                        {source.cost}
-                      </span>
-                    </div>
-                    <p className="text-sm text-slate-500">{source.description}</p>
-                  </div>
-                </button>
-              ))}
+            {/* Central connector circle */}
+            <div className="relative flex justify-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center shadow-lg z-10">
+                <Database className="w-8 h-8 text-white" />
+              </div>
             </div>
 
-            {/* Source Details - Right */}
-            <div className="lg:col-span-3">
-              <div className={`rounded-3xl p-8 h-full border-2 ${
-                activeSource.color === 'sky' ? 'bg-sky-100 border-sky-300' :
-                activeSource.color === 'amber' ? 'bg-amber-100 border-amber-300' :
-                'bg-rose-100 border-rose-300'
-              } shadow-sm`}>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
-                    activeSource.color === 'sky' ? 'bg-sky-200' :
-                    activeSource.color === 'amber' ? 'bg-amber-200' : 'bg-rose-200'
-                  }`}>
-                    <activeSource.icon className={`w-8 h-8 ${
-                      activeSource.color === 'sky' ? 'text-sky-600' :
-                      activeSource.color === 'amber' ? 'text-amber-600' : 'text-rose-600'
-                    }`} />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-bold text-slate-800">{activeSource.title}</h4>
-                    <p className="text-slate-500">{activeSource.description}</p>
-                  </div>
+            {/* Connecting lines - Desktop */}
+            <div className="hidden lg:block absolute top-full left-1/2 -translate-x-1/2 w-[80%] h-16">
+              <svg className="w-full h-full" viewBox="0 0 800 60" preserveAspectRatio="none">
+                {/* Vertical line from center */}
+                <line x1="400" y1="0" x2="400" y2="20" stroke="url(#lineGrad)" strokeWidth="2" />
+                {/* Horizontal line */}
+                <line x1="100" y1="20" x2="700" y2="20" stroke="url(#lineGrad)" strokeWidth="2" />
+                {/* Three vertical lines down */}
+                <line x1="100" y1="20" x2="100" y2="60" stroke="#14b8a6" strokeWidth="2" />
+                <line x1="400" y1="20" x2="400" y2="60" stroke="#f59e0b" strokeWidth="2" />
+                <line x1="700" y1="20" x2="700" y2="60" stroke="#f43f5e" strokeWidth="2" />
+                <defs>
+                  <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#14b8a6" />
+                    <stop offset="50%" stopColor="#f59e0b" />
+                    <stop offset="100%" stopColor="#f43f5e" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+
+          {/* Three Connected Cards */}
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-12">
+            {/* Card 1 - Broker API */}
+            <div className="group relative">
+              {/* Top highlight bar - shows on hover */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 rounded-t-3xl transition-all duration-300 z-20 bg-transparent group-hover:bg-sky-600" />
+
+              <div className="relative bg-gradient-to-br from-sky-50 via-white to-cyan-50 rounded-3xl border-2 border-sky-200 p-6 lg:p-8 shadow-lg transition-all duration-300 overflow-hidden h-full group-hover:border-sky-500 group-hover:shadow-xl group-hover:shadow-sky-200/50">
+                {/* Diagonal accent */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-sky-400 to-sky-500 transform translate-x-12 -translate-y-12 rotate-45 transition-all duration-300 opacity-80 group-hover:opacity-100" />
+
+                {/* Cost badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">Free/Low</span>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="bg-white rounded-2xl p-5 border border-slate-200">
-                    <h5 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-emerald-500" /> Advantages
-                    </h5>
-                    <div className="space-y-2">
-                      {activeSource.pros.map((pro, i) => (
-                        <div key={i} className="flex items-center gap-3 text-slate-700">
-                          <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                          <span>{pro}</span>
-                        </div>
-                      ))}
+                {/* Icon */}
+                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-500 to-sky-600 flex items-center justify-center shadow-lg mb-4">
+                  <Server className="w-8 h-8 text-white" />
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="text-xl font-bold text-slate-900 mb-1">Broker API</h4>
+                <p className="text-sm font-medium text-sky-600 mb-3">Zerodha, Upstox, Tradovate</p>
+
+                {/* Detailed description */}
+                <p className="text-sm text-slate-800 mb-4 leading-relaxed">
+                  Get data directly from your trading broker. Most brokers provide free API access with your trading account.
+                </p>
+
+                {/* Best For */}
+                <div className="bg-sky-100/50 rounded-xl p-3 mb-4">
+                  <p className="text-xs font-semibold text-sky-700 uppercase tracking-wide mb-1">Best For</p>
+                  <p className="text-sm text-slate-900">Beginners & cost-conscious traders</p>
+                </div>
+
+                {/* Pros */}
+                <div className="space-y-2 mb-4">
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Advantages</p>
+                  {['Single source for data & orders', 'Usually free with account', 'Easy integration', 'No extra vendor needed'].map((pro, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span className="text-sm text-slate-900">{pro}</span>
                     </div>
-                  </div>
-                  <div className="bg-white rounded-2xl p-5 border border-slate-200">
-                    <h5 className="font-bold text-slate-800 mb-4 flex items-center gap-2">
-                      <XCircle className="w-5 h-5 text-rose-500" /> Limitations
-                    </h5>
-                    <div className="space-y-2">
-                      {activeSource.cons.map((con, i) => (
-                        <div key={i} className="flex items-center gap-3 text-slate-600">
-                          <div className="w-2 h-2 rounded-full bg-rose-500" />
-                          <span>{con}</span>
-                        </div>
-                      ))}
+                  ))}
+                </div>
+
+                {/* Cons */}
+                <div className="space-y-2 pt-4 border-t border-sky-100">
+                  <p className="text-xs font-semibold text-rose-500 uppercase tracking-wide">Limitations</p>
+                  {['Limited historical data', 'API rate limits apply', 'Data gaps possible'].map((con, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <XCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                      <span className="text-sm text-slate-800">{con}</span>
                     </div>
-                  </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 - Data Vendors - Dark Blue Theme */}
+            <div className="group relative">
+              {/* Top highlight bar - shows on hover */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 rounded-t-3xl transition-all duration-300 z-20 bg-transparent group-hover:bg-blue-900" />
+
+              <div className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl border-2 border-blue-200 p-6 lg:p-8 shadow-lg transition-all duration-300 overflow-hidden h-full group-hover:border-blue-600 group-hover:shadow-xl group-hover:shadow-blue-200/50">
+                {/* Diagonal accent */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-600 to-blue-800 transform translate-x-12 -translate-y-12 rotate-45 transition-all duration-300 opacity-80 group-hover:opacity-100" />
+
+                {/* Cost badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-xs font-bold">Medium</span>
+                </div>
+
+                {/* Icon */}
+                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-lg mb-4">
+                  <Database className="w-8 h-8 text-white" />
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="text-xl font-bold text-slate-900 mb-1">Data Vendors</h4>
+                <p className="text-sm font-medium text-blue-700 mb-3">TrueData, GDFL, Global Datafeeds</p>
+
+                {/* Detailed description */}
+                <p className="text-sm text-slate-800 mb-4 leading-relaxed">
+                  Professional data providers specializing in market data. Clean, reliable feeds with extensive historical archives.
+                </p>
+
+                {/* Best For */}
+                <div className="bg-blue-100/50 rounded-xl p-3 mb-4">
+                  <p className="text-xs font-semibold text-blue-800 uppercase tracking-wide mb-1">Best For</p>
+                  <p className="text-sm text-slate-900">Serious traders & backtesting</p>
+                </div>
+
+                {/* Pros */}
+                <div className="space-y-2 mb-4">
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Advantages</p>
+                  {['High quality clean data', 'Low latency feeds', 'Years of historical data', 'Technical support included'].map((pro, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span className="text-sm text-slate-900">{pro}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Cons */}
+                <div className="space-y-2 pt-4 border-t border-blue-100">
+                  <p className="text-xs font-semibold text-rose-500 uppercase tracking-wide">Limitations</p>
+                  {['Monthly subscription cost', 'Separate setup required', 'Learning curve for APIs'].map((con, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <XCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
+                      <span className="text-sm text-slate-800">{con}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 - Direct Exchange - Violet Theme */}
+            <div className="group relative">
+              {/* Top highlight bar - shows on hover */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 rounded-t-3xl transition-all duration-300 z-20 bg-transparent group-hover:bg-violet-900" />
+
+              <div className="relative bg-gradient-to-br from-violet-50 via-white to-purple-50 rounded-3xl border-2 border-violet-200 p-6 lg:p-8 shadow-lg transition-all duration-300 overflow-hidden h-full group-hover:border-violet-600 group-hover:shadow-xl group-hover:shadow-violet-200/50">
+                {/* Diagonal accent */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-violet-600 to-violet-800 transform translate-x-12 -translate-y-12 rotate-45 transition-all duration-300 opacity-80 group-hover:opacity-100" />
+
+                {/* Cost badge */}
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="px-3 py-1.5 bg-violet-100 text-violet-800 rounded-full text-xs font-bold">High</span>
+                </div>
+
+                {/* Icon */}
+                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-600 to-violet-800 flex items-center justify-center shadow-lg mb-4">
+                  <Building2 className="w-8 h-8 text-white" />
+                </div>
+
+                {/* Title & Description */}
+                <h4 className="text-xl font-bold text-slate-900 mb-1">Direct Exchange</h4>
+                <p className="text-sm font-medium text-violet-700 mb-3">NSE, BSE, MCX Direct Feed</p>
+
+                {/* Detailed description */}
+                <p className="text-sm text-slate-800 mb-4 leading-relaxed">
+                  Connect directly to exchange servers for the fastest, most authoritative data. Used by institutions and HFT firms.
+                </p>
+
+                {/* Best For */}
+                <div className="bg-violet-100/50 rounded-xl p-3 mb-4">
+                  <p className="text-xs font-semibold text-violet-800 uppercase tracking-wide mb-1">Best For</p>
+                  <p className="text-sm text-slate-900">HFT & institutional traders</p>
+                </div>
+
+                {/* Pros */}
+                <div className="space-y-2 mb-4">
+                  <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Advantages</p>
+                  {['Official authoritative source', 'Zero/minimal latency', 'Complete tick data', 'No middleman delays'].map((pro, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span className="text-sm text-slate-900">{pro}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Cons */}
+                <div className="space-y-2 pt-4 border-t border-violet-100">
+                  <p className="text-xs font-semibold text-violet-600 uppercase tracking-wide">Limitations</p>
+                  {['Very expensive (lakhs/year)', 'Complex infrastructure needed', 'Requires co-location'].map((con, i) => (
+                    <div key={i} className="flex items-center gap-2">
+                      <XCircle className="w-4 h-4 text-violet-400 flex-shrink-0" />
+                      <span className="text-sm text-slate-800">{con}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* PART 4: Data Flow - Full Width Flowchart */}
-        <div className="mb-16">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
-              Data <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Import</span> Flow
-            </h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">How data travels from source to your strategy</p>
+        {/* PART 4: Data Flow - Section with Background */}
+        <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 xl:-mx-12 2xl:-mx-16 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 py-16 lg:py-20 mb-8 bg-gradient-to-br from-slate-100 via-slate-50 to-gray-100 border-y border-slate-200">
+          {/* Background decorative elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-slate-200/50 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gray-200/50 rounded-full blur-3xl" />
           </div>
 
-          <div className="bg-slate-100 rounded-3xl border border-slate-200 shadow-lg p-8 lg:p-12">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-              {[
-                { icon: Server, title: 'Data Source', sub: 'Broker / Vendor', color: 'from-teal-500 to-teal-600' },
-                { icon: CandlestickChart, title: 'Candle Data', sub: '1min, 5min, 15min', color: 'from-sky-500 to-sky-600' },
-                { icon: Activity, title: 'OHLCV Format', sub: 'Open, High, Low, Close, Vol', color: 'from-violet-500 to-violet-600' },
-                { icon: Database, title: 'Strategy Ready', sub: 'Clean & formatted', color: 'from-emerald-500 to-emerald-600' },
-              ].map((step, idx, arr) => (
-                <React.Fragment key={idx}>
-                  <div className="flex flex-col items-center text-center group">
-                    <div className={`w-20 h-20 lg:w-24 lg:h-24 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform`}>
-                      <step.icon className="w-10 h-10 lg:w-12 lg:h-12 text-white" />
+          <div className="relative w-full">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-teal-200 rounded-full mb-4 shadow-sm">
+                <Activity className="w-4 h-4 text-teal-600" />
+                <span className="text-sm font-semibold text-teal-700">Data Pipeline</span>
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+                Data <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">Import</span> Flow
+              </h3>
+              <p className="text-slate-700 max-w-2xl mx-auto">How data travels from source to your strategy</p>
+            </div>
+
+            {/* Flow Cards Container */}
+            <div className="relative bg-white rounded-3xl border border-slate-200 shadow-xl p-6 lg:p-10 overflow-hidden">
+              {/* Connection line - Desktop */}
+              <div className="hidden lg:block absolute top-1/2 left-[8%] right-[8%] h-1 bg-gradient-to-r from-teal-400 via-sky-400 via-violet-400 to-emerald-400 rounded-full -translate-y-1/2" />
+
+              <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-3">
+                {[
+                  { icon: Server, title: 'Data Source', sub: 'Broker / Vendor', desc: 'API connection to fetch live & historical data', color: 'from-teal-500 to-teal-600', bgColor: 'bg-gradient-to-br from-teal-50 to-cyan-50', borderColor: 'border-teal-200', step: 1 },
+                  { icon: CandlestickChart, title: 'Candle Data', sub: '1min, 5min, 15min', desc: 'Raw price data converted to timeframe candles', color: 'from-sky-500 to-sky-600', bgColor: 'bg-gradient-to-br from-sky-50 to-blue-50', borderColor: 'border-sky-200', step: 2 },
+                  { icon: Activity, title: 'OHLCV Format', sub: 'Open, High, Low, Close, Vol', desc: 'Standardized format for strategy processing', color: 'from-violet-500 to-violet-600', bgColor: 'bg-gradient-to-br from-violet-50 to-purple-50', borderColor: 'border-violet-200', step: 3 },
+                  { icon: Database, title: 'Strategy Ready', sub: 'Clean & formatted', desc: 'Data validated and ready for signal generation', color: 'from-emerald-500 to-emerald-600', bgColor: 'bg-gradient-to-br from-emerald-50 to-teal-50', borderColor: 'border-emerald-200', step: 4 },
+                ].map((stepData, idx, arr) => (
+                  <React.Fragment key={idx}>
+                    <div className="relative flex flex-col items-center text-center group flex-1">
+                      {/* Card container */}
+                      <div className={`relative w-full ${stepData.bgColor} border-2 ${stepData.borderColor} rounded-2xl p-4 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-1`}>
+                        {/* Step number badge */}
+                        <div className={`absolute -top-3 -right-3 w-7 h-7 rounded-full bg-gradient-to-br ${stepData.color} flex items-center justify-center text-white text-xs font-bold shadow-lg border-2 border-white`}>
+                          {stepData.step}
+                        </div>
+
+                        {/* Icon */}
+                        <div className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-br ${stepData.color} flex items-center justify-center shadow-lg mb-3`}>
+                          <stepData.icon className="w-6 h-6 text-white" />
+                        </div>
+
+                        {/* Title & subtitle */}
+                        <h4 className="font-bold text-black text-base mb-1">{stepData.title}</h4>
+                        <p className="text-xs text-slate-900 font-semibold mb-2">{stepData.sub}</p>
+                        <p className="text-sm text-slate-800 leading-snug">{stepData.desc}</p>
+                      </div>
                     </div>
-                    <h4 className="mt-4 font-bold text-slate-900">{step.title}</h4>
-                    <p className="text-sm text-slate-600">{step.sub}</p>
-                  </div>
-                  {idx < arr.length - 1 && (
-                    <>
-                      <ArrowRight className="w-8 h-8 text-slate-400 hidden lg:block" />
-                      <ArrowDown className="w-8 h-8 text-slate-400 lg:hidden" />
-                    </>
-                  )}
-                </React.Fragment>
-              ))}
+
+                    {/* Arrows */}
+                    {idx < arr.length - 1 && (
+                      <>
+                        <div className="hidden lg:flex items-center justify-center w-8 flex-shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center">
+                            <ArrowRight className="w-4 h-4 text-slate-500" />
+                          </div>
+                        </div>
+                        <div className="lg:hidden flex items-center justify-center h-6">
+                          <div className="w-6 h-6 rounded-full bg-white shadow-md border border-slate-200 flex items-center justify-center">
+                            <ArrowDown className="w-3 h-3 text-slate-500" />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
           </div>
         </div>

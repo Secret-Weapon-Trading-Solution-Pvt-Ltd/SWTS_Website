@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { getAssetPath } from '@/lib/utils';
 import {
   Database,
@@ -21,40 +22,76 @@ import {
 
 const AlgoIntroSection: React.FC = () => {
   return (
-    <section className="relative py-16 lg:py-24 bg-white overflow-hidden">
+    <section className="relative py-16 lg:py-20 bg-white overflow-hidden">
+      {/* Separator Line from Hero */}
+      <div className="absolute top-0 left-0 right-0">
+        <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+        <div className="flex justify-center -mt-3">
+          <div className="flex items-center gap-2 px-6 py-1.5 bg-white">
+            <div className="w-2 h-2 rounded-full bg-teal-400" />
+            <div className="w-8 h-0.5 bg-gradient-to-r from-teal-400 to-blue-400 rounded-full" />
+            <div className="w-2 h-2 rounded-full bg-blue-400" />
+          </div>
+        </div>
+      </div>
+
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-teal-50 rounded-full blur-3xl opacity-30 translate-x-1/3" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-50 rounded-full blur-3xl opacity-30 -translate-x-1/3" />
       </div>
 
-      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+      <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 pt-8">
 
         {/* TOP SECTION: Text Left + Image Right */}
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center mb-16 lg:mb-24">
 
           {/* LEFT SIDE - Text Content */}
-          <div className="w-full lg:w-[45%]">
+          <motion.div
+            className="w-full lg:w-[45%]"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 mb-6">
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <Bot className="w-4 h-4 text-slate-800" />
               <span className="text-sm font-semibold text-slate-800 uppercase tracking-wider">
                 What is Algo Trading?
               </span>
-            </div>
+            </motion.div>
 
             {/* Heading */}
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-800 mb-6 leading-tight">
+            <motion.h2
+              className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-800 mb-6 leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               Trading with <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">Rules</span>,<br />
               Not Emotions
-            </h2>
+            </motion.h2>
 
             {/* Description */}
-            <p className="text-lg text-slate-900 mb-8 leading-relaxed">
+            <motion.p
+              className="text-lg text-slate-900 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               Algo trading (Algorithmic Trading) means using a computer program to execute trades based on
               predefined rules. Instead of manually watching charts and placing orders, your Python code
               does it for you - faster, more disciplined, and without emotional decisions.
-            </p>
+            </motion.p>
 
             {/* Benefits - 2x2 Grid */}
             <div className="grid grid-cols-2 gap-3">
@@ -64,9 +101,13 @@ const AlgoIntroSection: React.FC = () => {
                 { text: 'Faster Execution', icon: TrendingUp, desc: 'Millisecond orders', gradient: 'from-emerald-500 to-green-500', bg: 'from-emerald-50 to-green-50', border: 'border-emerald-200 hover:border-emerald-300' },
                 { text: 'Backtested Strategies', icon: BarChart3, desc: 'Data-driven decisions', gradient: 'from-violet-500 to-purple-500', bg: 'from-violet-50 to-purple-50', border: 'border-violet-200 hover:border-violet-300' },
               ].map((item, i) => (
-                <div
+                <motion.div
                   key={i}
                   className={`group relative p-4 rounded-2xl border-2 transition-all duration-300 hover:shadow-xl cursor-default overflow-hidden bg-gradient-to-br ${item.bg} ${item.border}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.4 + i * 0.1 }}
                 >
                   <div className="relative flex items-start gap-3">
                     {/* Colorful gradient icon container */}
@@ -78,13 +119,19 @@ const AlgoIntroSection: React.FC = () => {
                       <p className="text-xs text-slate-800 mt-0.5">{item.desc}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* RIGHT SIDE - Image */}
-          <div className="w-full lg:w-[55%] flex items-center justify-center">
+          <motion.div
+            className="w-full lg:w-[55%] flex items-center justify-center"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          >
             <Image
               src={getAssetPath('/algotrading-intr0.jpg')}
               alt="Algo Trading Illustration"
@@ -93,23 +140,35 @@ const AlgoIntroSection: React.FC = () => {
               className="w-full h-auto max-w-none lg:scale-110"
               priority
             />
-          </div>
+          </motion.div>
         </div>
 
         {/* BOTTOM SECTION: Full-width Horizontal Flowchart */}
-        <div className="relative bg-gradient-to-br from-slate-50 via-white to-slate-100 border-2 border-slate-200 rounded-3xl p-6 lg:p-10 overflow-hidden">
+        <motion.div
+          className="relative bg-gradient-to-br from-slate-50 via-white to-slate-100 border-2 border-slate-200 rounded-3xl p-5 lg:p-8 overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           {/* Decorative background elements */}
           <div className="absolute top-0 right-0 w-40 h-40 bg-teal-100/40 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-100/40 rounded-full blur-3xl" />
           <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-emerald-100/30 rounded-full blur-2xl" />
 
           {/* Flowchart Title */}
-          <div className="text-center mb-10">
-            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+          <motion.div
+            className="text-center mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
               Pillars of Algo Trading
             </h3>
             <p className="text-base lg:text-lg text-slate-800">The complete trading automation pipeline</p>
-          </div>
+          </motion.div>
 
           {/* Horizontal Flowchart */}
           <div className="relative">
@@ -117,7 +176,7 @@ const AlgoIntroSection: React.FC = () => {
             <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-1 bg-gradient-to-r from-teal-400 via-blue-400 to-emerald-400 rounded-full" />
 
             {/* Three Pillars Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-4 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-4 mb-4">
 
               {/* Pillar 1: Data Import */}
               <div className="flex flex-col items-center">
@@ -243,20 +302,14 @@ const AlgoIntroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Legend */}
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mt-8 pt-6 border-t border-slate-200/70">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full border border-slate-200 shadow-sm">
-              <div className="w-4 h-4 rounded-full border-2 border-teal-400 bg-white" />
-              <span className="text-xs lg:text-sm text-slate-900 font-medium">Core Pillars</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full border border-slate-200 shadow-sm">
-              <div className="w-4 h-4 rounded-lg bg-gradient-to-br from-violet-100 to-pink-100 border border-violet-200" />
-              <span className="text-xs lg:text-sm text-slate-900 font-medium">Sub-components</span>
-            </div>
-          </div>
-
           {/* Transition text */}
-          <div className="mt-10 text-center">
+          <motion.div
+            className="mt-10 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-teal-50 via-blue-50 to-emerald-50 border border-slate-200 rounded-full shadow-sm">
               <div className="flex -space-x-1">
                 <div className="w-3 h-3 rounded-full bg-teal-400"></div>
@@ -264,10 +317,15 @@ const AlgoIntroSection: React.FC = () => {
                 <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
               </div>
               <span className="text-slate-800 font-medium">Let&apos;s understand each pillar one by one</span>
-              <ArrowDown className="w-4 h-4 text-slate-500" />
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowDown className="w-4 h-4 text-slate-500" />
+              </motion.div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

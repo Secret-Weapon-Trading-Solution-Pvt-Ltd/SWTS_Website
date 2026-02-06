@@ -68,7 +68,7 @@ const AlgoSummary: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            The complete backbone of algo trading with Python, simplified.
+            The complete backbone of algo trading, simplified.
           </p>
         </div>
 

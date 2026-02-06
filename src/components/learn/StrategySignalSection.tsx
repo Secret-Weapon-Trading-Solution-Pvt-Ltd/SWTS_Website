@@ -1,6 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { getAssetPath } from '@/lib/utils';
 import {
   Target,
   LogOut,
@@ -14,7 +17,6 @@ import {
   MinusCircle,
   ArrowRight,
   ArrowDown,
-  Settings,
 } from 'lucide-react';
 
 const signalOptions = [
@@ -60,78 +62,107 @@ const StrategySignalSection: React.FC = () => {
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-12">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center text-white font-bold text-xl">
+        <motion.div
+          className="flex items-center gap-4 mb-12"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg">
               2
             </div>
             <div>
-              <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest">Step 02</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-slate-800">Strategy & Signal</h2>
+              <p className="text-xs font-semibold text-teal-600 uppercase tracking-widest mb-1">Step 02</p>
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900">
+                <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">Strategy</span> & Signal
+              </h2>
             </div>
           </div>
-          <div className="flex-1 h-px bg-gradient-to-r from-blue-200 to-transparent ml-6" />
-        </div>
+          <div className="flex-1 h-px bg-gradient-to-r from-teal-300 to-transparent ml-6" />
+        </motion.div>
 
         {/* PART 1: Introduction - Left Right Layout */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-20">
           {/* Left - Content */}
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full mb-6">
-              <Brain className="w-5 h-5 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-800">Your Trading Rules in Code</span>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-violet-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm">
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
+              Your Trading Rules in Code
             </div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-slate-800 mb-4">
-              Clear <span className="text-blue-600">Rules</span> = Clean Signals
+            <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 mb-5 leading-tight">
+              Clear <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Rules</span> = Clean Signals
             </h3>
-            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+            <p className="text-lg text-slate-700 mb-6 leading-relaxed">
               A strategy defines exactly when to buy, when to sell, and when to stay out.
               No random trades - only rule-based, disciplined execution. Your emotions stay out.
             </p>
-            <div className="space-y-3">
+            <p className="text-base text-slate-600 mb-8 leading-relaxed">
+              Your strategy is the brain of your algo system. It analyzes incoming data, applies your trading logic,
+              and generates clear signals when conditions match. No guessing, no hesitation - just systematic execution.
+            </p>
+
+            {/* Highlight Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                { text: 'Define entry conditions precisely', color: 'emerald' },
-                { text: 'Set exit rules & protection levels', color: 'rose' },
-                { text: 'Generate signals automatically', color: 'blue' },
+                { text: 'Define entry conditions', desc: 'Precise buy triggers', icon: Target, gradient: 'from-emerald-500 to-teal-500', bg: 'from-emerald-50 to-teal-50', border: 'border-emerald-200' },
+                { text: 'Set exit & protection', desc: 'SL, targets, limits', icon: LogOut, gradient: 'from-rose-500 to-pink-500', bg: 'from-rose-50 to-pink-50', border: 'border-rose-200' },
+                { text: 'Auto signal generation', desc: 'Real-time triggers', icon: Zap, gradient: 'from-blue-500 to-indigo-500', bg: 'from-blue-50 to-indigo-50', border: 'border-blue-200' },
+                { text: 'Emotion-free trading', desc: 'Disciplined execution', icon: Brain, gradient: 'from-violet-500 to-purple-500', bg: 'from-violet-50 to-purple-50', border: 'border-violet-200' },
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${
-                    item.color === 'emerald' ? 'text-emerald-500' :
-                    item.color === 'rose' ? 'text-rose-500' : 'text-blue-500'
-                  }`} />
-                  <span className="text-slate-700 font-medium">{item.text}</span>
-                </div>
+                <motion.div
+                  key={i}
+                  className={`flex items-center gap-3 p-4 bg-gradient-to-br ${item.bg} rounded-xl border ${item.border} shadow-sm hover:shadow-md transition-all`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
+                >
+                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                    <item.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">{item.text}</h4>
+                    <p className="text-xs text-slate-600">{item.desc}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right - Visual */}
-          <div className="relative">
-            <div className="bg-white border-2 border-blue-100 rounded-3xl p-8 lg:p-10 shadow-lg">
-              <div className="text-center mb-6">
-                <div className="w-20 h-20 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
-                  <Settings className="w-10 h-10 text-blue-600" />
-                </div>
-                <h4 className="text-xl font-bold text-slate-800">Strategy Engine</h4>
-              </div>
-              <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-lg">
-                  <span className="text-emerald-700 font-semibold">IF condition = TRUE</span>
-                </div>
-                <ArrowRight className="w-5 h-5 text-slate-400" />
-                <div className="px-4 py-2 bg-blue-50 border border-blue-200 rounded-lg">
-                  <span className="text-blue-700 font-semibold">GENERATE signal</span>
-                </div>
-              </div>
-              <p className="text-center text-slate-500 text-sm italic">
-                Strategy checks → Condition matches → Signal fires
-              </p>
-            </div>
-          </div>
+          {/* Right - Image */}
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Image
+              src={getAssetPath('/strategy-signal.jpg')}
+              alt="Strategy and Signal Generation"
+              width={600}
+              height={600}
+              className="w-full max-w-lg lg:max-w-xl xl:max-w-2xl h-auto"
+              priority
+            />
+          </motion.div>
         </div>
 
         {/* PART 2: Signal Flow */}
-        <div className="mb-20">
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="text-center mb-10">
             <h3 className="text-2xl font-bold text-slate-800 mb-2">Signal Generation Flow</h3>
             <p className="text-slate-500">How your strategy processes data and generates signals</p>
@@ -163,10 +194,16 @@ const StrategySignalSection: React.FC = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* PART 3A: Entry & Exit Rules - Left Right */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-20">
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8 mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           {/* Entry Rule */}
           <div className="group">
             <div className="bg-emerald-50 border-2 border-emerald-200 rounded-3xl p-8 shadow-sm hover:shadow-lg transition-shadow h-full">
@@ -210,10 +247,16 @@ const StrategySignalSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* PART 3B: Signal Types */}
-        <div className="mb-20">
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="text-center mb-10">
             <h3 className="text-2xl font-bold text-slate-800 mb-2">Signal Types</h3>
             <p className="text-slate-500">Three possible outcomes from your strategy</p>
@@ -247,7 +290,7 @@ const StrategySignalSection: React.FC = () => {
               <p className="text-slate-500">Conditions not met, wait for next setup</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* PART 3C: Signal Timing - Interactive */}
         <div>

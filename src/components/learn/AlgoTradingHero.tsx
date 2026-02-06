@@ -63,12 +63,11 @@ const AlgoTradingHero: React.FC = () => {
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-800 mb-6 leading-tight">
-              Understanding{' '}
+              The Complete Guide to{' '}
+              <br className="hidden sm:block" />
               <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
                 Algo Trading
               </span>
-              <br className="hidden sm:block" />
-              <span className="text-slate-700"> with Python</span>
             </h1>
 
             {/* Subheading */}
