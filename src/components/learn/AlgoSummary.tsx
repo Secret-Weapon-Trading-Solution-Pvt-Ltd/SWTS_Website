@@ -8,37 +8,84 @@ import {
   Zap,
   ArrowRight,
   ArrowDown,
-  CheckCircle2,
   Sparkles,
   Monitor,
   Server,
   Bell,
+  Target,
+  Activity,
+  Clock,
+  Laptop,
+  BarChart3,
+  Eye,
+  Send,
 } from 'lucide-react';
 
-const summaryPoints = [
+const flowSteps = [
   {
-    step: '01',
+    step: 1,
     title: 'Data Import',
     icon: Database,
-    description:
-      'Market data should come correctly, on time, and in clean format so that strategy gets reliable input.',
-    color: 'teal',
+    gradient: 'from-teal-500 to-cyan-600',
+    badge: 'bg-teal-700',
+    subColor: { line: 'bg-teal-300', box: 'bg-teal-50 border-teal-200', icon: 'text-teal-600', text: 'text-teal-600' },
+    subs: [
+      { icon: Activity, label: 'Real-Time' },
+      { icon: Clock, label: 'Historical' },
+      { icon: Database, label: 'Source' },
+    ],
   },
   {
-    step: '02',
-    title: 'Strategy + Signal',
+    step: 2,
+    title: 'Strategy & Signal',
     icon: Brain,
-    description:
-      'Rules should be clear and well-defined so signals are clean. At this stage, decide: Without UI or With UI, deployment on PC or Server.',
-    color: 'blue',
+    gradient: 'from-blue-500 to-indigo-600',
+    badge: 'bg-blue-700',
+    subColor: { line: 'bg-blue-300', box: 'bg-blue-50 border-blue-200', icon: 'text-blue-600', text: 'text-blue-600' },
+    subs: [
+      { icon: Target, label: 'Rules' },
+      { icon: Zap, label: 'Signal' },
+      { icon: BarChart3, label: 'Types' },
+      { icon: Clock, label: 'Timing' },
+    ],
   },
   {
-    step: '03',
-    title: 'Order Execution & Notifications',
+    step: 3,
+    title: 'UI Decision',
+    icon: Monitor,
+    gradient: 'from-violet-500 to-purple-600',
+    badge: 'bg-violet-700',
+    subColor: { line: 'bg-violet-300', box: 'bg-violet-50 border-violet-200', icon: 'text-violet-600', text: 'text-violet-600' },
+    subs: [
+      { icon: Monitor, label: 'With UI' },
+      { icon: Laptop, label: 'Without UI' },
+      { icon: Eye, label: 'Dashboard' },
+    ],
+  },
+  {
+    step: 4,
+    title: 'Deployment',
+    icon: Server,
+    gradient: 'from-amber-500 to-orange-600',
+    badge: 'bg-amber-700',
+    subColor: { line: 'bg-amber-300', box: 'bg-amber-50 border-amber-200', icon: 'text-amber-600', text: 'text-amber-600' },
+    subs: [
+      { icon: Laptop, label: 'Local PC' },
+      { icon: Server, label: 'Cloud / VPS' },
+    ],
+  },
+  {
+    step: 5,
+    title: 'Execution',
     icon: Zap,
-    description:
-      'After signal, Python either sends notification (signal/status update) or places order via broker API and confirms result - filled/rejected/SL-TP set.',
-    color: 'emerald',
+    gradient: 'from-emerald-500 to-green-600',
+    badge: 'bg-emerald-700',
+    subColor: { line: 'bg-emerald-300', box: 'bg-emerald-50 border-emerald-200', icon: 'text-emerald-600', text: 'text-emerald-600' },
+    subs: [
+      { icon: Eye, label: 'Screener' },
+      { icon: Send, label: 'Auto Trade' },
+      { icon: Bell, label: 'Alerts' },
+    ],
   },
 ];
 
@@ -54,7 +101,7 @@ const AlgoSummary: React.FC = () => {
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 border-2 border-teal-200 mb-6">
             <Sparkles className="w-4 h-4 text-teal-600" />
             <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">
@@ -62,191 +109,54 @@ const AlgoSummary: React.FC = () => {
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
-            Algo Trading in{' '}
+            Complete Algo Trading{' '}
             <span className="bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
-              3 Lines
+              Flow
             </span>
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            The complete backbone of algo trading, simplified.
-          </p>
         </div>
 
-        {/* Visual Flow Summary */}
-        <div className="mb-16">
-          <div className="flex flex-col lg:flex-row items-start justify-center gap-6 lg:gap-4">
-            {summaryPoints.map((point, idx) => (
-              <React.Fragment key={point.step}>
-                {/* Main Node */}
-                <div className="flex flex-col items-center lg:self-start">
-                  <div className="relative">
-                    <div className={`w-24 h-24 lg:w-28 lg:h-28 rounded-full flex items-center justify-center shadow-lg border-2 ${
-                      point.color === 'teal' ? 'bg-teal-50 border-teal-200' :
-                      point.color === 'blue' ? 'bg-blue-50 border-blue-200' :
-                      'bg-emerald-50 border-emerald-200'
-                    }`}>
-                      <point.icon className={`w-12 h-12 lg:w-14 lg:h-14 ${
-                        point.color === 'teal' ? 'text-teal-600' :
-                        point.color === 'blue' ? 'text-blue-600' :
-                        'text-emerald-600'
-                      }`} />
+        {/* Horizontal Flow - Desktop / Vertical Flow - Mobile */}
+        <div className="mb-16 overflow-x-auto">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-0 min-w-0 lg:min-w-[1050px] mx-auto">
+            {flowSteps.map((step, idx) => (
+              <React.Fragment key={step.step}>
+                {/* Step Node */}
+                <div className="flex flex-col items-center flex-shrink-0">
+                  {/* Main icon */}
+                  <div className="relative mt-3">
+                    <div className={`w-20 h-20 lg:w-[88px] lg:h-[88px] rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg`}>
+                      <step.icon className="w-10 h-10 lg:w-11 lg:h-11 text-white" />
                     </div>
-                    <div className={`absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
-                      point.color === 'teal' ? 'bg-teal-600' :
-                      point.color === 'blue' ? 'bg-blue-600' :
-                      'bg-emerald-600'
-                    }`}>
-                      {point.step.replace('0', '')}
+                    <div className={`absolute -top-3 -right-3 w-8 h-8 rounded-full ${step.badge} text-white text-sm font-bold flex items-center justify-center shadow-md border-2 border-white`}>
+                      {step.step}
                     </div>
                   </div>
-                  <h3 className="mt-4 text-lg font-bold text-slate-800 text-center">{point.title}</h3>
-
-                  {/* Sub-branches for Strategy step */}
-                  {point.step === '02' && (
-                    <div className="flex gap-8 mt-4">
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-4 bg-violet-300" />
-                        <div className="w-10 h-10 rounded-lg bg-violet-50 border-2 border-violet-200 flex items-center justify-center">
-                          <Monitor className="w-5 h-5 text-violet-600" />
+                  {/* Title */}
+                  <h3 className="mt-3 text-base lg:text-lg font-bold text-slate-800 text-center whitespace-nowrap">{step.title}</h3>
+                  {/* Sub branches */}
+                  <div className="flex items-start gap-5 mt-3">
+                    {step.subs.map((sub, i) => (
+                      <div key={i} className="flex flex-col items-center">
+                        <div className={`w-0.5 h-4 ${step.subColor.line}`} />
+                        <div className={`w-12 h-12 rounded-xl ${step.subColor.box} border-2 flex items-center justify-center`}>
+                          <sub.icon className={`w-6 h-6 ${step.subColor.icon}`} />
                         </div>
-                        <p className="text-xs text-violet-600 mt-1">UI</p>
+                        <p className={`text-sm ${step.subColor.text} font-bold mt-1.5 whitespace-nowrap`}>{sub.label}</p>
                       </div>
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-4 bg-amber-300" />
-                        <div className="w-10 h-10 rounded-lg bg-amber-50 border-2 border-amber-200 flex items-center justify-center">
-                          <Server className="w-5 h-5 text-amber-600" />
-                        </div>
-                        <p className="text-xs text-amber-600 mt-1">Deploy</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Sub-branch for Execution step */}
-                  {point.step === '03' && (
-                    <div className="flex flex-col items-center mt-4">
-                      <div className="w-0.5 h-4 bg-pink-300" />
-                      <div className="w-10 h-10 rounded-lg bg-pink-50 border-2 border-pink-200 flex items-center justify-center">
-                        <Bell className="w-5 h-5 text-pink-600" />
-                      </div>
-                      <p className="text-xs text-pink-600 mt-1">Alerts</p>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                 </div>
 
-                {/* Arrow */}
-                {idx < summaryPoints.length - 1 && (
-                  <div className="lg:mt-12">
-                    <ArrowRight className="w-8 h-8 text-slate-400 hidden lg:block" />
-                    <ArrowDown className="w-8 h-8 text-slate-400 lg:hidden" />
+                {/* Arrow between steps */}
+                {idx < flowSteps.length - 1 && (
+                  <div className="flex items-center justify-center flex-shrink-0 lg:mt-10">
+                    <ArrowRight className="w-7 h-7 text-slate-300 hidden lg:block mx-2" />
+                    <ArrowDown className="w-7 h-7 text-slate-300 lg:hidden my-2" />
                   </div>
                 )}
               </React.Fragment>
             ))}
-          </div>
-        </div>
-
-        {/* Summary Cards - Left Right Layout */}
-        <div className="grid lg:grid-cols-3 gap-6 mb-16">
-          {summaryPoints.map((point) => (
-            <div
-              key={point.step}
-              className={`rounded-3xl p-6 lg:p-8 border-2 transition-all hover:scale-[1.02] shadow-sm hover:shadow-lg ${
-                point.color === 'teal'
-                  ? 'bg-teal-50 border-teal-200 hover:border-teal-300'
-                  : point.color === 'blue'
-                    ? 'bg-blue-50 border-blue-200 hover:border-blue-300'
-                    : 'bg-emerald-50 border-emerald-200 hover:border-emerald-300'
-              }`}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    point.color === 'teal'
-                      ? 'bg-teal-100'
-                      : point.color === 'blue'
-                        ? 'bg-blue-100'
-                        : 'bg-emerald-100'
-                  }`}
-                >
-                  <point.icon className={`w-6 h-6 ${
-                    point.color === 'teal'
-                      ? 'text-teal-600'
-                      : point.color === 'blue'
-                        ? 'text-blue-600'
-                        : 'text-emerald-600'
-                  }`} />
-                </div>
-                <div className="text-4xl font-black text-black/20">
-                  {point.step}
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-slate-800 mb-3">{point.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{point.description}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Key Takeaways */}
-        <div className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 lg:p-12 mb-16 shadow-2xl overflow-hidden">
-          {/* Background decorations */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-56 h-56 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute inset-0 opacity-[0.03]">
-            <div className="w-full h-full" style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px)',
-              backgroundSize: '40px 40px'
-            }} />
-          </div>
-
-          <div className="relative z-10">
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/10 mb-4">
-                <Sparkles className="w-4 h-4 text-teal-400" />
-                <span className="text-sm font-semibold text-teal-300">Remember This</span>
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-bold text-white">Key Takeaways</h3>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {[
-                { text: 'Algo trading = disciplined rule following, not magic profits', icon: Brain, color: 'teal' },
-                { text: 'Data quality determines strategy success', icon: Database, color: 'blue' },
-                { text: 'Clear rules = clean signals', icon: Sparkles, color: 'violet' },
-                { text: 'Execution is about confirmation, not just placing orders', icon: Zap, color: 'amber' },
-                { text: 'UI decision affects deployment choice', icon: Monitor, color: 'cyan' },
-                { text: 'Reliability matters as much as strategy', icon: Server, color: 'emerald' },
-              ].map((point, idx) => (
-                <div
-                  key={idx}
-                  className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                      point.color === 'teal' ? 'bg-teal-500/20' :
-                      point.color === 'blue' ? 'bg-blue-500/20' :
-                      point.color === 'violet' ? 'bg-violet-500/20' :
-                      point.color === 'amber' ? 'bg-amber-500/20' :
-                      point.color === 'cyan' ? 'bg-cyan-500/20' :
-                      'bg-emerald-500/20'
-                    }`}>
-                      <point.icon className={`w-5 h-5 ${
-                        point.color === 'teal' ? 'text-teal-400' :
-                        point.color === 'blue' ? 'text-blue-400' :
-                        point.color === 'violet' ? 'text-violet-400' :
-                        point.color === 'amber' ? 'text-amber-400' :
-                        point.color === 'cyan' ? 'text-cyan-400' :
-                        'text-emerald-400'
-                      }`} />
-                    </div>
-                    <span className="text-slate-300 text-base leading-relaxed group-hover:text-white transition-colors">{point.text}</span>
-                  </div>
-                  {/* Number watermark */}
-                  <div className="absolute bottom-2 right-4 text-white/5 text-3xl font-black">
-                    {String(idx + 1).padStart(2, '0')}
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 

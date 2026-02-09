@@ -42,7 +42,7 @@ const dashboardTypes = [
     title: 'Python GUI',
     subtitle: 'Desktop App',
     icon: Laptop,
-    desc: 'Standalone desktop application that works offline. Install once and run - no browser needed. Good for traders who prefer native apps.',
+    desc: 'Standalone desktop application that works locally. Install once and run - no browser needed. Good for traders who prefer native apps.',
     tech: ['Python', 'PyQt/Tkinter'],
     complexity: 'Medium',
     color: 'blue',
