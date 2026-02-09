@@ -23,28 +23,43 @@ const signalOptions = [
     id: 'candle',
     title: 'Candle Close',
     icon: Clock,
-    speed: 'Moderate',
+    speed: 'Speed: Moderate',
     accuracy: 'High',
     desc: 'Wait for candle to close before confirming signal. More reliable, fewer false signals.',
     color: 'teal',
+    bullets: [
+      'Signal confirms only after the candle fully closes',
+      'Most reliable — avoids false signals from wicks',
+      'Best for swing trading & positional strategies',
+    ],
   },
   {
     id: 'live',
     title: 'Live / Intrabar',
     icon: Zap,
-    speed: 'Fast',
+    speed: 'Speed: Fast',
     accuracy: 'Medium',
     desc: 'Signal triggers as soon as price touches level. Quick entry but may repaint.',
     color: 'blue',
+    bullets: [
+      'Signal fires mid-candle when condition is met',
+      'Faster entry but signal may repaint before candle closes',
+      'Good for intraday scalping & momentum strategies',
+    ],
   },
   {
     id: 'tick',
     title: 'Tick-based',
     icon: Activity,
-    speed: 'Ultra Fast',
+    speed: 'Speed: Ultra Fast',
     accuracy: 'Variable',
     desc: 'Tick-by-tick price movement triggers. HFT style, needs robust infrastructure.',
     color: 'violet',
+    bullets: [
+      'Every single trade/tick is analyzed in real-time',
+      'Needs low-latency infrastructure & co-location',
+      'Used in HFT — not practical for retail traders',
+    ],
   },
 ];
 
@@ -52,7 +67,7 @@ const StrategySignalSection: React.FC = () => {
   const [activeSignal, setActiveSignal] = useState(signalOptions[0]);
 
   return (
-    <section id="strategy-signal" className="relative pt-8 pb-16 lg:pt-12 lg:pb-24 bg-white overflow-hidden">
+    <section id="strategy-signal" className="relative pt-8 pb-6 lg:pt-12 lg:pb-10 bg-white overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-100/50 rounded-full blur-3xl -translate-x-1/2" />
@@ -367,7 +382,7 @@ const StrategySignalSection: React.FC = () => {
                 <div className="relative space-y-3">
                   {[
                     { icon: Activity, title: 'Data Arrives', sub: 'New candle/tick received', color: 'teal' },
-                    { icon: Brain, title: 'Strategy Checks', sub: 'Apply your trading rules', color: 'blue' },
+                    { icon: Brain, title: 'Strategy Checks', sub: 'Check your trading rules', color: 'blue' },
                     { icon: Target, title: 'Condition Match?', sub: 'Evaluate: Yes or No', color: 'violet' },
                     { icon: Zap, title: 'Signal Output', sub: 'BUY / SELL / WAIT', color: 'emerald' },
                   ].map((step, idx, arr) => (
@@ -551,8 +566,8 @@ const StrategySignalSection: React.FC = () => {
                     <h4 className="font-bold text-black text-lg">{option.title}</h4>
                     <div className="flex gap-2 mt-1">
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                        option.speed === 'Moderate' ? 'bg-amber-100 text-amber-700' :
-                        option.speed === 'Fast' ? 'bg-blue-100 text-blue-700' :
+                        option.speed === 'Speed: Moderate' ? 'bg-amber-100 text-amber-700' :
+                        option.speed === 'Speed: Fast' ? 'bg-blue-100 text-blue-700' :
                         'bg-violet-100 text-violet-700'
                       }`}>{option.speed}</span>
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
@@ -617,46 +632,18 @@ const StrategySignalSection: React.FC = () => {
                 </div>
                 <p className="relative text-lg text-black mb-6">{activeSignal.desc}</p>
 
-                {/* Trade-off visual */}
+                {/* Key Points */}
                 <div className="relative bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
-                  <p className="text-lg font-bold text-black text-center mb-4">Speed vs Accuracy Trade-off</p>
-                  <div className="flex items-center justify-between">
-                    <div className="text-center">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2 ${
-                        activeSignal.color === 'teal' ? 'bg-teal-100' :
-                        activeSignal.color === 'blue' ? 'bg-blue-100' : 'bg-violet-100'
-                      }`}>
-                        <Clock className={`w-5 h-5 ${
-                          activeSignal.color === 'teal' ? 'text-teal-600' :
-                          activeSignal.color === 'blue' ? 'text-blue-600' : 'text-violet-600'
-                        }`} />
-                      </div>
-                      <p className="text-sm font-medium text-black">More Confirmed</p>
-                    </div>
-                    <div className="flex-1 mx-4 relative">
-                      <div className="h-3 bg-gradient-to-r from-emerald-200 via-amber-200 to-rose-200 rounded-full" />
-                      <div
-                        className={`absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full shadow-lg border-2 border-white transition-all ${
+                  <div className="space-y-3">
+                    {activeSignal.bullets.map((bullet, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
                           activeSignal.color === 'teal' ? 'bg-teal-500' :
                           activeSignal.color === 'blue' ? 'bg-blue-500' : 'bg-violet-500'
-                        }`}
-                        style={{
-                          left: activeSignal.id === 'candle' ? '10%' : activeSignal.id === 'live' ? '50%' : '90%'
-                        }}
-                      />
-                    </div>
-                    <div className="text-center">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center mx-auto mb-2 ${
-                        activeSignal.color === 'teal' ? 'bg-teal-100' :
-                        activeSignal.color === 'blue' ? 'bg-blue-100' : 'bg-violet-100'
-                      }`}>
-                        <Zap className={`w-5 h-5 ${
-                          activeSignal.color === 'teal' ? 'text-teal-600' :
-                          activeSignal.color === 'blue' ? 'text-blue-600' : 'text-violet-600'
                         }`} />
+                        <p className="text-base text-slate-700">{bullet}</p>
                       </div>
-                      <p className="text-sm font-medium text-black">Faster Entry</p>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>

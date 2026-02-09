@@ -38,17 +38,6 @@ const dashboardTypes = [
     features: ['Rapid development', 'Python-only stack', 'Built-in widgets', 'Auto refresh'],
   },
   {
-    id: 'professional',
-    title: 'Node.js + FastAPI',
-    subtitle: 'Professional',
-    icon: Globe,
-    desc: 'Client-level multi-user dashboard with authentication, real-time updates, and professional UI. Ideal for commercial algo trading products.',
-    tech: ['Node.js', 'React', 'FastAPI'],
-    complexity: 'High',
-    color: 'blue',
-    features: ['Multi-user support', 'Real-time WebSocket', 'Auth & permissions', 'Scalable'],
-  },
-  {
     id: 'desktop',
     title: 'Python GUI',
     subtitle: 'Desktop App',
@@ -56,8 +45,19 @@ const dashboardTypes = [
     desc: 'Standalone desktop application that works offline. Install once and run - no browser needed. Good for traders who prefer native apps.',
     tech: ['Python', 'PyQt/Tkinter'],
     complexity: 'Medium',
-    color: 'orange',
+    color: 'blue',
     features: ['Native performance', 'System tray', 'Local data'],
+  },
+  {
+    id: 'professional',
+    title: 'Node.js + FastAPI',
+    subtitle: 'Professional',
+    icon: Globe,
+    desc: 'Client-level multi-user dashboard with authentication, real-time updates, and professional UI. Ideal for commercial algo trading products.',
+    tech: ['Node.js', 'React', 'FastAPI'],
+    complexity: 'High',
+    color: 'violet',
+    features: ['Multi-user support', 'Real-time WebSocket', 'Auth & permissions', 'Scalable'],
   },
 ];
 
@@ -246,8 +246,8 @@ const UIDecisionSection: React.FC = () => {
                 {/* Cons Column */}
                 <div className="flex-1 space-y-2">
                   {[
-                    'Higher development cost',
                     'More time to build',
+                    'Higher development cost',
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-rose-200 shadow-sm hover:shadow-md transition-shadow">
                       <div className="w-6 h-6 rounded-md bg-rose-500 flex items-center justify-center flex-shrink-0">
@@ -361,7 +361,7 @@ const UIDecisionSection: React.FC = () => {
                   activeDashboard.id === dash.id
                     ? dash.color === 'teal' ? 'bg-gradient-to-br from-teal-500 via-teal-400 to-cyan-500' :
                       dash.color === 'blue' ? 'bg-gradient-to-br from-blue-500 via-blue-400 to-indigo-500' :
-                      'bg-gradient-to-br from-orange-500 via-orange-400 to-amber-500'
+                      'bg-gradient-to-br from-violet-500 via-violet-400 to-purple-500'
                     : 'bg-white'
                 }`} />
 
@@ -381,7 +381,7 @@ const UIDecisionSection: React.FC = () => {
                       ? 'bg-white/20 backdrop-blur-sm shadow-lg'
                       : dash.color === 'teal' ? 'bg-gradient-to-br from-teal-500 to-cyan-500 shadow-lg shadow-teal-200' :
                         dash.color === 'blue' ? 'bg-gradient-to-br from-blue-500 to-indigo-500 shadow-lg shadow-blue-200' :
-                        'bg-gradient-to-br from-orange-500 to-amber-500 shadow-lg shadow-orange-200'
+                        'bg-gradient-to-br from-violet-500 to-purple-500 shadow-lg shadow-violet-200'
                   }`}>
                     <dash.icon className={`w-8 h-8 ${activeDashboard.id === dash.id ? 'text-white' : 'text-white'}`} />
                   </div>
@@ -395,7 +395,7 @@ const UIDecisionSection: React.FC = () => {
                   <p className={`text-lg font-semibold mb-3 transition-colors duration-500 ${
                     activeDashboard.id === dash.id ? 'text-white/90' :
                     dash.color === 'teal' ? 'text-teal-600' :
-                    dash.color === 'blue' ? 'text-blue-600' : 'text-orange-600'
+                    dash.color === 'blue' ? 'text-blue-600' : 'text-violet-600'
                   }`}>{dash.subtitle}</p>
 
                   {/* Description */}
@@ -424,7 +424,7 @@ const UIDecisionSection: React.FC = () => {
                   <div className={`absolute bottom-0 left-0 right-0 h-1 ${
                     dash.color === 'teal' ? 'bg-gradient-to-r from-teal-400 to-cyan-400' :
                     dash.color === 'blue' ? 'bg-gradient-to-r from-blue-400 to-indigo-400' :
-                    'bg-gradient-to-r from-orange-400 to-amber-400'
+                    'bg-gradient-to-r from-violet-400 to-purple-400'
                   }`} />
                 )}
               </motion.div>
@@ -438,7 +438,7 @@ const UIDecisionSection: React.FC = () => {
               ? 'bg-gradient-to-br from-teal-50 to-cyan-50 border border-teal-200'
               : activeDashboard.color === 'blue'
                 ? 'bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200'
-                : 'bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200'
+                : 'bg-gradient-to-br from-violet-50 to-purple-50 border border-violet-200'
           }`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -449,7 +449,7 @@ const UIDecisionSection: React.FC = () => {
             <div className={`h-1.5 ${
               activeDashboard.color === 'teal' ? 'bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400' :
               activeDashboard.color === 'blue' ? 'bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400' :
-              'bg-gradient-to-r from-orange-400 via-amber-400 to-orange-400'
+              'bg-gradient-to-r from-violet-400 via-purple-400 to-violet-400'
             }`} />
 
             <div className="p-8">
@@ -459,7 +459,7 @@ const UIDecisionSection: React.FC = () => {
                   <div className="flex items-center gap-3 mb-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                       activeDashboard.color === 'teal' ? 'bg-teal-500' :
-                      activeDashboard.color === 'blue' ? 'bg-blue-500' : 'bg-orange-500'
+                      activeDashboard.color === 'blue' ? 'bg-blue-500' : 'bg-violet-500'
                     }`}>
                       <activeDashboard.icon className="w-6 h-6 text-white" />
                     </div>
@@ -478,7 +478,7 @@ const UIDecisionSection: React.FC = () => {
                         <span key={i} className={`px-4 py-2 rounded-xl font-semibold text-sm shadow-sm ${
                           activeDashboard.color === 'teal' ? 'bg-white text-teal-700 border border-teal-200' :
                           activeDashboard.color === 'blue' ? 'bg-white text-blue-700 border border-blue-200' :
-                          'bg-white text-orange-700 border border-orange-200'
+                          'bg-white text-violet-700 border border-violet-200'
                         }`}>
                           {t}
                         </span>
@@ -495,11 +495,11 @@ const UIDecisionSection: React.FC = () => {
                       <div key={i} className={`flex items-center gap-4 p-4 rounded-2xl bg-white shadow-sm border transition-all hover:shadow-md ${
                         activeDashboard.color === 'teal' ? 'border-teal-100 hover:border-teal-300' :
                         activeDashboard.color === 'blue' ? 'border-blue-100 hover:border-blue-300' :
-                        'border-orange-100 hover:border-orange-300'
+                        'border-violet-100 hover:border-violet-300'
                       }`}>
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${
                           activeDashboard.color === 'teal' ? 'bg-teal-500' :
-                          activeDashboard.color === 'blue' ? 'bg-blue-500' : 'bg-orange-500'
+                          activeDashboard.color === 'blue' ? 'bg-blue-500' : 'bg-violet-500'
                         }`}>
                           <CheckCircle2 className="w-4 h-4 text-white" />
                         </div>
