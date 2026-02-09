@@ -9,8 +9,7 @@ import {
   CheckCircle,
   FileBarChart,
   ArrowRight,
-  Clock,
-  CheckCircle2
+  Clock
 } from 'lucide-react';
 
 interface OptimizationProcessProps {
@@ -36,21 +35,21 @@ const processSteps = [
   {
     step: 2,
     title: "Parameter Search",
-    description: "Grid search and intelligent algorithms find promising parameter sets.",
-    duration: "3-5 days",
+    description: "We code the logic and then our software checks the best optimum result.",
+    duration: "1-4 weeks",
     icon: Settings,
   },
   {
     step: 3,
-    title: "Robustness Validation",
-    description: "Walk-forward and out-of-sample testing ensures no overfitting.",
+    title: "Analysis",
+    description: "We analyse the search results to pick the one with best metrics.",
     duration: "2-3 days",
     icon: CheckCircle,
   },
   {
     step: 4,
-    title: "Final Recommendations",
-    description: "Optimized parameters with implementation guidance delivered.",
+    title: "Report/Utility",
+    description: "We share search report with performance metric across all parameter sets, backtest trade history of recommended set.",
     duration: "1-2 days",
     icon: FileBarChart,
   }
@@ -178,15 +177,13 @@ export default function OptimizationProcess({ service }: OptimizationProcessProp
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-blue-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm"
           >
             <Clock className="w-4 h-4" />
             Our Proven Process
           </motion.span>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-navy-900 bg-clip-text text-transparent">From Parameters to</span>
-            {' '}
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Performance</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-black mb-6">
+            From Parameters to Performance
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A rigorous, scientific approach that finds better parameters without overfitting
@@ -309,41 +306,6 @@ export default function OptimizationProcess({ service }: OptimizationProcessProp
           })}
         </div>
 
-        {/* Result indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-4">
-              <CheckCircle2 className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
-              Optimized & Validated
-            </h3>
-            <p className="text-base lg:text-lg text-black text-center">
-              Walk away with parameters that are proven to work in live trading conditions
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="/strategy-assessment"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-blue-700 hover:via-indigo-700 hover:to-blue-700 transition-all duration-300 group"
-          >
-            <span>Start Your Optimization</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );

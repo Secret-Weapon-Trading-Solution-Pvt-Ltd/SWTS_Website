@@ -314,18 +314,15 @@ const MetricsIllustration = () => (
     {/* Bar chart with labels */}
     <motion.g>
       {[
-        { x: 335, h: 50, color: "#10B981", label: "J", value: "+3%" },
-        { x: 355, h: 38, color: "#10B981", label: "F", value: "+2%" },
-        { x: 375, h: 55, color: "#10B981", label: "M", value: "+4%" },
-        { x: 395, h: 28, color: "#EF4444", label: "A", value: "-2%" },
-        { x: 415, h: 45, color: "#10B981", label: "M", value: "+3%" },
-        { x: 435, h: 60, color: "#10B981", label: "J", value: "+5%" },
+        { x: 345, h: 50, color: "#10B981", label: "Jan", value: "+3%" },
+        { x: 380, h: 38, color: "#10B981", label: "Feb", value: "+2%" },
+        { x: 415, h: 55, color: "#10B981", label: "Mar", value: "+4%" },
       ].map((bar, i) => (
         <g key={i}>
           <motion.rect
             x={bar.x}
             y={215 - bar.h}
-            width="14"
+            width="18"
             height={bar.h}
             rx="2"
             fill={bar.color}
@@ -335,8 +332,8 @@ const MetricsIllustration = () => (
             viewport={{ once: true }}
             transition={{ delay: 0.5 + i * 0.08, duration: 0.3 }}
           />
-          <text x={bar.x + 7} y="228" fill="#000000" fontSize="8" textAnchor="middle" fontWeight="500">{bar.label}</text>
-          <text x={bar.x + 7} y={215 - bar.h - 5} fill={bar.color} fontSize="8" textAnchor="middle" fontWeight="bold">{bar.value}</text>
+          <text x={bar.x + 9} y="228" fill="#000000" fontSize="8" textAnchor="middle" fontWeight="500">{bar.label}</text>
+          <text x={bar.x + 9} y={215 - bar.h - 5} fill={bar.color} fontSize="8" textAnchor="middle" fontWeight="bold">{bar.value}</text>
         </g>
       ))}
     </motion.g>
@@ -414,8 +411,7 @@ const overviewData = {
     metrics: [
       { value: "Win Rate", description: "Percentage of profitable trades" },
       { value: "Profit Factor", description: "Gross profit / gross loss ratio" },
-      { value: "Max Drawdown", description: "Largest peak-to-trough decline" },
-      { value: "Sharpe Ratio", description: "Risk-adjusted return measure" }
+      { value: "Max Drawdown", description: "Largest peak-to-trough decline" }
     ]
   },
   whoShouldUse: {
@@ -427,14 +423,14 @@ const overviewData = {
         description: "You have rules you follow but have never tested them systematically against historical data"
       },
       {
-        icon: BarChart3,
-        title: "Strategy Developers",
-        description: "You've built a strategy and need rigorous validation before risking real capital"
-      },
-      {
         icon: Activity,
         title: "Underperforming Traders",
         description: "Your live results don't match expectations—find out if the strategy itself is the problem"
+      },
+      {
+        icon: BarChart3,
+        title: "Expert Traders",
+        description: "You backtest so your strategy stays reliable—validate results, confirm setups that seem good, and improve performance by learning from past market behavior."
       }
     ]
   }
@@ -453,18 +449,9 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-violet-500/10 text-indigo-700 rounded-full text-sm font-semibold mb-6 border border-indigo-200/50 shadow-sm backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-pulse"></span>
-            Understanding Strategy Backtesting
-          </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-navy-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent">Validate Before</span>{' '}
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">You Trade</span>
+            <span className="text-teal-700">You Trade</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Know your strategy's true potential with rigorous historical testing
@@ -479,11 +466,16 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full text-indigo-700 text-sm font-semibold mb-5 border border-indigo-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-              The Basics
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-indigo-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
+            >
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
+              Understanding Strategy Backtesting
+            </motion.span>
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatItIs.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -550,9 +542,9 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
               <div className="text-center mb-10">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-full text-amber-700 text-sm font-semibold mb-4 border border-amber-200/50">
                   <span className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></span>
-                  The Hidden Risks
+                  The Problems
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-indigo-900 to-purple-900 bg-clip-text text-transparent mb-4">
+                <h3 className="text-4xl sm:text-5xl font-bold text-black mb-4">
                   {overviewData.whyItMatters.title}
                 </h3>
                 <p className="text-lg text-black max-w-2xl mx-auto">
@@ -601,9 +593,9 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full text-emerald-700 text-sm font-semibold mb-5 border border-emerald-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></span>
-              Key Metrics
+              The Solution
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-emerald-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatYouGet.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -643,94 +635,6 @@ export default function BacktestingOverview({ service }: BacktestingOverviewProp
           </motion.div>
         </div>
 
-        {/* Who Should Use - Image LEFT, Content RIGHT */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-14"
-        >
-          {/* Left Side - Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative flex justify-center"
-          >
-            <div className="relative aspect-[3/2] w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src={`${basePath}/17106898_1019Z_beverages_online_2.jpg`}
-                alt="Trading chart analysis"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent" />
-
-              <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
-                <span className="text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Data-Driven Decisions</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full text-violet-700 text-sm font-semibold mb-5 border border-violet-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full"></span>
-              Ideal For
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-purple-900 bg-clip-text text-transparent mb-8">
-              {overviewData.whoShouldUse.title}
-            </h3>
-            <div className="space-y-5">
-              {overviewData.whoShouldUse.profiles.map((profile, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className="flex gap-5 items-start p-4 rounded-2xl bg-gradient-to-r from-white to-slate-50/80 border border-slate-100 shadow-sm hover:shadow-md hover:border-violet-100 transition-all duration-300 group cursor-default"
-                >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br ${
-                    index === 0 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
-                    index === 1 ? 'from-purple-500 to-violet-600 shadow-purple-500/25' :
-                    'from-violet-500 to-fuchsia-600 shadow-violet-500/25'
-                  }`}>
-                    <profile.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-purple-900 transition-colors">{profile.title}</h4>
-                    <p className="text-black leading-relaxed">{profile.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 text-center"
-        >
-          <motion.a
-            href="#how-it-works"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white font-semibold rounded-2xl shadow-xl shadow-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-300 group"
-          >
-            See Our Process
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

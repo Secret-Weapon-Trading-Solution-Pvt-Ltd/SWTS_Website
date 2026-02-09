@@ -260,18 +260,9 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-cyan-500/10 text-cyan-700 rounded-full text-sm font-semibold mb-6 border border-cyan-200/50 shadow-sm backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full animate-pulse"></span>
-            Understanding Custom Screeners
-          </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-cyan-800 to-navy-900 bg-clip-text text-transparent">Find Setups</span>{' '}
-            <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">Automatically</span>
+            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Find Setups</span>{' '}
+            <span className="text-teal-700">Automatically</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Stop wasting hours checking charts. Let your screener find opportunities while you focus on trading.
@@ -286,11 +277,16 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full text-cyan-700 text-sm font-semibold mb-5 border border-cyan-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></span>
-              The Basics
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-cyan-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
+            >
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
+              Understanding Custom Screeners
+            </motion.span>
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatItIs.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -356,9 +352,9 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
               <div className="text-center mb-10">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-full text-amber-700 text-sm font-semibold mb-4 border border-amber-200/50">
                   <span className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></span>
-                  The Problem
+                  The Problems
                 </div>
-                <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-cyan-900 to-navy-900 bg-clip-text text-transparent mb-4">
+                <h3 className="text-4xl sm:text-5xl font-bold text-black mb-4">
                   {overviewData.whyScreen.title}
                 </h3>
                 <p className="text-lg text-black max-w-2xl mx-auto">
@@ -420,9 +416,9 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full text-emerald-700 text-sm font-semibold mb-5 border border-emerald-200/50 shadow-sm">
               <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></span>
-              Alert Delivery
+              The Solution
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-emerald-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.alertDelivery.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -468,95 +464,6 @@ export default function ScreenerOverview({ service }: ScreenerOverviewProps) {
           </motion.div>
         </div>
 
-        {/* Who Should Use - 2 Left, 2 Right, 1 Center Layout */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-14"
-        >
-          {/* Section Header */}
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500/10 to-purple-500/10 rounded-full text-violet-700 text-sm font-semibold mb-5 border border-violet-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full"></span>
-              Ideal For
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-cyan-900 bg-clip-text text-transparent">
-              {overviewData.whoShouldUse.title}
-            </h3>
-          </div>
-
-          {/* Profiles Grid: 2 Left, 2 Right */}
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-6">
-            {overviewData.whoShouldUse.profiles.slice(0, 4).map((profile, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="flex gap-5 items-start p-5 rounded-2xl bg-gradient-to-br from-white to-slate-50/80 border border-slate-100 shadow-md hover:shadow-lg hover:border-cyan-200 transition-all duration-300 group cursor-default"
-              >
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br ${
-                  index === 0 ? 'from-cyan-500 to-blue-600 shadow-cyan-500/25' :
-                  index === 1 ? 'from-emerald-500 to-teal-600 shadow-emerald-500/25' :
-                  index === 2 ? 'from-violet-500 to-purple-600 shadow-violet-500/25' :
-                  'from-amber-500 to-orange-600 shadow-amber-500/25'
-                }`}>
-                  <profile.icon className="w-7 h-7 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-cyan-900 transition-colors">{profile.title}</h4>
-                  <p className="text-black leading-relaxed">{profile.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Center Profile (5th) */}
-          <div className="flex justify-center">
-            {(() => {
-              const FifthIcon = overviewData.whoShouldUse.profiles[4].icon;
-              return (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                  whileHover={{ y: -4 }}
-                  className="flex gap-5 items-start p-5 rounded-2xl bg-gradient-to-br from-white to-slate-50/80 border border-slate-100 shadow-md hover:shadow-lg hover:border-cyan-200 transition-all duration-300 group cursor-default max-w-xl w-full"
-                >
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br from-rose-500 to-pink-600 shadow-rose-500/25">
-                    <FifthIcon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-cyan-900 transition-colors">{overviewData.whoShouldUse.profiles[4].title}</h4>
-                    <p className="text-black leading-relaxed">{overviewData.whoShouldUse.profiles[4].description}</p>
-                  </div>
-                </motion.div>
-              );
-            })()}
-          </div>
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 text-center"
-        >
-          <motion.a
-            href="#how-it-works"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 text-white font-semibold rounded-2xl shadow-xl shadow-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/40 transition-all duration-300 group"
-          >
-            See Our Process
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

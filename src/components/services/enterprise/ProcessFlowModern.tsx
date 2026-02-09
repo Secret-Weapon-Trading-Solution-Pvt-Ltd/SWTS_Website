@@ -13,6 +13,7 @@ import {
   Clock,
   CheckCircle2
 } from 'lucide-react';
+import ContactCTA from '@/components/ui/ContactCTA';
 
 interface ProcessFlowModernProps {
   service: Service;
@@ -190,10 +191,8 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
             <Clock className="w-4 h-4" />
             Our Proven Process
           </motion.span>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Your Journey to</span>
-            {' '}
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Automation</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-black mb-6">
+            Your Journey to Automation
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A transparent, step-by-step methodology that ensures your strategy is properly translated, tested, and deployed
@@ -317,43 +316,6 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
           })}
         </div>
 
-        {/* Result indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-4">
-              <CheckCircle2 className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
-              Your Strategy, Fully Automated
-            </h3>
-            <p className="text-base lg:text-lg text-black text-center">
-              Running 24/7 with monitoring, alerts, and support
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="https://wa.me/917083718306"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 group"
-          >
-            <span>Start Your Journey</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );

@@ -11,26 +11,51 @@ import UseCases from '@/components/services/UseCases';
 import {
   StrategyOverview,
   CapabilitiesModern,
-  ProcessFlowModern
+  ProcessFlowModern,
+  StrategyIdealFor
 } from '@/components/services/enterprise';
 // Backtesting-specific enterprise components
 import {
   BacktestingOverview,
   BacktestingCapabilities,
-  BacktestingProcess
+  BacktestingProcess,
+  BacktestingIdealFor
 } from '@/components/services/backtesting';
 // Optimization-specific enterprise components
 import {
   OptimizationOverview,
   OptimizationCapabilities,
-  OptimizationProcess
+  OptimizationProcess,
+  OptimizationIdealFor
 } from '@/components/services/optimization';
 // Screener-specific enterprise components
 import {
   ScreenerOverview,
   ScreenerCapabilities,
-  ScreenerProcess
+  ScreenerProcess,
+  ScreenerIdealFor
 } from '@/components/services/screener';
+// Dashboard-specific enterprise components
+import {
+  DashboardOverview,
+  DashboardCapabilities,
+  DashboardProcess,
+  DashboardIdealFor
+} from '@/components/services/dashboard';
+// Alerts-specific enterprise components
+import {
+  AlertsOverview,
+  AlertsCapabilities,
+  AlertsProcess,
+  AlertsIdealFor
+} from '@/components/services/alerts';
+// Paper Trading-specific enterprise components
+import {
+  PaperTradingOverview,
+  PaperTradingCapabilities,
+  PaperTradingProcess,
+  PaperTradingIdealFor
+} from '@/components/services/papertrading';
 import { getServiceBySlug, getAllServiceSlugs } from '@/data/services';
 
 interface ServicePageProps {
@@ -89,7 +114,10 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const isBacktesting = service.slug === 'strategy-backtesting';
   const isOptimization = service.slug === 'strategy-optimization';
   const isScreener = service.slug === 'custom-screener';
-  const isEnterpriseLayout = isStrategyAutomation || isBacktesting || isOptimization || isScreener;
+  const isDashboard = service.slug === 'custom-dashboard';
+  const isAlerts = service.slug === 'strategy-alerts';
+  const isPaperTrading = service.slug === 'paper-trading';
+  const isEnterpriseLayout = isStrategyAutomation || isBacktesting || isOptimization || isScreener || isDashboard || isAlerts || isPaperTrading;
 
   return (
     <MainLayout>
@@ -106,6 +134,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Modern Process Flow with illustrations */}
           <ProcessFlowModern service={service} />
+
+          {/* Ideal For - Who Should Use This */}
+          <StrategyIdealFor />
         </>
       ) : isBacktesting ? (
         <>
@@ -117,6 +148,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Backtesting Process - Alternating timeline */}
           <BacktestingProcess service={service} />
+
+          {/* Ideal For - Who Should Backtest */}
+          <BacktestingIdealFor />
         </>
       ) : isOptimization ? (
         <>
@@ -128,6 +162,9 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Optimization Process - Vertical timeline */}
           <OptimizationProcess service={service} />
+
+          {/* Ideal For - Who Should Optimize */}
+          <OptimizationIdealFor />
         </>
       ) : isScreener ? (
         <>
@@ -139,6 +176,51 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
           {/* Screener Process - Horizontal timeline with background */}
           <ScreenerProcess service={service} />
+
+          {/* Ideal For - Who Should Use a Custom Screener */}
+          <ScreenerIdealFor />
+        </>
+      ) : isDashboard ? (
+        <>
+          {/* Dashboard Overview - Data unification visualization */}
+          <DashboardOverview service={service} />
+
+          {/* Dashboard Capabilities - Feature cards */}
+          <DashboardCapabilities service={service} />
+
+          {/* Dashboard Process - Development workflow */}
+          <DashboardProcess service={service} />
+
+          {/* Ideal For - Who Needs a Custom Dashboard */}
+          <DashboardIdealFor />
+        </>
+      ) : isAlerts ? (
+        <>
+          {/* Alerts Overview - What/Why/Channels */}
+          <AlertsOverview service={service} />
+
+          {/* Alerts Capabilities - Feature cards */}
+          <AlertsCapabilities service={service} />
+
+          {/* Alerts Process - Timeline */}
+          <AlertsProcess service={service} />
+
+          {/* Ideal For - Who Needs Custom Alerts */}
+          <AlertsIdealFor />
+        </>
+      ) : isPaperTrading ? (
+        <>
+          {/* Paper Trading Overview - Simulation Lab */}
+          <PaperTradingOverview service={service} />
+
+          {/* Paper Trading Capabilities - Feature cards */}
+          <PaperTradingCapabilities service={service} />
+
+          {/* Paper Trading Process - Vertical timeline */}
+          <PaperTradingProcess service={service} />
+
+          {/* Ideal For - Who Should Paper Trade */}
+          <PaperTradingIdealFor />
         </>
       ) : (
         <>

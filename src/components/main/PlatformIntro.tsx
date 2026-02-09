@@ -56,7 +56,7 @@ export const PlatformIntro: React.FC = () => {
           {/* Headline */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-3">
             End-to-End{' '}
-            <span className="text-teal-600">Trading Automation</span>
+            <span className="text-teal-700">Trading Automation</span>
           </h2>
 
           {/* Subheadline */}
@@ -73,7 +73,7 @@ export const PlatformIntro: React.FC = () => {
           style={{ transitionDelay: '150ms' }}
         >
           {/* Full width content card */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 sm:p-8 lg:p-10">
+          <div className="rounded-2xl border border-slate-200 shadow-lg p-6 sm:p-8 lg:p-10" style={{ background: 'linear-gradient(135deg, rgba(21, 101, 192, 0.05) 0%, rgba(0, 137, 123, 0.05) 100%)' }}>
             {/* Text Content */}
             <p className="text-base sm:text-lg text-black leading-relaxed mb-8">
                 We help traders automate their trading strategies from start to end. You may already have a strategy or an idea, and we convert it into a fully automated system. The system watches the market continuously and places trades automatically when your conditions are met. You do not need to press buy or sell buttons. Entries, exits, targets, and stop losses work exactly as per your rules. This removes manual mistakes and execution delays. Automation helps maintain discipline in trading. It also reduces emotional decisions like fear and greed. The same rules are followed for every trade without change. You can monitor all trades in real time. You stay in full control of the strategy logic. We take care of the automation and trade execution for you.

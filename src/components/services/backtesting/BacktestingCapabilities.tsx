@@ -15,7 +15,7 @@ const capabilitiesData = [
     subtitle: "Multi-Year Testing",
     description: "We test your strategy against years of historical market data to reveal long-term performance patterns",
     features: [
-      "5-10+ years of historical data",
+      "5-10 years of historical backtesting (Data will be provided by client)",
       "Multiple market conditions tested",
       "Bull, bear, and sideways markets"
     ],
@@ -97,14 +97,14 @@ export default function BacktestingCapabilities({ service }: BacktestingCapabili
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-violet-500/10 text-indigo-700 rounded-full text-sm font-semibold mb-6 border border-indigo-200/50 shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-slate-500/10 via-gray-500/10 to-slate-500/10 text-slate-700 rounded-full text-sm font-semibold mb-6 border border-slate-200/50 shadow-sm"
           >
-            <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
+            <span className="w-2 h-2 bg-gradient-to-r from-slate-500 to-gray-600 rounded-full"></span>
             What We Deliver
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent">Our Backtesting</span>{' '}
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">Capabilities</span>
+            <span className="text-black">Our Backtesting</span>{' '}
+            <span className="text-black">Capabilities</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Rigorous analysis that reveals the true potential of your trading strategy

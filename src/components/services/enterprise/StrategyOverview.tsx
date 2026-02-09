@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Target, Users, Zap, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
+import { Target, Users, Zap, TrendingUp, CheckCircle, ArrowRight, Brain, Clock, Moon, AlertTriangle, Gauge } from 'lucide-react';
 
 interface StrategyOverviewProps {
   service: Service;
@@ -294,31 +294,23 @@ const overviewData = {
   },
   whyItMatters: {
     title: "Why It Matters",
-    description: "Manual trading has inherent limitations—emotional interference, execution delays, and the impossibility of monitoring markets around the clock. Automation eliminates these barriers, letting your strategy perform exactly as designed, every time.",
-    stats: [
-      { value: "0", label: "Emotional Errors", description: "No fear, greed, or hesitation" },
-      { value: "24/7", label: "Market Coverage", description: "Never miss a trading opportunity" },
-      { value: "<500ms", label: "Execution Speed", description: "Faster than any manual trade" }
+    description: "Manual trading has inherent limitations that cost you money and opportunities every single day.",
+    problems: [
+      { icon: Brain, title: "Emotional Interference", description: "Fear, greed, and hesitation override your trading rules at critical moments" },
+      { icon: Clock, title: "Execution Delays", description: "By the time you manually place orders, optimal entry/exit points are gone" },
+      { icon: Moon, title: "Can't Monitor 24/7", description: "Markets move while you sleep—missing setups that happen outside your hours" },
+      { icon: AlertTriangle, title: "Inconsistent Execution", description: "Fatigue and distraction cause you to skip trades or break your own rules" },
+      { icon: Gauge, title: "Limited Scalability", description: "You can only watch and execute so many strategies manually at once" }
     ]
   },
-  whoShouldUse: {
-    title: "Who Should Use This?",
-    profiles: [
-      {
-        icon: TrendingUp,
-        title: "Novice Traders",
-        description: "You're profitable but manual execution is limiting your scale and consistency"
-      },
-      {
-        icon: Target,
-        title: "Systematic Traders",
-        description: "You have clear, rule-based strategies but lack the technical skills to automate them"
-      },
-      {
-        icon: Users,
-        title: "Trading Teams",
-        description: "You need to standardize and scale proven strategies across your operation"
-      }
+  whatYouGet: {
+    title: "What You'll Get",
+    description: "We deliver a complete, production-ready automated trading system that executes your strategy with precision—no manual intervention required.",
+    metrics: [
+      { value: "Zero Emotions", description: "Pure rule-based execution, no fear or greed" },
+      { value: "24/7 Active", description: "Never miss a setup, even while you sleep" },
+      { value: "<500ms Speed", description: "Lightning-fast order execution on signals" },
+      { value: "Multi-Strategy", description: "Run multiple strategies simultaneously" }
     ]
   },
   benefits: [
@@ -348,18 +340,10 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
-            Understanding Strategy Automation
-          </motion.span>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Transform Your</span>{' '}
-            <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Trading</span>
+            <span className="bg-gradient-to-r from-navy-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent">Transform Your</span>
+            {' '}
+            <span className="text-teal-700">Trading</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Everything you need to know about automating your trading strategy
@@ -374,11 +358,16 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full text-blue-700 text-sm font-semibold mb-5 border border-blue-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></span>
-              What It Is
-            </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-blue-900 to-navy-800 bg-clip-text text-transparent mb-6">
+            <motion.span
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm backdrop-blur-sm"
+            >
+              <span className="w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-pulse"></span>
+              Understanding Strategy Automation
+            </motion.span>
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
               {overviewData.whatItIs.title}
             </h3>
             <p className="text-lg text-black leading-relaxed mb-8">
@@ -437,181 +426,104 @@ export default function StrategyOverview({ service }: StrategyOverviewProps) {
           <div className="relative bg-gradient-to-br from-white via-white to-blue-50/30 rounded-2xl p-6 lg:p-8 shadow-lg shadow-blue-900/5 border border-slate-100 overflow-hidden">
             {/* Header */}
             <div className="relative text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full text-indigo-700 text-sm font-semibold mb-4 border border-indigo-200/50">
-                <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-                The Automation Advantage
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500/10 to-orange-500/10 rounded-full text-amber-700 text-sm font-semibold mb-4 border border-amber-200/50">
+                <span className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full"></span>
+                The Problems
               </div>
-              <h3 className="text-3xl lg:text-4xl font-bold text-navy-900 mb-3">
+              <h3 className="text-4xl sm:text-5xl font-bold text-black mb-3">
                 {overviewData.whyItMatters.title}
               </h3>
               <p className="text-base lg:text-lg text-black max-w-2xl mx-auto">
-                Automation eliminates emotional interference, execution delays, and enables 24/7 market monitoring.
+                {overviewData.whyItMatters.description}
               </p>
             </div>
 
-            {/* Stats + Benefits Combined Row */}
-            <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
-              {/* Stats */}
-              {overviewData.whyItMatters.stats.map((stat, index) => (
+            {/* Problems Grid */}
+            <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-5">
+              {overviewData.whyItMatters.problems.map((problem, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="text-center p-4 bg-white rounded-xl border border-slate-100 shadow-sm"
+                  className="bg-white rounded-2xl p-5 border border-slate-100 shadow-md hover:shadow-lg transition-all duration-300 text-center"
                 >
-                  <div className={`text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-br ${
-                    index === 0 ? 'from-blue-600 to-indigo-600' :
-                    index === 1 ? 'from-indigo-600 to-purple-600' :
-                    'from-cyan-600 to-blue-600'
-                  } bg-clip-text text-transparent`}>{stat.value}</div>
-                  <div className="text-sm lg:text-base font-semibold text-black mb-1">{stat.label}</div>
-                  <div className="text-xs lg:text-sm text-black">{stat.description}</div>
-                </motion.div>
-              ))}
-
-              {/* Benefits */}
-              {overviewData.benefits.map((benefit, index) => (
-                <motion.div
-                  key={`benefit-${index}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (index + 3) * 0.1 }}
-                  className="hidden lg:flex flex-col items-center text-center p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br ${
-                    index === 0 ? 'from-purple-500 to-indigo-600' : 'from-green-500 to-green-600'
-                  }`}>
-                    <benefit.icon className="w-5 h-5 text-white" />
+                  <div className="flex justify-center mb-4">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg bg-gradient-to-br ${
+                      index === 0 ? 'from-amber-400 to-orange-500 shadow-amber-500/25' :
+                      index === 1 ? 'from-red-400 to-rose-500 shadow-red-500/25' :
+                      index === 2 ? 'from-violet-400 to-purple-500 shadow-violet-500/25' :
+                      index === 3 ? 'from-blue-400 to-indigo-500 shadow-blue-500/25' :
+                      'from-emerald-400 to-teal-500 shadow-emerald-500/25'
+                    }`}>
+                      <problem.icon className="w-7 h-7 text-white" />
+                    </div>
                   </div>
-                  <div className="text-sm lg:text-base font-semibold text-navy-800 leading-tight mt-3 mb-1">{benefit.title}</div>
-                  <div className="text-xs lg:text-sm text-black leading-relaxed">{benefit.description}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Mobile Benefits Grid */}
-            <div className="grid grid-cols-2 gap-3 mt-4 lg:hidden">
-              {overviewData.benefits.map((benefit, index) => (
-                <motion.div
-                  key={`benefit-mobile-${index}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col p-3 bg-white rounded-xl border border-slate-100 shadow-sm"
-                >
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mb-2 bg-gradient-to-br ${
-                    index === 0 ? 'from-purple-500 to-indigo-600' : 'from-green-500 to-green-600'
-                  }`}>
-                    <benefit.icon className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="text-sm font-semibold text-navy-800 mb-1">{benefit.title}</div>
-                  <div className="text-xs text-black leading-relaxed">{benefit.description}</div>
+                  <h4 className="text-lg font-bold text-navy-900 mb-2">{problem.title}</h4>
+                  <p className="text-base text-black leading-relaxed">{problem.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.div>
 
-        {/* Who Should Use - Left-Right Split Layout */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-6 mb-14"
-        >
-          {/* Left Side - Image */}
+        {/* The Solution - Image LEFT, Text RIGHT */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-14">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative flex justify-center"
+            className="relative flex justify-center lg:order-first"
           >
-            {/* Decorative background blur */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-[2rem] blur-2xl" />
+            <div className="absolute -inset-2 bg-gradient-to-br from-emerald-400/15 via-teal-400/10 to-cyan-400/15 rounded-2xl blur-xl" />
 
-            <div className="relative aspect-[3/2] max-w-2xl rounded-3xl overflow-hidden shadow-2xl shadow-indigo-900/20 ring-1 ring-white/50">
+            <div className="relative aspect-[3/2] w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl border border-emerald-100/50">
               <img
-                src={`${basePath}/11652.jpg`}
-                alt="Trading team analyzing market data"
+                src={`${basePath}/strategy-automation-solution.jpg`}
+                alt="Strategy automation solution"
                 className="w-full h-full object-cover"
               />
-              {/* Elegant overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/30 via-transparent to-blue-900/10" />
-
-              {/* Floating badge */}
-              <div className="absolute bottom-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-white/50">
-                <span className="text-sm font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Professional Trading</span>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent" />
             </div>
-
-            {/* Decorative elements */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl -z-10 opacity-20 blur-sm" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-2xl -z-10 opacity-20 blur-sm" />
           </motion.div>
 
-          {/* Right Side - Content */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:order-last"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full text-indigo-700 text-sm font-semibold mb-5 border border-indigo-200/50 shadow-sm">
-              <span className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></span>
-              Ideal For
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full text-emerald-700 text-sm font-semibold mb-5 border border-emerald-200/50 shadow-sm">
+              <span className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></span>
+              The Solution
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-navy-900 via-navy-800 to-indigo-900 bg-clip-text text-transparent mb-8">
-              {overviewData.whoShouldUse.title}
+            <h3 className="text-4xl sm:text-5xl font-bold text-black mb-6">
+              {overviewData.whatYouGet.title}
             </h3>
-            <div className="space-y-5">
-              {overviewData.whoShouldUse.profiles.map((profile, index) => (
+            <p className="text-lg text-black leading-relaxed mb-8">
+              {overviewData.whatYouGet.description}
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              {overviewData.whatYouGet.metrics.map((metric, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className="flex gap-5 items-start p-4 rounded-2xl bg-gradient-to-r from-white to-slate-50/80 border border-slate-100 shadow-sm hover:shadow-md hover:border-indigo-100 transition-all duration-300 group cursor-default"
+                  className="p-4 bg-gradient-to-br from-white to-emerald-50/50 rounded-xl border border-emerald-100 shadow-sm hover:shadow-md transition-all"
                 >
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-lg bg-gradient-to-br ${
-                    index === 0 ? 'from-blue-500 to-indigo-600 shadow-blue-500/25' :
-                    index === 1 ? 'from-indigo-500 to-purple-600 shadow-indigo-500/25' :
-                    'from-purple-500 to-pink-600 shadow-purple-500/25'
-                  }`}>
-                    <profile.icon className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-navy-900 mb-1 group-hover:text-indigo-900 transition-colors">{profile.title}</h4>
-                    <p className="text-black leading-relaxed">{profile.description}</p>
-                  </div>
+                  <div className="text-lg font-bold text-black mb-1">{metric.value}</div>
+                  <div className="text-sm text-black font-medium">{metric.description}</div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-14 text-center"
-        >
-          <motion.a
-            href="#how-it-works"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-semibold rounded-2xl shadow-xl shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-300 group"
-          >
-            See How It Works
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

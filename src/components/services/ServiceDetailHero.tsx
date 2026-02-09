@@ -10,7 +10,22 @@ interface ServiceDetailHeroProps {
   service: Service;
 }
 
+// Get hero image based on service slug
+const getHeroImage = (slug: string): string => {
+  const imageMap: Record<string, string> = {
+    'strategy-backtesting': '/strategy-backtesting.jpg',
+    'strategy-optimization': '/strategy-optimization.jpg',
+    'custom-screener': '/custom screeners.jpg',
+    'custom-dashboard': '/custom-dashboard.jpg',
+    'strategy-alerts': '/strategy-alert.jpg',
+    'paper-trading': '/paper-trading.jpg',
+  };
+  return imageMap[slug] || '/cropped-hands-business-people-working-table.jpg';
+};
+
 export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
+  const heroImage = getHeroImage(service.slug);
+
   return (
     <section className="relative pt-28 lg:pt-32 pb-6 overflow-hidden bg-white">
       {/* Background decorations */}
@@ -61,7 +76,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-4 text-navy-800"
             >
               {service.title.split(' ')[0]}{' '}
-              <span className="text-blue-600">
+              <span className="text-teal-700">
                 {service.title.split(' ').slice(1).join(' ')}
               </span>
             </motion.h1>
@@ -85,7 +100,8 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
             >
               <motion.a
                 href="/strategy-assessment"
-                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-2xl group bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700"
+                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 group text-white"
+                style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -96,7 +112,7 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               </motion.a>
               <motion.a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-400"
+                className="inline-flex items-center justify-center w-fit px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -120,10 +136,10 @@ export default function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
               whileHover={{ scale: 1.02 }}
             >
               <StaticImage
-                src="/cropped-hands-business-people-working-table.jpg"
+                src={heroImage}
                 alt={`${service.title} - Professional trading analysis`}
                 fill
-                className="object-cover"
+                className={`object-cover ${service.slug === 'strategy-alerts' ? 'object-top' : ''}`}
                 priority
               />
               {/* Subtle gradient overlay for polish */}

@@ -9,8 +9,7 @@ import {
   FlaskConical,
   FileBarChart,
   ArrowRight,
-  Clock,
-  CheckCircle2
+  Clock
 } from 'lucide-react';
 
 interface BacktestingProcessProps {
@@ -52,15 +51,15 @@ const processSteps = [
   {
     step: 3,
     title: "Backtest Execution",
-    description: "Your rules tested with realistic slippage and costs.",
-    duration: "2-3 days",
+    description: "Automated system simulates your strategy on historic data.",
+    duration: "1-4 weeks",
     icon: FlaskConical,
   },
   {
     step: 4,
-    title: "Comprehensive Report",
+    title: "Reports / Utility",
     description: "Full metrics, equity curves, and actionable insights.",
-    duration: "2-3 days",
+    duration: "1-3 days",
     icon: FileBarChart,
   }
 ];
@@ -177,15 +176,15 @@ export default function BacktestingProcess({ service }: BacktestingProcessProps)
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-violet-500/10 text-indigo-700 rounded-full text-sm font-semibold mb-6 border border-indigo-200/50 shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-200/50 shadow-sm"
           >
             <Clock className="w-4 h-4" />
             Our Proven Process
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-navy-900 via-indigo-800 to-purple-900 bg-clip-text text-transparent">From Rules to</span>
+            <span className="text-black">From Rules to</span>
             {' '}
-            <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 bg-clip-text text-transparent">Results</span>
+            <span className="text-black">Results</span>
           </h2>
           <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             A straightforward process that transforms your trading rules into actionable performance data
@@ -308,41 +307,6 @@ export default function BacktestingProcess({ service }: BacktestingProcessProps)
           })}
         </div>
 
-        {/* Result indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-10"
-        >
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 mb-4">
-              <CheckCircle2 className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-navy-900 mb-2 text-center">
-              Your Strategy, Validated
-            </h3>
-            <p className="text-base lg:text-lg text-black text-center">
-              Make informed decisions with confidence, backed by years of historical data
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="/strategy-assessment"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:from-indigo-700 hover:via-purple-700 hover:to-violet-700 transition-all duration-300 group"
-          >
-            <span>Get Your Strategy Tested</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );
