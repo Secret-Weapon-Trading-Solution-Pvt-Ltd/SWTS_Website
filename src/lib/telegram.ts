@@ -9,7 +9,8 @@ const TELEGRAM_CHAT_IDS = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_IDS || '';
 export async function sendTelegramMessage(
   chatId: number,
   text: string,
-  parseMode: 'Markdown' | 'HTML' = 'Markdown'
+  parseMode: 'Markdown' | 'HTML' = 'Markdown',
+  replyMarkup?: object
 ): Promise<boolean> {
   const botToken = process.env.TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN;
 
@@ -19,14 +20,20 @@ export async function sendTelegramMessage(
   }
 
   try {
+    const payload: Record<string, unknown> = {
+      chat_id: chatId,
+      text,
+      parse_mode: parseMode,
+    };
+
+    if (replyMarkup) {
+      payload.reply_markup = replyMarkup;
+    }
+
     const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-        parse_mode: parseMode,
-      }),
+      body: JSON.stringify(payload),
     });
 
     const result = await response.json();
@@ -63,17 +70,26 @@ export async function sendTelegramNotificationClient(data: {
 
   let successCount = 0;
 
+  // Build inline keyboard with Call button if phone is available
+  const replyMarkup = data.phone ? buildCallButton(data.phone) : undefined;
+
   // Send to all chat IDs
   for (const chatId of chatIds) {
     try {
+      const payload: Record<string, unknown> = {
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'Markdown',
+      };
+
+      if (replyMarkup) {
+        payload.reply_markup = replyMarkup;
+      }
+
       const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-          parse_mode: 'Markdown',
-        }),
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
@@ -113,6 +129,17 @@ ${data.phone ? `📱 *Phone:* ${escapeMarkdown(data.phone)}` : ''}
 ---
 _SWTS Strategy Assessment_
   `.trim();
+}
+
+// Build inline keyboard with a Call button
+export function buildCallButton(phone: string): object {
+  // Strip any non-digit characters except leading +
+  const cleanPhone = phone.startsWith('+') ? phone : phone.replace(/\D/g, '');
+  return {
+    inline_keyboard: [
+      [{ text: '📞 Call Now', url: `tel:${cleanPhone}` }]
+    ]
+  };
 }
 
 // Escape special characters for Telegram Markdown

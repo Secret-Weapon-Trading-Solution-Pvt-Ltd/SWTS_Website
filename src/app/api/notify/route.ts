@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendTelegramMessage, formatLeadNotification } from '@/lib/telegram';
+import { sendTelegramMessage, formatLeadNotification, buildCallButton } from '@/lib/telegram';
 import { getSubscribers } from '@/lib/subscribers';
 
 interface AssessmentData {
@@ -30,12 +30,15 @@ export async function POST(request: NextRequest) {
     // Format the notification message
     const message = formatLeadNotification(data);
 
+    // Build inline keyboard with Call button if phone is available
+    const replyMarkup = data.phone ? buildCallButton(data.phone) : undefined;
+
     // Send to all subscribers
     let sent = 0;
     let failed = 0;
 
     for (const chatId of subscribers) {
-      const success = await sendTelegramMessage(chatId, message);
+      const success = await sendTelegramMessage(chatId, message, 'Markdown', replyMarkup);
       if (success) sent++;
       else failed++;
     }
