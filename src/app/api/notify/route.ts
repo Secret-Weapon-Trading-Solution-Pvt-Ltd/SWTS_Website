@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendTelegramMessage, formatLeadNotification, buildCallButton } from '@/lib/telegram';
+import { sendTelegramMessage, sendTelegramContact, formatLeadNotification } from '@/lib/telegram';
 import { getSubscribers } from '@/lib/subscribers';
 
 interface AssessmentData {
@@ -30,17 +30,24 @@ export async function POST(request: NextRequest) {
     // Format the notification message
     const message = formatLeadNotification(data);
 
-    // Build inline keyboard with Call button if phone is available
-    const replyMarkup = data.phone ? buildCallButton(data.phone) : undefined;
+    // Split name for contact card
+    const nameParts = data.name.trim().split(/\s+/);
+    const firstName = nameParts[0] || data.name;
+    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
 
     // Send to all subscribers
     let sent = 0;
     let failed = 0;
 
     for (const chatId of subscribers) {
-      const success = await sendTelegramMessage(chatId, message, 'Markdown', replyMarkup);
+      const success = await sendTelegramMessage(chatId, message);
       if (success) sent++;
       else failed++;
+
+      // Follow up with a contact card (has built-in Call button) if phone is available
+      if (data.phone?.trim()) {
+        await sendTelegramContact(chatId, data.phone.trim(), firstName, lastName);
+      }
     }
 
     console.log(`Notification sent: ${sent} success, ${failed} failed`);

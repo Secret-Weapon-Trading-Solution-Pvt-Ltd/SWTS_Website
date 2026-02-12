@@ -9,8 +9,41 @@ const TELEGRAM_CHAT_IDS = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_IDS || '';
 export async function sendTelegramMessage(
   chatId: number,
   text: string,
-  parseMode: 'Markdown' | 'HTML' = 'Markdown',
-  replyMarkup?: object
+  parseMode: 'Markdown' | 'HTML' = 'Markdown'
+): Promise<boolean> {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN;
+
+  if (!botToken) {
+    console.error('TELEGRAM_BOT_TOKEN not configured');
+    return false;
+  }
+
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text,
+        parse_mode: parseMode,
+      }),
+    });
+
+    const result = await response.json();
+    return result.ok;
+  } catch (error) {
+    console.error(`Failed to send message to ${chatId}:`, error);
+    return false;
+  }
+}
+
+// Send a contact card to a single chat (server-side version)
+// This renders a native contact with a built-in Call button in Telegram
+export async function sendTelegramContact(
+  chatId: number,
+  phone: string,
+  firstName: string,
+  lastName?: string
 ): Promise<boolean> {
   const botToken = process.env.TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN;
 
@@ -22,15 +55,15 @@ export async function sendTelegramMessage(
   try {
     const payload: Record<string, unknown> = {
       chat_id: chatId,
-      text,
-      parse_mode: parseMode,
+      phone_number: phone,
+      first_name: firstName,
     };
 
-    if (replyMarkup) {
-      payload.reply_markup = replyMarkup;
+    if (lastName) {
+      payload.last_name = lastName;
     }
 
-    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendContact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -39,7 +72,7 @@ export async function sendTelegramMessage(
     const result = await response.json();
     return result.ok;
   } catch (error) {
-    console.error(`Failed to send message to ${chatId}:`, error);
+    console.error(`Failed to send contact to ${chatId}:`, error);
     return false;
   }
 }
@@ -70,30 +103,46 @@ export async function sendTelegramNotificationClient(data: {
 
   let successCount = 0;
 
-  // Build inline keyboard with Call button if phone is available
-  const replyMarkup = data.phone ? buildCallButton(data.phone) : undefined;
+  // Split name into first/last for contact card
+  const nameParts = data.name.trim().split(/\s+/);
+  const firstName = nameParts[0] || data.name;
+  const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
 
   // Send to all chat IDs
   for (const chatId of chatIds) {
     try {
-      const payload: Record<string, unknown> = {
-        chat_id: chatId,
-        text: message,
-        parse_mode: 'Markdown',
-      };
-
-      if (replyMarkup) {
-        payload.reply_markup = replyMarkup;
-      }
-
-      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      // Send the text notification
+      const msgResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: 'Markdown',
+        }),
       });
 
-      const result = await response.json();
-      if (result.ok) successCount++;
+      const msgResult = await msgResponse.json();
+      if (msgResult.ok) successCount++;
+
+      // Follow up with a contact card (has built-in Call button) if phone is available
+      if (data.phone?.trim()) {
+        const contactPayload: Record<string, unknown> = {
+          chat_id: chatId,
+          phone_number: data.phone.trim(),
+          first_name: firstName,
+        };
+
+        if (lastName) {
+          contactPayload.last_name = lastName;
+        }
+
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendContact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(contactPayload),
+        });
+      }
     } catch (error) {
       console.error(`Failed to send Telegram notification to ${chatId}:`, error);
     }
@@ -129,17 +178,6 @@ ${data.phone ? `📱 *Phone:* ${escapeMarkdown(data.phone)}` : ''}
 ---
 _SWTS Strategy Assessment_
   `.trim();
-}
-
-// Build inline keyboard with a Call button
-export function buildCallButton(phone: string): object {
-  // Strip any non-digit characters except leading +
-  const cleanPhone = phone.startsWith('+') ? phone : phone.replace(/\D/g, '');
-  return {
-    inline_keyboard: [
-      [{ text: '📞 Call Now', url: `tel:${cleanPhone}` }]
-    ]
-  };
 }
 
 // Escape special characters for Telegram Markdown
