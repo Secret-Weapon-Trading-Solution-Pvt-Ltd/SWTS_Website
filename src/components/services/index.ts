@@ -8,4 +8,3 @@ export { default as Capabilities } from './Capabilities';
 export { default as ServiceFlowchart } from './ServiceFlowchart';
 export { default as HowItWorksSteps } from './HowItWorksSteps';
 export { default as UseCases } from './UseCases';
-export { default as ServiceCTA } from './ServiceCTA';

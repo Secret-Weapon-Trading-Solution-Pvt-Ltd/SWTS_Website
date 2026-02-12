@@ -3,7 +3,6 @@ import { ProjectDetailHero, ProjectDetailSections } from '@/components/projects'
 import { getProjectBySlug, projects } from '@/data/projects';
 import Link from 'next/link';
 import { ArrowLeft, FileQuestion } from 'lucide-react';
-import { notFound } from 'next/navigation';
 
 // Generate static params for projects that don't have dedicated pages
 export function generateStaticParams() {

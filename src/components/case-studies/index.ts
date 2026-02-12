@@ -1,1 +1,2 @@
-export { default as CaseStudyEMACrossover } from './CaseStudyEMACrossover';
+export { default as CaseStudyEMACrossoverShort } from './CaseStudyEMACrossoverShort';
+export { default as CaseStudyEMACrossoverTechnical } from './CaseStudyEMACrossoverTechnical';

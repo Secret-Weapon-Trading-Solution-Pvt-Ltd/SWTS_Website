@@ -17,13 +17,10 @@ import {
   Shield,
   Send,
   Target,
-  ArrowRight,
   FileText,
-  AlertCircle,
+  ArrowRight,
   Play,
   Activity,
-  TrendingUp,
-  Settings,
 } from 'lucide-react';
 
 const executionModes = [
@@ -53,14 +50,6 @@ const executionModes = [
     color: 'teal',
     features: ['Instant execution', 'Auto SL/TP', 'Risk management', 'Fill tracking'],
   },
-];
-
-const notificationChannels = [
-  { icon: MessageSquare, label: 'Telegram', color: 'blue', desc: 'Instant bot messages' },
-  { icon: Mail, label: 'Email', color: 'rose', desc: 'Detailed reports' },
-  { icon: Smartphone, label: 'SMS', color: 'emerald', desc: 'Critical alerts' },
-  { icon: Bell, label: 'WhatsApp', color: 'green', desc: 'Quick updates' },
-  { icon: FileText, label: 'Dashboard', color: 'violet', desc: 'Visual logs' },
 ];
 
 const ExecutionSection: React.FC = () => {

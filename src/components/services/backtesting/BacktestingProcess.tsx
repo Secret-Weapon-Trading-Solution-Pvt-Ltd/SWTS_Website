@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { Service } from '@/data/services';
 import {
@@ -15,14 +15,6 @@ import {
 interface BacktestingProcessProps {
   service: Service;
 }
-
-// Step icons
-const stepIcons = [
-  MessageSquare,
-  Database,
-  FlaskConical,
-  FileBarChart
-];
 
 // Step-specific gradient colors
 const stepColors = [

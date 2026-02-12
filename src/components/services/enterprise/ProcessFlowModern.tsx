@@ -1,32 +1,16 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { useRef } from 'react';
 import { Service } from '@/data/services';
 import {
-  MessageSquare,
-  FileText,
-  Code,
-  PlayCircle,
-  Rocket,
   ArrowRight,
   Clock,
-  CheckCircle2
 } from 'lucide-react';
-import ContactCTA from '@/components/ui/ContactCTA';
 
 interface ProcessFlowModernProps {
   service: Service;
 }
-
-// Step icons
-const stepIcons = [
-  MessageSquare,
-  FileText,
-  Code,
-  PlayCircle,
-  Rocket
-];
 
 // Step-specific gradient colors
 const stepColors = [
@@ -151,8 +135,6 @@ export default function ProcessFlowModern({ service }: ProcessFlowModernProps) {
     target: containerRef,
     offset: ["start end", "end start"]
   });
-
-  const progressWidth = useTransform(scrollYProgress, [0.2, 0.8], ["0%", "100%"]);
 
   return (
     <section

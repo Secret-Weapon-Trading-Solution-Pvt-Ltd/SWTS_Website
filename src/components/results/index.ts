@@ -6,5 +6,3 @@ export type { InsightCardProps } from './InsightCard';
 
 export { NextSteps } from './NextSteps';
 export type { NextStepsProps } from './NextSteps';
-
-export { ContactInfo } from './ContactInfo';

@@ -3,14 +3,12 @@
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
 import {
-  FlaskConical,
   Wifi,
   BarChart3,
   Shield,
   Clock,
   AlertCircle,
   Settings,
-  FileText,
   TrendingUp
 } from 'lucide-react';
 

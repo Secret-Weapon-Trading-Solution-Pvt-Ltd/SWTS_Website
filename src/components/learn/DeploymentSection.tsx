@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { getAssetPath } from '@/lib/utils';
@@ -14,14 +14,10 @@ import {
   IndianRupee,
   Cloud,
   Zap,
-  Shield,
   Globe,
-  ArrowRight,
-  Settings,
 } from 'lucide-react';
 
 const DeploymentSection: React.FC = () => {
-  const [useServer, setUseServer] = useState(true);
 
   return (
     <section id="deployment" className="relative pt-4 pb-16 lg:pt-6 lg:pb-24 bg-white overflow-hidden">

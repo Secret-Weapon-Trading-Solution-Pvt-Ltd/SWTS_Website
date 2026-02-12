@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { FileText, Cpu, Globe, Rocket, Check, ArrowRight } from 'lucide-react';
+import { FileText, Cpu, Globe, Rocket, Check } from 'lucide-react';
 
 interface CapabilitiesModernProps {
   service: Service;

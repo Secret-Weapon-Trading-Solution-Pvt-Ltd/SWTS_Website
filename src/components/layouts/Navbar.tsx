@@ -29,9 +29,6 @@ export const Navbar: React.FC = () => {
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Check if on a page with dark header (service pages)
-  const isDarkHeader = pathname?.startsWith('/services/');
-
   // Check if a nav link is active
   const isLinkActive = (href: string) => {
     if (href === '/') {

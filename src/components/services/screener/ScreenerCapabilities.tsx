@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Check, Search, Bell, Filter, Zap, ArrowRight, Clock, Globe } from 'lucide-react';
+import { Check, Bell, Filter, Clock, Globe } from 'lucide-react';
 
 interface ScreenerCapabilitiesProps {
   service: Service;

@@ -3,14 +3,11 @@
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
 import {
-  Bell,
   Layers,
   Clock,
   Zap,
-  Settings,
   BarChart3,
   GitBranch,
-  Smartphone,
   Shield
 } from 'lucide-react';
 

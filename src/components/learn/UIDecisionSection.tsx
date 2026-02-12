@@ -17,8 +17,6 @@ import {
   Users,
   Settings,
   Server,
-  ArrowRight,
-  ArrowDown,
   Eye,
   MousePointer,
   Cpu,

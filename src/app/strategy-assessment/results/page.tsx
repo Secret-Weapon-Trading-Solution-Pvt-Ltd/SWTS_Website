@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { LandingLayout } from '@/components/layouts';
-import { ScoreReveal, InsightCard, NextSteps } from '@/components/results';
 import { storage } from '@/lib/utils';
 import { ScoreResult, Insight, NextStep, Answer, LeadQuality } from '@/types';
 import { ArrowRight, Calendar, MessageCircle, BookOpen, AlertTriangle, TrendingUp, Target } from 'lucide-react';

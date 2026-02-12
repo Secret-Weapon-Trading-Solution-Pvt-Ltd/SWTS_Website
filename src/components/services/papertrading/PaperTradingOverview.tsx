@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { FlaskConical, Shield, CheckCircle, TrendingUp, AlertCircle, Eye, Play, BarChart3, Clock, Ban, Bug, CircleHelp, Coins } from 'lucide-react';
+import { CheckCircle, TrendingUp, AlertCircle, Play, Ban, Bug, CircleHelp, Coins } from 'lucide-react';
 
 interface PaperTradingOverviewProps {
   service: Service;

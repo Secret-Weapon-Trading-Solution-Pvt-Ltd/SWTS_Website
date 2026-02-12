@@ -2,13 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { LayoutDashboard, CheckCircle, Boxes, CircleOff, Database, Puzzle, Zap } from 'lucide-react';
+import { CheckCircle, Boxes, CircleOff, Database, Puzzle, Zap } from 'lucide-react';
 
 interface DashboardOverviewProps {
   service: Service;
 }
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 // Animated background pattern
 const BackgroundPattern = () => (

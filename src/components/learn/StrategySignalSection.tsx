@@ -14,8 +14,6 @@ import {
   Activity,
   TrendingUp,
   TrendingDown,
-  ArrowRight,
-  ArrowDown,
 } from 'lucide-react';
 
 const signalOptions = [

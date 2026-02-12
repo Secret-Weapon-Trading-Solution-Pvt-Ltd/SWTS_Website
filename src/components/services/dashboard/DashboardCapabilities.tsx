@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Check, LayoutDashboard, Database, Gauge, LineChart, Shield, Zap } from 'lucide-react';
+import { Check, LayoutDashboard, Database, LineChart, Shield } from 'lucide-react';
 
 interface DashboardCapabilitiesProps {
   service: Service;
