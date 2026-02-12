@@ -15,7 +15,7 @@ const navLinks = [
   { href: '/learn/algo-trading', label: 'Learn' },
   { href: '/strategy-assessment', label: 'Assessment' },
   { href: '/about/', label: 'About' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 // Active link gradient style
