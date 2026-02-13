@@ -8,9 +8,6 @@ import {
   Code,
   TestTube,
   Rocket,
-  Brain,
-  LineChart,
-  Shield,
   Zap,
   Settings,
   BarChart3,
@@ -18,18 +15,13 @@ import {
   Layers,
   Play,
   CheckCircle2,
-  TrendingUp,
   Database,
-  Cpu,
   Activity,
-  Lock,
   RefreshCw,
   Eye,
-  Gauge,
   ChevronRight,
   ChevronLeft,
   ClipboardList,
-  ArrowRight,
 } from 'lucide-react';
 import { getAssetPath } from '@/lib/utils';
 

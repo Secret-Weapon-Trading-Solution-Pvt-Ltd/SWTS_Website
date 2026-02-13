@@ -2,20 +2,120 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { getAssetPath } from '@/lib/utils';
-import { TrendingUp, Award, Calendar, Quote, ExternalLink, Plane } from 'lucide-react';
+import { Quote, ExternalLink } from 'lucide-react';
 
-const stats = [
-  { icon: Calendar, value: '2014', label: 'Started Trading' },
-  { icon: TrendingUp, value: '2019', label: 'Algo Development' },
-  { icon: Award, value: '2021', label: 'Company Founded' },
-  { icon: Award, value: '2025', label: 'Became Pvt. Ltd.' },
-];
+const RoadmapVisual: React.FC = () => {
+  return (
+    <div className="relative w-full h-full min-h-[480px]">
+      <svg
+        viewBox="0 0 870 560"
+        fill="none"
+        className="absolute inset-0 w-full h-full"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        {/* Road surface - perspective trapezoid, extended right */}
+        <path
+          d="M 0 500 L 140 405 L 870 215 L 870 315 L 140 480 Z"
+          fill="#334155"
+        />
+        {/* Road edge - darker bottom */}
+        <path
+          d="M 0 500 L 140 480 L 870 315 L 870 335 L 130 500 Z"
+          fill="#1E293B"
+        />
+
+        {/* Dashed center line */}
+        <line x1="50" y1="475" x2="160" y2="438" stroke="#94A3B8" strokeWidth="2" strokeDasharray="12 8" />
+        <line x1="170" y1="434" x2="360" y2="383" stroke="#94A3B8" strokeWidth="2" strokeDasharray="12 8" />
+        <line x1="370" y1="379" x2="580" y2="325" stroke="#94A3B8" strokeWidth="2" strokeDasharray="12 8" />
+        <line x1="590" y1="321" x2="870" y2="250" stroke="#94A3B8" strokeWidth="2" strokeDasharray="12 8" />
+
+        {/* Pole bases (small ellipses on road) */}
+        <ellipse cx="100" cy="455" rx="8" ry="3" fill="#475569" />
+        <ellipse cx="310" cy="400" rx="8" ry="3" fill="#475569" />
+        <ellipse cx="520" cy="350" rx="8" ry="3" fill="#475569" />
+        <ellipse cx="740" cy="296" rx="8" ry="3" fill="#475569" />
+
+        {/* Flag poles */}
+        <line x1="100" y1="455" x2="100" y2="290" stroke="#9CA3AF" strokeWidth="3" strokeLinecap="round" />
+        <line x1="310" y1="400" x2="310" y2="200" stroke="#9CA3AF" strokeWidth="3" strokeLinecap="round" />
+        <line x1="520" y1="350" x2="520" y2="145" stroke="#9CA3AF" strokeWidth="3" strokeLinecap="round" />
+        <line x1="740" y1="296" x2="740" y2="95" stroke="#9CA3AF" strokeWidth="3" strokeLinecap="round" />
+
+        {/* Pole caps */}
+        <circle cx="100" cy="290" r="4" fill="#D1D5DB" />
+        <circle cx="310" cy="200" r="4" fill="#D1D5DB" />
+        <circle cx="520" cy="145" r="4" fill="#D1D5DB" />
+        <circle cx="740" cy="95" r="4" fill="#D1D5DB" />
+
+        {/* Flag 1 - 2014 (violet) */}
+        <path d="M 100 290 L 100 320 L 168 313 L 168 283 Z" fill="url(#flag1)" />
+        {/* Flag 2 - 2019 (orange) */}
+        <path d="M 310 200 L 310 233 L 380 225 L 380 192 Z" fill="url(#flag2)" />
+        {/* Flag 3 - 2021 (sky) */}
+        <path d="M 520 145 L 520 178 L 590 170 L 590 137 Z" fill="url(#flag3)" />
+        {/* Flag 4 - 2025 (teal) */}
+        <path d="M 740 95 L 740 128 L 810 121 L 810 88 Z" fill="url(#flag4)" />
+
+        {/* Year text on flags */}
+        <text x="130" y="305" fill="white" fontSize="13" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2014</text>
+        <text x="341" y="215" fill="white" fontSize="13" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2019</text>
+        <text x="551" y="160" fill="white" fontSize="13" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2021</text>
+        <text x="771" y="110" fill="white" fontSize="13" fontWeight="700" textAnchor="middle" dominantBaseline="middle">2025</text>
+
+        {/* Label card backgrounds - staircase pattern above flags, well spaced */}
+        <rect x="20" y="170" width="160" height="105" rx="8" fill="white" stroke="#8B5CF6" strokeWidth="1.2" opacity="0.95" />
+        <rect x="230" y="78" width="160" height="100" rx="8" fill="white" stroke="#F97316" strokeWidth="1.2" opacity="0.95" />
+        <rect x="440" y="14" width="160" height="105" rx="8" fill="white" stroke="#0EA5E9" strokeWidth="1.2" opacity="0.95" />
+        <rect x="660" y="0" width="170" height="82" rx="8" fill="white" stroke="#14B8A6" strokeWidth="1.2" opacity="0.95" />
+
+        {/* Label 1 - Started Trading */}
+        <text x="100" y="193" fill="#7C3AED" fontSize="17" fontWeight="700" textAnchor="middle">Started Trading</text>
+        <text x="100" y="222" fill="#1E293B" fontSize="15" textAnchor="middle">Studying charts</text>
+        <text x="100" y="244" fill="#1E293B" fontSize="15" textAnchor="middle">&amp; mastering markets.</text>
+
+        {/* Label 2 - Algo Development */}
+        <text x="310" y="100" fill="#EA580C" fontSize="17" fontWeight="700" textAnchor="middle">Algo Development</text>
+        <text x="310" y="128" fill="#1E293B" fontSize="15" textAnchor="middle">Python, Pine Script</text>
+        <text x="310" y="148" fill="#1E293B" fontSize="15" textAnchor="middle">&amp; AFL mastery.</text>
+
+        {/* Label 3 - Company Founded */}
+        <text x="520" y="37" fill="#0284C7" fontSize="17" fontWeight="700" textAnchor="middle">Company Founded</text>
+        <text x="520" y="66" fill="#1E293B" fontSize="15" textAnchor="middle">Automating traders&apos;</text>
+        <text x="520" y="88" fill="#1E293B" fontSize="15" textAnchor="middle">edge worldwide.</text>
+
+        {/* Label 4 - Became Pvt. Ltd. */}
+        <text x="745" y="21" fill="#0D9488" fontSize="16" fontWeight="700" textAnchor="middle">Became Pvt. Ltd.</text>
+        <text x="745" y="48" fill="#1E293B" fontSize="15" textAnchor="middle">Serving clients</text>
+        <text x="745" y="68" fill="#1E293B" fontSize="15" textAnchor="middle">worldwide.</text>
+
+        {/* Gradient definitions */}
+        <defs>
+          <linearGradient id="flag1" x1="100" y1="305" x2="168" y2="305">
+            <stop offset="0%" stopColor="#8B5CF6" />
+            <stop offset="100%" stopColor="#7C3AED" />
+          </linearGradient>
+          <linearGradient id="flag2" x1="310" y1="215" x2="380" y2="215">
+            <stop offset="0%" stopColor="#F97316" />
+            <stop offset="100%" stopColor="#EA580C" />
+          </linearGradient>
+          <linearGradient id="flag3" x1="520" y1="160" x2="590" y2="160">
+            <stop offset="0%" stopColor="#0EA5E9" />
+            <stop offset="100%" stopColor="#2563EB" />
+          </linearGradient>
+          <linearGradient id="flag4" x1="740" y1="110" x2="810" y2="110">
+            <stop offset="0%" stopColor="#14B8A6" />
+            <stop offset="100%" stopColor="#0D9488" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};
 
 export const OurStory: React.FC = () => {
   return (
-    <section className="relative py-16 lg:py-24 bg-gradient-to-br from-teal-50 via-cyan-50/50 to-teal-50/30 overflow-hidden">
+    <section className="relative pt-16 pb-10 lg:pt-24 lg:pb-14 bg-gradient-to-br from-teal-50 via-cyan-50/50 to-teal-50/30 overflow-hidden">
       <div className="relative w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-28">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Side - Content */}
@@ -39,22 +139,21 @@ export const OurStory: React.FC = () => {
             </h2>
 
             {/* Story Content */}
-            <div className="space-y-4 mb-8">
-              <p className="text-lg text-slate-900 leading-relaxed">
+            <div className="space-y-4 mb-6">
+              <p className="text-base lg:text-lg text-slate-900 leading-relaxed">
                 Our journey began in 2014 as passionate traders, spending countless hours studying charts,
                 testing strategies, and learning the markets firsthand. Through years of hands-on experience,
                 we understood what traders truly need — discipline, precision, and consistency.
               </p>
-              <p className="text-lg text-slate-900 leading-relaxed">
+              <p className="text-base lg:text-lg text-slate-900 leading-relaxed">
                 By 2019, we transitioned into algorithmic trading, mastering Python, TradingView Pine Script,
                 AmiBroker AFL, and MetaTrader development. In 2021, we founded Secret Weapon Trading Solution
                 to help traders automate their edge with professional-grade solutions.
               </p>
-              <p className="text-lg text-slate-900 leading-relaxed">
+              <p className="text-base lg:text-lg text-slate-900 leading-relaxed">
                 In 2025, we became a Private Limited company, marking a significant milestone
-                in our journey. Today, we continue helping institutional clients,
-                professional traders, and retail investors worldwide transform their strategies into automated
-                systems that execute with precision.
+                in our journey. Today, we serve institutional clients,
+                professional traders, and retail investors worldwide.
               </p>
             </div>
 
@@ -64,11 +163,11 @@ export const OurStory: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="relative bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-6 mb-8 border-l-4 border-teal-500"
+              className="relative bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl p-6 mb-6 border-l-4 border-teal-500"
             >
               <Quote className="absolute top-4 right-4 w-8 h-8 text-teal-200" />
               <p className="text-lg italic text-black mb-3">
-                "We take the burden off your shoulders, so you can focus on strategy."
+                &quot;We take the burden off your shoulders, so you can focus on strategy.&quot;
               </p>
               <p className="text-sm font-semibold text-black">— Swapnil Raykar, Founder</p>
             </motion.div>
@@ -79,7 +178,6 @@ export const OurStory: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-8"
             >
               <span className="text-sm font-medium text-black uppercase tracking-wider mb-3 block">Featured In</span>
               <a
@@ -92,96 +190,20 @@ export const OurStory: React.FC = () => {
                 <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-teal-600" />
               </a>
             </motion.div>
-
-            {/* Key Points */}
-            <div className="space-y-3 mb-8">
-              {[
-                'Decade of hands-on trading experience',
-                'Expert in Python, TradingView, AmiBroker & MetaTrader',
-                'Custom automation solutions for serious traders',
-                'Focus on precision, discipline & consistency',
-              ].map((point, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-center gap-3"
-                >
-                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-teal-500 to-blue-500 flex-shrink-0" />
-                  <span className="text-black">{point}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Timeline Row with Airplane Journey */}
-            <div className="relative">
-              {/* Timeline milestones */}
-              <div className="flex items-center">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-center"
-                  >
-                    {/* Milestone */}
-                    <div className="flex flex-col items-center text-center px-2 sm:px-4">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 flex items-center justify-center mb-2 shadow-lg shadow-teal-500/30">
-                        <span className="text-sm sm:text-base font-bold text-white">{stat.value || '🎉'}</span>
-                      </div>
-                      <div className="text-xs sm:text-sm text-black font-medium max-w-[80px] sm:max-w-[100px] leading-tight">{stat.label}</div>
-                    </div>
-                    {/* Dotted connector line with dots - show between items, not after last */}
-                    {index < stats.length - 1 && (
-                      <div className="hidden sm:flex items-center gap-1 px-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-300"></span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-300"></span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
-                      </div>
-                    )}
-                    {/* Airplane at the end */}
-                    {index === stats.length - 1 && (
-                      <motion.div
-                        initial={{ opacity: 0, x: 10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                        className="hidden sm:flex items-center ml-2"
-                      >
-                        <span className="w-1 h-1 rounded-full bg-teal-400"></span>
-                        <span className="w-1 h-1 rounded-full bg-teal-400 ml-1"></span>
-                        <Plane className="w-5 h-5 text-teal-600 ml-2 rotate-45" />
-                      </motion.div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
-          {/* Right Side - Image */}
+          {/* Right Side - Roadmap Visual */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex items-center justify-center"
+            className="relative bg-gradient-to-br from-slate-50 via-white to-teal-50/30 border border-slate-200 rounded-2xl p-4 pb-5 shadow-sm"
           >
-            <div className="relative w-[80%] aspect-square rounded-2xl overflow-hidden">
-              <Image
-                src={getAssetPath('/about-us-story.jpg')}
-                alt="Trading Analytics & Data Visualization"
-                fill
-                className="object-contain"
-              />
-            </div>
-
+            <RoadmapVisual />
+            <h3 className="text-center text-lg lg:text-xl font-bold text-slate-800 mt-2">
+              Our Journey — From Traders to Tech Innovators
+            </h3>
           </motion.div>
         </div>
       </div>

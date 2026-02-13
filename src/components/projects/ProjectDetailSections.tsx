@@ -11,7 +11,6 @@ import {
   ArrowRight,
   Quote,
   Image as ImageIcon,
-  Video,
 } from 'lucide-react';
 import type { Project } from '@/types/projects';
 

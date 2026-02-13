@@ -17,13 +17,10 @@ import {
   Shield,
   Send,
   Target,
-  ArrowRight,
   FileText,
-  AlertCircle,
+  ArrowRight,
   Play,
   Activity,
-  TrendingUp,
-  Settings,
 } from 'lucide-react';
 
 const executionModes = [
@@ -53,14 +50,6 @@ const executionModes = [
     color: 'teal',
     features: ['Instant execution', 'Auto SL/TP', 'Risk management', 'Fill tracking'],
   },
-];
-
-const notificationChannels = [
-  { icon: MessageSquare, label: 'Telegram', color: 'blue', desc: 'Instant bot messages' },
-  { icon: Mail, label: 'Email', color: 'rose', desc: 'Detailed reports' },
-  { icon: Smartphone, label: 'SMS', color: 'emerald', desc: 'Critical alerts' },
-  { icon: Bell, label: 'WhatsApp', color: 'green', desc: 'Quick updates' },
-  { icon: FileText, label: 'Dashboard', color: 'violet', desc: 'Visual logs' },
 ];
 
 const ExecutionSection: React.FC = () => {
@@ -341,7 +330,7 @@ const ExecutionSection: React.FC = () => {
                 {/* Features Column */}
                 <div className="flex-1 space-y-2">
                   {executionModes[0].pros.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-teal-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-teal-200 shadow-sm">
                       <span className="text-slate-700 font-medium text-sm flex-1">{item}</span>
                       <div className="w-6 h-6 rounded-md bg-teal-500 flex items-center justify-center flex-shrink-0">
                         <CheckCircle2 className="w-4 h-4 text-white" />
@@ -353,7 +342,7 @@ const ExecutionSection: React.FC = () => {
                 {/* Limitations Column */}
                 <div className="flex-1 space-y-2">
                   {executionModes[0].cons.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-rose-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-rose-200 shadow-sm">
                       <div className="w-6 h-6 rounded-md bg-rose-500 flex items-center justify-center flex-shrink-0">
                         <XCircle className="w-4 h-4 text-white" />
                       </div>
@@ -410,7 +399,7 @@ const ExecutionSection: React.FC = () => {
                 {/* Features Column */}
                 <div className="flex-1 space-y-2">
                   {executionModes[1].pros.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-teal-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-teal-200 shadow-sm">
                       <span className="text-slate-700 font-medium text-sm flex-1">{item}</span>
                       <div className="w-6 h-6 rounded-md bg-teal-500 flex items-center justify-center flex-shrink-0">
                         <CheckCircle2 className="w-4 h-4 text-white" />
@@ -422,7 +411,7 @@ const ExecutionSection: React.FC = () => {
                 {/* Limitations Column */}
                 <div className="flex-1 space-y-2">
                   {executionModes[1].cons.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-rose-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div key={i} className="flex items-center gap-2 bg-white p-3 rounded-xl border border-rose-200 shadow-sm">
                       <div className="w-6 h-6 rounded-md bg-rose-500 flex items-center justify-center flex-shrink-0">
                         <XCircle className="w-4 h-4 text-white" />
                       </div>

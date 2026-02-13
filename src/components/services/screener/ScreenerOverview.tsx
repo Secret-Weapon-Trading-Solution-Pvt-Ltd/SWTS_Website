@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Search, TrendingUp, Shield, Zap, CheckCircle, ArrowRight, Target, Bell, BarChart2, Clock, Eye, Filter, Smartphone, Mail, MessageSquare, Send } from 'lucide-react';
+import { TrendingUp, Zap, CheckCircle, Target, BarChart2, Clock, Eye, Filter, Smartphone, Mail, MessageSquare, Send } from 'lucide-react';
 
 interface ScreenerOverviewProps {
   service: Service;

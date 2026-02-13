@@ -37,6 +37,46 @@ export async function sendTelegramMessage(
   }
 }
 
+// Send a contact card to a single chat (server-side version)
+// This renders a native contact with a built-in Call button in Telegram
+export async function sendTelegramContact(
+  chatId: number,
+  phone: string,
+  firstName: string,
+  lastName?: string
+): Promise<boolean> {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN || TELEGRAM_BOT_TOKEN;
+
+  if (!botToken) {
+    console.error('TELEGRAM_BOT_TOKEN not configured');
+    return false;
+  }
+
+  try {
+    const payload: Record<string, unknown> = {
+      chat_id: chatId,
+      phone_number: phone,
+      first_name: firstName,
+    };
+
+    if (lastName) {
+      payload.last_name = lastName;
+    }
+
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendContact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json();
+    return result.ok;
+  } catch (error) {
+    console.error(`Failed to send contact to ${chatId}:`, error);
+    return false;
+  }
+}
+
 // Client-side function to send notification directly to Telegram
 export async function sendTelegramNotificationClient(data: {
   name: string;
@@ -63,10 +103,16 @@ export async function sendTelegramNotificationClient(data: {
 
   let successCount = 0;
 
+  // Split name into first/last for contact card
+  const nameParts = data.name.trim().split(/\s+/);
+  const firstName = nameParts[0] || data.name;
+  const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
+
   // Send to all chat IDs
   for (const chatId of chatIds) {
     try {
-      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      // Send the text notification
+      const msgResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -76,8 +122,27 @@ export async function sendTelegramNotificationClient(data: {
         }),
       });
 
-      const result = await response.json();
-      if (result.ok) successCount++;
+      const msgResult = await msgResponse.json();
+      if (msgResult.ok) successCount++;
+
+      // Follow up with a contact card (has built-in Call button) if phone is available
+      if (data.phone?.trim()) {
+        const contactPayload: Record<string, unknown> = {
+          chat_id: chatId,
+          phone_number: data.phone.trim(),
+          first_name: firstName,
+        };
+
+        if (lastName) {
+          contactPayload.last_name = lastName;
+        }
+
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendContact`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(contactPayload),
+        });
+      }
     } catch (error) {
       console.error(`Failed to send Telegram notification to ${chatId}:`, error);
     }

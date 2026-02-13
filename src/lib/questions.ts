@@ -82,14 +82,7 @@ export const assessmentQuestions: Question[] = [
   },
 ];
 
-// Empty contact fields (kept for compatibility but not used)
-export const contactFields: Question[] = [];
-
-// For compatibility with existing code
-export const bestPracticeQuestions: Question[] = [];
-export const qualifyingQuestions: Question[] = [];
-
-// Combined Questions Array (only assessment questions now)
+// Combined Questions Array
 export const allQuestions: Question[] = [...assessmentQuestions];
 
 // Get questions by category

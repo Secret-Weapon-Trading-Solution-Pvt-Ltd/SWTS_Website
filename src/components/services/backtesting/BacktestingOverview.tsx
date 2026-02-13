@@ -2,13 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { BarChart3, TrendingDown, CheckCircle, Target, Clock, FileBarChart, ArrowRight, LineChart, Activity, PieChart, CircleHelp, EyeOff, Gauge, Hourglass, ScatterChart } from 'lucide-react';
+import { BarChart3, CheckCircle, Target, Activity, CircleHelp, EyeOff, Gauge, Hourglass, ScatterChart } from 'lucide-react';
 
 interface BacktestingOverviewProps {
   service: Service;
 }
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 // Animated background pattern
 const BackgroundPattern = () => (

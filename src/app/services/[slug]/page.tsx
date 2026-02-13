@@ -117,8 +117,6 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const isDashboard = service.slug === 'custom-dashboard';
   const isAlerts = service.slug === 'strategy-alerts';
   const isPaperTrading = service.slug === 'paper-trading';
-  const isEnterpriseLayout = isStrategyAutomation || isBacktesting || isOptimization || isScreener || isDashboard || isAlerts || isPaperTrading;
-
   return (
     <MainLayout>
       {/* Hero with brand logos */}

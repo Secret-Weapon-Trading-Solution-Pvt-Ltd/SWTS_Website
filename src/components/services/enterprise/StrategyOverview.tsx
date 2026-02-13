@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Target, Users, Zap, TrendingUp, CheckCircle, ArrowRight, Brain, Clock, Moon, AlertTriangle, Gauge } from 'lucide-react';
+import { Target, TrendingUp, CheckCircle, Brain, Clock, Moon, AlertTriangle, Gauge } from 'lucide-react';
 
 interface StrategyOverviewProps {
   service: Service;

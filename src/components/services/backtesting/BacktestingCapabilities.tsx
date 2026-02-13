@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Check, Database, BarChart3, Shield, Calculator, ArrowRight } from 'lucide-react';
+import { Check, Database, BarChart3, Shield, Calculator } from 'lucide-react';
 
 interface BacktestingCapabilitiesProps {
   service: Service;

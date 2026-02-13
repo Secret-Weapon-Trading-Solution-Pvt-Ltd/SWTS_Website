@@ -1,16 +1,7 @@
-export { MainHero } from './MainHero';
 export { FrustrationHero } from './FrustrationHero';
 export { CredibilityStrip } from './CredibilityStrip';
 export { PlatformIntro } from './PlatformIntro';
-export { ProblemAgitation } from './ProblemAgitation';
 export { AssessmentExplanation } from './AssessmentExplanation';
 export { FinalCTA } from './FinalCTA';
-export { StickyAttentionBar } from './StickyAttentionBar';
 export { HowItWorks } from './HowItWorks';
 export { WhyItWorks } from './WhyItWorks';
-export { ProcessFlowRedesign } from './ProcessFlowRedesign';
-export { DetailedStepsRedesign } from './DetailedStepsRedesign';
-export { Services } from './Services';
-export { Projects } from './Projects';
-export { About } from './About';
-export { Contact } from './Contact';

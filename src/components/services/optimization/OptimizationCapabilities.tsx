@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Check, Sliders, Shield, TrendingUp, Layers, ArrowRight } from 'lucide-react';
+import { Check, Sliders, Shield, TrendingUp, Layers } from 'lucide-react';
 
 interface OptimizationCapabilitiesProps {
   service: Service;

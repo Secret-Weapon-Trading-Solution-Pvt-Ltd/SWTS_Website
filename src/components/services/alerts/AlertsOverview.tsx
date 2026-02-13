@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Bell, Zap, CheckCircle, Clock, Eye, Smartphone, Mail, MessageSquare, Send, AlertTriangle, TrendingUp, Moon, Wifi } from 'lucide-react';
+import { CheckCircle, Clock, Eye, Mail, MessageSquare, Send, AlertTriangle, TrendingUp, Moon, Wifi } from 'lucide-react';
 
 interface AlertsOverviewProps {
   service: Service;

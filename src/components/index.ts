@@ -7,9 +7,6 @@ export * from './layouts';
 // Main Website Components
 export * from './main';
 
-// Landing Page Components
-export * from './landing';
-
 // Assessment Components
 export * from './assessment';
 

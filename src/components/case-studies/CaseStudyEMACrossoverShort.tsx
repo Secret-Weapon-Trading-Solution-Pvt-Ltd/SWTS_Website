@@ -195,12 +195,6 @@ const Solution: React.FC = () => {
 // System Preview Section
 // ============================================================================
 const SystemPreview: React.FC = () => {
-  const screenshots = [
-    { src: '/Screenshot1.png', caption: 'Signal Dashboard' },
-    { src: '/Screenshot 3.png', caption: 'Watchlist Management' },
-    { src: '/Screenshot 2.png', caption: 'App Settings' },
-  ];
-
   return (
     <section className="mb-20">
       <SectionLabel label="System Preview" />

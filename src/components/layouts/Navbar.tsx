@@ -15,7 +15,7 @@ const navLinks = [
   { href: '/learn/algo-trading', label: 'Learn' },
   { href: '/strategy-assessment', label: 'Assessment' },
   { href: '/about/', label: 'About' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 // Active link gradient style
@@ -28,9 +28,6 @@ export const Navbar: React.FC = () => {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-
-  // Check if on a page with dark header (service pages)
-  const isDarkHeader = pathname?.startsWith('/services/');
 
   // Check if a nav link is active
   const isLinkActive = (href: string) => {

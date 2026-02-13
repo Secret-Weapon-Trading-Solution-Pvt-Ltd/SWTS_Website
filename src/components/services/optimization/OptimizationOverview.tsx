@@ -2,14 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { Service } from '@/data/services';
-import { Settings, TrendingUp, Shield, Zap, CheckCircle, ArrowRight, Target, Sliders, BarChart2, RefreshCw, Clock, LineChart, Activity } from 'lucide-react';
+import { TrendingUp, Shield, CheckCircle, Target, Sliders, BarChart2, Clock, LineChart, Activity } from 'lucide-react';
 
 
 interface OptimizationOverviewProps {
   service: Service;
 }
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 // Animated background pattern
 const BackgroundPattern = () => (

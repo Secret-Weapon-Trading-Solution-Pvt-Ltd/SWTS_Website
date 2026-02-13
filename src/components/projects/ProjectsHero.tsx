@@ -2,12 +2,6 @@
 
 import React from 'react';
 
-const stats = [
-  { value: '24+', label: 'Projects Delivered' },
-  { value: '97%', label: 'Success Rate' },
-  { value: '150+', label: 'Systems Deployed' },
-];
-
 // Abstract data flow visual for header
 const DataFlowVisual = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">

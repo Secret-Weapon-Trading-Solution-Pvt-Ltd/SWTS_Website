@@ -14,13 +14,6 @@ export default function ServiceFlowchart({ service }: ServiceFlowchartProps) {
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
-  // Calculate curved path for connectors
-  const getCurvedPath = (startX: number, startY: number, endX: number, endY: number) => {
-    const midX = (startX + endX) / 2;
-    const controlOffset = 30;
-    return `M ${startX} ${startY} C ${midX} ${startY - controlOffset}, ${midX} ${endY - controlOffset}, ${endX} ${endY}`;
-  };
-
   return (
     <section className="py-24 bg-gradient-to-b from-navy-100 via-navy-50 to-white overflow-hidden border-t border-navy-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
