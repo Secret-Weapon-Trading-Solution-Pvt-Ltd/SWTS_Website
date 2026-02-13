@@ -106,7 +106,7 @@ export const VisionMission: React.FC = () => {
                   className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${card.topStripe}`}
                 />
 
-                <div className="relative">
+                <div className="relative flex flex-col h-full">
                   {/* Icon */}
                   <div className="mb-6">
                     <div
@@ -133,7 +133,7 @@ export const VisionMission: React.FC = () => {
                   </h3>
 
                   {/* Content paragraphs */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 flex-grow">
                     {card.paragraphs.map((paragraph, pIndex) => (
                       <p
                         key={pIndex}
