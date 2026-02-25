@@ -85,6 +85,8 @@ export async function sendTelegramNotificationClient(data: {
   score: number;
   leadQuality: 'high' | 'medium' | 'low';
   timestamp: string;
+  answers?: { questionId: string; value: string | string[] }[];
+  questions?: { id: string; question: string; options?: { value: string; label: string }[] }[];
 }): Promise<boolean> {
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_IDS) {
     console.warn('Telegram credentials not configured');
@@ -103,11 +105,6 @@ export async function sendTelegramNotificationClient(data: {
 
   let successCount = 0;
 
-  // Split name into first/last for contact card
-  const nameParts = data.name.trim().split(/\s+/);
-  const firstName = nameParts[0] || data.name;
-  const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
-
   // Send to all chat IDs
   for (const chatId of chatIds) {
     try {
@@ -125,22 +122,17 @@ export async function sendTelegramNotificationClient(data: {
       const msgResult = await msgResponse.json();
       if (msgResult.ok) successCount++;
 
-      // Follow up with a contact card (has built-in Call button) if phone is available
+      // Follow up with clickable phone number if available
       if (data.phone?.trim()) {
-        const contactPayload: Record<string, unknown> = {
-          chat_id: chatId,
-          phone_number: data.phone.trim(),
-          first_name: firstName,
-        };
-
-        if (lastName) {
-          contactPayload.last_name = lastName;
-        }
-
-        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendContact`, {
+        const phone = data.phone.trim();
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(contactPayload),
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: phone,
+            entities: [{ type: 'phone_number', offset: 0, length: phone.length }],
+          }),
         });
       }
     } catch (error) {
@@ -159,21 +151,35 @@ export function formatLeadNotification(data: {
   score: number;
   leadQuality: 'high' | 'medium' | 'low';
   timestamp: string;
+  answers?: { questionId: string; value: string | string[] }[];
+  questions?: { id: string; question: string; options?: { value: string; label: string }[] }[];
 }): string {
-  const qualityEmoji = data.leadQuality === 'high' ? '🔥' : data.leadQuality === 'medium' ? '⚡' : '📊';
   const qualityText = data.leadQuality === 'high' ? 'HIGH' : data.leadQuality === 'medium' ? 'MEDIUM' : 'LOW';
 
+  let qaSection = '';
+  if (data.answers && data.questions) {
+    const qaLines = data.answers.map((answer, index) => {
+      const question = data.questions?.find(q => q.id === answer.questionId);
+      if (!question) return '';
+      const answerValue = Array.isArray(answer.value) ? answer.value.join(', ') : answer.value;
+      const selectedOption = question.options?.find(o => o.value === answerValue);
+      const answerLabel = selectedOption ? selectedOption.label : answerValue;
+      return `*Q${index + 1}: ${escapeMarkdown(question.question)}*\nA: ${escapeMarkdown(answerLabel)}`;
+    }).filter(Boolean);
+    qaSection = `\n\n--- RESPONSES ---\n\n${qaLines.join('\n\n')}`;
+  }
+
   return `
-${qualityEmoji} *New Assessment Lead* ${qualityEmoji}
+*New Assessment Lead*
 
-👤 *Name:* ${escapeMarkdown(data.name)}
-📧 *Email:* ${escapeMarkdown(data.email)}
-${data.phone ? `📱 *Phone:* ${escapeMarkdown(data.phone)}` : ''}
+*Name:* ${escapeMarkdown(data.name)}
+*Email:* ${escapeMarkdown(data.email)}
+${data.phone ? `*Phone:* ${escapeMarkdown(data.phone)}` : ''}
 
-📊 *Score:* ${data.score}/100
-🎯 *Lead Quality:* ${qualityText}
+*Score:* ${data.score}/100
+*Lead Quality:* ${qualityText}
 
-🕐 *Time:* ${new Date(data.timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
+*Time:* ${new Date(data.timestamp).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST${qaSection}
 
 ---
 _SWTS Strategy Assessment_
@@ -182,5 +188,5 @@ _SWTS Strategy Assessment_
 
 // Escape special characters for Telegram Markdown
 function escapeMarkdown(text: string): string {
-  return text.replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&');
+  return text.replace(/[_*[\]()~`>#+=|{}!-]/g, '\\$&');
 }

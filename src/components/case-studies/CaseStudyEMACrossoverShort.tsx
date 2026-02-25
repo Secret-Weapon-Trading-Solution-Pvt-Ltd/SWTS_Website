@@ -23,7 +23,7 @@ const ProjectOverview: React.FC = () => {
   return (
     <section className="mb-20">
       <SectionLabel label="Project Overview" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-8">Overview</h2>
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-8 leading-tight">Overview</h2>
 
       <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gradient-to-br from-slate-50 to-slate-100/50 border border-slate-200/60 rounded-2xl p-8 mb-10">
         <div>
@@ -60,7 +60,7 @@ const ClientContext: React.FC = () => {
   return (
     <section className="mb-20">
       <SectionLabel label="Client Context" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-8">Who Is This For?</h2>
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-8 leading-tight">Who Is This For?</h2>
 
       <p className="text-lg text-black leading-relaxed mb-10">
         Built for <span className="font-semibold text-slate-800">active cryptocurrency traders</span> who use
@@ -68,16 +68,17 @@ const ClientContext: React.FC = () => {
         and <span className="font-semibold text-slate-800">small trading desks</span> who need centralized signal monitoring.
       </p>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
         {[
-          { icon: '🕐', title: '24/7 Markets' },
-          { icon: '📊', title: 'Multi-Timeframe' },
-          { icon: '📱', title: 'Mobile Alerts' },
-          { icon: '🔗', title: 'Delta Exchange' },
+          { icon: '🕐', title: '24/7 Markets', desc: 'Continuous monitoring across all crypto market hours without interruption', bg: 'bg-teal-50 border-teal-100' },
+          { icon: '📊', title: 'Multi-Timeframe', desc: 'Simultaneous analysis across 5 timeframes for comprehensive signal coverage', bg: 'bg-blue-50 border-blue-100' },
+          { icon: '📱', title: 'Mobile Alerts', desc: 'Instant Telegram notifications delivered directly to your phone', bg: 'bg-amber-50 border-amber-100' },
+          { icon: '🔗', title: 'Delta Exchange', desc: 'Purpose-built for Delta Exchange perpetual futures trading pairs', bg: 'bg-purple-50 border-purple-100' },
         ].map((item, i) => (
-          <div key={i} className="bg-white border border-slate-200/80 rounded-xl p-5 text-center shadow-sm hover:shadow-md transition-shadow">
-            <div className="text-3xl mb-3">{item.icon}</div>
-            <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+          <div key={i} className={`border rounded-2xl p-6 lg:p-8 text-center shadow-sm hover:shadow-md transition-shadow ${item.bg}`}>
+            <div className="text-4xl mb-4">{item.icon}</div>
+            <p className="text-base font-bold text-slate-900 mb-2">{item.title}</p>
+            <p className="text-base text-black leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
@@ -94,14 +95,16 @@ const ProblemStatement: React.FC = () => {
     { title: 'Information Overload', desc: '5 timeframes × multiple symbols' },
     { title: 'Inconsistent Execution', desc: 'manual bias & fatigue' },
     { title: 'No Signal Freshness', desc: 'manual candle counting' },
+    { title: 'Delayed Reactions', desc: 'slow response to market shifts' },
+    { title: 'No Centralized View', desc: 'scattered across multiple tabs' },
   ];
 
   return (
     <section className="mb-20">
       <SectionLabel label="The Problem" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">Challenges We Solved</h2>
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-6 leading-tight">Challenges We Solved</h2>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-3 gap-3">
         {challenges.map((item, i) => (
           <span
             key={i}
@@ -124,9 +127,9 @@ const Solution: React.FC = () => {
   return (
     <section className="mb-20">
       <SectionLabel label="The Solution" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">How It Works</h2>
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-6 leading-tight">How It Works</h2>
 
-      <p className="text-base text-black leading-relaxed mb-8">
+      <p className="text-lg text-black leading-relaxed mb-8">
         A <span className="font-semibold text-slate-800">self-hosted signal detection platform</span> that
         monitors your selected pairs, calculating <span className="font-semibold text-slate-800">9/20 EMAs</span> and
         detecting crossovers in real-time.
@@ -135,7 +138,7 @@ const Solution: React.FC = () => {
       {/* Flowchart */}
       <div className="relative py-4 mb-8 overflow-x-auto">
         {/* SVG Flowchart */}
-        <svg className="w-full h-auto min-w-[600px]" viewBox="0 0 800 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-full h-auto min-w-[500px]" viewBox="0 0 800 140" fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Connection Lines with Arrows */}
           <defs>
             <marker id="arrowhead" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
@@ -152,23 +155,23 @@ const Solution: React.FC = () => {
 
           {/* Node 1 - Rounded Rectangle */}
           <rect x="15" y="30" width="145" height="80" rx="12" fill="#F0FDFA" stroke="#0D9488" strokeWidth="2.5" />
-          <text x="87" y="62" textAnchor="middle" fill="#134E4A" fontSize="16" fontWeight="700">Configure</text>
-          <text x="87" y="85" textAnchor="middle" fill="#0D9488" fontSize="13" fontWeight="500">Watchlist</text>
+          <text x="87" y="62" textAnchor="middle" fill="#134E4A" fontSize="13" fontWeight="700">Configure</text>
+          <text x="87" y="82" textAnchor="middle" fill="#0D9488" fontSize="11" fontWeight="500">Watchlist</text>
 
           {/* Node 2 - Rounded Rectangle */}
           <rect x="225" y="30" width="145" height="80" rx="12" fill="#F0FDFA" stroke="#0D9488" strokeWidth="2.5" />
-          <text x="297" y="62" textAnchor="middle" fill="#134E4A" fontSize="16" fontWeight="700">Monitor</text>
-          <text x="297" y="85" textAnchor="middle" fill="#0D9488" fontSize="13" fontWeight="500">5 Timeframes</text>
+          <text x="297" y="62" textAnchor="middle" fill="#134E4A" fontSize="13" fontWeight="700">Monitor</text>
+          <text x="297" y="82" textAnchor="middle" fill="#0D9488" fontSize="11" fontWeight="500">5 Timeframes</text>
 
           {/* Node 3 - Diamond (Decision) */}
           <polygon points="500,10 580,70 500,130 420,70" fill="#FEF3C7" stroke="#D97706" strokeWidth="2.5" />
-          <text x="500" y="65" textAnchor="middle" fill="#92400E" fontSize="15" fontWeight="700">Detect</text>
-          <text x="500" y="85" textAnchor="middle" fill="#B45309" fontSize="11" fontWeight="500">Crossover?</text>
+          <text x="500" y="65" textAnchor="middle" fill="#92400E" fontSize="12" fontWeight="700">Detect</text>
+          <text x="500" y="82" textAnchor="middle" fill="#B45309" fontSize="9" fontWeight="500">Crossover?</text>
 
           {/* Node 4 - Pill Shape (Output) */}
           <rect x="625" y="30" width="155" height="80" rx="40" fill="#ECFDF5" stroke="#059669" strokeWidth="2.5" />
-          <text x="702" y="62" textAnchor="middle" fill="#064E3B" fontSize="16" fontWeight="700">Alert</text>
-          <text x="702" y="85" textAnchor="middle" fill="#059669" fontSize="13" fontWeight="500">Telegram</text>
+          <text x="702" y="62" textAnchor="middle" fill="#064E3B" fontSize="13" fontWeight="700">Alert</text>
+          <text x="702" y="82" textAnchor="middle" fill="#059669" fontSize="11" fontWeight="500">Telegram</text>
         </svg>
       </div>
 
@@ -198,7 +201,7 @@ const SystemPreview: React.FC = () => {
   return (
     <section className="mb-20">
       <SectionLabel label="System Preview" />
-      <h2 className="text-2xl font-bold text-slate-900 mb-8">Platform Interface</h2>
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-8 leading-tight">Platform Interface</h2>
 
       <div className="space-y-4">
         {/* Main Screenshot */}
@@ -252,27 +255,23 @@ const CTASection: React.FC = () => {
   return (
     <section className="space-y-6">
       {/* Read In-Depth CTA */}
-      <div className="relative bg-slate-900 rounded-3xl p-10 text-center overflow-hidden">
-        {/* Subtle pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-            backgroundSize: '32px 32px'
-          }} />
-        </div>
-        <div className="relative">
-          <h2 className="text-2xl font-bold text-white mb-3">
-            Want to See the Technical Details?
-          </h2>
-          <p className="text-black mb-8 max-w-md mx-auto">
-            Explore architecture, infrastructure, performance metrics, and full visual documentation.
-          </p>
+      <div className="relative bg-slate-50 border border-slate-200 rounded-2xl px-8 py-6 overflow-hidden">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-center sm:text-left">
+            <h2 className="text-xl font-bold text-slate-900 mb-1">
+              Want to See the Technical Details?
+            </h2>
+            <p className="text-black text-sm">
+              Explore architecture, infrastructure, performance metrics, and full visual documentation.
+            </p>
+          </div>
           <Link
             href="/projects/ema-crossover-screener/technical"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 font-semibold rounded-xl hover:bg-slate-100 transition-colors shadow-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold rounded-xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
+            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
           >
             Read In-Depth Documentation
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>
@@ -288,12 +287,15 @@ const CTASection: React.FC = () => {
           We can build custom signal detection systems for different indicators, exchanges, or asset classes.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/#contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition-colors shadow-lg shadow-teal-600/20"
+          <a
+            href="https://wa.me/917083718306"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold rounded-xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
           >
             Discuss Your Requirements
-          </Link>
+          </a>
           <Link
             href="/projects"
             className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-700 font-semibold border border-slate-200 rounded-xl hover:border-slate-300 hover:bg-slate-50 transition-all"
@@ -312,7 +314,7 @@ const CTASection: React.FC = () => {
 export default function CaseStudyEMACrossoverShort() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50/50 via-white to-slate-50/30">
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <article className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-28 pt-32 pb-20 lg:pt-40 lg:pb-28">
         {/* Hero Header */}
         <header className="text-center mb-20">
           <div className="flex items-center justify-center gap-3 mb-6">
@@ -333,7 +335,8 @@ export default function CaseStudyEMACrossoverShort() {
             href="https://delta.secretweapon.in/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition-colors shadow-xl shadow-teal-600/25"
+            className="inline-flex items-center gap-3 px-8 py-4 text-white font-semibold rounded-xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
