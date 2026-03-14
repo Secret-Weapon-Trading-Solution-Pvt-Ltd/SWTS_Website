@@ -19,24 +19,24 @@ interface ContactInfo {
 // Aggressive hooks for each question
 const questionHooks: Record<string, { hook: string; subtext: string }> = {
   q_experience: {
-    hook: "Experience alone won't save you.",
-    subtext: "Even veterans lose to emotional execution. Let's see where you stand.",
+    hook: "Manual trading has an expiry date.",
+    subtext: "The market rewards systems, not screen time. Let's see if you're ready for algos.",
   },
   q_risk: {
-    hook: "This question separates winners from losers.",
-    subtext: "Your risk approach reveals everything about your execution discipline.",
+    hook: "No rules = no algo. Period.",
+    subtext: "Algorithms need logic, not instinct. How defined is your strategy?",
   },
   q_frequency: {
-    hook: "More trades ≠ more profits.",
-    subtext: "Frequency without consistency is just gambling with extra steps.",
+    hook: "Your execution method is your edge—or your bottleneck.",
+    subtext: "Every manual click is a chance for error, delay, or emotion to creep in.",
   },
   q_returns: {
-    hook: "Be honest. Delusion is expensive.",
-    subtext: "Unrealistic expectations are the #1 cause of blown accounts.",
+    hook: "Capital decides your algo's playground.",
+    subtext: "The right capital allocation unlocks the right strategies. Be real with yourself.",
   },
   q_usage: {
-    hook: "Why are you really here?",
-    subtext: "Your intent determines your outcome. No judgment—just clarity.",
+    hook: "What's the endgame?",
+    subtext: "Your goal shapes everything — from strategy design to risk management.",
   },
 };
 

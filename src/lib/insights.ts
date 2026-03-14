@@ -4,201 +4,201 @@ import { getQuestionById } from './questions';
 // Insight definitions based on question responses
 // Updated to match new question IDs: q_experience, q_risk, q_frequency, q_returns, q_usage
 const insightDefinitions: Record<string, (value: string) => Insight | null> = {
-  // Q1: Experience Level
+  // Q1: Algo Trading Knowledge
   q_experience: (value) => {
     if (value === 'beginner') {
       return {
         id: 'insight_beginner',
-        title: 'Perfect Starting Point',
+        title: 'Your Algo Journey Starts Here',
         description:
-          'As a beginner, you have the advantage of building systematic trading habits from day one—without bad habits to unlearn.',
+          'You\'re new to algo trading — and that\'s actually an advantage. No bad habits, no emotional baggage. You\'ll learn to think in systems from day one.',
         recommendation:
-          'Start with our guided onboarding and paper trading features. Build confidence before going live with real capital.',
+          'Start with our guided algo onboarding: understand how strategies are built, backtested, and deployed — before risking any real capital.',
         priority: 'high',
       };
     }
     if (value === 'intermediate') {
       return {
         id: 'insight_intermediate',
-        title: 'Ready to Level Up',
+        title: 'You Know the Concepts — Time to Execute',
         description:
-          'Your trading experience gives you a solid foundation. Automation can help you execute more consistently.',
+          'You understand backtesting, signals, and execution logic. The gap now is turning that knowledge into a live, automated system.',
         recommendation:
-          'Focus on automating your proven strategies first. This will reveal where your execution has been costing you returns.',
+          'Focus on converting your best manual strategy into an algo. We\'ll help you define rules, backtest properly, and go live with confidence.',
         priority: 'medium',
       };
     }
     if (value === 'advanced') {
       return {
         id: 'insight_advanced',
-        title: 'Advanced Automation Ready',
+        title: 'Ready for Advanced Algo Infrastructure',
         description:
-          'Your experience positions you perfectly for advanced automation features like multi-strategy portfolios and dynamic risk management.',
+          'You\'ve built or used algo systems before. You need a platform that matches your sophistication — multi-strategy deployment, dynamic risk, and API-level control.',
         recommendation:
-          'Explore our API integrations and custom strategy builder to create sophisticated automated systems.',
+          'Explore our API integrations, custom strategy builder, and multi-strategy portfolio management for institutional-grade automation.',
         priority: 'low',
       };
     }
     return null;
   },
 
-  // Q2: Risk Appetite - Most Critical
+  // Q2: Strategy Clarity - Most Critical
   q_risk: (value) => {
     if (value === 'low') {
       return {
         id: 'insight_risk_low',
-        title: 'Capital Preservation Focus',
+        title: 'Strategy First, Algo Second',
         description:
-          'Prioritizing capital safety is wise. Automation excels at enforcing strict risk limits without emotional override.',
+          'Trading on tips or gut feeling can\'t be automated — and that\'s the honest truth. But this is exactly where we add value.',
         recommendation:
-          'Use our automated stop-loss and position sizing tools to ensure your risk rules are followed every single time.',
+          'We\'ll help you build a rule-based strategy from scratch. Define clear entry/exit conditions, backtest them, and only then automate.',
         priority: 'high',
       };
     }
     if (value === 'medium') {
       return {
         id: 'insight_risk_medium',
-        title: 'Balanced Risk Profile',
+        title: 'Almost Algo-Ready',
         description:
-          'A balanced approach to risk and reward is sustainable long-term. Our tools can help you maintain this discipline.',
+          'You have some rules but still rely on discretion. That discretion is where emotions sneak in and hurt your P&L.',
         recommendation:
-          'Consider automating your risk-reward ratios and position sizing to maintain consistency across all trades.',
+          'Let\'s formalize your partial rules into complete algo logic. Remove the grey areas so your system can execute without hesitation.',
         priority: 'medium',
       };
     }
     if (value === 'high') {
       return {
         id: 'insight_risk_high',
-        title: 'Aggressive Strategy Match',
+        title: 'Perfect Algo Candidate',
         description:
-          'High-risk strategies require precise execution and quick adjustments—exactly what automation provides.',
+          'A fully defined, rule-based strategy is exactly what algo trading needs. Your strategy is ready to be automated.',
         recommendation:
-          'Automation ensures you never miss an exit or hesitate on entries. Critical for managing aggressive positions.',
+          'Your clear rules translate directly into algo logic. Let\'s backtest, optimize, and deploy your strategy for automated execution.',
         priority: 'high',
       };
     }
     return null;
   },
 
-  // Q3: Trading Frequency
+  // Q3: Current Execution Method
   q_frequency: (value) => {
     if (value === 'rarely') {
       return {
         id: 'insight_rare_trader',
-        title: 'Quality Over Quantity',
+        title: 'Manual Execution is Holding You Back',
         description:
-          'Trading less frequently often means waiting for high-quality setups—but it\'s easy to miss them when they appear.',
+          'Placing every order manually means you\'re exposed to delays, emotional decisions, and missed entries — especially in fast markets.',
         recommendation:
-          'Set up automated alerts to notify you when your setup criteria are met, so you never miss the perfect opportunity.',
+          'Even partial automation (auto stop-loss, auto position sizing) can dramatically improve your execution. Start there.',
         priority: 'high',
       };
     }
     if (value === 'moderate') {
       return {
         id: 'insight_moderate_trader',
-        title: 'Consistent Trader',
+        title: 'Bridge the Last Mile to Full Automation',
         description:
-          'Regular trading activity means you understand market dynamics. Automation can make your execution more consistent.',
+          'Using alerts and scanners is smart, but manual execution is still the weakest link. The signal is only as good as its execution.',
         recommendation:
-          'Focus on automating your entry and exit rules to eliminate the variance in your current execution.',
+          'Connect your alerts directly to automated execution. Remove the human delay between signal and order placement.',
         priority: 'medium',
       };
     }
     if (value === 'active') {
       return {
         id: 'insight_active_trader',
-        title: 'High-Volume Trader',
+        title: 'Already Automated — Time to Optimize',
         description:
-          'With 10+ trades per month, automation could save you hours while improving execution quality.',
+          'You\'re already using APIs or algo platforms. The next level is optimizing execution, reducing slippage, and scaling strategies.',
         recommendation:
-          'Automate your routine trades to free up time for strategy development and market analysis.',
+          'Explore our advanced features: multi-strategy deployment, smart order routing, and real-time risk dashboards.',
         priority: 'low',
       };
     }
     return null;
   },
 
-  // Q4: Return Expectations
+  // Q4: Capital Allocation
   q_returns: (value) => {
     if (value === 'high') {
       return {
         id: 'insight_high_returns',
-        title: 'Ambitious Return Goals',
+        title: 'Serious Capital, Serious Algos',
         description:
-          'Targeting 5%+ monthly requires excellent strategy AND flawless execution. One without the other won\'t get you there.',
+          'With ₹10L+ capital, you can access advanced strategies — multi-leg options, hedged portfolios, and institutional-grade risk management.',
         recommendation:
-          'Validate your strategy with thorough backtesting first, then use automation to ensure perfect execution.',
+          'Your capital level qualifies you for our premium strategy tiers. Let\'s discuss portfolio-level algo deployment with proper risk controls.',
         priority: 'high',
       };
     }
     if (value === 'medium') {
       return {
         id: 'insight_medium_returns',
-        title: 'Realistic Targets',
+        title: 'Sweet Spot for Algo Trading',
         description:
-          '2-5% monthly is achievable with good strategy and consistent execution—the exact combination automation provides.',
+          '₹2–10L is the ideal range to start meaningful algo trading — enough to diversify across strategies while managing risk properly.',
         recommendation:
-          'Your expectations align well with systematic trading. Focus on consistency and let compound returns work for you.',
+          'Start with 1-2 proven strategies, backtest thoroughly, and scale as you see consistent results. We\'ll help you find the right fit.',
         priority: 'low',
       };
     }
     if (value === 'steady') {
       return {
         id: 'insight_steady_returns',
-        title: 'Steady Growth Approach',
+        title: 'Smart Start with Paper Trading',
         description:
-          'Targeting steady returns shows mature risk awareness. Automation helps maintain this discipline through all market conditions.',
+          'Starting small is wise. Use this phase to test and validate your algo strategies with paper trading before deploying real capital.',
         recommendation:
-          'Our risk management tools are perfect for your approach—protecting capital while capturing consistent returns.',
+          'Our paper trading and backtesting tools let you validate ideas with zero risk. Build confidence, then scale up when ready.',
         priority: 'medium',
       };
     }
     return null;
   },
 
-  // Q5: Usage Intent
+  // Q5: Primary Algo Trading Goal
   q_usage: (value) => {
     if (value === 'manual') {
       return {
         id: 'insight_manual',
-        title: 'Strategy Development Focus',
+        title: 'Emotion-Free Trading Through Algos',
         description:
-          'Using tools for manual trading and analysis is a great first step toward understanding what to automate later.',
+          'Removing emotions is the #1 reason traders switch to algos. Fear, greed, and hesitation disappear when a system executes for you.',
         recommendation:
-          'Start with our backtesting and strategy builder. Once you find a winning approach, we can help you automate it.',
+          'Start by automating your exit rules (stop-loss, target) — the point where emotions hurt most. Then gradually automate entries.',
         priority: 'medium',
       };
     }
     if (value === 'algo') {
       return {
         id: 'insight_algo',
-        title: 'Full Automation Ready',
+        title: 'Full Automation — The Ultimate Goal',
         description:
-          'You\'re ready for fully automated trading. Our platform handles everything from signal generation to order execution.',
+          'You want your strategy running 24/7 without intervention. That\'s exactly what our platform is built for — hands-free algo execution.',
         recommendation:
-          'Let\'s discuss your strategy requirements and set up your automated trading system. We\'ll handle the technical complexity.',
+          'Let\'s map your strategy into our algo engine. From signal generation to order execution to risk management — fully automated.',
         priority: 'high',
       };
     }
     if (value === 'semi') {
       return {
         id: 'insight_semi',
-        title: 'Smart Semi-Automation',
+        title: 'Speed is Your Edge',
         description:
-          'Alerts with semi-automation gives you control while eliminating emotional trading decisions.',
+          'In fast markets, milliseconds matter. Algo execution eliminates the delay between seeing an opportunity and acting on it.',
         recommendation:
-          'Our alert system integrates with TradingView and other platforms. You decide, the system executes.',
+          'Our low-latency execution system ensures your orders hit the market faster than any manual click. Speed + accuracy = better fills.',
         priority: 'medium',
       };
     }
     if (value === 'learn') {
       return {
         id: 'insight_learn',
-        title: 'Learning & Testing Focus',
+        title: 'Validate Before You Deploy',
         description:
-          'Starting with backtesting is the smart approach. Understand your strategy deeply before risking capital.',
+          'Backtesting your ideas before going live is the smartest move in algo trading. Most traders skip this and pay the price.',
         recommendation:
-          'Use our backtesting tools to validate ideas. When you\'re confident in your strategy, we\'re here to help you automate.',
+          'Use our backtesting engine to test your strategies across years of historical data. Only deploy what actually works.',
         priority: 'high',
       };
     }
@@ -295,11 +295,11 @@ export const generatePositiveInsight = (answers: Answer[]): Insight | null => {
   if (positiveAnswers.length >= 3) {
     return {
       id: 'insight_strong_foundation',
-      title: 'Strong Trading Foundation',
+      title: 'High Algo-Readiness Score',
       description:
-        'Your responses indicate you have experience and clear goals. You\'re well-positioned for algorithmic trading.',
+        'Your responses show you have the knowledge, strategy clarity, and capital readiness to succeed with algo trading.',
       recommendation:
-        'Focus on automating your proven strategies to improve consistency and free up time for analysis.',
+        'You\'re in the top tier of algo-readiness. Let\'s fast-track your setup — strategy deployment, risk parameters, and live execution.',
       priority: 'low',
     };
   }
