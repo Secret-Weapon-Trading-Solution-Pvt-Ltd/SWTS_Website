@@ -16,8 +16,8 @@ export default function ProjectsPage() {
       {/* Featured Case Study - Flagship project highlight */}
       <FeaturedCaseStudy />
 
-      {/* TradingView Scripts - commented out for future use */}
-      {/* <TradingViewScripts /> */}
+      {/* TradingView Scripts */}
+      <TradingViewScripts />
     </MainLayout>
   );
 }
