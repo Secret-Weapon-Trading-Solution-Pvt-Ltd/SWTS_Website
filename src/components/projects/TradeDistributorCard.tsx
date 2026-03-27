@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { ArrowRight, LineChart, TrendingUp, Target, Shield, Sparkles } from 'lucide-react';
 
 const metrics = [
-  { label: 'Sync Latency', value: '<1s' },
-  { label: 'Modules', value: '6' },
-  { label: 'Account Types', value: 'Multi' },
+  { label: 'Sync Latency', value: '<100ms' },
+  { label: 'Broker Support', value: 'Multi' },
   { label: 'Uptime', value: '99.9%' },
 ];
 
@@ -120,27 +119,50 @@ export const TradeDistributorCard: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right: Metrics Grid */}
-              <div className="lg:col-span-2 grid grid-cols-2 gap-3">
-                {metrics.map((metric, i) => {
-                  const Icon = icons[i % icons.length];
-                  return (
-                    <div
-                      key={metric.label}
-                      className="bg-slate-50/80 border border-slate-100 rounded-2xl p-4 text-center
-                               hover:bg-white hover:border-slate-200 hover:shadow-sm
-                               transition-all duration-200"
-                    >
-                      <Icon className="w-4 h-4 text-teal-500 mx-auto mb-2.5" />
-                      <p className="text-xl lg:text-2xl font-bold text-slate-900 mb-0.5 tracking-tight">
-                        {metric.value}
-                      </p>
-                      <p className="text-[10px] font-semibold text-black uppercase tracking-wider">
-                        {metric.label}
-                      </p>
-                    </div>
-                  );
-                })}
+              {/* Right: Metrics Grid - 2 on top, 1 centred below */}
+              <div className="lg:col-span-2 flex flex-col gap-3">
+                <div className="grid grid-cols-2 gap-3">
+                  {metrics.slice(0, 2).map((metric, i) => {
+                    const Icon = icons[i % icons.length];
+                    return (
+                      <div
+                        key={metric.label}
+                        className="bg-slate-50/80 border border-slate-100 rounded-2xl p-4 text-center
+                                 hover:bg-white hover:border-slate-200 hover:shadow-sm
+                                 transition-all duration-200"
+                      >
+                        <Icon className="w-4 h-4 text-teal-500 mx-auto mb-2.5" />
+                        <p className="text-xl lg:text-2xl font-bold text-slate-900 mb-0.5 tracking-tight">
+                          {metric.value}
+                        </p>
+                        <p className="text-[10px] font-semibold text-black uppercase tracking-wider">
+                          {metric.label}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex justify-center">
+                  {metrics.slice(2).map((metric, i) => {
+                    const Icon = icons[(i + 2) % icons.length];
+                    return (
+                      <div
+                        key={metric.label}
+                        className="w-1/2 bg-slate-50/80 border border-slate-100 rounded-2xl p-4 text-center
+                                 hover:bg-white hover:border-slate-200 hover:shadow-sm
+                                 transition-all duration-200"
+                      >
+                        <Icon className="w-4 h-4 text-teal-500 mx-auto mb-2.5" />
+                        <p className="text-xl lg:text-2xl font-bold text-slate-900 mb-0.5 tracking-tight">
+                          {metric.value}
+                        </p>
+                        <p className="text-[10px] font-semibold text-black uppercase tracking-wider">
+                          {metric.label}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

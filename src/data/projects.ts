@@ -12,9 +12,8 @@ export const projects: Project[] = [
     icon: 'activity',
     featured: false,
     metrics: [
-      { label: 'Sync Latency', value: '<1s' },
-      { label: 'Modules', value: '6' },
-      { label: 'Account Types', value: 'Multi' },
+      { label: 'Sync Latency', value: '<100ms' },
+      { label: 'Broker Support', value: 'Multi' },
       { label: 'Uptime', value: '99.9%' },
     ],
     details: {
