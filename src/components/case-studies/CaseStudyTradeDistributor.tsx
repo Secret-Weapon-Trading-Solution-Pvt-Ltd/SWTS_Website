@@ -1,0 +1,376 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { StaticImage } from '@/components/ui/StaticImage';
+
+// ============================================================================
+// Section Label Component
+// ============================================================================
+const SectionLabel: React.FC<{ label: string }> = ({ label }) => (
+  <div className="flex items-center gap-4 mb-4">
+    <span className="text-xs font-semibold text-black uppercase tracking-widest">
+      {label}
+    </span>
+    <span className="flex-1 h-px bg-gradient-to-r from-slate-200 to-transparent" />
+  </div>
+);
+
+// ============================================================================
+// Project Overview Section
+// ============================================================================
+const ProjectOverview: React.FC = () => {
+  return (
+    <section className="mb-20">
+      <SectionLabel label="Project Overview" />
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-8 leading-tight">Overview</h2>
+
+      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gradient-to-br from-slate-50 to-slate-100/50 border border-slate-200/60 rounded-2xl p-8 mb-10">
+        <div>
+          <dt className="text-[11px] font-semibold text-black uppercase tracking-wider mb-1.5">Project Name</dt>
+          <dd className="text-base font-semibold text-slate-900">Trade Distributor System</dd>
+        </div>
+        <div>
+          <dt className="text-[11px] font-semibold text-black uppercase tracking-wider mb-1.5">Category</dt>
+          <dd className="text-base font-semibold text-slate-900">Trade Automation / Multi-Account Management</dd>
+        </div>
+        <div>
+          <dt className="text-[11px] font-semibold text-black uppercase tracking-wider mb-1.5">Market Type</dt>
+          <dd className="text-base font-semibold text-slate-900">Multi-Asset (Equities, Derivatives, Crypto)</dd>
+        </div>
+        <div>
+          <dt className="text-[11px] font-semibold text-black uppercase tracking-wider mb-1.5">Execution Type</dt>
+          <dd className="text-base font-semibold text-slate-900">Trade Replication & Distribution</dd>
+        </div>
+      </dl>
+
+      <p className="text-lg text-black leading-relaxed">
+        A <span className="font-semibold text-slate-800">Python-based trade distribution platform</span> that
+        replicates orders from a <span className="font-semibold text-slate-800">parent account</span> to
+        multiple <span className="font-semibold text-slate-800">child accounts</span> in real time —
+        with a centralized dashboard for health monitoring, latency analysis, and full order reconciliation.
+      </p>
+    </section>
+  );
+};
+
+// ============================================================================
+// Client Context Section
+// ============================================================================
+const ClientContext: React.FC = () => {
+  return (
+    <section className="mb-20">
+      <SectionLabel label="Client Context" />
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-8 leading-tight">Who Is This For?</h2>
+
+      <p className="text-lg text-black leading-relaxed mb-10">
+        Built for <span className="font-semibold text-slate-800">prop trading firms, fund managers, and algo traders</span> who
+        manage multiple brokerage accounts and need synchronized, automated order execution
+        without manual intervention or execution delays.
+      </p>
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          { icon: '🔗', title: 'Parent → Child', desc: 'Automatic order replication from master account to all linked child accounts', bg: 'bg-teal-50 border-teal-100' },
+          { icon: '📊', title: 'Live Dashboard', desc: 'Real-time control center with sync rate, latency, and order feed monitoring', bg: 'bg-blue-50 border-blue-100' },
+          { icon: '⚡', title: 'Low Latency', desc: 'Execution breakdown across detection, processing, and broker latency stages', bg: 'bg-amber-50 border-amber-100' },
+          { icon: '🛡️', title: 'Error Tracking', desc: 'Automated mismatch detection and reconciliation across all child accounts', bg: 'bg-purple-50 border-purple-100' },
+        ].map((item, i) => (
+          <div key={i} className={`border rounded-2xl p-6 lg:p-8 text-center shadow-sm hover:shadow-md transition-shadow ${item.bg}`}>
+            <div className="text-4xl mb-4">{item.icon}</div>
+            <p className="text-base font-bold text-slate-900 mb-2">{item.title}</p>
+            <p className="text-base text-black leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// Problem Statement Section
+// ============================================================================
+const ProblemStatement: React.FC = () => {
+  const challenges = [
+    { title: 'Manual Replication', desc: 'copying trades account by account' },
+    { title: 'Sync Delays', desc: 'lag between parent and child execution' },
+    { title: 'No Centralized View', desc: 'scattered across multiple broker portals' },
+    { title: 'P&L Fragmentation', desc: 'no unified performance tracking' },
+    { title: 'No Latency Visibility', desc: 'blind to execution bottlenecks' },
+    { title: 'Reconciliation Gaps', desc: 'undetected order mismatches' },
+  ];
+
+  return (
+    <section className="mb-20">
+      <SectionLabel label="The Problem" />
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-6 leading-tight">Challenges We Solved</h2>
+
+      <div className="grid grid-cols-3 gap-3">
+        {challenges.map((item, i) => (
+          <span
+            key={i}
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-red-50 border border-red-200 rounded-full text-sm"
+          >
+            <span className="w-1.5 h-1.5 bg-red-400 rounded-full flex-shrink-0" />
+            <span className="font-semibold text-red-900">{item.title}</span>
+            <span className="text-red-600 truncate">— {item.desc}</span>
+          </span>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// Solution Section - Flowchart Style
+// ============================================================================
+const Solution: React.FC = () => {
+  return (
+    <section className="mb-20">
+      <SectionLabel label="The Solution" />
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-6 leading-tight">How It Works</h2>
+
+      <p className="text-lg text-black leading-relaxed mb-8">
+        A <span className="font-semibold text-slate-800">centralized trade distribution engine</span> that
+        captures every order from the parent account and instantly replicates it across all child accounts —
+        with full monitoring, error detection, and latency profiling built in.
+      </p>
+
+      {/* Flowchart */}
+      <div className="relative py-4 mb-8 overflow-x-auto">
+        <svg className="w-full h-auto min-w-[500px]" viewBox="0 0 860 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrowTDS" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+              <polygon points="0 0, 12 4, 0 8" fill="#0D9488" />
+            </marker>
+          </defs>
+
+          {/* Lines */}
+          <line x1="155" y1="80" x2="210" y2="80" stroke="#0D9488" strokeWidth="3" markerEnd="url(#arrowTDS)" />
+          <line x1="350" y1="80" x2="405" y2="80" stroke="#0D9488" strokeWidth="3" markerEnd="url(#arrowTDS)" />
+          <line x1="560" y1="80" x2="615" y2="80" stroke="#0D9488" strokeWidth="3" markerEnd="url(#arrowTDS)" />
+
+          {/* Node 1 - Parent Account */}
+          <rect x="10" y="40" width="140" height="80" rx="12" fill="#F0FDFA" stroke="#0D9488" strokeWidth="2.5" />
+          <text x="80" y="72" textAnchor="middle" fill="#134E4A" fontSize="13" fontWeight="700">Parent</text>
+          <text x="80" y="92" textAnchor="middle" fill="#0D9488" fontSize="11" fontWeight="500">Account</text>
+
+          {/* Node 2 - Trade Distributor */}
+          <rect x="215" y="40" width="135" height="80" rx="12" fill="#FEF3C7" stroke="#D97706" strokeWidth="2.5" />
+          <text x="282" y="72" textAnchor="middle" fill="#92400E" fontSize="13" fontWeight="700">Distributor</text>
+          <text x="282" y="92" textAnchor="middle" fill="#B45309" fontSize="11" fontWeight="500">Engine</text>
+
+          {/* Node 3 - Child Accounts */}
+          <rect x="410" y="40" width="145" height="80" rx="12" fill="#F0FDFA" stroke="#0D9488" strokeWidth="2.5" />
+          <text x="482" y="68" textAnchor="middle" fill="#134E4A" fontSize="13" fontWeight="700">Child</text>
+          <text x="482" y="86" textAnchor="middle" fill="#0D9488" fontSize="11" fontWeight="500">Accounts</text>
+          <text x="482" y="104" textAnchor="middle" fill="#0D9488" fontSize="10" fontWeight="400">(1 … N)</text>
+
+          {/* Node 4 - Dashboard */}
+          <rect x="620" y="40" width="230" height="80" rx="12" fill="#ECFDF5" stroke="#059669" strokeWidth="2.5" />
+          <text x="735" y="68" textAnchor="middle" fill="#064E3B" fontSize="13" fontWeight="700">Dashboard &</text>
+          <text x="735" y="86" textAnchor="middle" fill="#059669" fontSize="11" fontWeight="500">Latency Monitor</text>
+        </svg>
+      </div>
+
+      {/* Module List */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {[
+          { label: 'Dashboard', desc: 'System health, sync rate & live order feed' },
+          { label: 'Accounts', desc: 'Parent/child status, balance & connectivity' },
+          { label: 'Orders', desc: 'Execution mapping, filtering & reconciliation' },
+          { label: 'Positions', desc: 'Live P&L with instant close controls' },
+          { label: 'Holdings', desc: 'Long-term investment performance view' },
+          { label: 'Latency Analysis', desc: 'Detection → processing → broker breakdown' },
+        ].map((mod, i) => (
+          <div key={i} className="flex items-start gap-3 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl">
+            <span className="w-2 h-2 bg-teal-500 rounded-full mt-1.5 flex-shrink-0" />
+            <div>
+              <p className="text-sm font-semibold text-slate-900">{mod.label}</p>
+              <p className="text-xs text-black mt-0.5">{mod.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// System Preview Section
+// ============================================================================
+const SystemPreview: React.FC = () => {
+  return (
+    <section className="mb-20">
+      <SectionLabel label="System Preview" />
+      <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-slate-900 mb-8 leading-tight">Platform Interface</h2>
+
+      <div className="space-y-4">
+        {/* Main Screenshot - Dashboard */}
+        <div className="relative overflow-hidden rounded-2xl bg-slate-100 border border-slate-200/60 shadow-sm">
+          <StaticImage
+            src="/tds-dashboard.png"
+            alt="Trade Distributor Dashboard"
+            width={1200}
+            height={675}
+            className="w-full h-auto"
+          />
+        </div>
+        <p className="text-center text-sm text-black">Live Dashboard — System health, sync rate & order feed</p>
+
+        {/* Secondary Screenshots Grid - 2 columns, 5 screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div>
+            <div className="relative overflow-hidden rounded-xl bg-slate-100 border border-slate-200/60 shadow-sm">
+              <StaticImage
+                src="/tds-accounts.png"
+                alt="Accounts Management"
+                width={600}
+                height={400}
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="text-center text-sm text-black mt-2">Accounts — Parent & child connection status</p>
+          </div>
+          <div>
+            <div className="relative overflow-hidden rounded-xl bg-slate-100 border border-slate-200/60 shadow-sm">
+              <StaticImage
+                src="/tds-orders.png"
+                alt="Orders View"
+                width={600}
+                height={400}
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="text-center text-sm text-black mt-2">Orders — Execution mapping & reconciliation</p>
+          </div>
+          <div>
+            <div className="relative overflow-hidden rounded-xl bg-slate-100 border border-slate-200/60 shadow-sm">
+              <StaticImage
+                src="/tds-positions.png"
+                alt="Positions & P&L"
+                width={600}
+                height={400}
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="text-center text-sm text-black mt-2">Positions — Live P&L across all accounts</p>
+          </div>
+          <div>
+            <div className="relative overflow-hidden rounded-xl bg-slate-100 border border-slate-200/60 shadow-sm">
+              <StaticImage
+                src="/tds-holdings.png"
+                alt="Holdings"
+                width={600}
+                height={400}
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="text-center text-sm text-black mt-2">Holdings — Long-term delivery positions & P&L</p>
+          </div>
+        </div>
+
+        {/* Latency - Full width */}
+        <div className="mt-4">
+          <div className="relative overflow-hidden rounded-2xl bg-slate-100 border border-slate-200/60 shadow-sm">
+            <StaticImage
+              src="/tds-latency.png"
+              alt="Latency Analysis"
+              width={1200}
+              height={675}
+              className="w-full h-auto"
+            />
+          </div>
+          <p className="text-center text-sm text-black mt-2">Latency Analysis — Detection → Processing → Broker breakdown per order</p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// CTA Section
+// ============================================================================
+const CTASection: React.FC = () => {
+  return (
+    <section className="space-y-6">
+      <div className="bg-gradient-to-br from-teal-50 to-emerald-50/50 border border-teal-100 rounded-3xl p-10 text-center">
+        <h2 className="text-2xl font-bold text-slate-900 mb-3">
+          Need a Similar Trade Distribution System?
+        </h2>
+        <p className="text-black mb-8 max-w-md mx-auto">
+          We build custom trade replication and multi-account management platforms tailored to your broker, strategy, and scale.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://wa.me/917083718306"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold rounded-xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
+          >
+            Discuss Your Requirements
+          </a>
+          <Link
+            href="/projects"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-700 font-semibold border border-slate-200 rounded-xl hover:border-slate-300 hover:bg-slate-50 transition-all"
+          >
+            View Other Projects
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// Main Component
+// ============================================================================
+export default function CaseStudyTradeDistributor() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50/50 via-white to-slate-50/30">
+      <article className="w-full px-6 sm:px-10 lg:px-16 xl:px-20 2xl:px-28 pt-32 pb-20 lg:pt-40 lg:pb-28">
+        {/* Hero Header */}
+        <header className="text-center mb-20">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="inline-flex px-4 py-1.5 bg-teal-500/10 border border-teal-500/20 rounded-full text-xs font-semibold text-teal-700 uppercase tracking-wide">
+              Trade Automation
+            </span>
+            <span className="inline-flex px-4 py-1.5 bg-teal-500/10 border border-teal-500/20 rounded-full text-xs font-semibold text-teal-700 uppercase tracking-wide">
+              Multi-Account Management
+            </span>
+          </div>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <img src="/tds-favicon.png" alt="Trade Distributor Logo" className="w-10 h-10 rounded-xl" />
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight">
+              Trade Distributor System
+            </h1>
+          </div>
+          <p className="text-xl text-black max-w-2xl mx-auto mb-10">
+            Real-time trade replication from a parent account to multiple child accounts with centralized monitoring and latency analysis
+          </p>
+          <a
+            href="https://distributor.secretweapon.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 text-white font-semibold rounded-xl shadow-[0_4px_20px_rgba(0,137,123,0.25)] hover:shadow-[0_8px_30px_rgba(0,137,123,0.35)] hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: 'linear-gradient(135deg, #1565C0 0%, #00897B 100%)' }}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            View Live Demo
+          </a>
+        </header>
+
+        {/* Sections */}
+        <ProjectOverview />
+        <ClientContext />
+        <ProblemStatement />
+        <Solution />
+        <SystemPreview />
+        <CTASection />
+      </article>
+    </div>
+  );
+}

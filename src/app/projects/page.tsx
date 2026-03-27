@@ -3,6 +3,7 @@
 import { MainLayout } from '@/components/layouts';
 import {
   ProjectsHero,
+  TradeDistributorCard,
   FeaturedCaseStudy,
   TradingViewScripts,
 } from '@/components/projects';
@@ -13,7 +14,10 @@ export default function ProjectsPage() {
       {/* Hero - Clean headline with stats */}
       <ProjectsHero />
 
-      {/* Featured Case Study - Flagship project highlight */}
+      {/* Trade Distributor System - First project */}
+      <TradeDistributorCard />
+
+      {/* Delta Exchange Crypto Screener - Second project */}
       <FeaturedCaseStudy />
 
       {/* TradingView Scripts */}

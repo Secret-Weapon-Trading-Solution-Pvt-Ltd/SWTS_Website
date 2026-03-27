@@ -2,6 +2,78 @@ import type { Project } from '@/types/projects';
 
 export const projects: Project[] = [
   {
+    id: '10',
+    slug: 'trade-distributor-system',
+    title: 'Trade Distributor System',
+    outcome: 'Real-time trade replication across multiple accounts with centralized monitoring and latency analysis',
+    category: 'automation',
+    status: 'completed',
+    techStack: ['Python', 'WebSocket', 'FastAPI', 'Broker API'],
+    icon: 'activity',
+    featured: false,
+    metrics: [
+      { label: 'Sync Latency', value: '<1s' },
+      { label: 'Modules', value: '6' },
+      { label: 'Account Types', value: 'Multi' },
+      { label: 'Uptime', value: '99.9%' },
+    ],
+    details: {
+      clientContext: 'Built for prop trading firms, fund managers, and algo traders who manage multiple brokerage accounts and need synchronized, automated order execution without manual intervention.',
+      challenge: {
+        description: 'Managing and replicating trades across multiple accounts manually introduces execution delays, synchronization gaps, and no centralized visibility into performance or latency bottlenecks.',
+        painPoints: [
+          'Manual trade copying account by account causing delays',
+          'No centralized view across all broker portals',
+          'Undetected order mismatches and reconciliation gaps',
+          'No visibility into execution latency breakdown',
+          'Fragmented P&L tracking across distributed accounts',
+        ],
+      },
+      solution: {
+        description: 'A centralized trade distribution engine that captures every order from the parent account and instantly replicates it across all child accounts — with full monitoring, error detection, and latency profiling.',
+        highlights: [
+          'Real-time parent-to-child order replication',
+          'Live dashboard with sync rate, latency, and order feed',
+          'Latency analysis across detection, processing, and broker stages',
+          'Automated mismatch detection and reconciliation',
+          'Positions and Holdings monitoring with live P&L',
+        ],
+      },
+      architecture: {
+        description: 'Python-based system with WebSocket for real-time data streaming, broker API integrations, and a structured dashboard for centralized control.',
+        techStack: [
+          { name: 'Python', category: 'language' },
+          { name: 'WebSocket', category: 'infrastructure' },
+          { name: 'FastAPI', category: 'framework' },
+          { name: 'Broker API', category: 'tool' },
+        ],
+      },
+      execution: {
+        description: 'Delivered in three focused phases ensuring reliable core distribution before adding monitoring and analytics.',
+        phases: [
+          { name: 'Core Engine', description: 'Parent-child account mapping, trade replication logic and order routing' },
+          { name: 'Dashboard & Monitoring', description: 'Real-time health metrics, live order feed and error tracking system' },
+          { name: 'Analytics Module', description: 'Latency analysis, reconciliation features and positions/holdings view' },
+        ],
+      },
+      results: {
+        description: 'The system eliminated manual trade copying entirely, providing real-time synchronization with full visibility into execution performance.',
+        before: [
+          'Manual trade replication account by account',
+          'Execution delays with no latency visibility',
+          'Scattered account monitoring across portals',
+          'No automated reconciliation',
+        ],
+        after: [
+          'Automated real-time order distribution',
+          'Sub-second sync with latency breakdown analysis',
+          'Centralized dashboard for all accounts',
+          'Automated mismatch detection and error tracking',
+        ],
+      },
+    },
+  },
+  {
     id: '0',
     slug: 'ema-crossover-screener',
     title: 'Delta Exchange Crypto Screener',
