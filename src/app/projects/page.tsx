@@ -5,6 +5,7 @@ import {
   ProjectsHero,
   TradeDistributorCard,
   FeaturedCaseStudy,
+  OptionsTradingDashboardCard,
   TradingViewScripts,
 } from '@/components/projects';
 
@@ -19,6 +20,9 @@ export default function ProjectsPage() {
 
       {/* Delta Exchange Crypto Screener - Second project */}
       <FeaturedCaseStudy />
+
+      {/* Automated Options Trading Dashboard - Third project */}
+      <OptionsTradingDashboardCard />
 
       {/* TradingView Scripts */}
       <TradingViewScripts />

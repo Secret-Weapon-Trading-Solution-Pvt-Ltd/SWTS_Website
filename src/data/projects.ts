@@ -146,6 +146,77 @@ export const projects: Project[] = [
     },
   },
   {
+    id: '11',
+    slug: 'options-trading-dashboard',
+    title: 'Automated Options Trading Dashboard',
+    outcome: 'Fully automated options execution with real-time portfolio monitoring, one-click controls, and complete trade transparency',
+    category: 'automation',
+    status: 'completed',
+    techStack: ['Python', 'FastAPI', 'Broker API', 'WebSocket'],
+    icon: 'activity',
+    featured: false,
+    metrics: [
+      { label: 'Execution', value: 'Auto' },
+      { label: 'Controls', value: '5+' },
+      { label: 'Monitoring', value: 'Real-time' },
+    ],
+    details: {
+      clientContext: 'Built for options traders who need a fully automated system to manage and execute strategies with minimal manual intervention — providing real-time portfolio insights, one-click execution controls, and complete trade transparency.',
+      challenge: {
+        description: 'Manual options trading requires constant monitoring of multiple positions, strategy targets, and leg-level adjustments. Traders struggle with execution speed, lack of centralized control, and limited visibility into real-time P&L and order history.',
+        painPoints: [
+          'Manual monitoring of multiple options legs and strategy targets',
+          'No centralized dashboard for portfolio intelligence and P&L tracking',
+          'Slow execution with no one-click launch, stop, or square-off controls',
+          'Scattered order history with no unified view of trades, status, and context',
+          'No real-time engine logs for debugging or understanding system behavior',
+        ],
+      },
+      solution: {
+        description: 'A Python-based automated options trading dashboard (Quantum Engine) that provides a clean, modern interface for monitoring performance, controlling execution, and managing trading activities in real time.',
+        highlights: [
+          'Portfolio Intelligence panel with Overall PnL, Realized PnL, Strategy Target, and Leg Target',
+          'One-click execution controls: Launch, Stop, Square Off, Continue, and Reset',
+          'Live Trades view with instrument details, entry/LTP prices, stop-loss, and P&L',
+          'Complete Orders History with instrument, quantity, avg price, timestamps, status, and context',
+          'Real-time Engine Logs with API calls, execution steps, sync events, and system messages',
+        ],
+      },
+      architecture: {
+        description: 'Python-powered backend handling data processing, strategy execution, and broker API integration with a modern web dashboard for centralized monitoring and control.',
+        techStack: [
+          { name: 'Python', category: 'language' },
+          { name: 'FastAPI', category: 'framework' },
+          { name: 'Broker API', category: 'tool' },
+          { name: 'WebSocket', category: 'infrastructure' },
+        ],
+      },
+      execution: {
+        description: 'Delivered in three focused phases — core automation engine, dashboard interface, and monitoring/logging capabilities.',
+        phases: [
+          { name: 'Core Engine', description: 'Strategy execution logic, broker API integration, and automated order management' },
+          { name: 'Dashboard & Controls', description: 'Portfolio intelligence panel, execution buttons, and live trades view' },
+          { name: 'Orders & Logging', description: 'Orders history tracking, real-time engine logs, and configuration management' },
+        ],
+      },
+      results: {
+        description: 'The system eliminated manual trade management entirely, providing fully automated execution with complete transparency into every order, position, and system action.',
+        before: [
+          'Manual options execution and position monitoring',
+          'No centralized P&L or strategy target visibility',
+          'Scattered order tracking across broker portals',
+          'No insight into backend execution behavior',
+        ],
+        after: [
+          'Fully automated strategy execution with one-click controls',
+          'Real-time Portfolio Intelligence with PnL and target tracking',
+          'Unified Orders History with full trade details and context',
+          'Live Engine Logs for complete system transparency',
+        ],
+      },
+    },
+  },
+  {
     id: '1',
     slug: 'multi-timeframe-breakout-system',
     title: 'Multi-Timeframe Breakout System',
