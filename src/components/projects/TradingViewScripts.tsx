@@ -34,6 +34,17 @@ const tradingViewScripts = [
     category: 'Multi-Indicator',
     tags: ['Moving Averages', 'RSI', 'Bollinger Bands'],
   },
+  {
+    id: 3,
+    name: 'EMA Crossover Strategy',
+    subtitle: 'Automated EMA crossover entries & exits',
+    description: 'A Pine Script strategy that generates buy and sell signals based on exponential moving average crossovers — entering long when the fast EMA crosses above the slow EMA and reversing when the opposite crossover occurs, with full backtesting support to evaluate performance across any instrument and timeframe.',
+    likes: 'New',
+    url: 'https://in.tradingview.com/script/9rd1pMmn-EMA-Cross-Strategy/',
+    icon: 'bar',
+    category: 'Strategy',
+    tags: ['EMA', 'Crossover', 'Backtesting'],
+  },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
@@ -89,7 +100,7 @@ export const TradingViewScripts: React.FC = () => {
         </div>
 
         {/* Scripts Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {tradingViewScripts.map((script) => {
             const Icon = iconMap[script.icon] || LineChart;
             return (
