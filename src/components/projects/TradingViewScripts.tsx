@@ -8,6 +8,7 @@ import {
   Lock,
   Star,
   BarChart2,
+  Activity,
 } from 'lucide-react';
 
 // TradingView scripts data
@@ -45,12 +46,24 @@ const tradingViewScripts = [
     category: 'Strategy',
     tags: ['EMA', 'Crossover', 'Backtesting'],
   },
+  {
+    id: 4,
+    name: 'RSI Overbought & Oversold Alerts',
+    subtitle: 'Real-time RSI alerts with visual signals',
+    description: 'A Pine Script indicator that calculates the Relative Strength Index with customizable parameters and fires real-time alerts the moment price shifts into overbought (above 70) or oversold (below 30) territory — marking each condition directly on the chart with red and green triangles for instant visual clarity.',
+    likes: '53',
+    url: 'https://in.tradingview.com/script/SJfAsHDO-TradingView-Alerts-For-RSI-overbought-and-oversold-levels/',
+    icon: 'activity',
+    category: 'Relative Strength Index',
+    tags: ['RSI', 'Alerts', 'Overbought', 'Oversold'],
+  },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
   trending: TrendingUp,
   chart: LineChart,
   bar: BarChart2,
+  activity: Activity,
 };
 
 export const TradingViewScripts: React.FC = () => {
@@ -91,7 +104,12 @@ export const TradingViewScripts: React.FC = () => {
 
         {/* Title */}
         <div className="text-center mb-12">
-          <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+          <h2 className="inline-flex items-center gap-3 text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+            <img
+              src="https://www.tradingview.com/static/images/favicon.ico"
+              alt="TradingView"
+              className="w-7 h-7"
+            />
             Open-Source Trading Scripts
           </h2>
           <p className="text-base text-slate-500 max-w-xl mx-auto">
@@ -101,20 +119,22 @@ export const TradingViewScripts: React.FC = () => {
 
         {/* Scripts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {tradingViewScripts.map((script) => {
+          {tradingViewScripts.map((script, index) => {
             const Icon = iconMap[script.icon] || LineChart;
+            const isLastOdd = index === tradingViewScripts.length - 1 && tradingViewScripts.length % 3 !== 0;
             return (
               <a
                 key={script.id}
                 href={script.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col bg-white rounded-2xl overflow-hidden
+                className={`group relative flex flex-col bg-white rounded-2xl overflow-hidden
                            border border-slate-200/80 hover:border-teal-300/70
                            shadow-[0_2px_8px_rgba(0,0,0,0.04)]
                            hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)]
                            hover:-translate-y-1.5
-                           transition-all duration-300 ease-out"
+                           transition-all duration-300 ease-out
+                           ${isLastOdd ? 'lg:col-start-2' : ''}`}
               >
                 {/* Top gradient bar */}
                 <div
