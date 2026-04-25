@@ -60,7 +60,7 @@ export const CareersHero: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg sm:text-xl text-black max-w-3xl mx-auto leading-relaxed mb-9"
             >
-              We&apos;re expanding our team for live trading systems, backtesting engines, and broker
+              We&apos;re expanding the team for live trading systems, backtesting engines, and broker
               integrations. If you write production-grade code and care about microseconds and edge cases,
               read on.
             </motion.p>
