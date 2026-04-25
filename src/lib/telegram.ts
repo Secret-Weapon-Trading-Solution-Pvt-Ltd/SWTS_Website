@@ -5,6 +5,9 @@ const TELEGRAM_BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || '';
 // Comma-separated chat IDs for multiple recipients
 const TELEGRAM_CHAT_IDS = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_IDS || '';
 
+// Careers uses a separate bot but sends to the same chat IDs
+const CAREERS_TELEGRAM_BOT_TOKEN = process.env.NEXT_PUBLIC_CAREERS_TELEGRAM_BOT_TOKEN || '';
+
 // Send message to a single chat (server-side version)
 export async function sendTelegramMessage(
   chatId: number,
@@ -257,6 +260,104 @@ _SWTS Contact Form_
       }
     } catch (error) {
       console.error(`Failed to send contact form to ${chatId}:`, error);
+    }
+  }
+
+  return successCount > 0;
+}
+
+// Client-side: send a job application (form details + resume file) to the careers bot.
+// Uses the dedicated careers bot token but the same chat IDs as the main bot.
+export async function sendJobApplicationToTelegram(data: {
+  fullName: string;
+  email: string;
+  phone: string;
+  location: string;
+  experience: string;
+  currentRole: string;
+  currentCompany: string;
+  currentCtc: string;
+  noticePeriod: string;
+  expectedCtc: string;
+  portfolio: string;
+  github: string;
+  linkedin: string;
+  taskLink: string;
+  coverNote: string;
+  jobTitle: string;
+  resume: File;
+}): Promise<boolean> {
+  if (!CAREERS_TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_IDS) {
+    console.warn('Careers Telegram credentials not configured');
+    return false;
+  }
+
+  const chatIds = TELEGRAM_CHAT_IDS.split(',').map(id => id.trim()).filter(id => id);
+  if (chatIds.length === 0) {
+    console.warn('No Telegram chat IDs configured');
+    return false;
+  }
+
+  const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
+  const details = `
+*New Job Application — ${escapeMarkdown(data.jobTitle)}*
+
+*Name:* ${escapeMarkdown(data.fullName)}
+*Email:* ${escapeMarkdown(data.email)}
+*Phone:* ${escapeMarkdown(data.phone)}
+*Location:* ${escapeMarkdown(data.location)}
+
+*Experience:* ${escapeMarkdown(data.experience)}
+*Current Role:* ${escapeMarkdown(data.currentRole)}
+*Current Company:* ${escapeMarkdown(data.currentCompany)}
+*Current CTC:* ${escapeMarkdown(data.currentCtc)}
+*Expected CTC:* ${escapeMarkdown(data.expectedCtc)}
+*Notice Period:* ${escapeMarkdown(data.noticePeriod || '—')}
+
+*Portfolio:* ${escapeMarkdown(data.portfolio || '—')}
+*GitHub:* ${escapeMarkdown(data.github || '—')}
+*LinkedIn:* ${escapeMarkdown(data.linkedin || '—')}
+*Hiring Task Link:* ${escapeMarkdown(data.taskLink || '—')}
+
+*Cover Note:*
+${escapeMarkdown(data.coverNote || '—')}
+
+*Time:* ${timestamp} IST
+
+---
+_SWTS Careers Application_
+  `.trim();
+
+  // Telegram caption hard limit is 1024 chars. Trim cover note if needed so the
+  // entire application fits in a single sendDocument call (resume + details).
+  let caption = details;
+  if (caption.length > 1024) {
+    const overflow = caption.length - 1024 + 3; // room for an ellipsis
+    const trimmedCover = (data.coverNote || '—').slice(0, Math.max(0, (data.coverNote || '—').length - overflow)) + '...';
+    caption = details.replace(escapeMarkdown(data.coverNote || '—'), escapeMarkdown(trimmedCover));
+    if (caption.length > 1024) caption = caption.slice(0, 1021) + '...';
+  }
+
+  let successCount = 0;
+
+  for (const chatId of chatIds) {
+    try {
+      const fd = new FormData();
+      fd.append('chat_id', chatId);
+      fd.append('caption', caption);
+      fd.append('parse_mode', 'Markdown');
+      fd.append('document', data.resume, data.resume.name);
+
+      const docResponse = await fetch(
+        `https://api.telegram.org/bot${CAREERS_TELEGRAM_BOT_TOKEN}/sendDocument`,
+        { method: 'POST', body: fd }
+      );
+      const docResult = await docResponse.json();
+      if (docResult.ok) successCount++;
+      else console.error(`sendDocument failed for ${chatId}:`, docResult);
+    } catch (error) {
+      console.error(`Failed to send job application to ${chatId}:`, error);
     }
   }
 

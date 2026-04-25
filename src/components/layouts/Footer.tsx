@@ -16,6 +16,7 @@ const footerLinks = {
     { href: '/', label: 'Home' },
     { href: '/about/', label: 'About Us' },
     { href: '/services/', label: 'All Services' },
+    { href: '/careers/', label: 'Careers' },
     { href: '/strategy-assessment/', label: 'Free Assessment' },
   ],
   legal: [
