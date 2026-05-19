@@ -7,7 +7,7 @@ import { ArrowLeft, FileQuestion } from 'lucide-react';
 // Generate static params for projects that don't have dedicated pages
 export function generateStaticParams() {
   // Exclude slugs that have their own dedicated page in /projects/[name]/page.tsx
-  const dedicatedRoutes = ['ema-crossover-screener', 'delta-screener', 'trade-distributor-system', 'options-trading-dashboard'];
+  const dedicatedRoutes = ['ema-crossover-screener', 'delta-screener', 'trade-distributor-system', 'options-trading-dashboard', 'dual-account-hedging'];
   return projects
     .filter((project) => !dedicatedRoutes.includes(project.slug))
     .map((project) => ({

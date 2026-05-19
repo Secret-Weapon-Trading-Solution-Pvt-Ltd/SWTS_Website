@@ -146,6 +146,79 @@ export const projects: Project[] = [
     },
   },
   {
+    id: '12',
+    slug: 'dual-account-hedging',
+    title: 'Dual Account Hedging',
+    outcome: 'Automated synchronized hedging across two accounts with real-time position tracking and full lifecycle control',
+    category: 'automation',
+    status: 'completed',
+    techStack: ['Python', 'WebSocket', 'Broker API', 'FastAPI'],
+    icon: 'activity',
+    featured: false,
+    metrics: [
+      { label: 'Accounts', value: '2' },
+      { label: 'Execution', value: 'Sync' },
+      { label: 'Monitoring', value: 'Real-time' },
+      { label: 'Mode', value: 'Live/Paper' },
+    ],
+    details: {
+      clientContext: 'Built for advanced traders who manage risk through simultaneous long and short hedging strategies across two separate brokerage accounts, requiring synchronized automated execution with complete real-time visibility.',
+      challenge: {
+        description: 'Coordinating hedge trades across two separate accounts manually introduces synchronization gaps, delayed responses to market moves, and no centralized visibility into live positions or P&L for both legs.',
+        painPoints: [
+          'Manual coordination of long and short legs across two separate accounts',
+          'No real-time visibility into hedge positions, entry prices, stop-loss, or live P&L',
+          'Fragmented strategy configuration with no unified control panel',
+          'No automated trailing stop-loss or re-entry logic across both accounts',
+          'Scattered order history with no consolidated P&L view for long and short legs',
+        ],
+      },
+      solution: {
+        description: 'A Python-based dual-account hedging platform that automates synchronized execution across two accounts, with a real-time dashboard, dedicated Live Position tracking, independent strategy configuration for each leg, and complete order history.',
+        highlights: [
+          'Real-time Live Feed with live bid/ask prices and current execution state',
+          'Live Position module tracking both Long (A1) and Short (A2) legs with entry price, stop-loss, target, and live P&L',
+          'Independent strategy configuration panels for each account — asset, lot size, execution window, stop-loss, target, and trailing SL',
+          'Dynamic trailing stop-loss management with cooldown and re-entry quota settings',
+          'Centralized execution controls: Apply, Start, Pause, Resume, and Reset',
+          'Order History with entry/exit prices, stop-loss, targets, exit reasons, and overall P&L summary',
+        ],
+      },
+      architecture: {
+        description: 'Python-powered backend handling dual-account connectivity, synchronized order routing, and strategy execution — with a modern web dashboard for real-time monitoring and control.',
+        techStack: [
+          { name: 'Python', category: 'language' },
+          { name: 'FastAPI', category: 'framework' },
+          { name: 'WebSocket', category: 'infrastructure' },
+          { name: 'Broker API', category: 'tool' },
+        ],
+      },
+      execution: {
+        description: 'Delivered in three focused phases covering the core hedging engine, dashboard and configuration, and order management.',
+        phases: [
+          { name: 'Core Engine', description: 'Dual account connectivity, synchronized hedging logic, and automated order routing for long and short legs' },
+          { name: 'Dashboard & Configuration', description: 'Live Feed, Live Position tracking, and independent strategy configuration panels for both accounts' },
+          { name: 'Controls & History', description: 'Execution lifecycle controls, trailing stop-loss management, re-entry quotas, and order history with P&L summary' },
+        ],
+      },
+      results: {
+        description: 'The system eliminated manual hedge coordination entirely, providing fully automated synchronized execution with real-time visibility across both accounts.',
+        before: [
+          'Manual coordination of long/short legs across two separate accounts',
+          'No real-time hedge position or live P&L visibility',
+          'Fragmented strategy configuration and control',
+          'No automated trailing stop-loss or cooldown management',
+        ],
+        after: [
+          'Automated synchronized execution across both accounts',
+          'Real-time Live Position tracking for both long and short legs',
+          'Independent per-account configuration with centralized lifecycle controls',
+          'Dynamic trailing stop-loss with cooldown periods and re-entry quota management',
+        ],
+      },
+    },
+  },
+  {
     id: '11',
     slug: 'options-trading-dashboard',
     title: 'Automated Options Trading Dashboard',
