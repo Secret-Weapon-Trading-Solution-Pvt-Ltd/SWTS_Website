@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -9,21 +9,21 @@ import {
   Target,
   Shield,
   Sparkles,
-  Play,
-  Video,
+  // Play,  // used in commented-out video section
+  // Video, // used in commented-out video section
 } from 'lucide-react';
 import { getFeaturedProject } from '@/data/projects';
 
-// Video configuration
-const VIDEO_CONFIG = {
-  youtubeId: 'UY0h3v6RPoY',
-  title: 'Project Walkthrough',
-  subtitle: 'Recorded demonstration',
-};
+// Video configuration (kept for when video section is re-enabled)
+// const VIDEO_CONFIG = {
+//   youtubeId: 'UY0h3v6RPoY',
+//   title: 'Project Walkthrough',
+//   subtitle: 'Recorded demonstration',
+// };
 
 export const FeaturedCaseStudy: React.FC = () => {
   const featured = getFeaturedProject();
-  const [isPlaying, setIsPlaying] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false); // used in commented-out video section
 
   if (!featured) return null;
 
@@ -47,7 +47,7 @@ export const FeaturedCaseStudy: React.FC = () => {
           <div className="flex items-center gap-2 px-4 py-1.5 bg-white border border-slate-200/80 rounded-full shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-teal-500" />
             <span className="text-xs font-semibold tracking-wide uppercase text-black">
-              Flagship Project
+              Python Project
             </span>
           </div>
           <span
@@ -170,9 +170,9 @@ export const FeaturedCaseStudy: React.FC = () => {
             </div>
 
             {/* Video Section */}
-            <div className="relative mt-8 pt-8 border-t border-slate-100">
+            {/* <div className="relative mt-8 pt-8 border-t border-slate-100">
               {/* Video Header */}
-              <div className="flex items-center justify-between mb-4">
+              {/* <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-teal-50 rounded-lg flex items-center justify-center">
                     <Video className="w-4 h-4 text-teal-600" />
@@ -182,44 +182,33 @@ export const FeaturedCaseStudy: React.FC = () => {
                     <p className="text-xs text-black">{VIDEO_CONFIG.subtitle}</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* Video Player Container */}
-              <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-video">
+              {/* <div className="relative rounded-2xl overflow-hidden bg-slate-900 aspect-video">
                 {!isPlaying ? (
-                  /* Video Thumbnail with Play Button */
                   <button
                     onClick={() => setIsPlaying(true)}
                     className="absolute inset-0 w-full h-full group cursor-pointer"
                   >
-                    {/* YouTube Thumbnail */}
                     <img
                       src={`https://img.youtube.com/vi/${VIDEO_CONFIG.youtubeId}/maxresdefault.jpg`}
                       alt={VIDEO_CONFIG.title}
                       className="absolute inset-0 w-full h-full object-cover"
                       onError={(e) => {
-                        // Fallback to hqdefault if maxresdefault doesn't exist
                         (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${VIDEO_CONFIG.youtubeId}/hqdefault.jpg`;
                       }}
                     />
-
-                    {/* Dark overlay */}
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
-
-                    {/* Play button */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="relative">
-                        {/* Pulse ring */}
                         <div
                           className="absolute inset-0 w-20 h-20 rounded-full bg-teal-500/30 animate-ping"
                           style={{ animationDuration: '2s' }}
                         />
-
-                        {/* Outer ring */}
                         <div className="relative w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm border border-white/30
                                       flex items-center justify-center group-hover:scale-110 group-hover:bg-white/30
                                       transition-all duration-300">
-                          {/* Inner play button */}
                           <div className="w-14 h-14 rounded-full bg-teal-500 flex items-center justify-center shadow-lg shadow-teal-500/40
                                         group-hover:bg-teal-400 transition-all duration-300">
                             <Play className="w-6 h-6 text-white ml-1" fill="currentColor" />
@@ -227,14 +216,11 @@ export const FeaturedCaseStudy: React.FC = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Duration badge */}
                     <div className="absolute bottom-4 right-4 px-2 py-1 bg-black/70 rounded text-xs font-medium text-white">
                       Click to play
                     </div>
                   </button>
                 ) : (
-                  /* Embedded YouTube Player */
                   <iframe
                     src={`https://www.youtube.com/embed/${VIDEO_CONFIG.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
                     className="absolute inset-0 w-full h-full"
@@ -245,7 +231,7 @@ export const FeaturedCaseStudy: React.FC = () => {
                   />
                 )}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
