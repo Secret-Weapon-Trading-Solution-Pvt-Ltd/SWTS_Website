@@ -8,6 +8,7 @@ import {
   DualAccountHedgingCard,
   OptionsTradingDashboardCard,
   TradingViewScripts,
+  WealthOrbitsCard,
 } from '@/components/projects';
 
 export default function ProjectsPage() {
@@ -27,6 +28,9 @@ export default function ProjectsPage() {
 
       {/* Automated Options Trading Dashboard - Fourth project */}
       <OptionsTradingDashboardCard />
+
+      {/* Wealth Orbits - Fifth project */}
+      <WealthOrbitsCard />
 
       {/* TradingView Scripts */}
       <TradingViewScripts />

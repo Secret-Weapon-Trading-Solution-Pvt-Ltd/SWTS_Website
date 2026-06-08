@@ -6,3 +6,4 @@ export { ProjectDetailSections } from './ProjectDetailSections';
 export { DualAccountHedgingCard } from './DualAccountHedgingCard';
 export { OptionsTradingDashboardCard } from './OptionsTradingDashboardCard';
 export { TradingViewScripts } from './TradingViewScripts';
+export { WealthOrbitsCard } from './WealthOrbitsCard';
