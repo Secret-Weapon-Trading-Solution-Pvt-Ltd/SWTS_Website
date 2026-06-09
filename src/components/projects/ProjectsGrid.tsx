@@ -183,25 +183,23 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
         {project.metrics.map((metric) => (
           <div
             key={metric.label}
-            className="relative overflow-hidden rounded-xl p-3 text-center
-                       transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="rounded-xl p-3 text-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             style={{
-              background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
-              border: '1px solid rgba(20,184,166,0.25)',
+              background: '#FFFFFF',
+              border: '1px solid rgba(226,232,240,0.9)',
+              boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
             }}
           >
-            {/* subtle inner glow */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none rounded-xl" />
             <div
-              className="relative w-7 h-7 rounded-lg flex items-center justify-center mx-auto mb-2"
-              style={{ background: 'rgba(20,184,166,0.15)' }}
+              className="w-7 h-7 rounded-lg flex items-center justify-center mx-auto mb-2"
+              style={{ background: 'rgba(20,184,166,0.1)' }}
             >
-              <metric.Icon className="w-3.5 h-3.5 text-teal-600" />
+              <metric.Icon className="w-4 h-4 text-teal-600" />
             </div>
-            <p className="relative text-base font-bold text-slate-900 tracking-tight leading-none mb-0.5">
+            <p className="text-lg font-bold text-slate-900 tracking-tight leading-none mb-0.5">
               {metric.value}
             </p>
-            <p className="relative text-[9px] font-semibold text-teal-700 uppercase tracking-wider leading-tight">
+            <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider leading-tight">
               {metric.label}
             </p>
           </div>
