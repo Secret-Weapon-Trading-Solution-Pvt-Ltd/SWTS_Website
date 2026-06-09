@@ -174,7 +174,7 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
       </div>
 
       {/* Description */}
-      <p className="text-sm text-black leading-relaxed mb-5 flex-1">
+      <p className="text-base text-black leading-relaxed mb-5 flex-1">
         {project.description}
       </p>
 
