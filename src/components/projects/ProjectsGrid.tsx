@@ -164,7 +164,7 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
           )}
         </div>
         <div className="text-center">
-          <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-1">
+          <p className="text-xs font-bold text-teal-600 uppercase tracking-wider mb-1">
             {project.category}
           </p>
           <h3 className="text-xl font-bold text-slate-900 leading-snug">
