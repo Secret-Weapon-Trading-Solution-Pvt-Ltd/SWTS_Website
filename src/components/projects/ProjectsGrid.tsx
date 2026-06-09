@@ -199,7 +199,7 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
             <p className="text-lg font-bold text-slate-900 tracking-tight leading-none mb-0.5">
               {metric.value}
             </p>
-            <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider leading-tight">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider leading-tight">
               {metric.label}
             </p>
           </div>
