@@ -166,13 +166,13 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
         <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-1">
           {project.category}
         </p>
-        <h3 className="text-lg font-bold text-slate-900 leading-snug">
+        <h3 className="text-xl font-bold text-slate-900 leading-snug">
           {project.title}
         </h3>
       </div>
 
       {/* Description */}
-      <p className="text-sm text-slate-600 leading-relaxed mb-5 flex-1">
+      <p className="text-sm text-black leading-relaxed mb-5 flex-1">
         {project.description}
       </p>
 
@@ -181,14 +181,25 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
         {project.metrics.map((metric) => (
           <div
             key={metric.label}
-            className="bg-slate-50/80 border border-slate-100 rounded-xl p-3 text-center
-                       hover:bg-white hover:border-slate-200 hover:shadow-sm transition-all duration-200"
+            className="relative overflow-hidden rounded-xl p-3 text-center
+                       transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            style={{
+              background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
+              border: '1px solid rgba(20,184,166,0.25)',
+            }}
           >
-            <metric.Icon className="w-3.5 h-3.5 text-teal-500 mx-auto mb-1.5" />
-            <p className="text-base font-bold text-slate-900 tracking-tight leading-none mb-0.5">
+            {/* subtle inner glow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-transparent pointer-events-none rounded-xl" />
+            <div
+              className="relative w-7 h-7 rounded-lg flex items-center justify-center mx-auto mb-2"
+              style={{ background: 'rgba(20,184,166,0.15)' }}
+            >
+              <metric.Icon className="w-3.5 h-3.5 text-teal-600" />
+            </div>
+            <p className="relative text-base font-bold text-slate-900 tracking-tight leading-none mb-0.5">
               {metric.value}
             </p>
-            <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider leading-tight">
+            <p className="relative text-[9px] font-semibold text-teal-700 uppercase tracking-wider leading-tight">
               {metric.label}
             </p>
           </div>
