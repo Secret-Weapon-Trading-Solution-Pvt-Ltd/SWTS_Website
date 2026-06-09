@@ -149,9 +149,9 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
       />
 
       {/* Header: icon + category + title */}
-      <div className="flex flex-col items-center text-center mb-4">
+      <div className="flex items-center justify-center gap-4 mb-4">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 mb-3"
+          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{
             background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
             border: '1px solid rgba(20,184,166,0.2)',
@@ -163,12 +163,14 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
             <project.Icon className="w-6 h-6 text-teal-600" />
           )}
         </div>
-        <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-1">
-          {project.category}
-        </p>
-        <h3 className="text-xl font-bold text-slate-900 leading-snug">
-          {project.title}
-        </h3>
+        <div className="text-center">
+          <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-1">
+            {project.category}
+          </p>
+          <h3 className="text-xl font-bold text-slate-900 leading-snug">
+            {project.title}
+          </h3>
+        </div>
       </div>
 
       {/* Description */}
