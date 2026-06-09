@@ -1,4 +1,5 @@
 export { ProjectsHero } from './ProjectsHero';
+export { ProjectsGrid } from './ProjectsGrid';
 export { FeaturedCaseStudy } from './FeaturedCaseStudy';
 export { TradeDistributorCard } from './TradeDistributorCard';
 export { ProjectDetailHero } from './ProjectDetailHero';
