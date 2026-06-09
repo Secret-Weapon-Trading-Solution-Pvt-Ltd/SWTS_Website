@@ -149,9 +149,9 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
       />
 
       {/* Header: icon + category + title */}
-      <div className="flex items-start gap-4 mb-4">
+      <div className="flex flex-col items-center text-center mb-4">
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 mb-3"
           style={{
             background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
             border: '1px solid rgba(20,184,166,0.2)',
@@ -163,14 +163,12 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
             <project.Icon className="w-6 h-6 text-teal-600" />
           )}
         </div>
-        <div className="pt-0.5">
-          <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-1">
-            {project.category}
-          </p>
-          <h3 className="text-lg font-bold text-slate-900 leading-snug">
-            {project.title}
-          </h3>
-        </div>
+        <p className="text-[10px] font-bold text-teal-600 uppercase tracking-wider mb-1">
+          {project.category}
+        </p>
+        <h3 className="text-lg font-bold text-slate-900 leading-snug">
+          {project.title}
+        </h3>
       </div>
 
       {/* Description */}
@@ -198,15 +196,17 @@ const ProjectCard: React.FC<{ project: ProjectCardData }> = ({ project }) => (
       </div>
 
       {/* CTA */}
-      <Link
-        href={project.href}
-        className="group/btn inline-flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-white
-                   rounded-xl text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5
-                   transition-all duration-200 self-start"
-      >
-        View Full Case Study
-        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform duration-200" />
-      </Link>
+      <div className="flex justify-center">
+        <Link
+          href={project.href}
+          className="group/btn inline-flex items-center gap-2 px-4 py-2.5 bg-slate-900 text-white
+                     rounded-xl text-sm font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5
+                     transition-all duration-200"
+        >
+          View Full Case Study
+          <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform duration-200" />
+        </Link>
+      </div>
     </div>
   </div>
 );
