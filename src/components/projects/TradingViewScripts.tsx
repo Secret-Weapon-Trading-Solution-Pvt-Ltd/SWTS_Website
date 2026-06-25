@@ -57,6 +57,17 @@ const tradingViewScripts = [
     category: 'Relative Strength Index',
     tags: ['RSI', 'Alerts', 'Overbought', 'Oversold'],
   },
+  {
+    id: 5,
+    name: 'Trend Heatmap Indicator',
+    subtitle: 'Scan 10 symbols for trend strength in one dashboard',
+    description: 'A multi-stock market scanner that provides a quick overview of trend strength and market bias across up to 10 customizable symbols simultaneously. It combines EMA, RSI, SuperTrend, and MACD into a composite score ranging from -4 to +4, classifying each symbol from Strong Bear to Strong Bull — all in a single color-coded dashboard.',
+    likes: '19',
+    url: 'https://in.tradingview.com/script/WJSJBHJ0-Trend-Heatmap-Indicator/',
+    icon: 'bar',
+    category: 'Trend Analysis',
+    tags: ['EMA', 'RSI', 'SuperTrend', 'MACD'],
+  },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
