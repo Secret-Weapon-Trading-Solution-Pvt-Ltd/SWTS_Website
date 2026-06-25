@@ -77,7 +77,129 @@ const iconMap: Record<string, React.ElementType> = {
   activity: Activity,
 };
 
+type Script = (typeof tradingViewScripts)[0];
+
+function ScriptCard({ script }: { script: Script }) {
+  const Icon = iconMap[script.icon] || LineChart;
+  return (
+    <a
+      href={script.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex flex-col bg-white rounded-2xl overflow-hidden
+                 border border-slate-200/80 hover:border-teal-300/70
+                 shadow-[0_2px_8px_rgba(0,0,0,0.04)]
+                 hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)]
+                 hover:-translate-y-1.5
+                 transition-all duration-300 ease-out h-full"
+    >
+      {/* Top gradient bar */}
+      <div
+        className="h-[3px] w-full"
+        style={{
+          background: 'linear-gradient(90deg, #0D9488, #14B8A6, #5EEAD4)',
+        }}
+      />
+
+      <div className="flex flex-col flex-1 p-7">
+
+        {/* Top row: badges + likes */}
+        <div className="flex items-center justify-between mb-5">
+          <span
+            className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-widest"
+            style={{
+              background: 'rgba(20,184,166,0.08)',
+              color: '#0D9488',
+              border: '1px solid rgba(20,184,166,0.2)',
+            }}
+          >
+            {script.category}
+          </span>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 px-2.5 py-1 bg-amber-50 border border-amber-200/70 rounded-full">
+              <Lock className="w-3 h-3 text-amber-500" />
+              <span className="text-[10px] font-semibold text-amber-600 uppercase tracking-wide">Protected</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-300" />
+              <span className="text-xs font-semibold text-slate-500">{script.likes}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Icon + Script name + Subtitle */}
+        <div className="flex items-center gap-3 mb-4">
+          <div
+            className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
+            style={{
+              background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
+              border: '1px solid rgba(20,184,166,0.2)',
+            }}
+          >
+            <Icon className="w-5 h-5 text-teal-600" />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-slate-900 leading-tight group-hover:text-teal-700 transition-colors duration-200">
+              {script.name}
+            </h3>
+            <p className="text-sm font-medium text-slate-400 mt-0.5">
+              {script.subtitle}
+            </p>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-slate-600 leading-relaxed flex-1">
+          {script.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mt-5 mb-5">
+          {script.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-2.5 py-0.5 bg-slate-50 border border-slate-200 rounded-full text-[11px] font-medium text-slate-500"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Footer CTA */}
+        <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+          <div className="flex items-center gap-2">
+            <img
+              src="https://www.tradingview.com/static/images/favicon.ico"
+              alt="TradingView"
+              className="w-4 h-4 opacity-60"
+            />
+            <span className="text-xs text-slate-400 font-medium">TradingView</span>
+          </div>
+          <div
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold
+                       text-teal-700 bg-teal-50 border border-teal-200/60
+                       group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600
+                       transition-all duration-200"
+          >
+            View Script
+            <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
+
 export const TradingViewScripts: React.FC = () => {
+  const cols = 3;
+  const remainder = tradingViewScripts.length % cols;
+  const mainScripts = remainder > 0
+    ? tradingViewScripts.slice(0, -remainder)
+    : tradingViewScripts;
+  const lastRowScripts = remainder > 0
+    ? tradingViewScripts.slice(-remainder)
+    : [];
+
   return (
     <section className="relative py-16 lg:py-20 bg-slate-50">
       {/* Background pattern */}
@@ -128,121 +250,29 @@ export const TradingViewScripts: React.FC = () => {
           </p>
         </div>
 
-        {/* Scripts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {tradingViewScripts.map((script, index) => {
-            const Icon = iconMap[script.icon] || LineChart;
-            const isLastOdd = index === tradingViewScripts.length - 1 && tradingViewScripts.length % 3 !== 0;
-            return (
-              <a
-                key={script.id}
-                href={script.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group relative flex flex-col bg-white rounded-2xl overflow-hidden
-                           border border-slate-200/80 hover:border-teal-300/70
-                           shadow-[0_2px_8px_rgba(0,0,0,0.04)]
-                           hover:shadow-[0_12px_40px_rgba(0,0,0,0.10)]
-                           hover:-translate-y-1.5
-                           transition-all duration-300 ease-out
-                           ${isLastOdd ? 'lg:col-start-2' : ''}`}
-              >
-                {/* Top gradient bar */}
+        <div className="max-w-6xl mx-auto">
+          {/* Full rows */}
+          {mainScripts.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mainScripts.map((script) => (
+                <ScriptCard key={script.id} script={script} />
+              ))}
+            </div>
+          )}
+
+          {/* Last partial row — centered */}
+          {lastRowScripts.length > 0 && (
+            <div className={`flex justify-center gap-6 ${mainScripts.length > 0 ? 'mt-6' : ''}`}>
+              {lastRowScripts.map((script) => (
                 <div
-                  className="h-[3px] w-full"
-                  style={{
-                    background: 'linear-gradient(90deg, #0D9488, #14B8A6, #5EEAD4)',
-                  }}
-                />
-
-                <div className="flex flex-col flex-1 p-7">
-
-                  {/* Top row: badges + likes */}
-                  <div className="flex items-center justify-between mb-5">
-                    <span
-                      className="inline-flex items-center px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-widest"
-                      style={{
-                        background: 'rgba(20,184,166,0.08)',
-                        color: '#0D9488',
-                        border: '1px solid rgba(20,184,166,0.2)',
-                      }}
-                    >
-                      {script.category}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-1 px-2.5 py-1 bg-amber-50 border border-amber-200/70 rounded-full">
-                        <Lock className="w-3 h-3 text-amber-500" />
-                        <span className="text-[10px] font-semibold text-amber-600 uppercase tracking-wide">Protected</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-300" />
-                        <span className="text-xs font-semibold text-slate-500">{script.likes}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Icon + Script name + Subtitle */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm"
-                      style={{
-                        background: 'linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%)',
-                        border: '1px solid rgba(20,184,166,0.2)',
-                      }}
-                    >
-                      <Icon className="w-5 h-5 text-teal-600" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900 leading-tight group-hover:text-teal-700 transition-colors duration-200">
-                        {script.name}
-                      </h3>
-                      <p className="text-sm font-medium text-slate-400 mt-0.5">
-                        {script.subtitle}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Description — full sentence, no clamp */}
-                  <p className="text-sm text-slate-600 leading-relaxed flex-1">
-                    {script.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-5 mb-5">
-                    {script.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-0.5 bg-slate-50 border border-slate-200 rounded-full text-[11px] font-medium text-slate-500"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Footer CTA */}
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <img
-                        src="https://www.tradingview.com/static/images/favicon.ico"
-                        alt="TradingView"
-                        className="w-4 h-4 opacity-60"
-                      />
-                      <span className="text-xs text-slate-400 font-medium">TradingView</span>
-                    </div>
-                    <div
-                      className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold
-                                 text-teal-700 bg-teal-50 border border-teal-200/60
-                                 group-hover:bg-teal-600 group-hover:text-white group-hover:border-teal-600
-                                 transition-all duration-200"
-                    >
-                      View Script
-                      <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
-                    </div>
-                  </div>
+                  key={script.id}
+                  className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                >
+                  <ScriptCard script={script} />
                 </div>
-              </a>
-            );
-          })}
+              ))}
+            </div>
+          )}
         </div>
 
       </div>
