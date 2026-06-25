@@ -61,7 +61,7 @@ const tradingViewScripts = [
     id: 5,
     name: 'Trend Heatmap Indicator',
     subtitle: 'Scan 10 symbols for trend strength in one dashboard',
-    description: 'A multi-stock market scanner that provides a quick overview of trend strength and market bias across up to 10 customizable symbols simultaneously. It combines EMA, RSI, SuperTrend, and MACD into a composite score ranging from -4 to +4, classifying each symbol from Strong Bear to Strong Bull — all in a single color-coded dashboard.',
+    description: 'A multi-stock market scanner that combines EMA (trend direction), RSI (momentum strength), SuperTrend (trend confirmation), and MACD histogram (momentum confirmation) into a composite score ranging from -4 to +4 — classifying up to 10 customizable symbols as Strong Bull, Bull, Weak Bull, Neutral, Weak Bear, Bear, or Strong Bear in a single color-coded heatmap dashboard, so you can assess trend strength and market bias across your entire watchlist without switching charts.',
     likes: '19',
     url: 'https://in.tradingview.com/script/WJSJBHJ0-Trend-Heatmap-Indicator/',
     icon: 'bar',
